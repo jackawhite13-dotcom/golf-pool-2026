@@ -119,16 +119,16 @@ export default function StrategyPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <SourceLink
-              href="https://www.rotogrinders.com/articles/gpp-strategy-golf-large-field-tournaments"
-              label="RotoGrinders: GPP Strategy"
+              href="https://www.stokastic.com/news/pga-dfs-leverage-game-theory-large-field-gpp-strategy-ac11/"
+              label="Stokastic: GPP Game Theory"
             />
             <SourceLink
-              href="https://fantasynational.com/pga/articles"
-              label="FantasyNational Articles"
+              href="https://www.fantasylabs.com/articles/the-power-and-myth-of-dfs-diversification-and-the-marauders-map/"
+              label="FantasyLabs: DFS Diversification"
             />
             <SourceLink
-              href="https://www.actionnetwork.com/golf/fantasy-golf-strategy"
-              label="Action Network: Fantasy Golf"
+              href="https://www.dfsarmy.com/2022/07/dfs-diversification-strategy-how-to-win-with-more-lineups-in-an-unpredictable-daily-fantasy-sports-world-mlb-nfl-nba-pga-nascar-nhl.html"
+              label="DFS Army: Portfolio Strategy"
             />
           </div>
         </div>
@@ -275,16 +275,16 @@ export default function StrategyPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <SourceLink
-                href="https://rotogrinders.com/articles/leveraging-ownership-in-gpps"
-                label="RotoGrinders: Ownership Leverage"
+                href="https://www.stokastic.com/news/pga-dfs-leverage-game-theory-large-field-gpp-strategy-ac11/"
+                label="Stokastic: Leverage &amp; Game Theory"
               />
               <SourceLink
-                href="https://fantasynational.com/pga/ownership"
-                label="FantasyNational: Ownership"
+                href="https://dfsbuild.com/dfs-gpp-strategy/"
+                label="DFSBuild: GPP Strategy Guide"
               />
               <SourceLink
-                href="https://www.actionnetwork.com/golf/dfs-golf-ownership-leverage-strategy"
-                label="Action Network: DFS Ownership"
+                href="https://www.fantasylabs.com/articles/using-game-theory-in-daily-fantasy-tournaments/"
+                label="FantasyLabs: Game Theory in DFS"
               />
             </div>
           </div>
@@ -313,12 +313,16 @@ export default function StrategyPage() {
             </ul>
             <div className="mt-3 flex flex-wrap gap-3">
               <SourceLink
-                href="https://datagolf.com/predictive-model"
-                label="DataGolf: Predictive Model"
+                href="https://poolgenius.teamrankings.com/pga-golf-one-and-done-picks/articles/one-and-done-pools-golf-strategy-advice/"
+                label="PoolGenius: Golf Strategy Advice"
               />
               <SourceLink
-                href="https://www.pgatour.com/stats"
-                label="PGA Tour Stats"
+                href="https://athlonsports.com/fantasy/dfs-golf-primer-cash-games-vs-gpp"
+                label="Athlon: Cash vs. GPP Primer"
+              />
+              <SourceLink
+                href="http://www.columbia.edu/~mh2078/DFS_Revision_1_May2019.pdf"
+                label="Columbia: DFS Academic Research (PDF)"
               />
             </div>
           </div>
@@ -524,17 +528,25 @@ export default function StrategyPage() {
       <div className="mt-8 rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] p-4">
         <h3 className="mb-2 text-sm font-bold">Sources &amp; Further Reading</h3>
         <div className="flex flex-wrap gap-x-4 gap-y-1">
-          <SourceLink href="https://rotogrinders.com/articles/gpp-strategy-golf" label="RotoGrinders: GPP Golf Strategy" />
-          <SourceLink href="https://fantasynational.com/pga" label="FantasyNational PGA Tools" />
-          <SourceLink href="https://datagolf.com" label="DataGolf Models & Data" />
-          <SourceLink href="https://www.actionnetwork.com/golf" label="Action Network: Golf Betting" />
-          <SourceLink href="https://www.pgatour.com/stats" label="PGA Tour Official Stats" />
-          <SourceLink href="https://www.golfchannel.com/fantasy" label="Golf Channel: Fantasy" />
+          <SourceLink href="https://www.stokastic.com/news/pga-dfs-leverage-game-theory-large-field-gpp-strategy-ac11/" label="Stokastic: PGA GPP Strategy" />
+          <SourceLink href="https://dfsbuild.com/dfs-gpp-strategy/" label="DFSBuild: GPP Guide" />
+          <SourceLink href="https://www.fantasylabs.com/articles/using-game-theory-in-daily-fantasy-tournaments/" label="FantasyLabs: Game Theory" />
+          <SourceLink href="https://www.fantasylabs.com/articles/the-power-and-myth-of-dfs-diversification-and-the-marauders-map/" label="FantasyLabs: Diversification" />
+          <SourceLink href="https://poolgenius.teamrankings.com/pga-golf-one-and-done-picks/articles/one-and-done-pools-golf-strategy-advice/" label="PoolGenius: Golf Strategy" />
+          <SourceLink href="https://athlonsports.com/fantasy/dfs-golf-primer-cash-games-vs-gpp" label="Athlon: Cash vs. GPP" />
+          <SourceLink href="https://www.dfsarmy.com/2022/07/dfs-diversification-strategy-how-to-win-with-more-lineups-in-an-unpredictable-daily-fantasy-sports-world-mlb-nfl-nba-pga-nascar-nhl.html" label="DFS Army: Diversification" />
+          <SourceLink href="http://www.columbia.edu/~mh2078/DFS_Revision_1_May2019.pdf" label="Columbia/Haugh &amp; Singal: DFS Research" />
+          <SourceLink href="https://www.pokernews.com/news/2022/09/what-is-swapping-why-do-poker-players-swap-with-each-other-42081.htm" label="PokerNews: Stake Swapping" />
+          <SourceLink href="https://blog.gtowizard.com/poker-staking-essentials/" label="GTO Wizard: Staking Essentials" />
+          <SourceLink href="https://ftnfantasy.com/pga/proven-strategies-to-win-your-golf-one-and-done-pool-in-2026" label="FTN Fantasy: 2026 Strategy" />
+          <SourceLink href="https://rotogrinders.com/fantasy/golf-one-and-done-strategy" label="RotoGrinders: Golf Strategy" />
         </div>
         <p className="mt-2 text-[10px] text-[var(--text-muted)]">
           Note: Strategy principles derived from DFS research (DraftKings/FanDuel GPP analysis),
-          portfolio theory, and fantasy golf community consensus. Specific ownership percentages
-          are estimates based on historical DFS data and may vary for this specific pool format.
+          portfolio theory (Haugh &amp; Singal, Columbia University, published in <em>Management Science</em>),
+          poker staking/swapping literature, and fantasy golf community consensus. The academic research
+          confirms that top-heavy payout structures favor concentrated, high-ceiling portfolio construction
+          over mean-variance optimization.
         </p>
       </div>
     </div>
