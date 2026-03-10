@@ -24,7 +24,7 @@ export default function DebatePage() {
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
+            className={`rounded-lg border px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
               tab === t.id
                 ? "border-[var(--green-accent)]/30 bg-[var(--green-accent)]/10 text-[var(--green-accent)]"
                 : "border-transparent text-[var(--text-muted)] hover:text-white"

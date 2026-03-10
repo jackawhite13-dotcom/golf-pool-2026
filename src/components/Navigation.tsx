@@ -23,12 +23,12 @@ export default function Navigation() {
           </span>
           <span className="hidden text-xs text-[var(--text-muted)] sm:inline">2026</span>
         </Link>
-        <div className="flex gap-1 sm:gap-2">
+        <div className="flex gap-1 overflow-x-auto sm:gap-2">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors sm:px-3 sm:text-sm ${
+              className={`whitespace-nowrap rounded-md px-2 py-1.5 text-[11px] font-medium transition-colors sm:px-3 sm:text-sm ${
                 pathname === link.href
                   ? "bg-[var(--green-accent)] text-black"
                   : "text-[var(--text-muted)] hover:bg-[var(--card-bg)] hover:text-white"
