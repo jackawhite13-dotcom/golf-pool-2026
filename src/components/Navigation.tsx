@@ -7,6 +7,7 @@ const links = [
   { href: "/", label: "Hub" },
   { href: "/strategy", label: "Strategy Center" },
   { href: "/players-championship", label: "The Players" },
+  { href: "/debate", label: "Pick Intel" },
 ];
 
 export default function Navigation() {
