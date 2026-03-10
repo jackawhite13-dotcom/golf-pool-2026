@@ -314,7 +314,7 @@ export default function DebateArena() {
             style={{
               background: JUDGE.bg,
               border: `1px solid ${JUDGE.border}`,
-              padding: "28px 32px",
+              padding: "16px 16px",
             }}
           >
             <div className="mb-4 flex items-center gap-2.5">

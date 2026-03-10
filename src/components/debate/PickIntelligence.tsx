@@ -459,7 +459,7 @@ WATCH OUT: [1 sentence on the biggest risk or caveat]`,
           style={{
             background: JUDGE.bg,
             border: `1px solid ${activeAgent === "judge" ? JUDGE.color : JUDGE.border}`,
-            padding: "24px 28px",
+            padding: "16px 16px",
             boxShadow: activeAgent === "judge" ? `0 0 30px rgba(226,185,110,0.15)` : "none",
           }}
         >
