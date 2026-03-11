@@ -43,7 +43,7 @@ function getTierPlayers(tierIndex: number): Player[] {
     t10: g.top10,
     t25: g.top25,
     earnings: g.earnings,
-    alt: g.isAlt || false,
+    alt: false,
   }));
 }
 

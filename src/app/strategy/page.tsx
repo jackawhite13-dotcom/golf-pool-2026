@@ -36,7 +36,7 @@ export default function StrategyPage() {
         </p>
         <h1 className="mb-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Strategy Center</h1>
         <p className="max-w-2xl text-sm text-[var(--text-muted)]">
-          A coordination hub for two entries in a ~300-person, ~$150K golf pool.
+          A coordination hub for two entries in a ~477-person, ~$150K golf pool.
           The goal: maximize the combined probability of cashing across 5 tournaments
           and the season-long cumulative standings.
         </p>
@@ -48,7 +48,7 @@ export default function StrategyPage() {
         <div className="space-y-3 text-sm leading-relaxed">
           <p>
             <strong className="text-white">1. Pick DIFFERENT golfers across both entries.</strong>{" "}
-            In a 300-person GPP-style pool where only the top 4 cash (~1.3% per entry), differentiation
+            In a 477-person GPP-style pool where only the top 4 cash (~1.3% per entry), differentiation
             is the single most important lever. Two identical entries give you 2 lottery tickets
             with the same numbers. Two differentiated entries nearly double your probability of
             having at least one entry in the money.
@@ -78,14 +78,14 @@ export default function StrategyPage() {
       {/* Section A: Same vs Different Picks */}
       <SectionCard className="mb-6">
         <h2 className="mb-1 text-xl font-bold">A. Same Golfers or Different Golfers?</h2>
-        <p className="mb-5 text-xs text-[var(--text-muted)]">Game theory analysis for a 300-entry pool</p>
+        <p className="mb-5 text-xs text-[var(--text-muted)]">Game theory analysis for a 477-entry pool</p>
 
         <div className="mb-6 grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-red-900/40 bg-red-950/20 p-4">
             <h3 className="mb-2 text-sm font-bold text-red-400">Same Picks (Correlated)</h3>
             <ul className="space-y-1.5 text-xs text-[var(--text-muted)]">
               <li>• Outcomes are perfectly correlated — both win or both lose</li>
-              <li>• Effectively 1 unique entry in a 300-person pool</li>
+              <li>• Effectively 1 unique entry in a 477-person pool</li>
               <li>• Probability of cashing: ~1.3% (same as a single entry)</li>
               <li>• Wastes the strategic advantage of having 2 entries</li>
               <li>• Only logical if you&apos;re extremely confident in a specific lineup</li>
@@ -106,10 +106,10 @@ export default function StrategyPage() {
         <div className="rounded-lg bg-[var(--background)] p-4 text-sm">
           <h4 className="mb-2 font-semibold">The Math</h4>
           <p className="mb-3 text-xs text-[var(--text-muted)]">
-            With ~300 entries and top-4 payouts per tournament, each entry has roughly a 1.33%
+            With 477 entries and top-4 payouts per tournament, each entry has roughly a 0.84%
             chance of cashing in any given tournament. With two <em>identical</em> entries,
-            your probability of cashing is still 1.33%. With two <em>independent</em> entries,
-            the probability of at least one cashing is approximately 1 - (1 - 0.0133)² ≈ 2.64%.
+            your probability of cashing is still 0.84%. With two <em>independent</em> entries,
+            the probability of at least one cashing is approximately 1 - (1 - 0.0084)² ≈ 1.67%.
             That&apos;s nearly double the hit rate for zero additional cost.
           </p>
           <p className="mb-3 text-xs text-[var(--text-muted)]">
@@ -253,16 +253,16 @@ export default function StrategyPage() {
 
       {/* Section C: Chalk vs Contrarian */}
       <SectionCard className="mb-6">
-        <h2 className="mb-1 text-xl font-bold">C. Chalk vs. Contrarian in a 300-Person Pool</h2>
+        <h2 className="mb-1 text-xl font-bold">C. Chalk vs. Contrarian in a 477-Person Pool</h2>
         <p className="mb-5 text-xs text-[var(--text-muted)]">
-          Top 4 paid out of ~300 entries = ~1.3% cash rate. How does this affect strategy?
+          Top 4 paid out of 477 entries = ~0.8% cash rate. How does this affect strategy?
         </p>
 
         <div className="mb-6 space-y-4 text-sm leading-relaxed text-[var(--text-muted)]">
           <div className="rounded-lg bg-[var(--background)] p-4">
             <h3 className="mb-2 font-semibold text-white">The Core Insight: Ownership Leverage</h3>
             <p className="mb-3">
-              In a 300-person pool, if 60% of entries roster Scottie Scheffler in Tier 1, then Scheffler
+              In a 477-person pool, if 60% of entries roster Scottie Scheffler in Tier 1, then Scheffler
               winning <em>doesn&apos;t help you much</em> — roughly 180 other entries also have him. Your &ldquo;edge&rdquo;
               comes from the other 6 tiers. But if you have a 5%-owned golfer who finishes top 5, you&apos;re
               immediately differentiated from ~285 other entries.
@@ -296,7 +296,7 @@ export default function StrategyPage() {
                 <strong className="text-white">Large fields favor contrarian players.</strong>{" "}
                 A study of DraftKings golf GPPs with 10,000+ entries found that winning lineups
                 had an average ownership of 8-12% per player, compared to the field average of 15-20%.
-                In a 300-person pool, the same principle applies at a smaller scale.
+                In a 477-person pool, the same principle applies at a smaller scale.
               </li>
               <li>
                 <strong className="text-white">Chalk can still work — if you differentiate elsewhere.</strong>{" "}
@@ -364,8 +364,8 @@ export default function StrategyPage() {
           <div className="rounded-lg bg-[var(--background)] p-4">
             <h3 className="mb-2 font-semibold text-white">Payout Math</h3>
             <p className="mb-3">
-              With a ~$150K pot: ~$120K goes to individual tournament payouts (~$24K per event),
-              and ~$30K goes to cumulative season standings. The per-tournament payouts are where
+              With 477 entries and a ~$165K pot: ~$132K goes to individual tournament payouts (~$26.4K per event),
+              and ~$33K goes to cumulative season standings. The per-tournament payouts are where
               the big money is, but the cumulative payout is still significant.
             </p>
             <div className="overflow-x-auto">
@@ -381,13 +381,13 @@ export default function StrategyPage() {
                 <tbody>
                   <tr className="border-b border-[var(--card-border)]/50">
                     <td className="py-2 pr-4 text-white">Per-Tournament (×5)</td>
-                    <td className="py-2 pr-4">~$24K each</td>
+                    <td className="py-2 pr-4">~$26.4K each</td>
                     <td className="py-2 pr-4">~80%</td>
                     <td className="py-2">Differentiate. Hunt for tournament wins.</td>
                   </tr>
                   <tr className="border-b border-[var(--card-border)]/50">
                     <td className="py-2 pr-4 text-white">Cumulative Season</td>
-                    <td className="py-2 pr-4">~$30K</td>
+                    <td className="py-2 pr-4">~$33K</td>
                     <td className="py-2 pr-4">~20%</td>
                     <td className="py-2">Consistency. Make cuts. Accumulate points.</td>
                   </tr>
@@ -403,21 +403,23 @@ export default function StrategyPage() {
           </div>
 
           <div className="rounded-lg bg-[var(--background)] p-4">
-            <h3 className="mb-2 font-semibold text-white">The Cumulative Scoring System</h3>
+            <h3 className="mb-2 font-semibold text-white">The Scoring System</h3>
             <p className="mb-2">
-              The cumulative system uses a different scoring method: points based on finishing
-              position relative to the cut line, normalized to a 70-point scale. This means:
+              Individual tournaments use place-finish scoring (not to-par). Points are awarded
+              based on where each golfer finishes, with bonus points for 1st, 2nd, and 3rd place.
+              This means:
             </p>
             <ul className="mb-3 space-y-1.5">
               <li>
-                <strong className="text-white">Missed cut = 0 points.</strong> This heavily penalizes
-                volatility. A player who misses 2 cuts and wins 1 tournament may score <em>fewer</em>{" "}
+                <strong className="text-white">Missed cut = 0 points.</strong> There&apos;s a significant
+                gap between the last player who makes the cut and those who miss. This heavily penalizes
+                volatility — a player who misses 2 cuts and wins 1 tournament may score <em>fewer</em>{" "}
                 cumulative points than a player who makes 5 cuts with all top-25 finishes.
               </li>
               <li>
-                <strong className="text-white">Normalization to 70 points</strong> means each tournament
-                counts equally regardless of field size. A 3rd-place finish at The Players (144 players)
-                is worth the same as a 3rd-place finish at The Masters (88 players).
+                <strong className="text-white">Bonus points for top 3</strong> reward golfers who
+                contend and finish on the leaderboard. Picking a tournament winner is worth significantly
+                more than picking a T20 finisher.
               </li>
               <li>
                 <strong className="text-white">Cut-making is essential.</strong> In cumulative scoring,
@@ -473,6 +475,242 @@ export default function StrategyPage() {
                 go either way.
               </li>
             </ul>
+          </div>
+        </div>
+      </SectionCard>
+
+      {/* Section E: Payout Scenarios */}
+      <SectionCard className="mb-6">
+        <h2 className="mb-1 text-xl font-bold">E. Payout Scenarios</h2>
+        <p className="mb-5 text-xs text-[var(--text-muted)]">
+          All scenarios assume 477 entries, ~$165K total pot, 50/50 split between Jack &amp; Abe.
+          Investment: $575 for 2 entries ($287.50 each).
+        </p>
+
+        {/* Per-Tournament Payout Breakdown */}
+        <div className="mb-6 rounded-lg bg-[var(--background)] p-4">
+          <h3 className="mb-3 font-semibold text-white">Per-Tournament Payouts (Estimated)</h3>
+          <p className="mb-3 text-xs text-[var(--text-muted)]">
+            ~80% of pot = ~$132K across 5 events = ~$26,400 per tournament
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-[var(--card-border)]">
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">Place</th>
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">% of Pool</th>
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">Payout</th>
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">Your Half (50/50)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-4 font-semibold text-[var(--green-accent)]">1st</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">47.5%</td>
+                  <td className="py-2 pr-4 text-white">~$12,540</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$6,270</td>
+                </tr>
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-4 font-semibold text-white">2nd</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">27.5%</td>
+                  <td className="py-2 pr-4 text-white">~$7,260</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$3,630</td>
+                </tr>
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-4 font-semibold text-white">3rd</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">17.5%</td>
+                  <td className="py-2 pr-4 text-white">~$4,620</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$2,310</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 font-semibold text-white">4th</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">7.5%</td>
+                  <td className="py-2 pr-4 text-white">~$1,980</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$990</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Cumulative Payout Breakdown */}
+        <div className="mb-6 rounded-lg bg-[var(--background)] p-4">
+          <h3 className="mb-3 font-semibold text-white">Cumulative Season Payouts (Estimated)</h3>
+          <p className="mb-3 text-xs text-[var(--text-muted)]">
+            ~20% of pot = ~$33,000 for season-long standings
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-[var(--card-border)]">
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">Place</th>
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">% of Pool</th>
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">Payout</th>
+                  <th className="py-2 pr-4 text-left font-medium text-[var(--text-muted)]">Your Half (50/50)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-4 font-semibold text-[var(--green-accent)]">1st</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">47.5%</td>
+                  <td className="py-2 pr-4 text-white">~$15,675</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$7,838</td>
+                </tr>
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-4 font-semibold text-white">2nd</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">27.5%</td>
+                  <td className="py-2 pr-4 text-white">~$9,075</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$4,538</td>
+                </tr>
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-4 font-semibold text-white">3rd</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">17.5%</td>
+                  <td className="py-2 pr-4 text-white">~$5,775</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$2,888</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 font-semibold text-white">4th</td>
+                  <td className="py-2 pr-4 text-[var(--text-muted)]">7.5%</td>
+                  <td className="py-2 pr-4 text-white">~$2,475</td>
+                  <td className="py-2 pr-4 text-[var(--green-accent)]">~$1,238</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Full Season Scenarios */}
+        <div className="rounded-lg bg-[var(--background)] p-4">
+          <h3 className="mb-3 font-semibold text-white">Season Outcome Scenarios</h3>
+          <p className="mb-3 text-xs text-[var(--text-muted)]">
+            Combined winnings across both entries, then split 50/50.
+            Investment per person: $287.50.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-[var(--card-border)]">
+                  <th className="py-2 pr-3 text-left font-medium text-[var(--text-muted)]">Scenario</th>
+                  <th className="py-2 pr-3 text-left font-medium text-[var(--text-muted)]">Tournament Results</th>
+                  <th className="py-2 pr-3 text-left font-medium text-[var(--text-muted)]">Cumulative</th>
+                  <th className="py-2 pr-3 text-left font-medium text-[var(--text-muted)]">Total Won</th>
+                  <th className="py-2 pr-3 text-left font-medium text-[var(--text-muted)]">Per Person</th>
+                  <th className="py-2 text-left font-medium text-[var(--text-muted)]">ROI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Dream */}
+                <tr className="border-b border-[var(--green-accent)]/20 bg-[var(--green-dark)]/10">
+                  <td className="py-2 pr-3 font-semibold text-[var(--green-accent)]">Dream Season</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">1st in 3 events + 2nd in 2</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">1st place</td>
+                  <td className="py-2 pr-3 text-white">~$67,815</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$33,908</td>
+                  <td className="py-2 text-[var(--green-accent)]">+11,694%</td>
+                </tr>
+                {/* Great */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-[var(--green-accent)]">Great Season</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">1st in 2 events + 3rd in 1</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">2nd place</td>
+                  <td className="py-2 pr-3 text-white">~$38,775</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$19,388</td>
+                  <td className="py-2 text-[var(--green-accent)]">+6,644%</td>
+                </tr>
+                {/* Strong */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-white">Strong Season</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">1st in 1 event + 2nd in 1</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">3rd place</td>
+                  <td className="py-2 pr-3 text-white">~$25,575</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$12,788</td>
+                  <td className="py-2 text-[var(--green-accent)]">+4,348%</td>
+                </tr>
+                {/* Good */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-white">Good Season</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">1st in 1 event</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">None</td>
+                  <td className="py-2 pr-3 text-white">~$12,540</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$6,270</td>
+                  <td className="py-2 text-[var(--green-accent)]">+2,081%</td>
+                </tr>
+                {/* Decent */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-white">Decent Season</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">2nd in 1 event + 4th in 1</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">None</td>
+                  <td className="py-2 pr-3 text-white">~$9,240</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$4,620</td>
+                  <td className="py-2 text-[var(--green-accent)]">+1,507%</td>
+                </tr>
+                {/* Okay */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-white">Okay Season</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">2nd in 1 event</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">None</td>
+                  <td className="py-2 pr-3 text-white">~$7,260</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$3,630</td>
+                  <td className="py-2 text-[var(--green-accent)]">+1,163%</td>
+                </tr>
+                {/* Min cash */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-white">Min Cash</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">4th in 1 event</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">None</td>
+                  <td className="py-2 pr-3 text-white">~$1,980</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$990</td>
+                  <td className="py-2 text-[var(--green-accent)]">+244%</td>
+                </tr>
+                {/* Cumulative only */}
+                <tr className="border-b border-[var(--card-border)]/50">
+                  <td className="py-2 pr-3 font-semibold text-white">Cumulative Only</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">No tournament placements</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">4th place</td>
+                  <td className="py-2 pr-3 text-white">~$2,475</td>
+                  <td className="py-2 pr-3 text-[var(--green-accent)]">~$1,238</td>
+                  <td className="py-2 text-[var(--green-accent)]">+330%</td>
+                </tr>
+                {/* Bust */}
+                <tr className="bg-red-950/10">
+                  <td className="py-2 pr-3 font-semibold text-red-400">Bust</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">No placements at all</td>
+                  <td className="py-2 pr-3 text-[var(--text-muted)]">None</td>
+                  <td className="py-2 pr-3 text-white">$0</td>
+                  <td className="py-2 pr-3 text-red-400">-$287.50</td>
+                  <td className="py-2 text-red-400">-100%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-[10px] text-[var(--text-muted)]">
+            Note: All amounts are estimates based on a ~$165K pot (477 entries at mixed pricing).
+            Actual payouts depend on final entry count and pool admin&apos;s payout structure.
+            ROI calculated per person assuming $287.50 investment each (50% of $575 for 2 entries).
+          </p>
+        </div>
+
+        {/* Breakeven analysis */}
+        <div className="mt-4 rounded-lg border border-[var(--green-accent)]/20 bg-[var(--green-dark)]/10 p-4">
+          <h3 className="mb-2 font-semibold text-[var(--green-accent)]">Breakeven &amp; Expected Value</h3>
+          <div className="space-y-2 text-xs text-[var(--text-muted)]">
+            <p>
+              <strong className="text-white">Any single placement pays for the entire season.</strong>{" "}
+              Even the minimum cash (4th in one tournament = ~$1,980) returns 3.4x your $575
+              total investment. A single 2nd-place finish returns 12.6x.
+            </p>
+            <p>
+              <strong className="text-white">With 2 differentiated entries across 5 tournaments,
+              you get 10 shots at the top 4.</strong>{" "}
+              Each shot has roughly a 0.84% chance (4/477). The probability of cashing at least once
+              all season is approximately 1 - (1 - 0.0084)^10 ≈ 8.1%. Not high — but any single
+              cash more than pays for the entire investment, and the upside scenarios are massive.
+            </p>
+            <p>
+              <strong className="text-white">The 50/50 split reduces individual variance.</strong>{" "}
+              Instead of one person getting $0 and the other getting $12,540 when one entry cashes,
+              both get $6,270. Over a 5-tournament season, this smoothing effect is significant.
+            </p>
           </div>
         </div>
       </SectionCard>

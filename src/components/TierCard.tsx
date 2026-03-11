@@ -45,7 +45,6 @@ function GolferRow({ golfer, isTopPick, isContrarian }: { golfer: Golfer; isTopP
           </span>
           {isTopPick && <span className="rounded bg-[var(--green-accent)] px-1 py-0.5 text-[8px] font-bold text-black">TOP</span>}
           {isContrarian && <span className="rounded bg-amber-500 px-1 py-0.5 text-[8px] font-bold text-black">CTR</span>}
-          {golfer.isAlt && <span className="rounded bg-gray-700 px-1 py-0.5 text-[8px] font-bold text-gray-300">ALT</span>}
         </div>
       </td>
       <td className="py-1.5 pr-2 text-[var(--text-muted)]">{golfer.owgr ?? "—"}</td>

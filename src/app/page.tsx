@@ -15,7 +15,7 @@ export default function Home() {
           <span className="text-[var(--green-accent)]"> 2026</span>
         </h1>
         <p className="mx-auto mb-8 max-w-xl text-sm text-[var(--text-muted)] sm:text-base">
-          ~300 entries &middot; ~$150K pot &middot; 5 tournaments &middot; 7 tiers per event
+          477 entries &middot; ~$150K pot &middot; 5 tournaments &middot; 7 tiers per event
         </p>
 
         {/* Countdown */}
@@ -108,7 +108,7 @@ export default function Home() {
           <div>
             <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Picks</h3>
             <p className="text-sm text-[var(--text-muted)]">
-              7 golfers per tournament — one from each tier (1-10, 11-20, 21-30, 31-40, 41-50, 51-60, 61+)
+              7 golfers per tournament — one from each tier (A through F with 10 each, G with 60)
             </p>
           </div>
           <div>
@@ -126,7 +126,7 @@ export default function Home() {
           <div>
             <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Scoring</h3>
             <p className="text-sm text-[var(--text-muted)]">
-              Position-based: 1st ≈ 75pts, 2nd = 74pts, etc. + bonus for top 3. Missed cut = 0.
+              Place-finish scoring for individual tournaments + bonus for 1st/2nd/3rd. Missed cut = 0 with a larger gap below last-place cut-maker.
             </p>
           </div>
           <div>

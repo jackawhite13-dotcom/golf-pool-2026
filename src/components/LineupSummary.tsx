@@ -29,7 +29,7 @@ export default function LineupSummary({ name, role, color, picks }: LineupSummar
         {picks.map((pick) => (
           <div key={pick.tier} className="flex items-start gap-2.5">
             <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded bg-[var(--card-border)] text-[10px] font-bold text-[var(--text-muted)]">
-              T{pick.tier}
+              {String.fromCharCode(64 + pick.tier)}
             </span>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">

@@ -30,50 +30,50 @@ function SectionCard({ children, className = "" }: { children: React.ReactNode; 
 }
 
 // Pick recommendations by tier — informed by research
+// Tiers restructured: A-F (10 each), G (60 remaining)
 const picks = {
   1: {
     top: "Scheffler, Scottie",
-    topReasoning: "World #1, won the American Express in January, T3 at Phoenix, T4 at Pebble Beach. Won The Players in 2023 (-17) and 2024 (-20, from 5 back on Sunday). First player ever to defend the title. Leads the Tour in SG: Tee-to-Green. His form has cooled slightly (T12 Genesis, T20 Bay Hill) and he's adjusting to a new driver, but Sawgrass is his course — the approach-shot demands perfectly match his elite iron play. He'll be 45-55% owned, but in a tiered pool his value compounds across your other 6 picks.",
+    topReasoning: "World #1, won the American Express in January, T3 at Phoenix, T4 at Pebble Beach. Won The Players in 2023 (-17) and 2024 (-20, from 5 back on Sunday). First player ever to defend the title. Leads the Tour in SG: Tee-to-Green. His form has cooled slightly (T12 Genesis, T20 Bay Hill) and he's adjusting to a new driver, but Sawgrass is his course — the approach-shot demands perfectly match his elite iron play. He'll be the most-rostered Tier A pick, but in a tiered pool his value compounds across your other 6 picks.",
     topConfidence: "High" as const,
-    contrarian: "Bhatia, Akshay",
-    contrarianReasoning: "The hottest player in the field — just won the Arnold Palmer Invitational, erasing a 5-shot deficit and beating Berger in a playoff. Third career PGA Tour win, all in playoffs. Three top-10s in his last 4 starts with $5.4M earned in 2026 (most in Tier 1). Finished T3 at 10-under in the 2025 Players. His aggressive style and exceptional iron play fit Sawgrass perfectly. At +1600 odds he's half-priced vs. Scheffler (+340), meaning much lower ownership — a massive GPP lever in a 300-person pool.",
+    contrarian: "Kim, Si Woo",
+    contrarianReasoning: "Won The Players in 2017 (youngest champion ever) and has been in elite form — 7/7 cuts made (only 100% rate in Tier A), a 2nd, a 3rd, 3 top-10s, and $2.2M earned. His Sawgrass pedigree and current consistency make him the safest contrarian pivot off Scheffler. At OWGR 28, he'll be significantly under-rostered compared to Morikawa, McIlroy, and Schauffele — but his 2026 stats are better than all of them. In a 477-person pool, that ownership gap is a massive lever.",
     contrarianConfidence: "High" as const,
     sources: [
       { href: "https://www.pgatour.com/article/news/the-first-look/2026/03/09/the-players-championship-tpc-sawgrass-stadium-course-scottie-scheffler-rory-mcilroy", label: "PGA Tour: The First Look" },
-      { href: "https://www.golfchannel.com/pga-tour/news/who-won-arnold-palmer-invitational-2026-daniel-berger-akshay-bhatia-pga-tour-playoff", label: "Golf Channel: Bhatia Wins APC" },
       { href: "https://www.espn.com/golf/story/_/id/48142426/2026-players-championship-ranking-top-25-players-field", label: "ESPN: Top 25 Power Rankings" },
     ],
   },
   2: {
-    top: "Bridgeman, Jacob",
-    topReasoning: "The breakout player of 2026 — won the Genesis Invitational (his first PGA Tour win, holding off McIlroy by 1 shot). 6/6 cuts made, 3 top-10s, 100% top-25 rate, $5.5M in earnings. OWGR 19 and climbing fast. Leads the PGA Tour in SG: Putting (+1.276). At 26 years old, this former Clemson star is playing with supreme confidence. His first Players appearance means pool opponents may not roster him — an information edge. The only risk is no Sawgrass history, but his current form overrides course experience concerns.",
+    top: "Bhatia, Akshay",
+    topReasoning: "The hottest player in the field — just won the Arnold Palmer Invitational, erasing a 5-shot deficit and beating Berger in a playoff. Third career PGA Tour win, all in playoffs. Three top-10s in his last 4 starts with $5.4M earned in 2026 (most in Tier B). Finished T3 at 10-under in the 2025 Players. His aggressive style and exceptional iron play fit Sawgrass perfectly. Now in Tier B, he's the clear top pick — peak confidence, peak form, and Sawgrass course history.",
     topConfidence: "High" as const,
-    contrarian: "Hojgaard, Nicolai",
-    contrarianReasoning: "4/4 cuts made with a 3rd-place finish and 2 top-10s. Qualified for the 2026 Masters. Strong ball-striking and big-game DNA (twin brother Rasmus also on Tour). At OWGR 50, he'll be significantly under-rostered compared to bigger names like Hovland, Cantlay, or Burns in this tier. Important context: Burns has only 2/5 cuts made and Cantlay has 0 top-10s — the name-brand picks in Tier 2 have worse stats than Hojgaard.",
+    contrarian: "Matsuyama, Hideki",
+    contrarianReasoning: "6/6 cuts made — the best cut rate in Tier B. A 2nd-place finish and 2 top-10s show consistent contention. At OWGR 12 with $2.1M earned, Matsuyama is a former Masters champion with massive big-game experience. He'll be under-owned relative to Bhatia's hot streak, but his floor is among the highest in this tier. For Jack's safe entry, Matsuyama offers the reliability that cumulative scoring demands.",
+    contrarianConfidence: "Medium" as const,
+    sources: [
+      { href: "https://www.golfchannel.com/pga-tour/news/who-won-arnold-palmer-invitational-2026-daniel-berger-akshay-bhatia-pga-tour-playoff", label: "Golf Channel: Bhatia Wins APC" },
+      { href: "https://datagolf.com/rankings", label: "DataGolf Rankings" },
+    ],
+  },
+  3: {
+    top: "Bridgeman, Jacob",
+    topReasoning: "The breakout player of 2026 — won the Genesis Invitational (his first PGA Tour win, holding off McIlroy by 1 shot). 6/6 cuts made, 3 top-10s, 100% top-25 rate, $5.5M in earnings. OWGR 22 and climbing fast. Leads the PGA Tour in SG: Putting (+1.276). At 26 years old, this former Clemson star is playing with supreme confidence. His first Players appearance means pool opponents may not roster him — an information edge.",
+    topConfidence: "High" as const,
+    contrarian: "Straka, Sepp",
+    contrarianReasoning: "OWGR 9 and $2.3M earned with a 2nd-place finish and a top-10. Straka has been one of the most consistent players on Tour but flies under the radar in pool formats. At OWGR 9, he's the highest-ranked player in Tier C — meaning the pool platform may have him undervalued relative to his actual ability. His ball-striking profiles well for Sawgrass. Lower ownership than Knapp or Lowry makes him a strong GPP pivot.",
     contrarianConfidence: "Medium" as const,
     sources: [
       { href: "https://www.pgatour.com/article/news/daily-wrapup/2026/02/22/jacob-bridgeman-wins-the-genesis-invitational-for-first-career-win-holds-off-rory-mcilroy-kurt-kitayama-riviera", label: "PGA Tour: Bridgeman Wins Genesis" },
       { href: "https://datagolf.com/rankings", label: "DataGolf Rankings" },
     ],
   },
-  3: {
-    top: "Hisatsune, Ryo",
-    topReasoning: "The consistency king of Tier 3 — 6/7 cuts made, T2 at Farmers Insurance Open, T10 at Phoenix, led Pebble Beach after R1 (shot 62). Three top-10s and $1.7M earned. At 23 years old with improving putting confidence and strong approach play, he profiles perfectly for Sawgrass. His SG: Approach numbers fit the #1 skill that wins at this course. At OWGR 64 and +19000 odds, he'll be nearly unowned — but his 2026 results scream value.",
-    topConfidence: "High" as const,
-    contrarian: "Castillo, Ricky",
-    contrarianReasoning: "Won the Puerto Rico Open last week (first PGA Tour title, bogey-free 67 to close). 5/5 cuts made with a 3rd top-10 in only 34 career starts. Victory earned him a PGA Championship spot. At OWGR 139, he'll be essentially zero-owned in this pool. First-time Players competitor riding peak confidence off a maiden win. In a 300-person GPP, this is exactly the type of leverage play that wins tournaments — if he contends, you'll be nearly alone.",
-    contrarianConfidence: "Medium" as const,
-    sources: [
-      { href: "https://www.pgatour.com/article/news/daily-wrapup/2026/03/08/ricky-castillo-wins-puerto-rico-open-for-first-career-pga-tour-title", label: "PGA Tour: Castillo Wins PR Open" },
-      { href: "https://datagolf.com/player-profiles", label: "DataGolf Player Profiles" },
-    ],
-  },
   4: {
-    top: "Rodgers, Patrick",
-    topReasoning: "Elite consistency: 7/7 cuts made (the ONLY player in Tier 4 with a 100% rate), plus a 3rd-place finish and a top-10. $1.05M in earnings. At Sawgrass, making the cut is half the battle in a tiered pool format — Rodgers' iron play and reliability give him a floor that most Tier 4 options can't match. For Jack's cumulative-focused entry, this is the ideal pick: guaranteed to contribute points toward the season-long standings.",
+    top: "Theegala, Sahith",
+    topReasoning: "7/7 cuts made — the ONLY player in Tier D with a 100% rate. Three top-10s and 5 top-25s with $1.7M earned. His consistency is elite: when he tees it up, he makes the weekend and contends. For cumulative scoring where missed cuts = 0 points, Theegala's floor is the highest in this tier by a wide margin. His iron play and Sawgrass-friendly game make him the clear safe pick.",
     topConfidence: "High" as const,
-    contrarian: "Moore, Taylor",
-    contrarianReasoning: "4/4 cuts made with a 2ND-place finish and a top-10. $837K earned on only 4 events — that's outstanding per-start efficiency. At OWGR 138, he'll draw near-zero ownership. The risk is small sample size (4 events), but the upside profile (runner-up finish) is the best in Tier 4 outside Fox. For Abe's contrarian entry, Moore offers rare top-3 upside in a tier where most picks will finish T30-T50.",
+    contrarian: "Rose, Justin",
+    contrarianReasoning: "OWGR 5 — the highest-ranked player in the entire tier by far. Just won his most recent tournament, earning $1.8M on only 2 cuts in 5 events. Extreme boom-or-bust: when he makes the cut, he wins; when he misses, he's gone early. In a 477-person GPP, that upside profile is exactly what you want for a contrarian entry. A former U.S. Open champion with massive Sawgrass experience, and he'll be under-owned because of the missed cuts.",
     contrarianConfidence: "Medium" as const,
     sources: [
       { href: "https://www.pgatour.com/stats", label: "PGA Tour Stats" },
@@ -81,34 +81,34 @@ const picks = {
     ],
   },
   5: {
-    top: "Schmid, Matti",
-    topReasoning: "Two 3rd-place finishes and 2 top-10s across 8 events — he's been knocking on the door all season. 5/8 cuts made isn't elite, but the upside is unmistakable: when he makes the cut, he contends hard. His approach play has been a strength, which is THE key skill at Sawgrass (ranked 6th in SG: Approach difficulty on Tour). In Tier 5, where most options are inconsistent, Schmid's contention rate is the best value play available.",
+    top: "Coody, Pierceson",
+    topReasoning: "6/7 cuts made with a 2nd-place finish and 2 top-10s — the best results in Tier E. $1.6M in earnings and 5 top-25s show he's consistently in contention. At OWGR 48, his ranking suggests he should be in a higher tier. His approach play has been strong, which is THE key skill at Sawgrass. For Jack's safe entry, Coody offers the best balance of floor and ceiling in this tier.",
     topConfidence: "Medium" as const,
-    contrarian: "Dahmen, Joel",
-    contrarianReasoning: "Two 3rd-place finishes on only 3 cuts made in 5 events. He's the definition of high-variance — when he's on, he's top-3 good. At OWGR 160, he'll be nearly unowned. The missed cuts hurt for cumulative scoring, but for Abe's GPP-focused entry, you're paying for the ceiling not the floor. A T3 finish from a zero-owned Tier 5 pick could be the difference between 1st and 50th in the pool.",
+    contrarian: "Thomas, Justin",
+    contrarianReasoning: "OWGR 14 but only 1 event played and 0 cuts made — the ultimate high-risk/high-reward play. He won The Players in 2021 and knows TPC Sawgrass intimately. If JT is healthy and sharp, he has top-5 talent in this entire field, not just Tier E. In a 477-person pool, most will avoid him because of the 0/1 cuts stat. But if he contends, you'll be nearly alone — classic GPP leverage.",
     contrarianConfidence: "Low" as const,
     sources: [
       { href: "https://datagolf.com/predictive-model", label: "DataGolf Predictions" },
     ],
   },
   6: {
-    top: "Hoge, Tom",
-    topReasoning: "A 3rd-place finish and 2 top-10s this season — the best results in Tier 6. Hoge has strong TPC Sawgrass course history and his ball-striking profiles well for a course that demands precision approaches. 4/7 cuts made adds some risk, but his ceiling is clearly the highest in this tier. His SG: Approach numbers are strong, which is the single most predictive stat at Sawgrass.",
-    topConfidence: "Medium" as const,
-    contrarian: "Potgieter, Aldrich",
-    contrarianReasoning: "Only 2/6 cuts made, but one of those included a 3rd-place finish worth $878K — the highest earnings in Tier 6 by a wide margin. He's 20 years old with massive length off the tee. Extreme boom-or-bust profile. While Sawgrass doesn't reward pure bombers, Potgieter's upside ceiling when his short game cooperates is top-5 good. In Abe's contrarian entry, this is exactly the type of swing play you need: near-zero ownership with a legitimate contention ceiling.",
-    contrarianConfidence: "Low" as const,
+    top: "Hisatsune, Ryo",
+    topReasoning: "The consistency king of Tier F — 6/7 cuts made, a 2nd-place finish at Farmers Insurance Open, 3 top-10s, and $1.7M earned. At 23 years old with improving putting confidence and strong approach play, he profiles perfectly for Sawgrass. His SG: Approach numbers fit the #1 skill that wins at this course. In a tier with several risky options (Im and Olesen with minimal 2026 data), Hisatsune's form makes him the clear top choice.",
+    topConfidence: "High" as const,
+    contrarian: "Castillo, Ricky",
+    contrarianReasoning: "Won the Puerto Rico Open last week (first PGA Tour title, bogey-free 67 to close). 5/5 cuts made with 2 top-10s in only 34 career starts. Victory earned him a PGA Championship spot. At OWGR 95, he'll be essentially zero-owned in this pool. First-time Players competitor riding peak confidence off a maiden win. In a 477-person GPP, this is exactly the type of leverage play that wins tournaments — if he contends, you'll be nearly alone.",
+    contrarianConfidence: "Medium" as const,
     sources: [
-      { href: "https://www.pgatour.com/stats", label: "PGA Tour Stats" },
-      { href: "https://rickrungood.com/course-breakdown-tpc-sawgrass/", label: "RickRunGood: Course Breakdown" },
+      { href: "https://www.pgatour.com/article/news/daily-wrapup/2026/03/08/ricky-castillo-wins-puerto-rico-open-for-first-career-pga-tour-title", label: "PGA Tour: Castillo Wins PR Open" },
+      { href: "https://datagolf.com/player-profiles", label: "DataGolf Player Profiles" },
     ],
   },
   7: {
-    top: "Putnam, Andrew",
-    topReasoning: "A 2nd-place finish (T2 at the American Express alongside Day, Gerard, McCarty at 23-under) and a top-10 on only 4 events — that's an elite hit rate. $682K in earnings is BY FAR the highest in Tier 7. He has deep PGA Tour experience that most Tier 7 options lack. When he makes the cut (2/4), he contends hard. For Jack's safe entry, this is the obvious Tier 7 pick: the floor is low (2/4 cuts) but the ceiling is a tournament contention, which is rare in the bottom tier.",
-    topConfidence: "Medium" as const,
-    contrarian: "Riley, Davis",
-    contrarianReasoning: "A 3rd-place finish and a top-10 in 2026. $322K earned. At OWGR 102, he's tied for the highest-ranked player in Tier 7. His approach play has been solid and he has the game to contend at Sawgrass. 3/6 cuts made is acceptable for a GPP contrarian play. Less name recognition than Putnam means lower ownership — and in Tier 7, where the field is thin, any pocket of differentiation matters.",
+    top: "Rodgers, Patrick",
+    topReasoning: "7/7 cuts made — the ONLY player in Tier G with a 100% cut rate. Plus a 3rd-place finish, a top-10, and $1.05M in earnings. In a 60-player tier where most options are inconsistent, Rodgers' reliability is gold. At Sawgrass, making the cut is half the battle in a tiered pool format — his iron play and consistency give him a floor that most Tier G options can't match. The ideal pick for cumulative-focused scoring.",
+    topConfidence: "High" as const,
+    contrarian: "Putnam, Andrew",
+    contrarianReasoning: "A 2nd-place finish and a top-10 on only 4 events — that's an elite hit rate. $682K in earnings is among the highest in Tier G. When he makes the cut (2/4), he contends hard. Less name recognition means lower ownership — and in a 60-player tier, any differentiation matters. For Abe's contrarian entry, Putnam's upside ceiling (runner-up finish) is exactly the type of leverage play that wins in a 477-person pool.",
     contrarianConfidence: "Medium" as const,
     sources: [
       { href: "https://fantasynational.com/pga", label: "FantasyNational PGA" },
@@ -138,7 +138,7 @@ export default function PlayersChampionshipPage() {
         <div className="flex items-start gap-3">
           <span className="mt-0.5 text-lg">⚠️</span>
           <div>
-            <h3 className="mb-1 text-sm font-bold text-red-400">Injury Watch: Rory McIlroy (Tier 1)</h3>
+            <h3 className="mb-1 text-sm font-bold text-red-400">Injury Watch: Rory McIlroy (Tier A)</h3>
             <p className="text-xs text-[var(--text-muted)]">
               McIlroy withdrew from the Arnold Palmer Invitational before R3 with back spasms.
               As of March 9, he has NOT traveled to TPC Sawgrass, calling the back &ldquo;more stubborn
@@ -325,30 +325,30 @@ export default function PlayersChampionshipPage() {
       <SectionCard className="mb-6">
         <h2 className="mb-1 text-xl font-bold">Pool-Specific Strategy for The Players</h2>
         <p className="mb-5 text-xs text-[var(--text-muted)]">
-          ~300 entries, top 4 paid per tournament (~1.3% cash rate). How to approach each tier.
+          477 entries, top 4 paid per tournament (~0.8% cash rate). How to approach each tier.
         </p>
 
         <div className="space-y-4">
           <div className="rounded-lg bg-[var(--background)] p-4">
             <h3 className="mb-2 text-sm font-semibold text-white">Estimated Ownership Concentrations</h3>
             <p className="mb-3 text-xs text-[var(--text-muted)]">
-              Based on DFS data from DraftKings/FantasyNational and pool dynamics. Scheffler at +340
-              will be the most popular pick by far — typical signature event ownership runs 25-35%+ in GPPs.
-              In a casual pool format, it could be even higher (45-55%).
+              Based on DFS data from DraftKings/FantasyNational and pool dynamics. With 477 entries,
+              Scheffler at +340 will be the most popular pick by far — typical signature event ownership
+              runs 25-35%+ in GPPs. In a casual pool format, it could be even higher (45-55%).
             </p>
             <div className="grid gap-2 sm:grid-cols-3">
               <div className="rounded border border-[var(--card-border)] p-2">
-                <p className="text-xs text-[var(--text-muted)]">Scheffler (T1)</p>
+                <p className="text-xs text-[var(--text-muted)]">Scheffler (Tier A)</p>
                 <p className="text-lg font-bold text-white">~45-55%</p>
                 <p className="text-[10px] text-[var(--text-muted)]">Most-rostered · +340 favorite</p>
               </div>
               <div className="rounded border border-[var(--card-border)] p-2">
-                <p className="text-xs text-[var(--text-muted)]">McIlroy (T1)</p>
+                <p className="text-xs text-[var(--text-muted)]">McIlroy (Tier A)</p>
                 <p className="text-lg font-bold text-white">~15-25%</p>
                 <p className="text-[10px] text-[var(--text-muted)]">May dip due to back injury</p>
               </div>
               <div className="rounded border border-[var(--card-border)] p-2">
-                <p className="text-xs text-[var(--text-muted)]">Morikawa (T1)</p>
+                <p className="text-xs text-[var(--text-muted)]">Morikawa (Tier A)</p>
                 <p className="text-lg font-bold text-white">~10-15%</p>
                 <p className="text-[10px] text-[var(--text-muted)]">Won Pebble Beach · +2000</p>
               </div>
@@ -372,24 +372,24 @@ export default function PlayersChampionshipPage() {
             <h3 className="mb-2 text-sm font-semibold text-white">Tier-by-Tier Approach</h3>
             <div className="space-y-2 text-xs text-[var(--text-muted)]">
               <p>
-                <strong className="text-white">Tiers 1-2:</strong> This is where ownership is most
+                <strong className="text-white">Tiers A-B:</strong> This is where ownership is most
                 concentrated. The top 3-4 players will be on 60%+ of entries combined. Taking chalk
-                here is fine for Jack&apos;s safe entry — but Abe should pivot to a 2nd-tier option
+                here is fine for Jack&apos;s safe entry — but Abe should pivot to a lower-owned option
                 to create separation. <strong className="text-white">Bhatia&apos;s Arnold Palmer win
-                and McIlroy&apos;s injury create major GPP pivots in Tier 1.</strong>
+                (now in Tier B) and McIlroy&apos;s injury create major GPP pivots.</strong>
               </p>
               <p>
-                <strong className="text-white">Tiers 3-4:</strong> The &ldquo;messy middle&rdquo; where
+                <strong className="text-white">Tiers C-D:</strong> The &ldquo;messy middle&rdquo; where
                 ownership spreads out. This is where you can gain the most leverage. Players like
-                Castillo (just won PR Open) and Hisatsune (T2 at Farmers) have elite recent results
-                but will draw 3-5% ownership at most. A top-10 from a 3%-owned Tier 3 pick is worth
-                more than a top-10 from a 20%-owned pick.
+                Bridgeman (won Genesis) and Theegala (7/7 cuts, 3 top-10s) have elite recent results
+                but will draw lower ownership than the big names. A top-10 from a 3%-owned Tier C pick
+                is worth more than a top-10 from a 20%-owned pick.
               </p>
               <p>
-                <strong className="text-white">Tiers 5-7:</strong> Low ownership across the board.
-                Most pool entrants will pick a name they recognize (Finau, Horschel, Spieth) rather than
-                using data. Use cuts-made rate, recent top-10s, and SG: Approach stats to find edges
-                the field is missing. This is where data-driven pools win.
+                <strong className="text-white">Tiers E-G:</strong> Low ownership across the board.
+                Tier G especially (60 players) is where most entrants pick a name they recognize
+                (Finau, Spieth) rather than using data. Use cuts-made rate, recent top-10s, and
+                SG: Approach stats to find edges the field is missing. This is where data-driven pools win.
               </p>
             </div>
           </div>
@@ -431,12 +431,12 @@ export default function PlayersChampionshipPage() {
           color="blue"
           picks={[
             { tier: 1, golfer: "Scheffler, Scottie", rationale: "World #1, back-to-back Players wins" },
-            { tier: 2, golfer: "Bridgeman, Jacob", rationale: "6/6 cuts, won Genesis, #1 SG: Putt" },
-            { tier: 3, golfer: "Hisatsune, Ryo", rationale: "6/7 cuts, 3 top-10s, T2 at Farmers" },
-            { tier: 4, golfer: "Rodgers, Patrick", rationale: "7/7 cuts, only 100% rate in tier" },
-            { tier: 5, golfer: "Schmid, Matti", rationale: "Two 3rds, best contention rate in T5" },
-            { tier: 6, golfer: "Hoge, Tom", rationale: "3rd + 2 top-10s, Sawgrass track record" },
-            { tier: 7, golfer: "Putnam, Andrew", rationale: "T2 at AmEx, $682K — most in T7" },
+            { tier: 2, golfer: "Matsuyama, Hideki", rationale: "6/6 cuts, 2nd + 2 top-10s, elite floor" },
+            { tier: 3, golfer: "Bridgeman, Jacob", rationale: "6/6 cuts, won Genesis, #1 SG: Putt" },
+            { tier: 4, golfer: "Theegala, Sahith", rationale: "7/7 cuts, 3 top-10s, best floor in D" },
+            { tier: 5, golfer: "Coody, Pierceson", rationale: "6/7 cuts, 2nd + 2 top-10s, $1.6M" },
+            { tier: 6, golfer: "Hisatsune, Ryo", rationale: "6/7 cuts, 3 top-10s, T2 at Farmers" },
+            { tier: 7, golfer: "Rodgers, Patrick", rationale: "7/7 cuts, only 100% rate in G" },
           ]}
         />
         <LineupSummary
@@ -444,13 +444,13 @@ export default function PlayersChampionshipPage() {
           role="The Ceiling (Contrarian)"
           color="amber"
           picks={[
-            { tier: 1, golfer: "Bhatia, Akshay", rationale: "Just won APC, T3 at '25 Players" },
-            { tier: 2, golfer: "Hojgaard, Nicolai", rationale: "4/4 cuts, 3rd, Masters-bound" },
-            { tier: 3, golfer: "Castillo, Ricky", rationale: "Won PR Open last week, 0% owned" },
-            { tier: 4, golfer: "Moore, Taylor", rationale: "2nd-place finish, near-zero owned" },
-            { tier: 5, golfer: "Dahmen, Joel", rationale: "Two 3rds, extreme high ceiling" },
-            { tier: 6, golfer: "Potgieter, Aldrich", rationale: "$878K on 2 cuts, massive upside" },
-            { tier: 7, golfer: "Riley, Davis", rationale: "3rd + top-10, OWGR 102, under-owned" },
+            { tier: 1, golfer: "Kim, Si Woo", rationale: "Won Players 2017, 7/7 cuts, 3 top-10s" },
+            { tier: 2, golfer: "Bhatia, Akshay", rationale: "Just won APC, T3 at '25 Players" },
+            { tier: 3, golfer: "Straka, Sepp", rationale: "OWGR 9, 2nd-place, under the radar" },
+            { tier: 4, golfer: "Rose, Justin", rationale: "OWGR 5, just won, boom-or-bust upside" },
+            { tier: 5, golfer: "Thomas, Justin", rationale: "Won Players 2021, OWGR 14, high ceiling" },
+            { tier: 6, golfer: "Castillo, Ricky", rationale: "Won PR Open last week, 0% owned" },
+            { tier: 7, golfer: "Putnam, Andrew", rationale: "T2 at AmEx, $682K, near-zero owned" },
           ]}
         />
       </div>
@@ -477,9 +477,9 @@ export default function PlayersChampionshipPage() {
             more value. Bombers like Potgieter become riskier. Consider adjusting Tiers 5-7 accordingly.
           </p>
           <p>
-            <strong className="text-white">4. ALT status.</strong> Horschel, Ford, Ventura, Tom Kim,
-            Parry, Zalatoris, Nyholm, Dumont de Chassart, and Hirata are all ALTs — their presence in
-            the field depends on withdrawals. Any last-minute additions could shift tier dynamics.
+            <strong className="text-white">4. Check tier assignments.</strong> With the new A-G tier structure
+            (10 per tier in A-F, 60 in G), some strong players landed in lower tiers than expected.
+            Look for OWGR mismatches — players ranked much higher than their tier suggests are potential value plays.
           </p>
           <p>
             <strong className="text-white">5. Lock picks early.</strong> Tournament 1 sets the foundation
