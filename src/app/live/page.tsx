@@ -88,30 +88,38 @@ function savedToPickArray(saved: Record<string, string>): Pick[] {
   }).filter(Boolean) as Pick[];
 }
 
+// ── Normalize accented characters for matching ────────────────────────
+function normalize(s: string): string {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
 // ── Name matching ──────────────────────────────────────────────────────
 function matchPlayer(
   pick: Pick,
   players: LeaderboardPlayer[]
 ): LeaderboardPlayer | null {
+  const pickLast = normalize(pick.lastName);
+  const pickFirst = normalize(pick.firstName);
+
   const lastNameMatches = players.filter(
-    (p) => p.lastName.toLowerCase() === pick.lastName.toLowerCase()
+    (p) => normalize(p.lastName) === pickLast
   );
   if (lastNameMatches.length === 1) return lastNameMatches[0];
   if (lastNameMatches.length > 1) {
     const exact = lastNameMatches.find(
-      (p) => p.firstName.toLowerCase() === pick.firstName.toLowerCase()
+      (p) => normalize(p.firstName) === pickFirst
     );
     if (exact) return exact;
     const partial = lastNameMatches.find(
       (p) =>
-        p.firstName.toLowerCase().includes(pick.firstName.toLowerCase()) ||
-        pick.firstName.toLowerCase().includes(p.firstName.toLowerCase())
+        normalize(p.firstName).includes(pickFirst) ||
+        pickFirst.includes(normalize(p.firstName))
     );
     if (partial) return partial;
     return lastNameMatches[0];
   }
   const fullMatch = players.find((p) =>
-    p.name.toLowerCase().includes(pick.lastName.toLowerCase())
+    normalize(p.name).includes(pickLast)
   );
   return fullMatch || null;
 }
@@ -478,26 +486,30 @@ function FullLeaderboard({
   if (players.length === 0) return null;
 
   function getTeam(p: LeaderboardPlayer): "jack" | "abe" | null {
-    const ln = p.lastName.toLowerCase();
-    const fn = p.firstName.toLowerCase();
-    const full = p.name.toLowerCase();
+    const ln = normalize(p.lastName);
+    const fn = normalize(p.firstName);
+    const full = normalize(p.name);
 
     for (const pick of jackPicks) {
-      if (ln === pick.lastName.toLowerCase()) {
-        if (fn === pick.firstName.toLowerCase() || fn.includes(pick.firstName.toLowerCase()) || pick.firstName.toLowerCase().includes(fn)) return "jack";
-        const otherMatch = abePicks.some((a) => a.lastName.toLowerCase() === ln);
+      const pln = normalize(pick.lastName);
+      const pfn = normalize(pick.firstName);
+      if (ln === pln) {
+        if (fn === pfn || fn.includes(pfn) || pfn.includes(fn)) return "jack";
+        const otherMatch = abePicks.some((a) => normalize(a.lastName) === ln);
         if (!otherMatch) return "jack";
       }
-      if (full.includes(pick.lastName.toLowerCase()) && full.includes(pick.firstName.toLowerCase())) return "jack";
+      if (full.includes(pln) && full.includes(pfn)) return "jack";
     }
 
     for (const pick of abePicks) {
-      if (ln === pick.lastName.toLowerCase()) {
-        if (fn === pick.firstName.toLowerCase() || fn.includes(pick.firstName.toLowerCase()) || pick.firstName.toLowerCase().includes(fn)) return "abe";
-        const otherMatch = jackPicks.some((j) => j.lastName.toLowerCase() === ln);
+      const pln = normalize(pick.lastName);
+      const pfn = normalize(pick.firstName);
+      if (ln === pln) {
+        if (fn === pfn || fn.includes(pfn) || pfn.includes(fn)) return "abe";
+        const otherMatch = jackPicks.some((j) => normalize(j.lastName) === ln);
         if (!otherMatch) return "abe";
       }
-      if (full.includes(pick.lastName.toLowerCase()) && full.includes(pick.firstName.toLowerCase())) return "abe";
+      if (full.includes(pln) && full.includes(pfn)) return "abe";
     }
 
     return null;
