@@ -90,7 +90,12 @@ function savedToPickArray(saved: Record<string, string>): Pick[] {
 
 // ── Normalize accented characters for matching ────────────────────────
 function normalize(s: string): string {
-  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return s
+    .replace(/ø/g, "o").replace(/Ø/g, "O")
+    .replace(/æ/g, "ae").replace(/Æ/g, "AE")
+    .replace(/ð/g, "d").replace(/Ð/g, "D")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 // ── Name matching ──────────────────────────────────────────────────────
