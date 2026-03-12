@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Countdown from "@/components/Countdown";
-import { tournaments } from "@/data/tiers";
+import { tournaments, getCurrentTournament } from "@/data/tiers";
 
 export default function Home() {
+  const current = getCurrentTournament();
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Hero */}
@@ -22,7 +23,9 @@ export default function Home() {
         <div className="mb-8 flex justify-center">
           <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] px-6 py-4">
             <p className="mb-2 text-xs uppercase tracking-widest text-[var(--text-muted)]">
-              The Players Championship begins in
+              {current.isCurrent
+                ? `${current.name} — ${current.roundInfo}`
+                : `${current.name} — ${current.roundInfo}`}
             </p>
             <Countdown />
           </div>
@@ -45,7 +48,7 @@ export default function Home() {
             </span>
           </div>
           <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Track Jack &amp; Abe&apos;s picks in real time at The Players Championship.
+            Track Jack &amp; Abe&apos;s picks in real time at {current.name}.
             Live leaderboard positions, scores, and team totals.
           </p>
           <span className="text-sm font-semibold text-[var(--green-accent)]">
@@ -109,28 +112,36 @@ export default function Home() {
       <section className="mb-12">
         <h2 className="mb-4 text-lg font-bold">2026 Season Schedule</h2>
         <div className="grid gap-3 sm:grid-cols-5">
-          {tournaments.map((t, i) => (
-            <div
-              key={t.name}
-              className={`rounded-lg border p-4 ${
-                t.status === "upcoming"
-                  ? "border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30"
-                  : "border-[var(--card-border)] bg-[var(--card-bg)]"
-              }`}
-            >
-              <div className="mb-1 flex items-center gap-2">
-                <span className="text-xs font-bold text-[var(--green-accent)]">T{i + 1}</span>
-                {t.status === "upcoming" && (
-                  <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black">
-                    NEXT
-                  </span>
-                )}
+          {tournaments.map((t, i) => {
+            const isActive = i === current.index;
+            return (
+              <div
+                key={t.name}
+                className={`rounded-lg border p-4 ${
+                  isActive
+                    ? "border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30"
+                    : "border-[var(--card-border)] bg-[var(--card-bg)]"
+                }`}
+              >
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="text-xs font-bold text-[var(--green-accent)]">T{i + 1}</span>
+                  {isActive && current.isCurrent && (
+                    <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black animate-pulse">
+                      LIVE
+                    </span>
+                  )}
+                  {isActive && !current.isCurrent && (
+                    <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black">
+                      NEXT
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm font-semibold leading-tight">{t.name}</p>
+                <p className="text-xs text-[var(--text-muted)]">{t.location}</p>
+                <p className="mt-1 text-xs text-[var(--text-muted)]">{t.dates}</p>
               </div>
-              <p className="text-sm font-semibold leading-tight">{t.name}</p>
-              <p className="text-xs text-[var(--text-muted)]">{t.location}</p>
-              <p className="mt-1 text-xs text-[var(--text-muted)]">{t.dates}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

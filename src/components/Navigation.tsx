@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Hub" },
-  { href: "/strategy", label: "Strategy" },
-  { href: "/players-championship", label: "The Players" },
-  { href: "/payouts", label: "Payouts" },
-  { href: "/live", label: "Live Scoring" },
+  { href: "/", label: "Hub", mobileLabel: "Hub" },
+  { href: "/strategy", label: "Strategy", mobileLabel: "Strategy" },
+  { href: "/players-championship", label: "The Players", mobileLabel: "Players" },
+  { href: "/payouts", label: "Payouts", mobileLabel: "Payouts" },
+  { href: "/live", label: "Live Scoring", mobileLabel: "Live" },
 ];
 
 export default function Navigation() {
@@ -35,7 +35,8 @@ export default function Navigation() {
                   : "text-[var(--text-muted)] hover:bg-[var(--card-bg)] hover:text-white"
               }`}
             >
-              {link.label}
+              <span className="sm:hidden">{link.mobileLabel}</span>
+              <span className="hidden sm:inline">{link.label}</span>
             </Link>
           ))}
         </div>

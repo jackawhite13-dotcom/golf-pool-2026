@@ -2,7 +2,7 @@
 
 import { useState, useEffect, type ReactNode } from "react";
 
-const SITE_PASSWORD = "majorspool2026";
+const SITE_PASSWORD = "1234";
 
 export default function PasswordGate({ children }: { children: ReactNode }) {
   const [authenticated, setAuthenticated] = useState(false);

@@ -20,6 +20,17 @@ interface SavedPicks {
 const TIER_LABELS = tierData.map((t) => t.label.replace("Tier ", ""));
 const STORAGE_KEY = "majorspool-picks";
 
+// ── Tier-scaled EXP targets ───────────────────────────────────────────
+const TIER_TARGETS: Record<string, { green: number; gray: number }> = {
+  A: { green: 5, gray: 10 },
+  B: { green: 5, gray: 15 },
+  C: { green: 10, gray: 20 },
+  D: { green: 15, gray: 30 },
+  E: { green: 20, gray: 40 },
+  F: { green: 30, gray: 50 },
+  G: { green: 40, gray: 60 },
+};
+
 // ── Parse golfer name from tiers.ts format ────────────────────────────
 function parseGolferName(name: string): { lastName: string; firstName: string } {
   const parts = name.split(", ");
@@ -114,8 +125,25 @@ function positionNumber(pos: string): number | null {
   return isNaN(num) ? null : num;
 }
 
-// ── EXP indicator — different logic for chalk vs contrarian ───────────
-function ExpIndicator({ player, role }: { player: LeaderboardPlayer | null; role: "chalk" | "contrarian" }) {
+// ── Format tee time for display ───────────────────────────────────────
+function formatTeeTime(teeTime: string): string {
+  try {
+    return new Date(teeTime).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  } catch {
+    return teeTime;
+  }
+}
+
+// ── Display value for Thru column (with tee time fallback) ────────────
+function thruDisplay(player: LeaderboardPlayer): { text: string; isTeeTime: boolean } {
+  if ((player.thru === "--" || player.thru === "0") && player.teeTime) {
+    return { text: formatTeeTime(player.teeTime), isTeeTime: true };
+  }
+  return { text: player.thru, isTeeTime: false };
+}
+
+// ── EXP indicator — scaled by tier ───────────────────────────────────
+function ExpIndicator({ player, tier }: { player: LeaderboardPlayer | null; tier: string }) {
   if (!player || player.position === "--" || player.position === "") {
     return <span className="w-8 text-center font-mono text-[var(--text-muted)]">--</span>;
   }
@@ -125,24 +153,25 @@ function ExpIndicator({ player, role }: { player: LeaderboardPlayer | null; role
   const isWd = player.status === "wd";
 
   if (isCut || isWd) {
-    return <span className="w-8 text-center font-mono font-semibold text-red-400" title="Missed cut / WD">&#8595;</span>;
+    return <span className="w-8 text-center font-mono font-semibold text-red-400" title="MC / WD">&#8595;</span>;
   }
 
   if (pos === null) {
     return <span className="w-8 text-center font-mono text-[var(--text-muted)]">--</span>;
   }
 
-  if (role === "chalk") {
-    // Chalk: top 10 = exceeding, top 25 = meeting, worse = below
-    if (pos <= 10) return <span className="w-8 text-center font-mono font-semibold text-[var(--green-accent)]" title="Exceeding target (top 10)">&#8593;</span>;
-    if (pos <= 25) return <span className="w-8 text-center font-mono text-[var(--text-muted)]" title="Meeting target (top 25)">--</span>;
-    return <span className="w-8 text-center font-mono font-semibold text-red-400" title="Below target (outside top 25)">&#8595;</span>;
-  } else {
-    // Contrarian: top 10 = meeting/exceeding, top 25 = borderline, worse = below
-    if (pos <= 10) return <span className="w-8 text-center font-mono font-semibold text-[var(--green-accent)]" title="Hitting contrarian target (top 10)">&#8593;</span>;
-    if (pos <= 25) return <span className="w-8 text-center font-mono text-[var(--text-muted)]" title="Borderline — need top 10">--</span>;
-    return <span className="w-8 text-center font-mono font-semibold text-red-400" title="Below contrarian target">&#8595;</span>;
+  const targets = TIER_TARGETS[tier];
+  if (!targets) {
+    return <span className="w-8 text-center font-mono text-[var(--text-muted)]" title="No tier target">--</span>;
   }
+
+  if (pos <= targets.green) {
+    return <span className="w-8 text-center font-mono font-semibold text-[var(--green-accent)]" title={`Beating expectations (top ${targets.green})`}>&#8593;</span>;
+  }
+  if (pos <= targets.gray) {
+    return <span className="w-8 text-center font-mono text-[var(--text-muted)]" title={`On pace (top ${targets.gray})`}>--</span>;
+  }
+  return <span className="w-8 text-center font-mono font-semibold text-red-400" title={`Below expectations (outside top ${targets.gray})`}>&#8595;</span>;
 }
 
 // ── Status dot ─────────────────────────────────────────────────────────
@@ -160,39 +189,71 @@ function StatusDot({ status }: { status: string }) {
 function PlayerRow({
   pick,
   player,
-  role,
 }: {
   pick: Pick;
   player: LeaderboardPlayer | null;
-  role: "chalk" | "contrarian";
 }) {
+  const thru = player ? thruDisplay(player) : null;
+
   return (
-    <div className="flex items-center gap-3 border-b border-[var(--card-border)] py-2.5 last:border-0">
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--green-dark)] text-[10px] font-bold text-[var(--green-accent)]">
-        {pick.tier}
-      </span>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2">
-          {player && <StatusDot status={player.status} />}
-          <span className="truncate text-sm font-medium">
-            {pick.firstName} {pick.lastName}
-          </span>
+    <div className="border-b border-[var(--card-border)] py-2.5 last:border-0">
+      {/* Mobile: stacked layout */}
+      <div className="flex items-center gap-3 sm:hidden">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--green-dark)] text-[10px] font-bold text-[var(--green-accent)]">
+          {pick.tier}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            {player && <StatusDot status={player.status} />}
+            <span className="truncate text-sm font-medium">
+              {pick.firstName} {pick.lastName}
+            </span>
+          </div>
+          {player ? (
+            <div className="mt-1 flex items-center gap-3 text-[10px] text-[var(--text-muted)]">
+              <span>Pos <span className="font-mono text-[var(--foreground)]">{player.position}</span></span>
+              <span>Par <span className={`font-mono font-semibold ${
+                player.scoreToPar !== null && player.scoreToPar < 0 ? "text-[var(--green-accent)]"
+                : player.scoreToPar !== null && player.scoreToPar > 0 ? "text-red-400" : "text-[var(--foreground)]"
+              }`}>{player.scoreToParDisplay}</span></span>
+              <span>Rnd <span className="font-mono text-[var(--foreground)]">{player.today}</span></span>
+              <span>Thru <span className={`font-mono ${thru?.isTeeTime ? "text-[var(--text-muted)]" : "text-[var(--foreground)]"}`}>{thru?.text}</span></span>
+              <ExpIndicator player={player} tier={pick.tier} />
+            </div>
+          ) : (
+            <span className="mt-1 block text-[10px] text-[var(--text-muted)]">--</span>
+          )}
         </div>
       </div>
-      {player ? (
-        <div className="flex items-center gap-3 text-right text-xs">
-          <span className="w-8 font-mono text-[var(--text-muted)]">{player.position}</span>
-          <span className={`w-8 font-mono font-semibold ${
-            player.scoreToPar !== null && player.scoreToPar < 0 ? "text-[var(--green-accent)]"
-            : player.scoreToPar !== null && player.scoreToPar > 0 ? "text-red-400" : "text-white"
-          }`}>{player.scoreToParDisplay}</span>
-          <span className="w-8 font-mono text-[var(--text-muted)]">{player.today}</span>
-          <span className="w-8 font-mono text-[var(--text-muted)]">{player.thru}</span>
-          <ExpIndicator player={player} role={role} />
+
+      {/* Desktop: inline layout */}
+      <div className="hidden sm:flex sm:items-center sm:gap-3">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--green-dark)] text-[10px] font-bold text-[var(--green-accent)]">
+          {pick.tier}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            {player && <StatusDot status={player.status} />}
+            <span className="truncate text-sm font-medium">
+              {pick.firstName} {pick.lastName}
+            </span>
+          </div>
         </div>
-      ) : (
-        <span className="text-xs text-[var(--text-muted)]">--</span>
-      )}
+        {player ? (
+          <div className="flex items-center gap-3 text-right text-xs">
+            <span className="w-8 font-mono text-[var(--text-muted)]">{player.position}</span>
+            <span className={`w-8 font-mono font-semibold ${
+              player.scoreToPar !== null && player.scoreToPar < 0 ? "text-[var(--green-accent)]"
+              : player.scoreToPar !== null && player.scoreToPar > 0 ? "text-red-400" : "text-white"
+            }`}>{player.scoreToParDisplay}</span>
+            <span className="w-8 font-mono text-[var(--text-muted)]">{player.today}</span>
+            <span className={`w-8 font-mono ${thru?.isTeeTime ? "text-[var(--text-muted)]" : "text-[var(--text-muted)]"}`}>{thru?.text}</span>
+            <ExpIndicator player={player} tier={pick.tier} />
+          </div>
+        ) : (
+          <span className="text-xs text-[var(--text-muted)]">--</span>
+        )}
+      </div>
     </div>
   );
 }
@@ -205,7 +266,6 @@ function TeamCard({
   players,
   total,
   isLeading,
-  role,
 }: {
   title: string;
   subtitle: string;
@@ -213,7 +273,6 @@ function TeamCard({
   players: LeaderboardPlayer[];
   total: { total: number; allFound: boolean };
   isLeading: boolean;
-  role: "chalk" | "contrarian";
 }) {
   if (picks.length === 0) {
     return (
@@ -249,7 +308,8 @@ function TeamCard({
         </div>
       </div>
 
-      <div className="mb-1 flex items-center gap-3 text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
+      {/* Header labels — hidden on mobile */}
+      <div className="mb-1 hidden items-center gap-3 text-[10px] uppercase tracking-wider text-[var(--text-muted)] sm:flex">
         <span className="w-6 shrink-0" />
         <span className="min-w-0 flex-1">Player</span>
         <div className="flex items-center gap-3 text-right">
@@ -257,7 +317,7 @@ function TeamCard({
           <span className="w-8">Par</span>
           <span className="w-8">Rnd</span>
           <span className="w-8">Thru</span>
-          <span className="w-8" title="vs. AI Pick Target">Exp</span>
+          <span className="w-8" title="vs. Tier Target">Exp</span>
         </div>
       </div>
 
@@ -266,7 +326,6 @@ function TeamCard({
           key={`${pick.lastName}-${pick.tier}`}
           pick={pick}
           player={matchPlayer(pick, players)}
-          role={role}
         />
       ))}
     </div>
@@ -330,7 +389,7 @@ function PickEditor({
 
               <div className="grid gap-2 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-blue-400">
+                  <label className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-purple-400">
                     Jack (Chalk)
                   </label>
                   <select
@@ -426,32 +485,51 @@ function FullLeaderboard({
 
   function leaderboardRow(p: LeaderboardPlayer, i: number) {
     const team = getTeam(p);
+    const thru = thruDisplay(p);
     const rowBg =
       team === "jack"
-        ? "bg-blue-900/30 -mx-2 px-2 rounded border-l-2 border-l-blue-400"
+        ? "bg-purple-900/30 -mx-2 px-2 rounded border-l-2 border-l-purple-400"
         : team === "abe"
         ? "bg-amber-900/20 -mx-2 px-2 rounded border-l-2 border-l-amber-400"
         : "";
     const nameColor =
-      team === "jack" ? "text-blue-400" : team === "abe" ? "text-amber-400" : "";
+      team === "jack" ? "text-purple-400" : team === "abe" ? "text-amber-400" : "";
 
     return (
-      <div
-        key={`${p.lastName}-${p.firstName}-${i}`}
-        className={`grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 sm:grid-cols-[3rem_1fr_3rem_3rem_3rem] ${rowBg}`}
-      >
-        <span className="font-mono text-[var(--text-muted)]">{p.position}</span>
-        <span className={`flex items-center gap-1.5 truncate font-medium ${nameColor}`}>
-          {team === "jack" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-blue-400" />}
-          {team === "abe" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-amber-400" />}
-          {p.name}
-        </span>
-        <span className={`text-right font-mono ${
-          p.scoreToPar !== null && p.scoreToPar < 0 ? "text-[var(--green-accent)]"
-          : p.scoreToPar !== null && p.scoreToPar > 0 ? "text-red-400" : ""
-        }`}>{p.scoreToParDisplay}</span>
-        <span className="text-right font-mono text-[var(--text-muted)]">{p.today}</span>
-        <span className="text-right font-mono text-[var(--text-muted)]">{p.thru}</span>
+      <div key={`${p.lastName}-${p.firstName}-${i}`}>
+        {/* Mobile: two-line flex layout */}
+        <div className={`flex flex-col gap-0.5 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 sm:hidden ${rowBg}`}>
+          <div className="flex items-center gap-2">
+            <span className="w-8 shrink-0 font-mono text-[var(--text-muted)]">{p.position}</span>
+            {team === "jack" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-purple-400" />}
+            {team === "abe" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-amber-400" />}
+            <span className={`truncate font-medium ${nameColor}`}>{p.name}</span>
+          </div>
+          <div className="flex items-center gap-3 pl-10 text-[10px] text-[var(--text-muted)]">
+            <span>Score <span className={`font-mono ${
+              p.scoreToPar !== null && p.scoreToPar < 0 ? "text-[var(--green-accent)]"
+              : p.scoreToPar !== null && p.scoreToPar > 0 ? "text-red-400" : "text-[var(--foreground)]"
+            }`}>{p.scoreToParDisplay}</span></span>
+            <span>Rnd <span className="font-mono text-[var(--foreground)]">{p.today}</span></span>
+            <span>Thru <span className={`font-mono ${thru.isTeeTime ? "text-[var(--text-muted)]" : "text-[var(--foreground)]"}`}>{thru.text}</span></span>
+          </div>
+        </div>
+
+        {/* Desktop: 5-column grid */}
+        <div className={`hidden sm:grid sm:grid-cols-[3rem_1fr_3rem_3rem_3rem] gap-2 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 ${rowBg}`}>
+          <span className="font-mono text-[var(--text-muted)]">{p.position}</span>
+          <span className={`flex items-center gap-1.5 truncate font-medium ${nameColor}`}>
+            {team === "jack" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-purple-400" />}
+            {team === "abe" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-amber-400" />}
+            {p.name}
+          </span>
+          <span className={`text-right font-mono ${
+            p.scoreToPar !== null && p.scoreToPar < 0 ? "text-[var(--green-accent)]"
+            : p.scoreToPar !== null && p.scoreToPar > 0 ? "text-red-400" : ""
+          }`}>{p.scoreToParDisplay}</span>
+          <span className="text-right font-mono text-[var(--text-muted)]">{p.today}</span>
+          <span className={`text-right font-mono ${thru.isTeeTime ? "text-[var(--text-muted)]" : "text-[var(--text-muted)]"}`}>{thru.text}</span>
+        </div>
       </div>
     );
   }
@@ -465,7 +543,7 @@ function FullLeaderboard({
         </div>
         <div className="flex items-center gap-3 text-[10px] text-[var(--text-muted)]">
           <span className="flex items-center gap-1">
-            <span className="inline-block h-2 w-2 rounded-full bg-blue-400" /> Jack
+            <span className="inline-block h-2 w-2 rounded-full bg-purple-400" /> Jack
           </span>
           <span className="flex items-center gap-1">
             <span className="inline-block h-2 w-2 rounded-full bg-amber-400" /> Abe
@@ -473,7 +551,8 @@ function FullLeaderboard({
         </div>
       </div>
 
-      <div className="mb-1 grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)] sm:grid-cols-[3rem_1fr_3rem_3rem_3rem]">
+      {/* Header labels — hidden on mobile */}
+      <div className="mb-1 hidden sm:grid sm:grid-cols-[3rem_1fr_3rem_3rem_3rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
         <span>Pos</span>
         <span>Player</span>
         <span className="text-right">Par</span>
@@ -507,6 +586,7 @@ function FullLeaderboard({
 interface ApiResponse {
   players: LeaderboardPlayer[];
   tournamentName?: string;
+  currentRound?: number;
   status?: string;
   timestamp?: string;
   error?: string;
@@ -570,6 +650,20 @@ export default function LiveScoringPage() {
   const tournamentNotStarted =
     data?.status === "pre" || data?.status === "no_tournament";
 
+  // Build subtitle with round info
+  const tournamentName = data?.tournamentName || "The Players Championship";
+  const currentRound = data?.currentRound || 0;
+  let subtitleText = `${tournamentName} — TPC Sawgrass`;
+  if (currentRound > 0) {
+    if (data?.status === "in") {
+      subtitleText = `${tournamentName} — Round ${currentRound} — In Progress — TPC Sawgrass`;
+    } else if (data?.status === "pre") {
+      subtitleText = `${tournamentName} — Round ${currentRound} starts soon — TPC Sawgrass`;
+    } else {
+      subtitleText = `${tournamentName} — Round ${currentRound} — TPC Sawgrass`;
+    }
+  }
+
   function handleSavePicks(picks: SavedPicks) {
     savePicks(picks);
     setSavedPicks(picks);
@@ -594,7 +688,7 @@ export default function LiveScoringPage() {
             )}
           </div>
           <p className="text-sm text-[var(--text-muted)]">
-            {data?.tournamentName || "The Players Championship"} — TPC Sawgrass
+            {subtitleText}
           </p>
         </div>
 
@@ -684,7 +778,7 @@ export default function LiveScoringPage() {
           {players.length > 0 && !tournamentNotStarted && jackPicks.length > 0 && abePicks.length > 0 && (
             <div className="mb-4 grid grid-cols-2 gap-4 sm:mb-6">
               <div className={`rounded-lg border p-3 text-center ${
-                jackLeading || tied ? "border-blue-400/40 bg-blue-950/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
+                jackLeading || tied ? "border-purple-400/40 bg-purple-950/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
               }`}>
                 <p className="text-xs text-[var(--text-muted)]">Jack &middot; The Floor</p>
                 <p className={`text-2xl font-bold font-mono ${
@@ -711,7 +805,6 @@ export default function LiveScoringPage() {
               players={players}
               total={jackTotal}
               isLeading={jackLeading && !tied && players.length > 0 && !tournamentNotStarted}
-              role="chalk"
             />
             <TeamCard
               title="Abe's Team"
@@ -720,7 +813,6 @@ export default function LiveScoringPage() {
               players={players}
               total={abeTotal}
               isLeading={abeLeading && !tied && players.length > 0 && !tournamentNotStarted}
-              role="contrarian"
             />
           </div>
 
@@ -730,9 +822,7 @@ export default function LiveScoringPage() {
               EXP Column — vs. Expected Target
             </p>
             <p className="mt-1 text-xs text-[var(--text-muted)]">
-              Jack (chalk): top 10 = exceeding, top 25 = on target, outside top 25 = below.
-              Abe (contrarian): top 10 = on target, top 25 = borderline, outside top 25 = below.
-              MC/WD = below for both.
+              Scaled by tier — Tier A expects top 10, Tier G expects top 60. Green = beating expectations, Gray = on pace, Red = underperforming.
             </p>
           </div>
         </>

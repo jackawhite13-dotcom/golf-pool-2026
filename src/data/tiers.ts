@@ -197,3 +197,75 @@ export const tournaments = [
   { name: "U.S. Open", location: "Oakmont", dates: "Jun 18–21", status: "locked" as const },
   { name: "The Open Championship", location: "Royal Portrush", dates: "Jul 16–19", status: "locked" as const },
 ];
+
+/* ------------------------------------------------------------------ */
+/*  Parse tournament date ranges and determine current tournament      */
+/* ------------------------------------------------------------------ */
+
+const MONTH_MAP: Record<string, number> = {
+  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+};
+
+function parseDateRange(dates: string): { start: Date; end: Date } {
+  // Format: "Mar 12–15" or "Mar 12-15"
+  const match = dates.match(/^(\w{3})\s+(\d+)[–-](\d+)$/);
+  if (!match) throw new Error(`Cannot parse date range: ${dates}`);
+  const month = MONTH_MAP[match[1]];
+  const startDay = parseInt(match[2], 10);
+  const endDay = parseInt(match[3], 10);
+  return {
+    start: new Date(2026, month, startDay),
+    end: new Date(2026, month, endDay, 23, 59, 59),
+  };
+}
+
+export interface CurrentTournament {
+  name: string;
+  location: string;
+  dates: string;
+  status: string;
+  index: number;
+  isCurrent: boolean;
+  roundInfo: string;
+}
+
+export function getCurrentTournament(): CurrentTournament {
+  const now = new Date();
+
+  for (let i = 0; i < tournaments.length; i++) {
+    const t = tournaments[i];
+    const { start, end } = parseDateRange(t.dates);
+    // 1-day buffer after end for results
+    const bufferEnd = new Date(end.getTime() + 24 * 60 * 60 * 1000);
+
+    if (now >= start && now <= bufferEnd) {
+      // We're during this tournament (or 1 day after)
+      let roundInfo: string;
+      if (now > end) {
+        roundInfo = "Completed";
+      } else {
+        const dayOfTournament = Math.floor(
+          (now.getTime() - start.getTime()) / (24 * 60 * 60 * 1000)
+        ) + 1;
+        if (dayOfTournament >= 1 && dayOfTournament <= 4) {
+          roundInfo = `Round ${dayOfTournament}`;
+        } else {
+          roundInfo = "In Progress";
+        }
+      }
+      return { ...t, index: i, isCurrent: true, roundInfo };
+    }
+
+    if (now < start) {
+      // Next upcoming tournament
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const roundInfo = `Starts ${monthNames[start.getMonth()]} ${start.getDate()}`;
+      return { ...t, index: i, isCurrent: false, roundInfo };
+    }
+  }
+
+  // All tournaments are over
+  const last = tournaments[tournaments.length - 1];
+  return { ...last, index: tournaments.length - 1, isCurrent: false, roundInfo: "Season Complete" };
+}

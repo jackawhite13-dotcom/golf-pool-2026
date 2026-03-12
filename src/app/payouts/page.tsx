@@ -321,7 +321,7 @@ export default function PayoutsPage() {
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
           Cumulative Season Payouts ({fmt(cumulativePool)} pool)
         </h2>
-        <div className="grid grid-cols-5 gap-3 sm:grid-cols-10">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 lg:grid-cols-10">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((place) => (
             <div
               key={place}

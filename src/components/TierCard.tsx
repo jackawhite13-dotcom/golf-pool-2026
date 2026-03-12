@@ -77,8 +77,103 @@ export default function TierCard({ tier, analysis, sources }: TierCardProps) {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
+      {/* Mobile Card Layout */}
+      <div className="md:hidden divide-y divide-[var(--card-border)]/30">
+        {sortedGolfers.map((golfer) => {
+          const a = analysisMap.get(golfer.name);
+          if (!a) return null;
+
+          const isJackTop = a.jackConfidence >= 80;
+          const isAbeTop = a.abeConfidence >= 80;
+
+          return (
+            <div
+              key={golfer.name}
+              className={`px-4 py-3 ${
+                isJackTop && isAbeTop
+                  ? "bg-[var(--green-dark)]/10"
+                  : isJackTop
+                  ? "bg-[var(--green-dark)]/15"
+                  : isAbeTop
+                  ? "bg-amber-950/10"
+                  : ""
+              }`}
+            >
+              {/* Player name + badges */}
+              <div className="mb-2 flex items-center gap-1.5">
+                <span
+                  className={`text-sm font-medium ${
+                    isJackTop
+                      ? "text-[var(--green-accent)]"
+                      : isAbeTop
+                      ? "text-amber-400"
+                      : "text-white"
+                  }`}
+                >
+                  {golfer.name}
+                </span>
+                {isJackTop && (
+                  <span className="rounded bg-[var(--green-accent)] px-1 py-0.5 text-[8px] font-bold text-black">
+                    JACK
+                  </span>
+                )}
+                {isAbeTop && (
+                  <span className="rounded bg-amber-500 px-1 py-0.5 text-[8px] font-bold text-black">
+                    ABE
+                  </span>
+                )}
+              </div>
+
+              {/* Stats */}
+              <div className="mb-2 flex flex-wrap gap-x-2 gap-y-0">
+                <StatPill label="OWGR" value={golfer.owgr ?? "N/A"} />
+                <StatPill label="Cuts" value={`${golfer.cutsMade}/${golfer.events}`} />
+                <StatPill label="$" value={golfer.earnings} />
+              </div>
+
+              {/* Confidence bars */}
+              <div className="mb-2 grid grid-cols-2 gap-2">
+                <div>
+                  <p className="mb-0.5 text-[10px] font-medium text-[var(--green-accent)]">Jack %</p>
+                  <ConfidenceBar value={a.jackConfidence} color="green" />
+                </div>
+                <div>
+                  <p className="mb-0.5 text-[10px] font-medium text-amber-400">Abe %</p>
+                  <ConfidenceBar value={a.abeConfidence} color="amber" />
+                </div>
+              </div>
+
+              {/* Rationale */}
+              {a.rationale && (
+                <p className="mb-1 text-[11px] leading-snug text-[var(--text-muted)]">
+                  {a.rationale}
+                </p>
+              )}
+
+              {/* Chalk vs Contrarian */}
+              {(a.chalk || a.contrarian) && (
+                <div className="space-y-0.5">
+                  {a.chalk && (
+                    <p className="text-[11px] leading-snug text-[var(--text-muted)]">
+                      <span className="font-semibold text-[var(--green-accent)]">CHALK:</span>{" "}
+                      {a.chalk}
+                    </p>
+                  )}
+                  {a.contrarian && (
+                    <p className="text-[11px] leading-snug text-[var(--text-muted)]">
+                      <span className="font-semibold text-amber-400">CTR:</span>{" "}
+                      {a.contrarian}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block overflow-x-auto">
         <table className="w-full min-w-[800px]">
           <thead>
             <tr className="border-b border-[var(--card-border)]">
