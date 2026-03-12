@@ -134,45 +134,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pool Rules Summary */}
+      {/* Pool Rules */}
       <section className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 sm:p-8">
-        <h2 className="mb-4 text-lg font-bold">Pool Rules at a Glance</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 className="mb-6 text-lg font-bold">Official Pool Rules</h2>
+        <div className="space-y-6">
+          {/* Scoring */}
           <div>
-            <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Entry</h3>
-            <p className="text-sm text-[var(--text-muted)]">
-              $350/1 entry · $575/2 entries · $725/3 entries
-            </p>
+            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
+              Scoring
+            </h3>
+            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
+              <li>Points are based on finishing position. 1st place earns the most points; each successive place is one point less.</li>
+              <li>Bonus points: 1st place +10, 2nd place +7, 3rd place +5.</li>
+              <li>
+                Points scale starts at 10 more than average cut size. For The Players: avg cut = 72 players,
+                so 1st = 82 pts (+10 bonus = 92 total), 2nd = 81 pts (+7 bonus = 88 total),
+                3rd = 80 pts (+5 bonus = 85 total), down to ~10 pts for last cut-maker.
+              </li>
+              <li>Missed cut = 0 points.</li>
+            </ul>
           </div>
+
+          <div className="border-t border-[var(--card-border)]" />
+
+          {/* Withdrawals */}
           <div>
-            <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Picks</h3>
-            <p className="text-sm text-[var(--text-muted)]">
-              7 golfers per tournament — one from each tier (A through F with 10 each, G with 60)
-            </p>
+            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
+              Withdrawals
+            </h3>
+            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
+              <li>If a player withdraws, you earn 0 points. No replacements.</li>
+              <li>Monitor withdrawal news before each tournament.</li>
+            </ul>
           </div>
+
+          <div className="border-t border-[var(--card-border)]" />
+
+          {/* Cumulative / Season-Long */}
           <div>
-            <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Individual Payouts</h3>
-            <p className="text-sm text-[var(--text-muted)]">
-              ~80% of pot split across 5 events. Top 4–5 paid per tournament (47.5% / 27.5% / 17.5% / 10%).
-            </p>
+            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
+              Cumulative / Season-Long
+            </h3>
+            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
+              <li>Same position-based scoring for season standings, but adjusted to a uniform points scale so every tournament is weighted equally.</li>
+            </ul>
           </div>
+
+          <div className="border-t border-[var(--card-border)]" />
+
+          {/* Entry & Payment */}
           <div>
-            <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Cumulative Payout</h3>
-            <p className="text-sm text-[var(--text-muted)]">
-              ~20% of pot. Standings-based scoring normalized to 70pts per tournament.
-            </p>
+            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
+              Entry &amp; Payment
+            </h3>
+            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
+              <li>$350 / 1 entry, $575 / 2 entries, $725 / 3 entries.</li>
+              <li>Must be paid before tournament starts or locked out — no exceptions.</li>
+              <li>Payment via Zelle or Venmo.</li>
+            </ul>
           </div>
+
+          <div className="border-t border-[var(--card-border)]" />
+
+          {/* General */}
           <div>
-            <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Scoring</h3>
-            <p className="text-sm text-[var(--text-muted)]">
-              Place-finish scoring for individual tournaments + bonus for 1st/2nd/3rd. Missed cut = 0 with a larger gap below last-place cut-maker.
-            </p>
-          </div>
-          <div>
-            <h3 className="mb-1 text-sm font-semibold text-[var(--green-accent)]">Special Bonuses</h3>
-            <p className="text-sm text-[var(--text-muted)]">
-              Most tournament winners selected. Most total prize money selected.
-            </p>
+            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
+              General
+            </h3>
+            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
+              <li>Commissioner&apos;s doc is the source of truth for updates and tentative payouts.</li>
+              <li>Selections for The Players Championship must be submitted before 7:40 AM EST on tournament morning.</li>
+            </ul>
           </div>
         </div>
       </section>
