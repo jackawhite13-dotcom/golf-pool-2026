@@ -42,7 +42,7 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
     <div className="flex min-h-[80vh] items-center justify-center px-4">
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-8 text-center">
-          <div className="mb-3 text-4xl">&#9917;</div>
+          <div className="mb-3 text-4xl">&#9971;</div>
           <h2 className="mb-1 text-lg font-bold text-white">Pick Intelligence</h2>
           <p className="mb-6 text-sm text-[var(--text-muted)]">
             Jack &amp; Abe&apos;s war room. Enter password to continue.
