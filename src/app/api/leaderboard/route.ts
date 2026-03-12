@@ -249,9 +249,20 @@ export async function GET() {
     // Build player list
     const players: LeaderboardPlayer[] = competitors.map((c, index) => {
       const athlete = c.athlete as Record<string, unknown> | undefined;
-      const displayName = (athlete?.displayName as string) || "";
-      const firstName = (athlete?.firstName as string) || "";
-      const lastName = (athlete?.lastName as string) || "";
+      const displayName = (athlete?.displayName as string) || (athlete?.fullName as string) || "";
+      // ESPN sometimes omits firstName/lastName — parse from displayName
+      let firstName = (athlete?.firstName as string) || "";
+      let lastName = (athlete?.lastName as string) || "";
+      if (!firstName && !lastName && displayName) {
+        const parts = displayName.split(" ");
+        if (parts.length >= 2) {
+          firstName = parts.slice(0, -1).join(" ");
+          lastName = parts[parts.length - 1];
+        } else {
+          firstName = displayName;
+          lastName = displayName;
+        }
+      }
 
       const scoreParsed = parseScoreToPar(c.score);
 
