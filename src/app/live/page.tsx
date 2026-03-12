@@ -30,14 +30,36 @@ const ABE_PICKS: Pick[] = [
   { lastName: "Putnam", firstName: "Andrew", tier: "G" },
 ];
 
-const JACK_LAST_NAMES = new Set(JACK_PICKS.map((p) => p.lastName.toLowerCase()));
-const ABE_LAST_NAMES = new Set(ABE_PICKS.map((p) => p.lastName.toLowerCase()));
-const ALL_PICK_LAST_NAMES = new Set([...JACK_LAST_NAMES, ...ABE_LAST_NAMES]);
+const ALL_PICK_LAST_NAMES = new Set([
+  ...JACK_PICKS.map((p) => p.lastName.toLowerCase()),
+  ...ABE_PICKS.map((p) => p.lastName.toLowerCase()),
+]);
 
 function getTeam(p: LeaderboardPlayer): "jack" | "abe" | null {
   const ln = p.lastName.toLowerCase();
-  if (JACK_LAST_NAMES.has(ln)) return "jack";
-  if (ABE_LAST_NAMES.has(ln)) return "abe";
+  const fn = p.firstName.toLowerCase();
+  const full = p.name.toLowerCase();
+
+  for (const pick of JACK_PICKS) {
+    if (ln === pick.lastName.toLowerCase()) {
+      // If last name is unique across both teams, match immediately
+      if (fn === pick.firstName.toLowerCase() || fn.includes(pick.firstName.toLowerCase()) || pick.firstName.toLowerCase().includes(fn)) return "jack";
+      // Fallback: check if no other pick shares this last name
+      const otherMatch = ABE_PICKS.some((a) => a.lastName.toLowerCase() === ln);
+      if (!otherMatch) return "jack";
+    }
+    if (full.includes(pick.lastName.toLowerCase()) && full.includes(pick.firstName.toLowerCase())) return "jack";
+  }
+
+  for (const pick of ABE_PICKS) {
+    if (ln === pick.lastName.toLowerCase()) {
+      if (fn === pick.firstName.toLowerCase() || fn.includes(pick.firstName.toLowerCase()) || pick.firstName.toLowerCase().includes(fn)) return "abe";
+      const otherMatch = JACK_PICKS.some((j) => j.lastName.toLowerCase() === ln);
+      if (!otherMatch) return "abe";
+    }
+    if (full.includes(pick.lastName.toLowerCase()) && full.includes(pick.firstName.toLowerCase())) return "abe";
+  }
+
   return null;
 }
 
@@ -283,7 +305,7 @@ function MiniLeaderboard({ players }: { players: LeaderboardPlayer[] }) {
     return (
       <div
         key={`${keyPrefix}${p.lastName}-${i}`}
-        className={`grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 sm:grid-cols-[3rem_1fr_3rem_3rem_3rem_3rem] ${rowBg}`}
+        className={`grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 sm:grid-cols-[3rem_1fr_3rem_3rem_3rem] ${rowBg}`}
       >
         <span className="font-mono text-[var(--text-muted)]">
           {p.position}
@@ -308,7 +330,7 @@ function MiniLeaderboard({ players }: { players: LeaderboardPlayer[] }) {
         >
           {p.scoreToParDisplay}
         </span>
-        <span className="hidden text-right font-mono text-[var(--text-muted)] sm:block">
+        <span className="text-right font-mono text-[var(--text-muted)]">
           {p.today}
         </span>
         <span className="text-right font-mono text-[var(--text-muted)]">
@@ -333,11 +355,11 @@ function MiniLeaderboard({ players }: { players: LeaderboardPlayer[] }) {
       </div>
 
       {/* Header */}
-      <div className="mb-1 grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)] sm:grid-cols-[3rem_1fr_3rem_3rem_3rem_3rem]">
+      <div className="mb-1 grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)] sm:grid-cols-[3rem_1fr_3rem_3rem_3rem]">
         <span>Pos</span>
         <span>Player</span>
         <span className="text-right">Par</span>
-        <span className="hidden text-right sm:block">Rnd</span>
+        <span className="text-right">Rnd</span>
         <span className="text-right">Thru</span>
       </div>
 

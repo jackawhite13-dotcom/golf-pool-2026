@@ -82,10 +82,10 @@ function Card({
 /*  Main page component                                                */
 /* ------------------------------------------------------------------ */
 
+const ENTRY_COUNT = 559;
+
 export default function PayoutsPage() {
   /* --- state --- */
-  const [entryCount, setEntryCount] = useState(559);
-
   // individual tournament scenario toggles
   const [finish1st, setFinish1st] = useState(false);
   const [finish2nd, setFinish2nd] = useState(false);
@@ -100,7 +100,7 @@ export default function PayoutsPage() {
   }, []);
 
   /* --- derived calculations --- */
-  const totalPot = entryCount * AVG_REVENUE_PER_ENTRY;
+  const totalPot = ENTRY_COUNT * AVG_REVENUE_PER_ENTRY;
   const individualPool = totalPot * INDIVIDUAL_SPLIT;
   const cumulativePool = totalPot * CUMULATIVE_SPLIT;
   const perTournamentPool = individualPool / NUM_TOURNAMENTS;
@@ -247,40 +247,19 @@ export default function PayoutsPage() {
           Payout Simulator
         </h1>
         <p className="max-w-2xl text-sm text-[var(--text-muted)]">
-          Adjust entry count, toggle what-if scenarios, and see exactly what
-          you&apos;d take home. All math updates live.
+          Toggle what-if scenarios and see exactly what you&apos;d take home.
+          All math updates live. 559 entries, $575 for 2 entries, 50/50 split.
         </p>
       </div>
 
       {/* ============================================================ */}
-      {/*  ENTRY COUNT SLIDER                                          */}
+      {/*  POOL OVERVIEW                                                */}
       {/* ============================================================ */}
       <Card className="mb-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
-            Pool Size
-          </h2>
-          <span className="text-2xl font-extrabold tabular-nums">
-            {entryCount} entries
-          </span>
-        </div>
-
-        <input
-          type="range"
-          min={300}
-          max={700}
-          step={1}
-          value={entryCount}
-          onChange={(e) => setEntryCount(Number(e.target.value))}
-          className="mb-4 h-2 w-full cursor-pointer appearance-none rounded-lg bg-[var(--green-dark)] accent-[var(--green-accent)]"
-        />
-
-        <div className="flex justify-between text-xs text-[var(--text-muted)]">
-          <span>300 entries</span>
-          <span>700 entries</span>
-        </div>
-
-        <div className="mt-5 grid grid-cols-3 gap-4 text-center">
+        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+          Pool Overview — {ENTRY_COUNT} Entries
+        </h2>
+        <div className="grid grid-cols-3 gap-4 text-center">
           <div>
             <p className="text-xs text-[var(--text-muted)]">Total Pot</p>
             <p className="text-xl font-bold text-[var(--green-accent)]">
