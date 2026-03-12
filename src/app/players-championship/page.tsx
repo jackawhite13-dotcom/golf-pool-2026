@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { tiers } from "@/data/tiers";
 import TierCard from "@/components/TierCard";
+import type { PlayerAnalysis } from "@/components/TierCard";
 import LineupSummary from "@/components/LineupSummary";
 
 export const metadata: Metadata = {
@@ -29,87 +30,819 @@ function SectionCard({ children, className = "" }: { children: React.ReactNode; 
   );
 }
 
-// Pick recommendations by tier — informed by research
-// Tiers restructured: A-F (10 each), G (60 remaining)
-const picks = {
+// Tier-by-tier analysis: confidence % for Jack (chalk) and Abe (contrarian)
+// Jack = floor/consistency/safety. Abe = upside/low ownership/leverage.
+const tierAnalysis: Record<number, { players: PlayerAnalysis[]; sources: { href: string; label: string }[] }> = {
   1: {
-    top: "Scheffler, Scottie",
-    topReasoning: "World #1, won the American Express in January, T3 at Phoenix, T4 at Pebble Beach. Won The Players in 2023 (-17) and 2024 (-20, from 5 back on Sunday). First player ever to defend the title. Leads the Tour in SG: Tee-to-Green. His form has cooled slightly (T12 Genesis, T20 Bay Hill) and he's adjusting to a new driver, but Sawgrass is his course — the approach-shot demands perfectly match his elite iron play. He'll be the most-rostered Tier A pick, but in a tiered pool his value compounds across your other 6 picks.",
-    topConfidence: "High" as const,
-    contrarian: "Kim, Si Woo",
-    contrarianReasoning: "Won The Players in 2017 (youngest champion ever) and has been in elite form — 7/7 cuts made (only 100% rate in Tier A), a 2nd, a 3rd, 3 top-10s, and $2.2M earned. His Sawgrass pedigree and current consistency make him the safest contrarian pivot off Scheffler. At OWGR 28, he'll be significantly under-rostered compared to Morikawa, McIlroy, and Schauffele — but his 2026 stats are better than all of them. In a 477-person pool, that ownership gap is a massive lever.",
-    contrarianConfidence: "High" as const,
+    players: [
+      {
+        name: "Scheffler, Scottie",
+        jackConfidence: 95,
+        abeConfidence: 25,
+        rationale: "World #1, back-to-back Players wins, 5/5 cuts. Highest floor in the field but will be 45-55% owned.",
+        chalk: "Safest pick in the pool. Won here in 2023 and 2024. Elite SG: T2G. Even with a cooled stretch, his floor is top-15.",
+        contrarian: "Way too chalky at 45-55% owned. If he finishes T10 but doesn't win, you're sharing that score with half the field.",
+      },
+      {
+        name: "Kim, Si Woo",
+        jackConfidence: 30,
+        abeConfidence: 90,
+        rationale: "Won Players in 2017, 7/7 cuts (only 100% rate in tier), 3 top-10s. Will be massively under-owned vs Scheffler.",
+        chalk: "Risky as a safe play. High variance despite the cut streak. Not the floor you want for a chalk entry.",
+        contrarian: "Perfect GPP pivot. 7/7 cuts, $2.2M earned, won here before. Under-owned vs Scheffler/Morikawa = massive leverage.",
+      },
+      {
+        name: "McIlroy, Rory",
+        jackConfidence: 40,
+        abeConfidence: 55,
+        rationale: "Back injury WD from APC. Won Players in 2019 and 2025. If he plays, ownership will be suppressed = leverage.",
+        chalk: "Too risky for the safe entry. Back spasms, no practice rounds, may not even tee it up. Floor is a WD/MC.",
+        contrarian: "If he plays and contends, suppressed ownership (maybe 8-12% instead of 20%+) gives huge leverage. Classic buy-low.",
+      },
+      {
+        name: "Morikawa, Collin",
+        jackConfidence: 65,
+        abeConfidence: 35,
+        rationale: "Won Pebble Beach, OWGR 5, 3 top-10s. Strong floor but will be 10-15% owned. Solid but not differentiated.",
+        chalk: "Strong safe alternative if avoiding Scheffler. Won this year, elite iron player, Sawgrass fits his game.",
+        contrarian: "Too much ownership for a contrarian play. Everyone knows he's good. No leverage edge.",
+      },
+      {
+        name: "Young, Cameron",
+        jackConfidence: 55,
+        abeConfidence: 45,
+        rationale: "5/5 cuts, a 3rd, 2 top-10s, $1.97M. Under the radar but extremely consistent this season.",
+      },
+      {
+        name: "Fleetwood, Tommy",
+        jackConfidence: 50,
+        abeConfidence: 40,
+        rationale: "OWGR 3, 3/3 cuts, 2 top-10s. Small sample but elite ranking and form. Quietly strong option.",
+      },
+      {
+        name: "Schauffele, Xander",
+        jackConfidence: 45,
+        abeConfidence: 30,
+        rationale: "OWGR 10, 4/5 cuts. Underperforming his talent this season. 1 top-10 and $1M doesn't match the name.",
+      },
+      {
+        name: "Henley, Russell",
+        jackConfidence: 40,
+        abeConfidence: 35,
+        rationale: "OWGR 6, 4/5 cuts, 2 top-10s. Steady but unspectacular. Profiles well for Sawgrass accuracy demands.",
+      },
+      {
+        name: "Hovland, Viktor",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "4/4 cuts but only 1 top-10. $733K in 4 starts isn't inspiring. Short game concerns at Sawgrass.",
+      },
+      {
+        name: "Aberg, Ludvig",
+        jackConfidence: 20,
+        abeConfidence: 30,
+        rationale: "Only 3/5 cuts. Missed cuts are a killer in cumulative scoring. Talent is there but 2026 form is inconsistent.",
+      },
+    ],
     sources: [
       { href: "https://www.pgatour.com/article/news/the-first-look/2026/03/09/the-players-championship-tpc-sawgrass-stadium-course-scottie-scheffler-rory-mcilroy", label: "PGA Tour: The First Look" },
       { href: "https://www.espn.com/golf/story/_/id/48142426/2026-players-championship-ranking-top-25-players-field", label: "ESPN: Top 25 Power Rankings" },
     ],
   },
   2: {
-    top: "Bhatia, Akshay",
-    topReasoning: "The hottest player in the field — just won the Arnold Palmer Invitational, erasing a 5-shot deficit and beating Berger in a playoff. Third career PGA Tour win, all in playoffs. Three top-10s in his last 4 starts with $5.4M earned in 2026 (most in Tier B). Finished T3 at 10-under in the 2025 Players. His aggressive style and exceptional iron play fit Sawgrass perfectly. Now in Tier B, he's the clear top pick — peak confidence, peak form, and Sawgrass course history.",
-    topConfidence: "High" as const,
-    contrarian: "Matsuyama, Hideki",
-    contrarianReasoning: "6/6 cuts made — the best cut rate in Tier B. A 2nd-place finish and 2 top-10s show consistent contention. At OWGR 12 with $2.1M earned, Matsuyama is a former Masters champion with massive big-game experience. He'll be under-owned relative to Bhatia's hot streak, but his floor is among the highest in this tier. For Jack's safe entry, Matsuyama offers the reliability that cumulative scoring demands.",
-    contrarianConfidence: "Medium" as const,
+    players: [
+      {
+        name: "Bhatia, Akshay",
+        jackConfidence: 75,
+        abeConfidence: 85,
+        rationale: "Just won APC, T3 at 2025 Players, 3 top-10s. Hottest player in the field. $5.4M earned leads Tier B.",
+        chalk: "Elite current form and Sawgrass history. 4/6 cuts is the one concern, but his ceiling when making the cut is top-5.",
+        contrarian: "Peak confidence after APC win, aggressive style fits Sawgrass. Will draw ownership but his upside ceiling is the highest in this tier.",
+      },
+      {
+        name: "Matsuyama, Hideki",
+        jackConfidence: 85,
+        abeConfidence: 40,
+        rationale: "6/6 cuts — best rate in Tier B. A 2nd and 2 top-10s. Former Masters champ with elite big-game experience.",
+        chalk: "The safest pick in Tier B. 100% cuts, consistent contention, $2.1M earned. In cumulative scoring, this floor is gold.",
+        contrarian: "Reliable but not differentiated enough. Most savvy pool players will consider him. Doesn't offer enough leverage.",
+      },
+      {
+        name: "Lee, Min Woo",
+        jackConfidence: 60,
+        abeConfidence: 55,
+        rationale: "5/5 cuts, a 2nd, 2 top-10s, $2.98M. Strong season flying under the radar. OWGR 30.",
+      },
+      {
+        name: "Gotterup, Chris",
+        jackConfidence: 55,
+        abeConfidence: 60,
+        rationale: "OWGR 7, 5/6 cuts, 2 top-10s, $3.84M. High ranking + high earnings but no wins. Sneaky GPP upside.",
+      },
+      {
+        name: "MacIntyre, Robert",
+        jackConfidence: 50,
+        abeConfidence: 45,
+        rationale: "OWGR 8, 5/5 cuts. Only 1 top-10 but 3 top-25s. Consistent but low ceiling.",
+      },
+      {
+        name: "Fitzpatrick, Matt",
+        jackConfidence: 50,
+        abeConfidence: 30,
+        rationale: "5/5 cuts, 1 top-10, 3 top-25s. Precision player who fits Sawgrass. Reliable floor.",
+      },
+      {
+        name: "Fowler, Rickie",
+        jackConfidence: 40,
+        abeConfidence: 50,
+        rationale: "5/5 cuts, 4 top-25s, but OWGR 60 is low for this tier. Name recognition means higher ownership than warranted.",
+      },
+      {
+        name: "McNealy, Maverick",
+        jackConfidence: 35,
+        abeConfidence: 35,
+        rationale: "5/6 cuts, 1 top-10, 4 top-25s. Solid but unspectacular. Low ceiling.",
+      },
+      {
+        name: "Cantlay, Patrick",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "Only 3/5 cuts, 0 top-10s, $604K. Significantly underperforming his talent. High MC risk.",
+      },
+      {
+        name: "Koepka, Brooks",
+        jackConfidence: 10,
+        abeConfidence: 45,
+        rationale: "OWGR 221, only 2/3 cuts. But 1 top-10 in limited action. Big-game pedigree. Near-zero owned = max leverage if he shows up.",
+      },
+    ],
     sources: [
       { href: "https://www.golfchannel.com/pga-tour/news/who-won-arnold-palmer-invitational-2026-daniel-berger-akshay-bhatia-pga-tour-playoff", label: "Golf Channel: Bhatia Wins APC" },
       { href: "https://datagolf.com/rankings", label: "DataGolf Rankings" },
     ],
   },
   3: {
-    top: "Bridgeman, Jacob",
-    topReasoning: "The breakout player of 2026 — won the Genesis Invitational (his first PGA Tour win, holding off McIlroy by 1 shot). 6/6 cuts made, 3 top-10s, 100% top-25 rate, $5.5M in earnings. OWGR 22 and climbing fast. Leads the PGA Tour in SG: Putting (+1.276). At 26 years old, this former Clemson star is playing with supreme confidence. His first Players appearance means pool opponents may not roster him — an information edge.",
-    topConfidence: "High" as const,
-    contrarian: "Straka, Sepp",
-    contrarianReasoning: "OWGR 9 and $2.3M earned with a 2nd-place finish and a top-10. Straka has been one of the most consistent players on Tour but flies under the radar in pool formats. At OWGR 9, he's the highest-ranked player in Tier C — meaning the pool platform may have him undervalued relative to his actual ability. His ball-striking profiles well for Sawgrass. Lower ownership than Knapp or Lowry makes him a strong GPP pivot.",
-    contrarianConfidence: "Medium" as const,
+    players: [
+      {
+        name: "Bridgeman, Jacob",
+        jackConfidence: 90,
+        abeConfidence: 50,
+        rationale: "Won Genesis, 6/6 cuts, 3 top-10s, 100% top-25 rate, $5.5M. #1 SG: Putting. Breakout star of 2026.",
+        chalk: "Best floor in Tier C by a mile. 100% cuts, 100% top-25s, and a win. First Players entry = lower ownership than his stats deserve.",
+        contrarian: "Strong player but after Genesis win he'll draw attention. Not quite low-owned enough for a pure contrarian play.",
+      },
+      {
+        name: "Straka, Sepp",
+        jackConfidence: 45,
+        abeConfidence: 80,
+        rationale: "OWGR 9 — highest ranked in Tier C. A 2nd and a top-10 with $2.3M. Massively undervalued by tier placement.",
+        chalk: "4/5 cuts is good but not elite. One missed cut adds risk for a chalk entry.",
+        contrarian: "OWGR 9 in Tier C is a tier-assignment gift. He should be in A or B. Pool opponents won't roster him here = pure leverage.",
+      },
+      {
+        name: "Knapp, Jake",
+        jackConfidence: 70,
+        abeConfidence: 65,
+        rationale: "5/5 cuts, 4 top-10s, $2.17M. If healthy (WD from Bay Hill with illness), he's the most in-form player in this tier.",
+        chalk: "Elite consistency if healthy. 4 top-10s in 5 starts is insane. Health is the only question mark.",
+        contrarian: "If healthy, will draw some ownership. But illness WD may scare off casual pool players = hidden leverage.",
+      },
+      {
+        name: "Berger, Daniel",
+        jackConfidence: 55,
+        abeConfidence: 50,
+        rationale: "6/6 cuts, a 2nd, 2 top-10s, $2.76M. Lost to Bhatia in APC playoff. In great form.",
+      },
+      {
+        name: "Kitayama, Kurt",
+        jackConfidence: 45,
+        abeConfidence: 40,
+        rationale: "5/6 cuts, a 2nd, 1 top-10. $2.22M earned. Solid but inconsistent week-to-week.",
+      },
+      {
+        name: "Scott, Adam",
+        jackConfidence: 40,
+        abeConfidence: 35,
+        rationale: "5/5 cuts, 1 top-10, 3 top-25s. Veteran consistency at OWGR 50. Quiet reliable option.",
+      },
+      {
+        name: "Lowry, Shane",
+        jackConfidence: 35,
+        abeConfidence: 45,
+        rationale: "Only 3/4 cuts but a 2nd and 2 top-10s when he makes it. Boom-or-bust profile.",
+      },
+      {
+        name: "English, Harris",
+        jackConfidence: 35,
+        abeConfidence: 25,
+        rationale: "6/6 cuts but 0 top-10s. High floor, zero ceiling. Makes the weekend but doesn't contend.",
+      },
+      {
+        name: "Spieth, Jordan",
+        jackConfidence: 20,
+        abeConfidence: 40,
+        rationale: "4/5 cuts, 0 top-10s but 3 top-25s. Name recognition = higher ownership. Not efficient for either entry.",
+      },
+      {
+        name: "Griffin, Ben",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "OWGR 13 but 0 top-10s and only $412K. Rankings don't match the results. Risky.",
+      },
+    ],
     sources: [
       { href: "https://www.pgatour.com/article/news/daily-wrapup/2026/02/22/jacob-bridgeman-wins-the-genesis-invitational-for-first-career-win-holds-off-rory-mcilroy-kurt-kitayama-riviera", label: "PGA Tour: Bridgeman Wins Genesis" },
       { href: "https://datagolf.com/rankings", label: "DataGolf Rankings" },
     ],
   },
   4: {
-    top: "Theegala, Sahith",
-    topReasoning: "7/7 cuts made — the ONLY player in Tier D with a 100% rate. Three top-10s and 5 top-25s with $1.7M earned. His consistency is elite: when he tees it up, he makes the weekend and contends. For cumulative scoring where missed cuts = 0 points, Theegala's floor is the highest in this tier by a wide margin. His iron play and Sawgrass-friendly game make him the clear safe pick.",
-    topConfidence: "High" as const,
-    contrarian: "Rose, Justin",
-    contrarianReasoning: "OWGR 5 — the highest-ranked player in the entire tier by far. Just won his most recent tournament, earning $1.8M on only 2 cuts in 5 events. Extreme boom-or-bust: when he makes the cut, he wins; when he misses, he's gone early. In a 477-person GPP, that upside profile is exactly what you want for a contrarian entry. A former U.S. Open champion with massive Sawgrass experience, and he'll be under-owned because of the missed cuts.",
-    contrarianConfidence: "Medium" as const,
+    players: [
+      {
+        name: "Theegala, Sahith",
+        jackConfidence: 92,
+        abeConfidence: 35,
+        rationale: "7/7 cuts — ONLY player in Tier D with 100% rate. 3 top-10s, 5 top-25s, $1.69M. Highest floor in tier by far.",
+        chalk: "The perfect chalk pick. 100% cuts in 7 starts with 3 top-10s. In cumulative scoring, this consistency is unmatched.",
+        contrarian: "Too safe for a contrarian play. Consistent but lacks the upside ceiling to differentiate in a 559-entry pool.",
+      },
+      {
+        name: "Rose, Justin",
+        jackConfidence: 20,
+        abeConfidence: 82,
+        rationale: "OWGR 5 but only 2/5 cuts. When he makes the cut, he wins ($1.8M on 2 cuts). Extreme boom-or-bust.",
+        chalk: "Way too risky. 3 missed cuts in 5 starts is disqualifying for a floor-focused entry.",
+        contrarian: "OWGR 5 in Tier D is absurd value. If he makes the cut, he contends for the win. Near-zero owned + elite talent = GPP gold.",
+      },
+      {
+        name: "Gerard, Ryan",
+        jackConfidence: 70,
+        abeConfidence: 45,
+        rationale: "6/7 cuts, 2 runner-ups, 2 top-10s, $2.07M. Knocking on the door consistently. OWGR 27.",
+        chalk: "Strong floor with 2 runner-ups showing he can contend. Reliable cut-maker at 86% rate.",
+        contrarian: "Good player but not differentiated enough. His ownership won't be low enough for true leverage.",
+      },
+      {
+        name: "Hojgaard, Nicolai",
+        jackConfidence: 55,
+        abeConfidence: 50,
+        rationale: "4/4 cuts, a 2nd, 2 top-10s, 4 top-25s. Perfect cut rate and strong results in limited action.",
+      },
+      {
+        name: "Mitchell, Keith",
+        jackConfidence: 50,
+        abeConfidence: 30,
+        rationale: "7/7 cuts but only 1 top-10. Reliable cut-maker with a low ceiling. OWGR 114 is concerning.",
+      },
+      {
+        name: "Hall, Harry",
+        jackConfidence: 35,
+        abeConfidence: 40,
+        rationale: "4/6 cuts, 2 top-10s, 4 top-25s. Inconsistent cut-making but solid when he plays the weekend.",
+      },
+      {
+        name: "Burns, Sam",
+        jackConfidence: 20,
+        abeConfidence: 55,
+        rationale: "Only 2/5 cuts but OWGR 32 and 1 top-10. Talented but unreliable in 2026. Contrarian ceiling play.",
+      },
+      {
+        name: "Thorbjornsen, Michael",
+        jackConfidence: 30,
+        abeConfidence: 35,
+        rationale: "4/6 cuts, a 3rd, 1 top-10. Young talent with upside but inconsistent cut rate.",
+      },
+      {
+        name: "Noren, Alex",
+        jackConfidence: 25,
+        abeConfidence: 25,
+        rationale: "OWGR 17 but only 3/5 cuts, 0 top-10s. Ranking doesn't match 2026 results.",
+      },
+      {
+        name: "Spaun, J.J.",
+        jackConfidence: 10,
+        abeConfidence: 15,
+        rationale: "OWGR 11 but 2/5 cuts and $88K earned. Lost in Players playoff last year but 2026 form is terrible.",
+      },
+    ],
     sources: [
       { href: "https://www.pgatour.com/stats", label: "PGA Tour Stats" },
       { href: "https://fantasynational.com/pga/course-fit", label: "FantasyNational Course Fit" },
     ],
   },
   5: {
-    top: "Coody, Pierceson",
-    topReasoning: "6/7 cuts made with a 2nd-place finish and 2 top-10s — the best results in Tier E. $1.6M in earnings and 5 top-25s show he's consistently in contention. At OWGR 48, his ranking suggests he should be in a higher tier. His approach play has been strong, which is THE key skill at Sawgrass. For Jack's safe entry, Coody offers the best balance of floor and ceiling in this tier.",
-    topConfidence: "Medium" as const,
-    contrarian: "Thomas, Justin",
-    contrarianReasoning: "OWGR 14 but only 1 event played and 0 cuts made — the ultimate high-risk/high-reward play. He won The Players in 2021 and knows TPC Sawgrass intimately. If JT is healthy and sharp, he has top-5 talent in this entire field, not just Tier E. In a 477-person pool, most will avoid him because of the 0/1 cuts stat. But if he contends, you'll be nearly alone — classic GPP leverage.",
-    contrarianConfidence: "Low" as const,
+    players: [
+      {
+        name: "Coody, Pierceson",
+        jackConfidence: 82,
+        abeConfidence: 40,
+        rationale: "6/7 cuts, a 2nd, 2 top-10s, 5 top-25s, $1.62M. Best balance of floor and ceiling in Tier E.",
+        chalk: "Highest floor in the tier. 86% cuts, consistent top-25 finishes, and a runner-up showing he can contend.",
+        contrarian: "Solid but not differentiated. Savvy pool players will see the same stats. Not low-owned enough for leverage.",
+      },
+      {
+        name: "Thomas, Justin",
+        jackConfidence: 10,
+        abeConfidence: 85,
+        rationale: "OWGR 14 but only 1 event played and 0 cuts. Won Players in 2021. Top-5 talent if healthy.",
+        chalk: "0/1 cuts is disqualifying for a safe entry. Way too much MC risk.",
+        contrarian: "OWGR 14 in Tier E with Players pedigree (2021 champion). If he contends, you'll be nearly alone. Classic GPP leverage.",
+      },
+      {
+        name: "McCarty, Matt",
+        jackConfidence: 60,
+        abeConfidence: 45,
+        rationale: "6/7 cuts, a 2nd, 1 top-10, 3 top-25s, $1.06M. Consistent cut-maker with a strong runner-up finish.",
+        chalk: "Good floor at 86% cuts and steady results. Under the radar name means lower ownership.",
+        contrarian: "Decent leverage play but ceiling is limited. Runner-up shows he can contend but not a game-changer.",
+      },
+      {
+        name: "Taylor, Nick",
+        jackConfidence: 50,
+        abeConfidence: 30,
+        rationale: "6/6 cuts but 0 top-10s. Reliable weekend player without contention upside.",
+      },
+      {
+        name: "Hojgaard, Rasmus",
+        jackConfidence: 35,
+        abeConfidence: 40,
+        rationale: "4/5 cuts, 1 top-10. Solid young talent but limited 2026 sample. Twin of Nicolai in Tier D.",
+      },
+      {
+        name: "Rai, Aaron",
+        jackConfidence: 35,
+        abeConfidence: 30,
+        rationale: "4/4 cuts but 0 top-10s and only $270K. Makes weekends but doesn't contend.",
+      },
+      {
+        name: "Conners, Corey",
+        jackConfidence: 30,
+        abeConfidence: 25,
+        rationale: "4/5 cuts, 0 top-10s, 1 top-25. Approach-shot specialist but results haven't followed in 2026.",
+      },
+      {
+        name: "Bezuidenhout, Christiaan",
+        jackConfidence: 25,
+        abeConfidence: 35,
+        rationale: "4/5 cuts but only 1 top-10 and $253K. Limited upside.",
+      },
+      {
+        name: "Thompson, Davis",
+        jackConfidence: 20,
+        abeConfidence: 30,
+        rationale: "4/5 cuts, 1 top-10. OWGR 111 is low. Inconsistent results.",
+      },
+      {
+        name: "Bradley, Keegan",
+        jackConfidence: 10,
+        abeConfidence: 20,
+        rationale: "Only 2/5 cuts, 0 top-10s, $156K. Ryder Cup captain but 2026 form is poor.",
+      },
+    ],
     sources: [
       { href: "https://datagolf.com/predictive-model", label: "DataGolf Predictions" },
     ],
   },
   6: {
-    top: "Hisatsune, Ryo",
-    topReasoning: "The consistency king of Tier F — 6/7 cuts made, a 2nd-place finish at Farmers Insurance Open, 3 top-10s, and $1.7M earned. At 23 years old with improving putting confidence and strong approach play, he profiles perfectly for Sawgrass. His SG: Approach numbers fit the #1 skill that wins at this course. In a tier with several risky options (Im and Olesen with minimal 2026 data), Hisatsune's form makes him the clear top choice.",
-    topConfidence: "High" as const,
-    contrarian: "Castillo, Ricky",
-    contrarianReasoning: "Won the Puerto Rico Open last week (first PGA Tour title, bogey-free 67 to close). 5/5 cuts made with 2 top-10s in only 34 career starts. Victory earned him a PGA Championship spot. At OWGR 95, he'll be essentially zero-owned in this pool. First-time Players competitor riding peak confidence off a maiden win. In a 477-person GPP, this is exactly the type of leverage play that wins tournaments — if he contends, you'll be nearly alone.",
-    contrarianConfidence: "Medium" as const,
+    players: [
+      {
+        name: "Hisatsune, Ryo",
+        jackConfidence: 88,
+        abeConfidence: 35,
+        rationale: "6/7 cuts, a 2nd at Farmers, 3 top-10s, $1.68M. Best consistency + results combo in Tier F.",
+        chalk: "Highest floor in the tier. 86% cuts with 3 top-10s including a runner-up. Approach play fits Sawgrass perfectly.",
+        contrarian: "Too consistent and well-known for a contrarian play. Will draw moderate ownership from data-driven players.",
+      },
+      {
+        name: "Castillo, Ricky",
+        jackConfidence: 35,
+        abeConfidence: 88,
+        rationale: "Won PR Open last week, 5/5 cuts, 2 top-10s. First PGA Tour title. Will be essentially zero-owned.",
+        chalk: "Only 34 career starts and first Players entry. Too unknown for a safe play despite the win.",
+        contrarian: "Peak confidence off maiden win + zero ownership = maximum GPP leverage. If he contends, you're alone.",
+      },
+      {
+        name: "Stevens, Sam",
+        jackConfidence: 55,
+        abeConfidence: 40,
+        rationale: "6/7 cuts, 1 top-10, 2 top-25s, $836K. Steady performer. OWGR 49.",
+      },
+      {
+        name: "Clark, Wyndham",
+        jackConfidence: 45,
+        abeConfidence: 35,
+        rationale: "5/5 cuts but 0 top-10s and only 1 top-25. Name is bigger than his 2026 results.",
+      },
+      {
+        name: "Echavarria, Nico",
+        jackConfidence: 30,
+        abeConfidence: 55,
+        rationale: "Only 3/7 cuts but has a win and $2.3M. Extreme boom-or-bust. When he's on, he wins.",
+      },
+      {
+        name: "Day, Jason",
+        jackConfidence: 25,
+        abeConfidence: 50,
+        rationale: "3/5 cuts, a 2nd, 1 top-10. Won Players in 2016. Name recognition means higher ownership than warranted.",
+      },
+      {
+        name: "Pendrith, Taylor",
+        jackConfidence: 35,
+        abeConfidence: 25,
+        rationale: "4/6 cuts, 1 top-10. Decent floor but limited ceiling at OWGR 66.",
+      },
+      {
+        name: "Reitan, Kristoffer",
+        jackConfidence: 20,
+        abeConfidence: 30,
+        rationale: "3/4 cuts, 0 top-10s. OWGR 46 suggests ability but results haven't materialized.",
+      },
+      {
+        name: "Im, Sungjae",
+        jackConfidence: 10,
+        abeConfidence: 35,
+        rationale: "Only 1 event, 0 cuts. OWGR 79. No 2026 form data. High risk but talent is undeniable if healthy.",
+      },
+      {
+        name: "Olesen, Thorbjorn",
+        jackConfidence: 5,
+        abeConfidence: 15,
+        rationale: "1/3 cuts, $31K earned. OWGR 102. Not enough data to trust in either format.",
+      },
+    ],
     sources: [
       { href: "https://www.pgatour.com/article/news/daily-wrapup/2026/03/08/ricky-castillo-wins-puerto-rico-open-for-first-career-pga-tour-title", label: "PGA Tour: Castillo Wins PR Open" },
       { href: "https://datagolf.com/player-profiles", label: "DataGolf Player Profiles" },
     ],
   },
   7: {
-    top: "Rodgers, Patrick",
-    topReasoning: "7/7 cuts made — the ONLY player in Tier G with a 100% cut rate. Plus a 3rd-place finish, a top-10, and $1.05M in earnings. In a 60-player tier where most options are inconsistent, Rodgers' reliability is gold. At Sawgrass, making the cut is half the battle in a tiered pool format — his iron play and consistency give him a floor that most Tier G options can't match. The ideal pick for cumulative-focused scoring.",
-    topConfidence: "High" as const,
-    contrarian: "Putnam, Andrew",
-    contrarianReasoning: "A 2nd-place finish and a top-10 on only 4 events — that's an elite hit rate. $682K in earnings is among the highest in Tier G. When he makes the cut (2/4), he contends hard. Less name recognition means lower ownership — and in a 60-player tier, any differentiation matters. For Abe's contrarian entry, Putnam's upside ceiling (runner-up finish) is exactly the type of leverage play that wins in a 477-person pool.",
-    contrarianConfidence: "Medium" as const,
+    players: [
+      {
+        name: "Rodgers, Patrick",
+        jackConfidence: 90,
+        abeConfidence: 30,
+        rationale: "7/7 cuts — ONLY player in Tier G with 100% rate. A 3rd, a top-10, $1.05M. In a 60-player tier, this reliability is gold.",
+        chalk: "The safest pick in a 60-player tier by a wide margin. 100% cuts + contention finishes. Cumulative scoring dream.",
+        contrarian: "Too reliable and well-known in data circles. Ownership will be moderate for Tier G. Not enough leverage.",
+      },
+      {
+        name: "Putnam, Andrew",
+        jackConfidence: 25,
+        abeConfidence: 82,
+        rationale: "A 2nd and a top-10 on only 4 events — elite hit rate. $682K is among highest in Tier G.",
+        chalk: "Only 2/4 cuts. Too risky for a floor play. One missed cut and you're at zero points.",
+        contrarian: "Runner-up finish + low name recognition = near-zero owned. When he makes the cut, he contends hard. Perfect GPP lever.",
+      },
+      {
+        name: "Fox, Ryan",
+        jackConfidence: 65,
+        abeConfidence: 55,
+        rationale: "4/4 cuts, 1 top-10, 4 top-25s, $1M. OWGR 44 is way too low for Tier G. Massive tier-assignment value.",
+        chalk: "100% cuts with strong results. OWGR 44 in the 60-player tier is a gift. Excellent safe play.",
+        contrarian: "Great player but may draw ownership from savvy entrants who spot the tier mismatch.",
+      },
+      {
+        name: "Moore, Taylor",
+        jackConfidence: 45,
+        abeConfidence: 60,
+        rationale: "4/4 cuts, a 2nd, $837K. 100% cut rate in limited starts. Runner-up shows upside. OWGR 140 = zero owned.",
+      },
+      {
+        name: "Smotherman, Austin",
+        jackConfidence: 20,
+        abeConfidence: 55,
+        rationale: "3/6 cuts but a 2nd and 2 top-10s, $977K. When he makes the cut, he goes deep. Classic boom-or-bust GPP play.",
+      },
+      {
+        name: "Schmid, Matti",
+        jackConfidence: 40,
+        abeConfidence: 45,
+        rationale: "5/8 cuts, 2 top-10s, $510K. Decent volume and results. Under the radar European.",
+      },
+      {
+        name: "Dahmen, Joel",
+        jackConfidence: 30,
+        abeConfidence: 50,
+        rationale: "3/5 cuts but 2 top-10s, $593K. Boom potential when he makes the weekend. Low ownership guaranteed.",
+      },
+      {
+        name: "Hoge, Tom",
+        jackConfidence: 35,
+        abeConfidence: 35,
+        rationale: "4/7 cuts, 1 top-10, 2 top-25s, $644K. Decent but unreliable cut rate.",
+      },
+      {
+        name: "Li, HaoTong",
+        jackConfidence: 30,
+        abeConfidence: 40,
+        rationale: "4/6 cuts, 1 top-10, 2 top-25s. OWGR 75. Occasional top-10 pop. Low owned.",
+      },
+      {
+        name: "Bauchou, Zach",
+        jackConfidence: 40,
+        abeConfidence: 25,
+        rationale: "6/6 cuts, 3 top-25s. 100% cut rate is valuable. No top-10s limits ceiling but floor is solid.",
+      },
+      {
+        name: "Novak, Andrew",
+        jackConfidence: 30,
+        abeConfidence: 35,
+        rationale: "4/6 cuts, 1 top-10, $498K. OWGR 47 is high for Tier G. Decent value.",
+      },
+      {
+        name: "Jaeger, Stephan",
+        jackConfidence: 25,
+        abeConfidence: 40,
+        rationale: "3/5 cuts, a 3rd, 1 top-10. When he makes the cut, he can contend. OWGR 109.",
+      },
+      {
+        name: "Riley, Davis",
+        jackConfidence: 20,
+        abeConfidence: 40,
+        rationale: "3/6 cuts but a 3rd and a top-10. Boom-or-bust. Classic GPP dart throw.",
+      },
+      {
+        name: "Finau, Tony",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "3/6 cuts, 0 top-10s. Name recognition will inflate ownership. Avoid — bad value.",
+      },
+      {
+        name: "Roy, Kevin",
+        jackConfidence: 25,
+        abeConfidence: 25,
+        rationale: "3/5 cuts, 3 top-25s, $429K. Makes weekends and finishes decently. Low ceiling.",
+      },
+      {
+        name: "Harman, Brian",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "4/6 cuts, 0 top-10s. Name bigger than 2026 results. Avoid for both entries.",
+      },
+      {
+        name: "Cauley, Bud",
+        jackConfidence: 30,
+        abeConfidence: 20,
+        rationale: "4/6 cuts, 2 top-25s, $432K. Decent floor but no top-10 upside.",
+      },
+      {
+        name: "Kim, Michael",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "4/6 cuts, 1 top-25. Limited results.",
+      },
+      {
+        name: "Power, Seamus",
+        jackConfidence: 25,
+        abeConfidence: 20,
+        rationale: "4/5 cuts, 1 top-25. Makes weekends but doesn't contend.",
+      },
+      {
+        name: "Greyserman, Max",
+        jackConfidence: 25,
+        abeConfidence: 25,
+        rationale: "4/6 cuts, 2 top-25s. OWGR 54. Mid-range option.",
+      },
+      {
+        name: "Mouw, William",
+        jackConfidence: 10,
+        abeConfidence: 35,
+        rationale: "2/5 cuts but 1 top-10, $342K. High-risk GPP dart throw.",
+      },
+      {
+        name: "Hodges, Lee",
+        jackConfidence: 15,
+        abeConfidence: 35,
+        rationale: "2/4 cuts but 1 top-10. When he makes the cut, he can contend.",
+      },
+      {
+        name: "Potgieter, Aldrich",
+        jackConfidence: 10,
+        abeConfidence: 40,
+        rationale: "2/6 cuts but 1 top-10, $878K. Massive ceiling when on. Pure GPP lottery ticket.",
+      },
+      {
+        name: "Penge, Marco",
+        jackConfidence: 15,
+        abeConfidence: 30,
+        rationale: "2/4 cuts, OWGR 38. High ranking but limited PGA Tour results.",
+      },
+      {
+        name: "Yellamaraju, Sudarshan",
+        jackConfidence: 30,
+        abeConfidence: 20,
+        rationale: "5/6 cuts, 2 top-25s. Good cut rate. Zero ownership guaranteed.",
+      },
+      {
+        name: "Ramey, Chad",
+        jackConfidence: 30,
+        abeConfidence: 15,
+        rationale: "5/6 cuts, 2 top-25s. Solid floor but no ceiling.",
+      },
+      {
+        name: "Kim, S.H.",
+        jackConfidence: 30,
+        abeConfidence: 15,
+        rationale: "5/6 cuts, 2 top-25s. Reliable cut-maker.",
+      },
+      {
+        name: "McCarthy, Denny",
+        jackConfidence: 25,
+        abeConfidence: 15,
+        rationale: "5/6 cuts but 0 top-10s, 0 top-25s. Makes cuts but doesn't do anything.",
+      },
+      {
+        name: "McGreevy, Max",
+        jackConfidence: 25,
+        abeConfidence: 15,
+        rationale: "5/7 cuts but 0 top-10s, 0 top-25s. Volume player with no results.",
+      },
+      {
+        name: "Smith, Jordan",
+        jackConfidence: 20,
+        abeConfidence: 20,
+        rationale: "4/5 cuts, 2 top-25s. Mid-range option.",
+      },
+      {
+        name: "Homa, Max",
+        jackConfidence: 20,
+        abeConfidence: 20,
+        rationale: "4/5 cuts but 0 top-10s, 1 top-25. Name recognition will inflate ownership. Avoid.",
+      },
+      {
+        name: "Smalley, Alex",
+        jackConfidence: 25,
+        abeConfidence: 15,
+        rationale: "5/6 cuts, 1 top-25. Reliable but no upside.",
+      },
+      {
+        name: "Pavon, Matthieu",
+        jackConfidence: 25,
+        abeConfidence: 15,
+        rationale: "5/6 cuts, 1 top-25. OWGR 263 is a red flag despite cut rate.",
+      },
+      {
+        name: "Phillips, Chandler",
+        jackConfidence: 20,
+        abeConfidence: 15,
+        rationale: "4/5 cuts, 1 top-25. Limited upside.",
+      },
+      {
+        name: "Meissner, Mac",
+        jackConfidence: 20,
+        abeConfidence: 15,
+        rationale: "4/5 cuts, 1 top-25. Mid-range.",
+      },
+      {
+        name: "Keefer, John",
+        jackConfidence: 20,
+        abeConfidence: 15,
+        rationale: "4/5 cuts, OWGR 67. 0 top-10s, 0 top-25s despite decent cut rate.",
+      },
+      {
+        name: "Hughes, Mackenzie",
+        jackConfidence: 20,
+        abeConfidence: 15,
+        rationale: "4/5 cuts, 1 top-25. Ryder Cup talk but 2026 results are thin.",
+      },
+      {
+        name: "Hoey, Rico",
+        jackConfidence: 15,
+        abeConfidence: 15,
+        rationale: "4/7 cuts, 1 top-25. Low cut rate and limited upside.",
+      },
+      {
+        name: "Hubbard, Mark",
+        jackConfidence: 15,
+        abeConfidence: 10,
+        rationale: "4/6 cuts, 1 top-25. Minimal results.",
+      },
+      {
+        name: "Vegas, Jhonattan",
+        jackConfidence: 15,
+        abeConfidence: 15,
+        rationale: "3/5 cuts, 1 top-25. Limited data.",
+      },
+      {
+        name: "Glover, Lucas",
+        jackConfidence: 15,
+        abeConfidence: 15,
+        rationale: "2/3 cuts, 1 top-25. Small sample.",
+      },
+      {
+        name: "Kizzire, Patton",
+        jackConfidence: 20,
+        abeConfidence: 10,
+        rationale: "3/4 cuts, 2 top-25s. Quiet consistency.",
+      },
+      {
+        name: "Valimaki, Sami",
+        jackConfidence: 15,
+        abeConfidence: 15,
+        rationale: "3/6 cuts, 0 top-10s. OWGR 53 but no results to back it up.",
+      },
+      {
+        name: "Kanaya, Takumi",
+        jackConfidence: 15,
+        abeConfidence: 15,
+        rationale: "3/6 cuts, 1 top-25. Limited upside.",
+      },
+      {
+        name: "Schenk, Adam",
+        jackConfidence: 15,
+        abeConfidence: 10,
+        rationale: "3/6 cuts, 1 top-25. Low cut rate.",
+      },
+      {
+        name: "Poston, J.T.",
+        jackConfidence: 15,
+        abeConfidence: 10,
+        rationale: "3/5 cuts, 0 top-10s, 0 top-25s. Not viable.",
+      },
+      {
+        name: "Highsmith, Joe",
+        jackConfidence: 15,
+        abeConfidence: 10,
+        rationale: "4/6 cuts but 0 top-10s, 0 top-25s. Makes cuts without contending.",
+      },
+      {
+        name: "Vilips, Karl",
+        jackConfidence: 10,
+        abeConfidence: 15,
+        rationale: "2/4 cuts, 1 top-25. Too small a sample.",
+      },
+      {
+        name: "Cole, Eric",
+        jackConfidence: 10,
+        abeConfidence: 10,
+        rationale: "3/6 cuts, 0 top-10s. OWGR 121. Not viable.",
+      },
+      {
+        name: "Grillo, Emiliano",
+        jackConfidence: 10,
+        abeConfidence: 10,
+        rationale: "3/6 cuts, 0 top-10s, $100K. Poor form.",
+      },
+      {
+        name: "Brennan, Michael",
+        jackConfidence: 10,
+        abeConfidence: 10,
+        rationale: "4/6 cuts but 0 top-10s, 0 top-25s, $96K. Not viable.",
+      },
+      {
+        name: "Higgo, Garrick",
+        jackConfidence: 5,
+        abeConfidence: 10,
+        rationale: "2/5 cuts, $70K. Not in form.",
+      },
+      {
+        name: "Walker, Danny",
+        jackConfidence: 5,
+        abeConfidence: 5,
+        rationale: "3/6 cuts, $82K. OWGR 227. Not viable.",
+      },
+      {
+        name: "Campbell, Brian",
+        jackConfidence: 5,
+        abeConfidence: 5,
+        rationale: "2/6 cuts, $54K. Not viable.",
+      },
+      {
+        name: "Fisk, Steven",
+        jackConfidence: 5,
+        abeConfidence: 5,
+        rationale: "2/5 cuts, $83K. Not viable.",
+      },
+      {
+        name: "Whaley, Vince",
+        jackConfidence: 5,
+        abeConfidence: 5,
+        rationale: "2/6 cuts, $59K. Not viable.",
+      },
+      {
+        name: "Kirk, Chris",
+        jackConfidence: 5,
+        abeConfidence: 10,
+        rationale: "2/6 cuts, $103K. Former winner but 2026 form is gone.",
+      },
+      {
+        name: "van Rooyen, Erik",
+        jackConfidence: 2,
+        abeConfidence: 5,
+        rationale: "0/6 cuts. Zero cuts in 6 starts. Do not roster.",
+      },
+      {
+        name: "Woodland, Gary",
+        jackConfidence: 5,
+        abeConfidence: 5,
+        rationale: "2/5 cuts, $39K. Not viable.",
+      },
+      {
+        name: "Yu, Kevin",
+        jackConfidence: 5,
+        abeConfidence: 5,
+        rationale: "1/5 cuts, $34K. Not viable.",
+      },
+    ],
     sources: [
       { href: "https://fantasynational.com/pga", label: "FantasyNational PGA" },
       { href: "https://www.pgatour.com/article/news/betting-dfs/2026/03/09/odds-outlook-the-players-championship-tpc-sawgrass-bets-odds-linups-fantasy-golf-stadium-course-rory-mcilroy-scottie-scheffler", label: "PGA Tour: Odds Outlook" },
@@ -325,14 +1058,14 @@ export default function PlayersChampionshipPage() {
       <SectionCard className="mb-6">
         <h2 className="mb-1 text-xl font-bold">Pool-Specific Strategy for The Players</h2>
         <p className="mb-5 text-xs text-[var(--text-muted)]">
-          477 entries, top 4 paid per tournament (~0.8% cash rate). How to approach each tier.
+          559 entries, top 4 paid per tournament (~0.7% cash rate). How to approach each tier.
         </p>
 
         <div className="space-y-4">
           <div className="rounded-lg bg-[var(--background)] p-4">
             <h3 className="mb-2 text-sm font-semibold text-white">Estimated Ownership Concentrations</h3>
             <p className="mb-3 text-xs text-[var(--text-muted)]">
-              Based on DFS data from DraftKings/FantasyNational and pool dynamics. With 477 entries,
+              Based on DFS data from DraftKings/FantasyNational and pool dynamics. With 559 entries,
               Scheffler at +340 will be the most popular pick by far — typical signature event ownership
               runs 25-35%+ in GPPs. In a casual pool format, it could be even higher (45-55%).
             </p>
@@ -354,9 +1087,9 @@ export default function PlayersChampionshipPage() {
               </div>
             </div>
             <p className="mt-3 text-xs text-[var(--text-muted)]">
-              <strong className="text-white">Key insight:</strong> If ~150 entries have Scheffler,
+              <strong className="text-white">Key insight:</strong> If ~250 entries have Scheffler,
               your differentiation has to come from Tiers 2-7. Even if Scheffler wins, you&apos;re
-              competing against ~150 other Scheffler entries for the top 4 spots — meaning your
+              competing against ~250 other Scheffler entries for the top 4 spots — meaning your
               other 6 picks determine your ranking. <strong className="text-white">McIlroy&apos;s
               injury could suppress his ownership</strong> — if he plays well, anyone who rostered him
               gets automatic leverage. This is a classic &ldquo;buy low&rdquo; GPP opportunity.
@@ -398,25 +1131,20 @@ export default function PlayersChampionshipPage() {
 
       {/* Section C: Tier-by-Tier Picks */}
       <div className="mb-8">
-        <h2 className="mb-1 text-xl font-bold">Tier-by-Tier Pick Recommendations</h2>
+        <h2 className="mb-1 text-xl font-bold">Tier-by-Tier Confidence Ratings</h2>
         <p className="mb-6 text-xs text-[var(--text-muted)]">
-          Top pick + contrarian alternative for each tier, with reasoning and verified sources
+          Every player rated for Jack (chalk/floor) and Abe (contrarian/ceiling). Higher % = more confident pick for that entry.
         </p>
 
         <div className="space-y-4">
           {tiers.map((tier) => {
-            const tierPick = picks[tier.tier as keyof typeof picks];
+            const analysis = tierAnalysis[tier.tier as keyof typeof tierAnalysis];
             return (
               <TierCard
                 key={tier.tier}
                 tier={tier}
-                topPick={tierPick.top}
-                topReasoning={tierPick.topReasoning}
-                topConfidence={tierPick.topConfidence}
-                contrarianPick={tierPick.contrarian}
-                contrarianReasoning={tierPick.contrarianReasoning}
-                contrarianConfidence={tierPick.contrarianConfidence}
-                sources={tierPick.sources}
+                analysis={analysis.players}
+                sources={analysis.sources}
               />
             );
           })}

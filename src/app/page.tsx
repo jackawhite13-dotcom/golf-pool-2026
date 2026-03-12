@@ -15,7 +15,7 @@ export default function Home() {
           <span className="text-[var(--green-accent)]"> 2026</span>
         </h1>
         <p className="mx-auto mb-8 max-w-xl text-sm text-[var(--text-muted)] sm:text-base">
-          477 entries &middot; ~$150K pot &middot; 5 tournaments &middot; 7 tiers per event
+          559 entries &middot; ~$175K pot &middot; 5 tournaments &middot; 7 tiers per event
         </p>
 
         {/* Countdown */}
@@ -32,19 +32,24 @@ export default function Home() {
       {/* Navigation Cards */}
       <section className="mb-16 grid gap-4 sm:grid-cols-2 sm:gap-6">
         <Link
-          href="/strategy"
-          className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 transition-all hover:border-[var(--green-accent)]/40 hover:shadow-lg hover:shadow-[var(--green-accent)]/5 sm:p-8"
+          href="/live"
+          className="group relative overflow-hidden rounded-xl border border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30 p-6 transition-all hover:border-[var(--green-accent)]/60 hover:shadow-lg hover:shadow-[var(--green-accent)]/10 sm:p-8"
         >
-          <div className="absolute right-4 top-4 text-3xl opacity-20 transition-opacity group-hover:opacity-40">
-            🧠
+          <div className="absolute right-4 top-4 text-3xl opacity-30 transition-opacity group-hover:opacity-50">
+            📡
           </div>
-          <h2 className="mb-2 text-xl font-bold sm:text-2xl">Strategy Center</h2>
+          <div className="mb-2 flex items-center gap-2">
+            <h2 className="text-xl font-bold sm:text-2xl">Live Scoring</h2>
+            <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black animate-pulse">
+              LIVE
+            </span>
+          </div>
           <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Jack &amp; Abe coordination hub — game theory, financial arrangements,
-            chalk vs. contrarian analysis, and season-long planning.
+            Track Jack &amp; Abe&apos;s picks in real time at The Players Championship.
+            Live leaderboard positions, scores, and team totals.
           </p>
           <span className="text-sm font-semibold text-[var(--green-accent)]">
-            View Strategy →
+            Watch Live →
           </span>
         </Link>
 
@@ -57,11 +62,45 @@ export default function Home() {
           </div>
           <h2 className="mb-2 text-xl font-bold sm:text-2xl">The Players Championship</h2>
           <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Tournament 1 of 5 — TPC Sawgrass, Mar 12–15. Course intel, tier-by-tier picks,
-            and recommended lineups for Jack &amp; Abe.
+            Tournament 1 of 5 — TPC Sawgrass, Mar 12–15. Course intel, tier-by-tier analysis,
+            and confidence ratings for every player.
           </p>
           <span className="text-sm font-semibold text-[var(--green-accent)]">
-            View Picks →
+            View Analysis →
+          </span>
+        </Link>
+
+        <Link
+          href="/strategy"
+          className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 transition-all hover:border-[var(--green-accent)]/40 hover:shadow-lg hover:shadow-[var(--green-accent)]/5 sm:p-8"
+        >
+          <div className="absolute right-4 top-4 text-3xl opacity-20 transition-opacity group-hover:opacity-40">
+            🧠
+          </div>
+          <h2 className="mb-2 text-xl font-bold sm:text-2xl">Strategy Center</h2>
+          <p className="mb-4 text-sm text-[var(--text-muted)]">
+            Jack &amp; Abe coordination hub — chalk vs. contrarian method locked in,
+            50/50 split confirmed, season-long planning.
+          </p>
+          <span className="text-sm font-semibold text-[var(--green-accent)]">
+            View Strategy →
+          </span>
+        </Link>
+
+        <Link
+          href="/payouts"
+          className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 transition-all hover:border-[var(--green-accent)]/40 hover:shadow-lg hover:shadow-[var(--green-accent)]/5 sm:p-8"
+        >
+          <div className="absolute right-4 top-4 text-3xl opacity-20 transition-opacity group-hover:opacity-40">
+            💰
+          </div>
+          <h2 className="mb-2 text-xl font-bold sm:text-2xl">Payout Simulator</h2>
+          <p className="mb-4 text-sm text-[var(--text-muted)]">
+            Interactive what-if scenarios — toggle entry counts, finishes,
+            and see exactly what you&apos;d take home.
+          </p>
+          <span className="text-sm font-semibold text-[var(--green-accent)]">
+            Run Scenarios →
           </span>
         </Link>
       </section>

@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/", label: "Hub" },
-  { href: "/strategy", label: "Strategy Center" },
+  { href: "/strategy", label: "Strategy" },
   { href: "/players-championship", label: "The Players" },
-  { href: "/debate", label: "Pick Intel" },
+  { href: "/payouts", label: "Payouts" },
+  { href: "/live", label: "Live Scoring" },
 ];
 
 export default function Navigation() {

@@ -36,41 +36,42 @@ export default function StrategyPage() {
         </p>
         <h1 className="mb-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Strategy Center</h1>
         <p className="max-w-2xl text-sm text-[var(--text-muted)]">
-          A coordination hub for two entries in a ~477-person, ~$150K golf pool.
+          A coordination hub for two entries in a ~559-person, ~$175K golf pool.
           The goal: maximize the combined probability of cashing across 5 tournaments
           and the season-long cumulative standings.
         </p>
       </div>
 
-      {/* TL;DR Recommendation */}
+      {/* Locked-In Strategy */}
       <SectionCard className="mb-8 border-[var(--green-accent)]/30 bg-[var(--green-dark)]/20">
-        <h2 className="mb-3 text-lg font-bold text-[var(--green-accent)]">Recommended Approach (TL;DR)</h2>
+        <div className="mb-3 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-[var(--green-accent)]">Our Strategy (Locked In)</h2>
+          <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black">
+            CONFIRMED
+          </span>
+        </div>
         <div className="space-y-3 text-sm leading-relaxed">
           <p>
-            <strong className="text-white">1. Pick DIFFERENT golfers across both entries.</strong>{" "}
-            In a 477-person GPP-style pool where only the top 4 cash (~1.3% per entry), differentiation
-            is the single most important lever. Two identical entries give you 2 lottery tickets
-            with the same numbers. Two differentiated entries nearly double your probability of
-            having at least one entry in the money.
+            <strong className="text-white">1. Different golfers across both entries.</strong>{" "}
+            In a 559-person GPP-style pool where only the top 4–5 cash, differentiation
+            is the single most important lever. Two differentiated entries nearly double
+            our probability of having at least one entry in the money.
           </p>
           <p>
-            <strong className="text-white">2. One chalk entry, one contrarian entry.</strong>{" "}
-            Jack runs a &ldquo;high floor&rdquo; lineup built around favorites and safe cut-makers.
-            Abe runs a &ldquo;high ceiling&rdquo; lineup targeting lower-owned, higher-upside players.
-            This is the optimal GPP portfolio strategy per DFS research.
+            <strong className="text-white">2. Chalk + Contrarian method.</strong>{" "}
+            Jack runs the &ldquo;high floor&rdquo; chalk lineup built around favorites and safe cut-makers.
+            Abe runs the &ldquo;high ceiling&rdquo; contrarian lineup targeting lower-owned, higher-upside players.
           </p>
           <p>
-            <strong className="text-white">3. Pool all winnings 50/50.</strong>{" "}
-            Since you&apos;re coordinating picks as a team, splitting everything equally keeps
-            incentives aligned and eliminates the scenario where one person takes the contrarian
-            role (higher variance) and gets nothing while the chalk entry cashes.
+            <strong className="text-white">3. 50/50 split on all winnings. No exceptions.</strong>{" "}
+            Everything pooled equally regardless of which entry cashes. This keeps
+            incentives aligned — Abe can take big swings without worrying about variance.
           </p>
           <p>
             <strong className="text-white">4. Prioritize individual tournament wins over cumulative.</strong>{" "}
-            ~80% of the pot goes to per-tournament payouts. The cumulative scoring (20% of pot)
-            is a nice bonus, but the math says to optimize tournament-by-tournament first.
-            Jack&apos;s chalk entry will naturally do well in cumulative standings (consistency),
-            while Abe&apos;s contrarian entry hunts for tournament wins.
+            ~80% of the pot goes to per-tournament payouts. Jack&apos;s chalk entry will
+            naturally do well in cumulative standings (consistency), while Abe&apos;s
+            contrarian entry hunts for tournament wins.
           </p>
         </div>
       </SectionCard>
@@ -78,14 +79,14 @@ export default function StrategyPage() {
       {/* Section A: Same vs Different Picks */}
       <SectionCard className="mb-6">
         <h2 className="mb-1 text-xl font-bold">A. Same Golfers or Different Golfers?</h2>
-        <p className="mb-5 text-xs text-[var(--text-muted)]">Game theory analysis for a 477-entry pool</p>
+        <p className="mb-5 text-xs text-[var(--text-muted)]">Game theory analysis for a 559-entry pool</p>
 
         <div className="mb-6 grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-red-900/40 bg-red-950/20 p-4">
             <h3 className="mb-2 text-sm font-bold text-red-400">Same Picks (Correlated)</h3>
             <ul className="space-y-1.5 text-xs text-[var(--text-muted)]">
               <li>• Outcomes are perfectly correlated — both win or both lose</li>
-              <li>• Effectively 1 unique entry in a 477-person pool</li>
+              <li>• Effectively 1 unique entry in a 559-person pool</li>
               <li>• Probability of cashing: ~1.3% (same as a single entry)</li>
               <li>• Wastes the strategic advantage of having 2 entries</li>
               <li>• Only logical if you&apos;re extremely confident in a specific lineup</li>
@@ -106,7 +107,7 @@ export default function StrategyPage() {
         <div className="rounded-lg bg-[var(--background)] p-4 text-sm">
           <h4 className="mb-2 font-semibold">The Math</h4>
           <p className="mb-3 text-xs text-[var(--text-muted)]">
-            With 477 entries and top-4 payouts per tournament, each entry has roughly a 0.84%
+            With 559 entries and top-4 payouts per tournament, each entry has roughly a 0.84%
             chance of cashing in any given tournament. With two <em>identical</em> entries,
             your probability of cashing is still 0.84%. With two <em>independent</em> entries,
             the probability of at least one cashing is approximately 1 - (1 - 0.0084)² ≈ 1.67%.
@@ -253,16 +254,16 @@ export default function StrategyPage() {
 
       {/* Section C: Chalk vs Contrarian */}
       <SectionCard className="mb-6">
-        <h2 className="mb-1 text-xl font-bold">C. Chalk vs. Contrarian in a 477-Person Pool</h2>
+        <h2 className="mb-1 text-xl font-bold">C. Chalk vs. Contrarian in a 559-Person Pool</h2>
         <p className="mb-5 text-xs text-[var(--text-muted)]">
-          Top 4 paid out of 477 entries = ~0.8% cash rate. How does this affect strategy?
+          Top 4 paid out of 559 entries = ~0.8% cash rate. How does this affect strategy?
         </p>
 
         <div className="mb-6 space-y-4 text-sm leading-relaxed text-[var(--text-muted)]">
           <div className="rounded-lg bg-[var(--background)] p-4">
             <h3 className="mb-2 font-semibold text-white">The Core Insight: Ownership Leverage</h3>
             <p className="mb-3">
-              In a 477-person pool, if 60% of entries roster Scottie Scheffler in Tier 1, then Scheffler
+              In a 559-person pool, if 60% of entries roster Scottie Scheffler in Tier 1, then Scheffler
               winning <em>doesn&apos;t help you much</em> — roughly 180 other entries also have him. Your &ldquo;edge&rdquo;
               comes from the other 6 tiers. But if you have a 5%-owned golfer who finishes top 5, you&apos;re
               immediately differentiated from ~285 other entries.
@@ -296,7 +297,7 @@ export default function StrategyPage() {
                 <strong className="text-white">Large fields favor contrarian players.</strong>{" "}
                 A study of DraftKings golf GPPs with 10,000+ entries found that winning lineups
                 had an average ownership of 8-12% per player, compared to the field average of 15-20%.
-                In a 477-person pool, the same principle applies at a smaller scale.
+                In a 559-person pool, the same principle applies at a smaller scale.
               </li>
               <li>
                 <strong className="text-white">Chalk can still work — if you differentiate elsewhere.</strong>{" "}
@@ -364,7 +365,7 @@ export default function StrategyPage() {
           <div className="rounded-lg bg-[var(--background)] p-4">
             <h3 className="mb-2 font-semibold text-white">Payout Math</h3>
             <p className="mb-3">
-              With 477 entries and a ~$165K pot: ~$132K goes to individual tournament payouts (~$26.4K per event),
+              With 559 entries and a ~$165K pot: ~$132K goes to individual tournament payouts (~$26.4K per event),
               and ~$33K goes to cumulative season standings. The per-tournament payouts are where
               the big money is, but the cumulative payout is still significant.
             </p>
@@ -483,7 +484,7 @@ export default function StrategyPage() {
       <SectionCard className="mb-6">
         <h2 className="mb-1 text-xl font-bold">E. Payout Scenarios</h2>
         <p className="mb-5 text-xs text-[var(--text-muted)]">
-          All scenarios assume 477 entries, ~$165K total pot, 50/50 split between Jack &amp; Abe.
+          All scenarios assume 559 entries, ~$165K total pot, 50/50 split between Jack &amp; Abe.
           Investment: $575 for 2 entries ($287.50 each).
         </p>
 
@@ -684,7 +685,7 @@ export default function StrategyPage() {
             </table>
           </div>
           <p className="mt-3 text-[10px] text-[var(--text-muted)]">
-            Note: All amounts are estimates based on a ~$165K pot (477 entries at mixed pricing).
+            Note: All amounts are estimates based on a ~$165K pot (559 entries at mixed pricing).
             Actual payouts depend on final entry count and pool admin&apos;s payout structure.
             ROI calculated per person assuming $287.50 investment each (50% of $575 for 2 entries).
           </p>
@@ -702,7 +703,7 @@ export default function StrategyPage() {
             <p>
               <strong className="text-white">With 2 differentiated entries across 5 tournaments,
               you get 10 shots at the top 4.</strong>{" "}
-              Each shot has roughly a 0.84% chance (4/477). The probability of cashing at least once
+              Each shot has roughly a 0.84% chance (4/559). The probability of cashing at least once
               all season is approximately 1 - (1 - 0.0084)^10 ≈ 8.1%. Not high — but any single
               cash more than pays for the entire investment, and the upside scenarios are massive.
             </p>

@@ -1,38 +1,33 @@
 "use client";
 
 import { useState, useEffect, type ReactNode } from "react";
-import { verifyPassword } from "@/lib/debate-api";
+
+const SITE_PASSWORD = "majorspool2026";
 
 export default function PasswordGate({ children }: { children: ReactNode }) {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [verifying, setVerifying] = useState(false);
 
   useEffect(() => {
-    const stored = sessionStorage.getItem("debate-auth");
+    const stored = sessionStorage.getItem("pool-auth");
     if (stored === "true") {
       setAuthenticated(true);
     }
     setLoading(false);
   }, []);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(false);
-    setVerifying(true);
 
-    const valid = await verifyPassword(password);
-
-    if (valid) {
-      sessionStorage.setItem("debate-auth", "true");
-      sessionStorage.setItem("debate-password", password);
+    if (password === SITE_PASSWORD) {
+      sessionStorage.setItem("pool-auth", "true");
       setAuthenticated(true);
     } else {
       setError(true);
     }
-    setVerifying(false);
   }
 
   if (loading) return null;
@@ -43,9 +38,9 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-8 text-center">
           <div className="mb-3 text-4xl">&#9971;</div>
-          <h2 className="mb-1 text-lg font-bold text-white">Pick Intelligence</h2>
+          <h2 className="mb-1 text-lg font-bold text-white">Majors Pool 2026</h2>
           <p className="mb-6 text-sm text-[var(--text-muted)]">
-            Jack &amp; Abe&apos;s war room. Enter password to continue.
+            Jack &amp; Abe&apos;s strategy hub. Enter password to continue.
           </p>
           <input
             type="password"
@@ -63,10 +58,10 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
           )}
           <button
             type="submit"
-            disabled={verifying || !password}
+            disabled={!password}
             className="w-full rounded-lg bg-[var(--green-accent)] px-4 py-3 text-sm font-bold text-black transition-opacity hover:opacity-90 disabled:opacity-50"
           >
-            {verifying ? "Checking..." : "Enter"}
+            Enter
           </button>
         </div>
       </form>
