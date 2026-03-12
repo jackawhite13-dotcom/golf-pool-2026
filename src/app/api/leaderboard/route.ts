@@ -18,14 +18,6 @@ export interface LeaderboardPlayer {
 const ESPN_URL =
   "https://site.api.espn.com/apis/site/v2/sports/golf/pga/scoreboard";
 
-function parsePosition(pos: string | undefined): string {
-  if (!pos) return "--";
-  if (pos === "CUT" || pos === "MC") return "MC";
-  if (pos === "WD") return "WD";
-  if (pos === "DQ") return "DQ";
-  return pos;
-}
-
 function parseScoreToPar(val: unknown): { numeric: number | null; display: string } {
   if (val === undefined || val === null || val === "" || val === "--") {
     return { numeric: null, display: "--" };
@@ -37,48 +29,149 @@ function parseScoreToPar(val: unknown): { numeric: number | null; display: strin
   return { numeric: num, display: String(num) };
 }
 
-function parseStatus(competitor: Record<string, unknown>): "active" | "cut" | "wd" | "not_started" {
-  const statusObj = competitor.status as Record<string, unknown> | undefined;
-  if (!statusObj) return "not_started";
+/**
+ * Parse status from competitor object.
+ * ESPN sometimes has status.type.state, sometimes status is null.
+ * Fall back to checking score and linescores.
+ */
+function parseStatus(c: Record<string, unknown>): "active" | "cut" | "wd" | "not_started" {
+  // Try status.type first
+  const statusObj = c.status as Record<string, unknown> | undefined | null;
+  if (statusObj) {
+    const type = statusObj.type as Record<string, unknown> | undefined;
+    if (type) {
+      const name = (type.name as string || "").toLowerCase();
+      const state = (type.state as string || "").toLowerCase();
+      if (name === "cut" || name === "mc") return "cut";
+      if (name === "wd" || name === "withdrawn") return "wd";
+      if (state === "pre") return "not_started";
+      if (state === "in") return "active";
+      if (state === "post") return "active"; // finished round
+    }
+  }
 
-  const type = statusObj.type as Record<string, unknown> | undefined;
-  if (!type) return "not_started";
+  // No status object — infer from data
+  const linescores = c.linescores as Array<Record<string, unknown>> | undefined;
+  if (!linescores || linescores.length === 0) return "not_started";
 
-  const name = (type.name as string || "").toLowerCase();
-  const state = (type.state as string || "").toLowerCase();
+  // If they have hole-level data in any round, they're active
+  const latestRound = linescores[linescores.length - 1];
+  const holeScores = latestRound?.linescores as Array<unknown> | undefined;
+  if (holeScores && holeScores.length > 0) return "active";
 
-  if (name === "cut" || name === "mc") return "cut";
-  if (name === "wd" || name === "withdrawn") return "wd";
-  if (state === "pre") return "not_started";
-  return "active";
+  // If first round has hole data but second doesn't, still active (between rounds)
+  const firstRound = linescores[0];
+  const firstHoles = firstRound?.linescores as Array<unknown> | undefined;
+  if (firstHoles && firstHoles.length > 0) return "active";
+
+  // Has round-level scores but no hole data — could be pre-tournament
+  const score = c.score;
+  if (score !== undefined && score !== null && score !== "--" && score !== "") return "active";
+
+  return "not_started";
 }
 
-function parseThru(competitor: Record<string, unknown>): string {
-  const statusObj = competitor.status as Record<string, unknown> | undefined;
-  if (!statusObj) return "--";
+/**
+ * Parse how many holes through in current round.
+ * Uses hole-level linescores within the latest round.
+ */
+function parseThru(c: Record<string, unknown>): string {
+  // Try status.displayValue first
+  const statusObj = c.status as Record<string, unknown> | undefined | null;
+  if (statusObj) {
+    const displayValue = statusObj.displayValue as string | undefined;
+    if (displayValue) return displayValue;
+    const period = statusObj.period as number | undefined;
+    if (period === 18) return "F";
+    if (period && period > 0) return String(period);
+  }
 
-  const type = statusObj.type as Record<string, unknown> | undefined;
-  const state = (type?.state as string || "").toLowerCase();
+  // Parse from linescores
+  const linescores = c.linescores as Array<Record<string, unknown>> | undefined;
+  if (!linescores || linescores.length === 0) return "--";
 
-  if (state === "pre") return "--";
+  // Find the latest round with hole-level data
+  for (let i = linescores.length - 1; i >= 0; i--) {
+    const round = linescores[i];
+    const holeScores = round?.linescores as Array<unknown> | undefined;
+    if (holeScores && holeScores.length > 0) {
+      if (holeScores.length >= 18) return "F";
+      return String(holeScores.length);
+    }
+  }
 
-  const period = statusObj.period as number | undefined;
-  const displayValue = statusObj.displayValue as string | undefined;
+  // Has round-level scores but no hole data — likely finished or between rounds
+  const score = c.score;
+  if (score !== undefined && score !== null && score !== "--" && score !== "") {
+    // Check if we have completed round scores
+    const firstRound = linescores[0];
+    const firstRoundDisplay = firstRound?.displayValue as string | undefined;
+    if (firstRoundDisplay && firstRoundDisplay !== "--") return "F";
+  }
 
-  if (displayValue) return displayValue;
-  if (period === 18) return "F";
-  if (period) return String(period);
   return "--";
 }
 
-function parseToday(competitor: Record<string, unknown>): string {
-  const linescores = competitor.linescores as Array<Record<string, unknown>> | undefined;
+/**
+ * Parse current round score.
+ * Looks at the latest round's displayValue.
+ */
+function parseToday(c: Record<string, unknown>): string {
+  const linescores = c.linescores as Array<Record<string, unknown>> | undefined;
   if (!linescores || linescores.length === 0) return "--";
 
-  const currentRound = linescores[linescores.length - 1];
-  const val = currentRound?.value as number | undefined;
-  if (val === undefined || val === null) return "--";
-  return String(val);
+  // Find the latest round with actual data
+  for (let i = linescores.length - 1; i >= 0; i--) {
+    const round = linescores[i];
+    const displayValue = round?.displayValue as string | undefined;
+    if (displayValue && displayValue !== "--") return displayValue;
+    const val = round?.value as number | undefined;
+    if (val !== undefined && val !== null) return String(val);
+  }
+
+  return "--";
+}
+
+/**
+ * Calculate positions from sorted order.
+ * ESPN sorts competitors by score but doesn't always provide rankDisplayValue.
+ * We calculate ties (T1, T2, etc.) from the sorted scores.
+ */
+function calculatePositions(players: Omit<LeaderboardPlayer, "position">[]): LeaderboardPlayer[] {
+  // Group by score to detect ties
+  let pos = 1;
+  const result: LeaderboardPlayer[] = [];
+
+  for (let i = 0; i < players.length; i++) {
+    const player = players[i];
+    // Count how many players share this score
+    let tieCount = 0;
+    if (player.scoreToPar !== null) {
+      for (let j = 0; j < players.length; j++) {
+        if (players[j].scoreToPar === player.scoreToPar) tieCount++;
+      }
+    }
+
+    let position: string;
+    if (player.scoreToPar === null) {
+      position = "--";
+    } else if (player.status === "cut") {
+      position = "MC";
+    } else if (player.status === "wd") {
+      position = "WD";
+    } else {
+      position = tieCount > 1 ? `T${pos}` : String(pos);
+    }
+
+    result.push({ ...player, position });
+
+    // Advance position counter
+    if (i < players.length - 1 && players[i + 1].scoreToPar !== player.scoreToPar) {
+      pos = i + 2; // Jump past ties
+    }
+  }
+
+  return result;
 }
 
 export async function GET() {
@@ -129,21 +222,24 @@ export async function GET() {
     // Check tournament status
     const compStatus = competition.status as Record<string, unknown> | undefined;
     const compStatusType = compStatus?.type as Record<string, unknown> | undefined;
-    const tournamentState = (compStatusType?.state as string || "pre").toLowerCase();
+    const tournamentState = (compStatusType?.state as string || "in").toLowerCase();
 
-    const players: LeaderboardPlayer[] = competitors.map((c) => {
+    // Parse players without positions first (ESPN already sorts by score)
+    const playersWithoutPos: Omit<LeaderboardPlayer, "position">[] = competitors.map((c) => {
       const athlete = c.athlete as Record<string, unknown> | undefined;
       const displayName = (athlete?.displayName as string) || "";
       const firstName = (athlete?.firstName as string) || "";
       const lastName = (athlete?.lastName as string) || "";
 
+      // Use ESPN's rankDisplayValue if available, otherwise we'll calculate
+      const espnPosition = c.rankDisplayValue as string | undefined;
       const scoreParsed = parseScoreToPar(c.score);
 
       return {
         name: displayName,
         firstName,
         lastName,
-        position: parsePosition(c.rankDisplayValue as string | undefined),
+        _espnPosition: espnPosition, // temporary, used below
         scoreToPar: scoreParsed.numeric,
         scoreToParDisplay: scoreParsed.display,
         today: parseToday(c),
@@ -151,6 +247,39 @@ export async function GET() {
         status: parseStatus(c),
       };
     });
+
+    // Calculate positions — use ESPN's if available, otherwise compute from scores
+    const hasEspnPositions = playersWithoutPos.some(
+      (p) => {
+        const ep = (p as Record<string, unknown>)._espnPosition as string | undefined;
+        return ep && ep !== "--" && ep !== "";
+      }
+    );
+
+    let players: LeaderboardPlayer[];
+    if (hasEspnPositions) {
+      players = playersWithoutPos.map((p) => {
+        const ep = (p as Record<string, unknown>)._espnPosition as string | undefined;
+        let position = "--";
+        if (ep && ep !== "--") {
+          if (ep === "CUT" || ep === "MC") position = "MC";
+          else if (ep === "WD") position = "WD";
+          else if (ep === "DQ") position = "DQ";
+          else position = ep;
+        }
+        const { ...rest } = p;
+        delete (rest as Record<string, unknown>)._espnPosition;
+        return { ...rest, position };
+      });
+    } else {
+      // Remove temp field and calculate
+      const cleaned = playersWithoutPos.map((p) => {
+        const { ...rest } = p;
+        delete (rest as Record<string, unknown>)._espnPosition;
+        return rest;
+      });
+      players = calculatePositions(cleaned);
+    }
 
     return NextResponse.json({
       players,

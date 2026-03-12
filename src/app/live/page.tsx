@@ -116,7 +116,7 @@ function positionNumber(pos: string): number | null {
 
 // ── EXP indicator — different logic for chalk vs contrarian ───────────
 function ExpIndicator({ player, role }: { player: LeaderboardPlayer | null; role: "chalk" | "contrarian" }) {
-  if (!player || player.thru === "--" || player.thru === "" || player.thru === "0") {
+  if (!player || player.position === "--" || player.position === "") {
     return <span className="w-8 text-center font-mono text-[var(--text-muted)]">--</span>;
   }
 
@@ -383,8 +383,8 @@ function PickEditor({
   );
 }
 
-// ── Mini leaderboard ───────────────────────────────────────────────────
-function MiniLeaderboard({
+// ── Full field leaderboard ─────────────────────────────────────────────
+function FullLeaderboard({
   players,
   jackPicks,
   abePicks,
@@ -393,12 +393,8 @@ function MiniLeaderboard({
   jackPicks: Pick[];
   abePicks: Pick[];
 }) {
+  const [expanded, setExpanded] = useState(false);
   if (players.length === 0) return null;
-
-  const allPickLastNames = new Set([
-    ...jackPicks.map((p) => p.lastName.toLowerCase()),
-    ...abePicks.map((p) => p.lastName.toLowerCase()),
-  ]);
 
   function getTeam(p: LeaderboardPlayer): "jack" | "abe" | null {
     const ln = p.lastName.toLowerCase();
@@ -426,30 +422,27 @@ function MiniLeaderboard({
     return null;
   }
 
-  const top20 = players.slice(0, 20);
-  const outsideTop20 = players.slice(20).filter((p) =>
-    allPickLastNames.has(p.lastName.toLowerCase())
-  );
+  const visiblePlayers = expanded ? players : players.slice(0, 40);
 
-  function leaderboardRow(p: LeaderboardPlayer, i: number, keyPrefix = "") {
+  function leaderboardRow(p: LeaderboardPlayer, i: number) {
     const team = getTeam(p);
     const rowBg =
       team === "jack"
-        ? "bg-green-900/30 -mx-2 px-2 rounded border-l-2 border-l-[var(--green-accent)]"
+        ? "bg-blue-900/30 -mx-2 px-2 rounded border-l-2 border-l-blue-400"
         : team === "abe"
         ? "bg-amber-900/20 -mx-2 px-2 rounded border-l-2 border-l-amber-400"
         : "";
     const nameColor =
-      team === "jack" ? "text-[var(--green-accent)]" : team === "abe" ? "text-amber-400" : "";
+      team === "jack" ? "text-blue-400" : team === "abe" ? "text-amber-400" : "";
 
     return (
       <div
-        key={`${keyPrefix}${p.lastName}-${i}`}
+        key={`${p.lastName}-${p.firstName}-${i}`}
         className={`grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_2.5rem] gap-2 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 sm:grid-cols-[3rem_1fr_3rem_3rem_3rem] ${rowBg}`}
       >
         <span className="font-mono text-[var(--text-muted)]">{p.position}</span>
         <span className={`flex items-center gap-1.5 truncate font-medium ${nameColor}`}>
-          {team === "jack" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-[var(--green-accent)]" />}
+          {team === "jack" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-blue-400" />}
           {team === "abe" && <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-amber-400" />}
           {p.name}
         </span>
@@ -466,10 +459,13 @@ function MiniLeaderboard({
   return (
     <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-4 sm:p-5">
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-base font-bold sm:text-lg">Full Field Leaderboard</h2>
+        <div>
+          <h2 className="text-base font-bold sm:text-lg">Full Field Leaderboard</h2>
+          <p className="text-[10px] text-[var(--text-muted)]">{players.length} players</p>
+        </div>
         <div className="flex items-center gap-3 text-[10px] text-[var(--text-muted)]">
           <span className="flex items-center gap-1">
-            <span className="inline-block h-2 w-2 rounded-full bg-[var(--green-accent)]" /> Jack
+            <span className="inline-block h-2 w-2 rounded-full bg-blue-400" /> Jack
           </span>
           <span className="flex items-center gap-1">
             <span className="inline-block h-2 w-2 rounded-full bg-amber-400" /> Abe
@@ -485,16 +481,23 @@ function MiniLeaderboard({
         <span className="text-right">Thru</span>
       </div>
 
-      {top20.map((p, i) => leaderboardRow(p, i))}
+      {visiblePlayers.map((p, i) => leaderboardRow(p, i))}
 
-      {outsideTop20.length > 0 && (
-        <>
-          <div className="my-2 border-t border-dashed border-[var(--card-border)]" />
-          <p className="mb-1 text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
-            Our picks outside top 20
-          </p>
-          {outsideTop20.map((p, i) => leaderboardRow(p, i, "outside-"))}
-        </>
+      {!expanded && players.length > 40 && (
+        <button
+          onClick={() => setExpanded(true)}
+          className="mt-3 w-full rounded-lg border border-[var(--card-border)] py-2 text-xs font-medium text-[var(--text-muted)] hover:border-[var(--green-accent)]/40 hover:text-white"
+        >
+          Show all {players.length} players
+        </button>
+      )}
+      {expanded && players.length > 40 && (
+        <button
+          onClick={() => setExpanded(false)}
+          className="mt-3 w-full rounded-lg border border-[var(--card-border)] py-2 text-xs font-medium text-[var(--text-muted)] hover:border-[var(--green-accent)]/40 hover:text-white"
+        >
+          Show top 40
+        </button>
       )}
     </div>
   );
@@ -674,14 +677,14 @@ export default function LiveScoringPage() {
         </div>
       )}
 
-      {/* Team cards */}
+      {/* Team cards — only when picks are set */}
       {!editing && hasPicks && data && !error && (
         <>
           {/* Team totals summary bar */}
           {players.length > 0 && !tournamentNotStarted && jackPicks.length > 0 && abePicks.length > 0 && (
             <div className="mb-4 grid grid-cols-2 gap-4 sm:mb-6">
               <div className={`rounded-lg border p-3 text-center ${
-                jackLeading || tied ? "border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
+                jackLeading || tied ? "border-blue-400/40 bg-blue-950/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
               }`}>
                 <p className="text-xs text-[var(--text-muted)]">Jack &middot; The Floor</p>
                 <p className={`text-2xl font-bold font-mono ${
@@ -689,7 +692,7 @@ export default function LiveScoringPage() {
                 }`}>{formatTotal(jackTotal.total)}</p>
               </div>
               <div className={`rounded-lg border p-3 text-center ${
-                abeLeading || tied ? "border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
+                abeLeading || tied ? "border-amber-400/40 bg-amber-950/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
               }`}>
                 <p className="text-xs text-[var(--text-muted)]">Abe &middot; The Ceiling</p>
                 <p className={`text-2xl font-bold font-mono ${
@@ -724,7 +727,7 @@ export default function LiveScoringPage() {
           {/* EXP legend */}
           <div className="mb-6 rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3">
             <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
-              EXP Column — vs. AI Pick Target
+              EXP Column — vs. Expected Target
             </p>
             <p className="mt-1 text-xs text-[var(--text-muted)]">
               Jack (chalk): top 10 = exceeding, top 25 = on target, outside top 25 = below.
@@ -732,12 +735,12 @@ export default function LiveScoringPage() {
               MC/WD = below for both.
             </p>
           </div>
-
-          {/* Full field leaderboard */}
-          {players.length > 0 && !tournamentNotStarted && (
-            <MiniLeaderboard players={players} jackPicks={jackPicks} abePicks={abePicks} />
-          )}
         </>
+      )}
+
+      {/* Full field leaderboard — always shows when data available */}
+      {!editing && data && !error && players.length > 0 && !tournamentNotStarted && (
+        <FullLeaderboard players={players} jackPicks={jackPicks} abePicks={abePicks} />
       )}
     </div>
   );
