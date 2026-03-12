@@ -20,6 +20,28 @@ interface SavedPicks {
 const TIER_LABELS = tierData.map((t) => t.label.replace("Tier ", ""));
 const STORAGE_KEY = "majorspool-picks";
 
+// ── Default picks (Players Championship) ──────────────────────────────
+const DEFAULT_PICKS: SavedPicks = {
+  jack: {
+    A: "Scheffler, Scottie",
+    B: "Matsuyama, Hideki",
+    C: "Bridgeman, Jacob",
+    D: "Rose, Justin",
+    E: "Coody, Pierceson",
+    F: "Hisatsune, Ryo",
+    G: "Rodgers, Patrick",
+  },
+  abe: {
+    A: "Kim, Si Woo",
+    B: "Bhatia, Akshay",
+    C: "Straka, Sepp",
+    D: "Hojgaard, Nicolai",
+    E: "Conners, Corey",
+    F: "Castillo, Ricky",
+    G: "Hoge, Tom",
+  },
+};
+
 // ── Tier-scaled EXP targets ───────────────────────────────────────────
 const TIER_TARGETS: Record<string, { green: number; gray: number }> = {
   A: { green: 5, gray: 10 },
@@ -42,15 +64,15 @@ function golferToPick(golferName: string, tierLabel: string): Pick {
   return { lastName, firstName, tier: tierLabel, golferName };
 }
 
-// ── Load/save picks from localStorage ─────────────────────────────────
-function loadPicks(): SavedPicks | null {
-  if (typeof window === "undefined") return null;
+// ── Load/save picks from localStorage (falls back to defaults) ────────
+function loadPicks(): SavedPicks {
+  if (typeof window === "undefined") return DEFAULT_PICKS;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
+    if (!raw) return DEFAULT_PICKS;
     return JSON.parse(raw);
   } catch {
-    return null;
+    return DEFAULT_PICKS;
   }
 }
 
@@ -338,7 +360,7 @@ function PickEditor({
   onSave,
   onCancel,
 }: {
-  saved: SavedPicks | null;
+  saved: SavedPicks;
   onSave: (picks: SavedPicks) => void;
   onCancel: () => void;
 }) {
@@ -598,7 +620,7 @@ export default function LiveScoringPage() {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [editing, setEditing] = useState(false);
-  const [savedPicks, setSavedPicks] = useState<SavedPicks | null>(null);
+  const [savedPicks, setSavedPicks] = useState<SavedPicks>(DEFAULT_PICKS);
   const [picksLoaded, setPicksLoaded] = useState(false);
 
   // Load picks from localStorage on mount
@@ -780,7 +802,7 @@ export default function LiveScoringPage() {
               <div className={`rounded-lg border p-3 text-center ${
                 jackLeading || tied ? "border-purple-400/40 bg-purple-950/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
               }`}>
-                <p className="text-xs text-[var(--text-muted)]">Jack &middot; The Floor</p>
+                <p className="text-xs text-[var(--text-muted)]">Jack &middot; Chalk</p>
                 <p className={`text-2xl font-bold font-mono ${
                   jackTotal.total < 0 ? "text-[var(--green-accent)]" : jackTotal.total > 0 ? "text-red-400" : "text-white"
                 }`}>{formatTotal(jackTotal.total)}</p>
@@ -788,7 +810,7 @@ export default function LiveScoringPage() {
               <div className={`rounded-lg border p-3 text-center ${
                 abeLeading || tied ? "border-amber-400/40 bg-amber-950/30" : "border-[var(--card-border)] bg-[var(--card-bg)]"
               }`}>
-                <p className="text-xs text-[var(--text-muted)]">Abe &middot; The Ceiling</p>
+                <p className="text-xs text-[var(--text-muted)]">Abe &middot; Contrarian</p>
                 <p className={`text-2xl font-bold font-mono ${
                   abeTotal.total < 0 ? "text-[var(--green-accent)]" : abeTotal.total > 0 ? "text-red-400" : "text-white"
                 }`}>{formatTotal(abeTotal.total)}</p>
@@ -800,7 +822,7 @@ export default function LiveScoringPage() {
           <div className="mb-6 grid gap-4 sm:mb-8 sm:grid-cols-2 sm:gap-6">
             <TeamCard
               title="Jack's Team"
-              subtitle="Chalk / The Floor"
+              subtitle="Chalk"
               picks={jackPicks}
               players={players}
               total={jackTotal}
@@ -808,7 +830,7 @@ export default function LiveScoringPage() {
             />
             <TeamCard
               title="Abe's Team"
-              subtitle="Contrarian / The Ceiling"
+              subtitle="Contrarian"
               picks={abePicks}
               players={players}
               total={abeTotal}
