@@ -2,7 +2,17 @@
 
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { tiers as tierData } from "@/data/tiers";
+import entriesData from "@/data/entries.json";
 import type { LeaderboardPlayer } from "@/app/api/leaderboard/route";
+import {
+  calculatePoolPoints,
+  scoreEntries,
+  findOverlap,
+  type Entry,
+  type ScoredEntry,
+  buildScenario,
+  type ScenarioComparison,
+} from "@/lib/poolPoints";
 
 // ── Types ─────────────────────────────────────────────────────────────
 interface Pick {
@@ -224,9 +234,11 @@ function StatusDot({ status }: { status: string }) {
 function PlayerRow({
   pick,
   player,
+  poolPts,
 }: {
   pick: Pick;
   player: LeaderboardPlayer | null;
+  poolPts?: number;
 }) {
   const thru = player ? thruDisplay(player) : null;
 
@@ -251,9 +263,10 @@ function PlayerRow({
                 player.scoreToPar !== null && player.scoreToPar < 0 ? "text-[var(--green-accent)]"
                 : player.scoreToPar !== null && player.scoreToPar > 0 ? "text-red-400" : "text-[var(--foreground)]"
               }`}>{player.scoreToParDisplay}</span></span>
-              <span>Rnd <span className="font-mono text-[var(--foreground)]">{player.today}</span></span>
               <span>Thru <span className={`font-mono ${thru?.isTeeTime ? "text-[var(--text-muted)]" : "text-[var(--foreground)]"}`}>{thru?.text}</span></span>
-              <ExpIndicator player={player} tier={pick.tier} />
+              {poolPts !== undefined && (
+                <span>Pts <span className="font-mono font-semibold text-[var(--green-accent)]">{poolPts}</span></span>
+              )}
             </div>
           ) : (
             <span className="mt-1 block text-[10px] text-[var(--text-muted)]">--</span>
@@ -283,6 +296,9 @@ function PlayerRow({
             }`}>{player.scoreToParDisplay}</span>
             <span className="w-8 font-mono text-[var(--text-muted)]">{player.today}</span>
             <span className={`w-8 font-mono ${thru?.isTeeTime ? "text-[var(--text-muted)]" : "text-[var(--text-muted)]"}`}>{thru?.text}</span>
+            {poolPts !== undefined && (
+              <span className="w-8 font-mono font-semibold text-[var(--green-accent)]">{poolPts}</span>
+            )}
             <ExpIndicator player={player} tier={pick.tier} />
           </div>
         ) : (
@@ -301,6 +317,10 @@ function TeamCard({
   players,
   total,
   isLeading,
+  poolPointsMap,
+  teamPoolTotal,
+  poolRank,
+  poolEntries,
 }: {
   title: string;
   subtitle: string;
@@ -308,6 +328,10 @@ function TeamCard({
   players: LeaderboardPlayer[];
   total: { total: number; allFound: boolean };
   isLeading: boolean;
+  poolPointsMap?: Map<string, number>;
+  teamPoolTotal?: number;
+  poolRank?: number;
+  poolEntries?: number;
 }) {
   if (picks.length === 0) {
     return (
@@ -320,6 +344,27 @@ function TeamCard({
         </div>
       </div>
     );
+  }
+
+  // Look up pool points for each pick
+  function getPoolPts(pick: Pick): number | undefined {
+    if (!poolPointsMap) return undefined;
+    const fullName = `${pick.firstName} ${pick.lastName}`;
+    const key = fullName
+      .replace(/ø/g, "o").replace(/Ø/g, "O")
+      .replace(/æ/g, "ae").replace(/Æ/g, "AE")
+      .replace(/ð/g, "d").replace(/Ð/g, "D")
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[.\-']/g, "")
+      .trim();
+    if (poolPointsMap.has(key)) return poolPointsMap.get(key)!;
+    // Try last name only
+    const lastName = pick.lastName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[.\-']/g, "");
+    for (const [k, v] of poolPointsMap) {
+      if (k.includes(lastName)) return v;
+    }
+    return undefined;
   }
 
   return (
@@ -337,7 +382,17 @@ function TeamCard({
           }`}>
             {players.length > 0 ? formatTotal(total.total) : "--"}
           </div>
-          {isLeading && players.length > 0 && (
+          {teamPoolTotal !== undefined && players.length > 0 && (
+            <div className="mt-0.5">
+              <span className="text-xs font-bold text-[var(--green-accent)]">{teamPoolTotal} pts</span>
+              {poolRank !== undefined && poolEntries !== undefined && (
+                <span className="ml-1 text-[10px] text-[var(--text-muted)]">
+                  ({poolRank}{poolRank === 1 ? "st" : poolRank === 2 ? "nd" : poolRank === 3 ? "rd" : "th"} of {poolEntries})
+                </span>
+              )}
+            </div>
+          )}
+          {isLeading && players.length > 0 && !teamPoolTotal && (
             <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--green-accent)]">Leading</span>
           )}
         </div>
@@ -352,6 +407,7 @@ function TeamCard({
           <span className="w-8">Par</span>
           <span className="w-8">Rnd</span>
           <span className="w-8">Thru</span>
+          {poolPointsMap && <span className="w-8">Pts</span>}
           <span className="w-8" title="vs. Tier Target">Exp</span>
         </div>
       </div>
@@ -361,6 +417,7 @@ function TeamCard({
           key={`${pick.lastName}-${pick.tier}`}
           pick={pick}
           player={matchPlayer(pick, players)}
+          poolPts={getPoolPts(pick)}
         />
       ))}
     </div>
@@ -621,6 +678,253 @@ function FullLeaderboard({
   );
 }
 
+// ── Scenario Section (wraps tool with Jack/Abe toggle) ────────────────
+function ScenarioSection({
+  scored,
+  jackEntry,
+  abeEntry,
+  madeCutCount,
+}: {
+  scored: ScoredEntry[];
+  jackEntry: ScoredEntry | null;
+  abeEntry: ScoredEntry | null;
+  madeCutCount: number;
+}) {
+  const [perspective, setPerspective] = useState<"jack" | "abe">("jack");
+  const activeEntry = perspective === "jack" ? jackEntry : abeEntry;
+
+  if (!activeEntry) return null;
+
+  return (
+    <div className="mb-6">
+      {/* Toggle between Jack and Abe */}
+      {jackEntry && abeEntry && (
+        <div className="mb-3 flex gap-2">
+          <button
+            onClick={() => setPerspective("jack")}
+            className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+              perspective === "jack"
+                ? "border-purple-400 bg-purple-950/40 text-purple-400"
+                : "border-[var(--card-border)] text-[var(--text-muted)] hover:text-white"
+            }`}
+          >
+            Jack&apos;s View
+          </button>
+          <button
+            onClick={() => setPerspective("abe")}
+            className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+              perspective === "abe"
+                ? "border-amber-400 bg-amber-950/40 text-amber-400"
+                : "border-[var(--card-border)] text-[var(--text-muted)] hover:text-white"
+            }`}
+          >
+            Abe&apos;s View
+          </button>
+        </div>
+      )}
+      <ScenarioTool
+        scored={scored}
+        yourEntry={activeEntry}
+        madeCutCount={madeCutCount}
+      />
+    </div>
+  );
+}
+
+// ── Scenario Tool (All Entries Ahead) ─────────────────────────────────
+function ScenarioTool({
+  scored,
+  yourEntry,
+  madeCutCount,
+}: {
+  scored: ScoredEntry[];
+  yourEntry: ScoredEntry;
+  madeCutCount: number;
+}) {
+  const [expandedTeam, setExpandedTeam] = useState<string | null>(null);
+
+  // All entries ahead of (or tied with) yours
+  const entriesAhead = scored.filter(
+    (e) => e.team !== yourEntry.team && e.calculatedPoints >= yourEntry.calculatedPoints
+  );
+
+  // Build scenarios for all entries ahead
+  const scenarios = useMemo(() => {
+    return entriesAhead.map((entry) => ({
+      entry,
+      scenario: buildScenario(yourEntry, entry),
+    }));
+  }, [entriesAhead, yourEntry]);
+
+  // Sort by unique gap (hardest to pass first)
+  const sorted = [...scenarios].sort((a, b) => b.scenario.uniqueGap - a.scenario.uniqueGap);
+
+  // Summary stats
+  const alreadyAhead = sorted.filter((s) => s.scenario.uniqueGap <= 0).length;
+  const hardestToPass = sorted[0];
+  const maxUniqueGap = hardestToPass?.scenario.uniqueGap ?? 0;
+
+  if (entriesAhead.length === 0) {
+    return (
+      <div className="rounded-xl border border-[var(--green-accent)]/30 bg-[var(--green-dark)]/30 p-4 sm:p-5">
+        <h2 className="text-base font-bold sm:text-lg">What Do We Need?</h2>
+        <p className="mt-2 text-sm font-semibold text-[var(--green-accent)]">
+          You&apos;re in first place! No entries to pass.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-4 sm:p-5">
+      <div className="mb-4">
+        <h2 className="text-base font-bold sm:text-lg">What Do We Need?</h2>
+        <p className="text-[10px] text-[var(--text-muted)]">
+          Every entry ahead of you — sorted by hardest to pass. Shared golfers cancel out; only unique gaps matter.
+        </p>
+      </div>
+
+      {/* Summary cards */}
+      <div className="mb-4 grid grid-cols-3 gap-3">
+        <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
+          <p className="text-[10px] text-[var(--text-muted)]">Entries Ahead</p>
+          <p className="text-lg font-bold font-mono text-red-400">{entriesAhead.length}</p>
+        </div>
+        <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
+          <p className="text-[10px] text-[var(--text-muted)]">Already Winning</p>
+          <p className="text-lg font-bold font-mono text-[var(--green-accent)]">{alreadyAhead}</p>
+          <p className="text-[9px] text-[var(--text-muted)]">on unique golfers</p>
+        </div>
+        <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
+          <p className="text-[10px] text-[var(--text-muted)]">Hardest Gap</p>
+          <p className={`text-lg font-bold font-mono ${maxUniqueGap <= 0 ? "text-[var(--green-accent)]" : "text-red-400"}`}>
+            {maxUniqueGap <= 0 ? `+${Math.abs(maxUniqueGap)}` : `-${maxUniqueGap}`}
+          </p>
+          <p className="text-[9px] text-[var(--text-muted)]">unique pts</p>
+        </div>
+      </div>
+
+      {/* Explanation */}
+      <div className="mb-4 rounded-lg border border-amber-900/30 bg-amber-950/20 px-3 py-2">
+        <p className="text-xs text-amber-400/90">
+          To finish #{yourEntry.calculatedRank > 1 ? "1" : yourEntry.calculatedRank}, your unique golfers need to outperform <strong>every</strong> entry&apos;s unique golfers — not just one.
+          {maxUniqueGap > 0 && hardestToPass && (
+            <> The toughest gap is <strong>{maxUniqueGap} pts</strong> vs. {hardestToPass.entry.team}.</>
+          )}
+          {alreadyAhead > 0 && (
+            <> You&apos;re already winning the unique golfer battle against <strong>{alreadyAhead}</strong> of {entriesAhead.length} entries ahead.</>
+          )}
+        </p>
+      </div>
+
+      {/* All entries ahead — scrollable list */}
+      <div className="space-y-1 max-h-[600px] overflow-y-auto">
+        <div className="mb-1 grid grid-cols-[2rem_1fr_3.5rem_3rem_3.5rem_3.5rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)] px-3">
+          <span>Rk</span>
+          <span>Team</span>
+          <span className="text-right">Gap</span>
+          <span className="text-right">Shared</span>
+          <span className="text-right">U-Gap</span>
+          <span></span>
+        </div>
+
+        {sorted.map(({ entry, scenario }) => {
+          const isExpanded = expandedTeam === entry.team;
+          const uniqueGapColor = scenario.uniqueGap <= 0 ? "text-[var(--green-accent)]" : "text-red-400";
+          const uniqueGapDisplay = scenario.uniqueGap <= 0 ? `+${Math.abs(scenario.uniqueGap)}` : `-${scenario.uniqueGap}`;
+
+          return (
+            <div key={entry.team}>
+              <button
+                onClick={() => setExpandedTeam(isExpanded ? null : entry.team)}
+                className={`w-full grid grid-cols-[2rem_1fr_3.5rem_3rem_3.5rem_3.5rem] gap-2 items-center rounded-lg px-3 py-2 text-xs transition-colors hover:bg-[var(--background)] ${
+                  isExpanded ? "bg-[var(--background)] border border-[var(--card-border)]" : ""
+                }`}
+              >
+                <span className="font-mono text-[var(--text-muted)]">{entry.calculatedRank}</span>
+                <span className="truncate text-left font-medium">{entry.team}</span>
+                <span className="text-right font-mono text-[var(--text-muted)]">-{scenario.pointGap}</span>
+                <span className="text-right font-mono text-[var(--text-muted)]">{scenario.sharedGolfers.length}</span>
+                <span className={`text-right font-mono font-semibold ${uniqueGapColor}`}>{uniqueGapDisplay}</span>
+                <span className="text-right text-[var(--text-muted)]">{isExpanded ? "▾" : "▸"}</span>
+              </button>
+
+              {isExpanded && (
+                <div className="mx-3 mb-2 rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3">
+                  {/* Shared golfers */}
+                  {scenario.sharedGolfers.length > 0 && (
+                    <div className="mb-3">
+                      <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                        Shared ({scenario.sharedGolfers.length}) — cancel out
+                      </p>
+                      <div className="flex flex-wrap gap-1">
+                        {scenario.sharedGolfers.map((g) => (
+                          <span key={g.name} className="rounded bg-[var(--card-bg)] px-2 py-0.5 text-[10px] text-[var(--text-muted)]">
+                            {g.name} ({g.position}, {g.points}pts)
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Head to head */}
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-purple-400">
+                        Your Unique — {scenario.yourUniquePoints} pts
+                      </p>
+                      <div className="space-y-0.5">
+                        {scenario.yourUniqueGolfers.map((g) => (
+                          <div key={g.name} className="flex items-center justify-between rounded border border-purple-400/20 bg-purple-950/20 px-2 py-1 text-[11px]">
+                            <span className="text-purple-300">{g.name}</span>
+                            <span className="font-mono text-purple-400">{g.currentPosition} · {g.currentPoints}pts</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-red-400">
+                        Their Unique — {scenario.theirUniquePoints} pts
+                      </p>
+                      <div className="space-y-0.5">
+                        {scenario.theirUniqueGolfers.map((g) => (
+                          <div key={g.name} className="flex items-center justify-between rounded border border-red-400/20 bg-red-950/20 px-2 py-1 text-[11px]">
+                            <span className="text-red-300">{g.name}</span>
+                            <span className="font-mono text-red-400">{g.currentPosition} · {g.currentPoints}pts</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom line */}
+                  <div className={`mt-3 rounded px-3 py-2 text-xs ${
+                    scenario.uniqueGap <= 0
+                      ? "border border-[var(--green-accent)]/30 bg-[var(--green-dark)]/30 text-[var(--green-accent)]"
+                      : "border border-red-400/20 bg-red-950/20 text-[var(--text-muted)]"
+                  }`}>
+                    {scenario.uniqueGap <= 0 ? (
+                      <span className="font-semibold">Already winning by {Math.abs(scenario.uniqueGap)} pts on unique golfers!</span>
+                    ) : (
+                      <span>
+                        Need <strong className="text-white">{scenario.uniqueGap} pts</strong> combined gain on unique golfers
+                        (~{Math.ceil(scenario.uniqueGap / Math.max(scenario.yourUniqueGolfers.length, 1))} per golfer avg).
+                        {scenario.theirUniqueGolfers.length > 0 && scenario.theirUniqueGolfers[scenario.theirUniqueGolfers.length - 1].currentPoints > 0 && (
+                          <> If {scenario.theirUniqueGolfers[scenario.theirUniqueGolfers.length - 1].name} misses cut, that saves {scenario.theirUniqueGolfers[scenario.theirUniqueGolfers.length - 1].currentPoints} pts.</>
+                        )}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ── Main page ──────────────────────────────────────────────────────────
 interface ApiResponse {
   players: LeaderboardPlayer[];
@@ -688,6 +992,35 @@ export default function LiveScoringPage() {
 
   const tournamentNotStarted =
     data?.status === "pre" || data?.status === "no_tournament";
+
+  // ── Pool points calculation ──────────────────────────────────────────
+  const poolData = useMemo(() => {
+    if (players.length === 0) return null;
+    const { pointsMap, positionMap, madeCutCount, cutHasHappened, projectedCutScore } = calculatePoolPoints(players);
+    const entries = entriesData as Entry[];
+    const scored = scoreEntries(entries, pointsMap, positionMap);
+
+    // Find Jack and Abe entries
+    const jackEntry = scored.find((e) => e.team === "team jaw") || null;
+    const abeEntry = scored.find((e) => e.team === "Watman") || null;
+
+    // Overlap analysis
+    const jackOverlap = jackEntry ? findOverlap(jackEntry, scored, 20) : [];
+    const abeOverlap = abeEntry ? findOverlap(abeEntry, scored, 20) : [];
+
+    return {
+      pointsMap,
+      scored,
+      jackEntry,
+      abeEntry,
+      jackOverlap,
+      abeOverlap,
+      madeCutCount,
+      cutHasHappened,
+      projectedCutScore,
+      totalEntries: entries.length,
+    };
+  }, [players]);
 
   // Build subtitle with round info
   const tournamentName = data?.tournamentName || "The Players Championship";
@@ -844,6 +1177,10 @@ export default function LiveScoringPage() {
               players={players}
               total={jackTotal}
               isLeading={jackLeading && !tied && players.length > 0 && !tournamentNotStarted}
+              poolPointsMap={poolData?.pointsMap}
+              teamPoolTotal={poolData?.jackEntry?.calculatedPoints}
+              poolRank={poolData?.jackEntry?.calculatedRank}
+              poolEntries={poolData?.totalEntries}
             />
             <TeamCard
               title="Abe's Team"
@@ -852,18 +1189,119 @@ export default function LiveScoringPage() {
               players={players}
               total={abeTotal}
               isLeading={abeLeading && !tied && players.length > 0 && !tournamentNotStarted}
+              poolPointsMap={poolData?.pointsMap}
+              teamPoolTotal={poolData?.abeEntry?.calculatedPoints}
+              poolRank={poolData?.abeEntry?.calculatedRank}
+              poolEntries={poolData?.totalEntries}
             />
           </div>
 
           {/* EXP legend */}
-          <div className="mb-6 rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
-              EXP Column — vs. Expected Target
-            </p>
-            <p className="mt-1 text-xs text-[var(--text-muted)]">
-              Scaled by tier — Tier A expects top 10, Tier G expects top 60. Green = beating expectations, Gray = on pace, Red = underperforming.
-            </p>
-          </div>
+          <p className="mb-4 -mt-4 text-[10px] text-[var(--text-muted)]">
+            <span className="font-semibold">EXP Column:</span> vs. tier-scaled target — Tier A expects top 10, Tier G expects top 60. <span className="text-[var(--green-accent)]">Green</span> = beating expectations, <span className="text-red-400">Red</span> = underperforming.
+          </p>
+
+          {/* Pool Standings */}
+          {poolData && poolData.scored.length > 0 && !tournamentNotStarted && (
+            <div className="mb-6 rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-4 sm:p-5">
+              <div className="mb-3 flex items-center justify-between">
+                <div>
+                  <h2 className="text-base font-bold sm:text-lg">Pool Standings</h2>
+                  <p className="text-[10px] text-[var(--text-muted)]">
+                    {poolData.totalEntries} entries &middot; {poolData.madeCutCount} golfers {poolData.cutHasHappened ? "made cut" : "in field"}
+                    {!poolData.cutHasHappened && (
+                      <>
+                        <span className="ml-1 rounded bg-amber-900/40 px-1.5 py-0.5 text-amber-400" title="Points are estimated until the cut is made after Round 2">
+                          Estimated — pre-cut
+                        </span>
+                        {poolData.projectedCutScore !== null && (
+                          <span className="ml-1 rounded bg-amber-900/40 px-1.5 py-0.5 text-amber-400" title="Projected cut line based on top 65 and ties">
+                            Proj. cut: {poolData.projectedCutScore === 0 ? "E" : poolData.projectedCutScore > 0 ? `+${poolData.projectedCutScore}` : poolData.projectedCutScore}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              {/* Top 10 + Jack & Abe highlights */}
+              <div className="mb-1 hidden sm:grid sm:grid-cols-[2.5rem_1fr_4rem_4rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
+                <span>Rank</span>
+                <span>Team</span>
+                <span className="text-right">Pts</span>
+                <span className="text-right">Gap</span>
+              </div>
+
+              {(() => {
+                const leader = poolData.scored[0];
+                const top10 = poolData.scored.slice(0, 10);
+                const jackInTop = top10.some((e) => e.team === "team jaw");
+                const abeInTop = top10.some((e) => e.team === "Watman");
+
+                const rows: ScoredEntry[] = [...top10];
+                if (!jackInTop && poolData.jackEntry) rows.push(poolData.jackEntry);
+                if (!abeInTop && poolData.abeEntry) rows.push(poolData.abeEntry);
+
+                // Deduplicate and sort
+                const seen = new Set<string>();
+                const uniqueRows = rows.filter((r) => {
+                  if (seen.has(r.team)) return false;
+                  seen.add(r.team);
+                  return true;
+                });
+
+                return uniqueRows.map((entry, i) => {
+                  const isJack = entry.team === "team jaw";
+                  const isAbe = entry.team === "Watman";
+                  const isHighlighted = isJack || isAbe;
+                  const gap = leader.calculatedPoints - entry.calculatedPoints;
+                  const isSeparator = i === top10.length && ((!jackInTop && isJack) || (!abeInTop && isAbe));
+
+                  return (
+                    <div key={entry.team}>
+                      {isSeparator && i === top10.length && (
+                        <div className="my-1.5 border-t border-dashed border-[var(--card-border)]" />
+                      )}
+                      <div className={`grid grid-cols-[2.5rem_1fr_4rem_4rem] gap-2 border-b border-[var(--card-border)] py-1.5 text-xs last:border-0 ${
+                        isJack ? "bg-purple-900/30 -mx-2 px-2 rounded border-l-2 border-l-purple-400"
+                        : isAbe ? "bg-amber-900/20 -mx-2 px-2 rounded border-l-2 border-l-amber-400"
+                        : ""
+                      }`}>
+                        <span className="font-mono text-[var(--text-muted)]">
+                          {entry.calculatedRank}
+                        </span>
+                        <span className={`truncate font-medium ${
+                          isJack ? "text-purple-400" : isAbe ? "text-amber-400" : ""
+                        }`}>
+                          {entry.team}
+                          {isJack && <span className="ml-1 text-[10px] text-purple-400/60">← You</span>}
+                          {isAbe && <span className="ml-1 text-[10px] text-amber-400/60">← Abe</span>}
+                        </span>
+                        <span className="text-right font-mono font-semibold text-[var(--green-accent)]">
+                          {entry.calculatedPoints}
+                        </span>
+                        <span className={`text-right font-mono text-xs ${gap === 0 ? "text-[var(--green-accent)]" : "text-[var(--text-muted)]"}`}>
+                          {gap === 0 ? "—" : `-${gap}`}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                });
+              })()}
+            </div>
+          )}
+
+          {/* Scenario Tool */}
+          {poolData && poolData.scored.length > 0 && !tournamentNotStarted && (poolData.jackEntry || poolData.abeEntry) && (
+            <ScenarioSection
+              scored={poolData.scored}
+              jackEntry={poolData.jackEntry}
+              abeEntry={poolData.abeEntry}
+              madeCutCount={poolData.madeCutCount}
+            />
+          )}
+
         </>
       )}
 
