@@ -790,6 +790,88 @@ function ScenarioTool({
         </p>
       </div>
 
+      {/* Who to Root For / Against */}
+      {(() => {
+        // For each of YOUR golfers: how many entries ahead DON'T have them? (root for)
+        // For golfers you DON'T have: how many entries ahead DO have them? (root against)
+        const yourGolferNames = yourEntry.golferPoints.map((g) => g.name);
+
+        const rootFor: { name: string; position: string; points: number; helpsVs: number }[] = [];
+        const rootAgainst: { name: string; position: string; points: number; hurts: number }[] = [];
+
+        // Analyze your golfers
+        for (const golfer of yourEntry.golferPoints) {
+          let helpsVs = 0;
+          for (const { scenario } of scenarios) {
+            const isShared = scenario.sharedGolfers.some((g) => g.name === golfer.name);
+            if (!isShared) helpsVs++;
+          }
+          rootFor.push({ name: golfer.name, position: golfer.position, points: golfer.points, helpsVs });
+        }
+
+        // Analyze opponent-only golfers
+        const opponentGolfers = new Map<string, { position: string; points: number; count: number }>();
+        for (const { entry } of scenarios) {
+          for (const g of entry.golferPoints) {
+            const isYours = yourGolferNames.includes(g.name);
+            if (!isYours) {
+              const existing = opponentGolfers.get(g.name);
+              if (existing) {
+                existing.count++;
+              } else {
+                opponentGolfers.set(g.name, { position: g.position, points: g.points, count: 1 });
+              }
+            }
+          }
+        }
+        for (const [name, data] of opponentGolfers) {
+          if (data.count >= 2) { // only show if at least 2 entries ahead have them
+            rootAgainst.push({ name, position: data.position, points: data.points, hurts: data.count });
+          }
+        }
+
+        // Sort: root for by most helpful, root against by most damaging
+        rootFor.sort((a, b) => b.helpsVs - a.helpsVs);
+        rootAgainst.sort((a, b) => b.hurts - a.hurts);
+
+        return (
+          <div className="mb-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-lg border border-[var(--green-accent)]/20 bg-[var(--green-dark)]/10 p-3">
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-[var(--green-accent)]">
+                Root For
+              </p>
+              <div className="space-y-1">
+                {rootFor.map((g) => (
+                  <div key={g.name} className="flex items-center justify-between text-[11px]">
+                    <span className="text-[var(--green-accent)]">{g.name}</span>
+                    <span className="font-mono text-[10px] text-[var(--text-muted)]">
+                      {g.position} · helps vs {g.helpsVs}/{entriesAhead.length}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {rootAgainst.length > 0 && (
+              <div className="rounded-lg border border-red-400/20 bg-red-950/10 p-3">
+                <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-red-400">
+                  Root Against
+                </p>
+                <div className="space-y-1">
+                  {rootAgainst.slice(0, 10).map((g) => (
+                    <div key={g.name} className="flex items-center justify-between text-[11px]">
+                      <span className="text-red-400">{g.name}</span>
+                      <span className="font-mono text-[10px] text-[var(--text-muted)]">
+                        {g.position} · hurts {g.hurts}/{entriesAhead.length} ahead
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
       {/* All entries ahead — scrollable list */}
       <div className="space-y-1 max-h-[600px] overflow-y-auto">
         <div className="mb-1 grid grid-cols-[2rem_1fr_3.5rem_3rem_3.5rem_3.5rem] gap-2 text-[10px] uppercase tracking-wider text-[var(--text-muted)] px-3">
