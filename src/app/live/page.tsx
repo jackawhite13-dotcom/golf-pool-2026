@@ -759,8 +759,9 @@ function ScenarioTool({
   // Sort by unique gap (hardest to pass first)
   const sorted = [...scenarios].sort((a, b) => b.scenario.uniqueGap - a.scenario.uniqueGap);
 
-  // Summary stats
-  const alreadyAhead = sorted.filter((s) => s.scenario.uniqueGap <= 0).length;
+  // Summary stats — "real threats" = entries where you're losing the unique golfer battle
+  const realThreats = sorted.filter((s) => s.scenario.uniqueGap > 0);
+  const notThreats = sorted.filter((s) => s.scenario.uniqueGap <= 0);
   const hardestToPass = sorted[0];
   const maxUniqueGap = hardestToPass?.scenario.uniqueGap ?? 0;
 
@@ -785,23 +786,26 @@ function ScenarioTool({
       </div>
 
       {/* Summary cards */}
-      <div className="mb-4 grid grid-cols-3 gap-3">
+      <div className="mb-2 grid grid-cols-3 gap-3">
         <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
-          <p className="text-[10px] text-[var(--text-muted)]">Entries Ahead</p>
-          <p className="text-lg font-bold font-mono text-red-400">{entriesAhead.length}</p>
+          <p className="text-[10px] text-[var(--text-muted)]">Real Threats</p>
+          <p className="text-lg font-bold font-mono text-red-400">{realThreats.length}</p>
         </div>
         <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
-          <p className="text-[10px] text-[var(--text-muted)]">Already Winning</p>
-          <p className="text-lg font-bold font-mono text-[var(--green-accent)]">{alreadyAhead}</p>
-          <p className="text-[9px] text-[var(--text-muted)]">on unique golfers</p>
+          <p className="text-[10px] text-[var(--text-muted)]">Will Pass</p>
+          <p className="text-lg font-bold font-mono text-[var(--green-accent)]">{notThreats.length}</p>
         </div>
         <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
           <p className="text-[10px] text-[var(--text-muted)]">Hardest Gap</p>
           <p className={`text-lg font-bold font-mono ${maxUniqueGap <= 0 ? "text-[var(--green-accent)]" : "text-red-400"}`}>
             {maxUniqueGap <= 0 ? `+${Math.abs(maxUniqueGap)}` : `-${maxUniqueGap}`}
           </p>
-          <p className="text-[9px] text-[var(--text-muted)]">unique pts</p>
         </div>
+      </div>
+      <div className="mb-4 grid grid-cols-3 gap-3 text-[9px] text-[var(--text-muted)]">
+        <p className="text-center">Entries ahead whose unique golfers are outscoring yours</p>
+        <p className="text-center">Entries ahead you&apos;ll pass — your unique golfers are already winning</p>
+        <p className="text-center">Biggest unique-golfer gap you need to close</p>
       </div>
 
       {/* Explanation */}
@@ -811,8 +815,8 @@ function ScenarioTool({
           {maxUniqueGap > 0 && hardestToPass && (
             <> The toughest gap is <strong>{maxUniqueGap} pts</strong> vs. {hardestToPass.entry.team}.</>
           )}
-          {alreadyAhead > 0 && (
-            <> You&apos;re already winning the unique golfer battle against <strong>{alreadyAhead}</strong> of {entriesAhead.length} entries ahead.</>
+          {notThreats.length > 0 && (
+            <> You&apos;re already winning the unique golfer battle against <strong>{notThreats.length}</strong> of {entriesAhead.length} entries ahead.</>
           )}
         </p>
       </div>

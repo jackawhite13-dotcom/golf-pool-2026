@@ -23,6 +23,7 @@ function parseScoreToPar(val: unknown): { numeric: number | null; display: strin
   if (val === undefined || val === null || val === "" || val === "--") {
     return { numeric: null, display: "--" };
   }
+  if (val === "E" || val === "e") return { numeric: 0, display: "E" };
   const num = Number(val);
   if (isNaN(num)) return { numeric: null, display: String(val) };
   if (num === 0) return { numeric: 0, display: "E" };
