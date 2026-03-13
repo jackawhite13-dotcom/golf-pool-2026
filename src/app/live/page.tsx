@@ -555,22 +555,14 @@ function FullLeaderboard({
     for (const pick of jackPicks) {
       const pln = normalize(pick.lastName);
       const pfn = normalize(pick.firstName);
-      if (ln === pln) {
-        if (fn === pfn || fn.includes(pfn) || pfn.includes(fn)) return "jack";
-        const otherMatch = abePicks.some((a) => normalize(a.lastName) === ln);
-        if (!otherMatch) return "jack";
-      }
+      if (ln === pln && (fn === pfn || fn.includes(pfn) || pfn.includes(fn))) return "jack";
       if (full.includes(pln) && full.includes(pfn)) return "jack";
     }
 
     for (const pick of abePicks) {
       const pln = normalize(pick.lastName);
       const pfn = normalize(pick.firstName);
-      if (ln === pln) {
-        if (fn === pfn || fn.includes(pfn) || pfn.includes(fn)) return "abe";
-        const otherMatch = jackPicks.some((j) => normalize(j.lastName) === ln);
-        if (!otherMatch) return "abe";
-      }
+      if (ln === pln && (fn === pfn || fn.includes(pfn) || pfn.includes(fn))) return "abe";
       if (full.includes(pln) && full.includes(pfn)) return "abe";
     }
 
@@ -761,7 +753,7 @@ function ScenarioTool({
 
   // Summary stats — "real threats" = entries where you're losing the unique golfer battle
   const realThreats = sorted.filter((s) => s.scenario.uniqueGap > 0);
-  const notThreats = sorted.filter((s) => s.scenario.uniqueGap <= 0);
+  const notThreats = sorted.filter((s) => s.scenario.uniqueGap < 0);
   const hardestToPass = sorted[0];
   const maxUniqueGap = hardestToPass?.scenario.uniqueGap ?? 0;
 
@@ -785,38 +777,15 @@ function ScenarioTool({
         </p>
       </div>
 
-      {/* Summary cards */}
-      <div className="mb-2 grid grid-cols-3 gap-3">
-        <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
-          <p className="text-[10px] text-[var(--text-muted)]">Real Threats</p>
-          <p className="text-lg font-bold font-mono text-red-400">{realThreats.length}</p>
-        </div>
-        <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
-          <p className="text-[10px] text-[var(--text-muted)]">Will Pass</p>
-          <p className="text-lg font-bold font-mono text-[var(--green-accent)]">{notThreats.length}</p>
-        </div>
-        <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
-          <p className="text-[10px] text-[var(--text-muted)]">Hardest Gap</p>
-          <p className={`text-lg font-bold font-mono ${maxUniqueGap <= 0 ? "text-[var(--green-accent)]" : "text-red-400"}`}>
-            {maxUniqueGap <= 0 ? `+${Math.abs(maxUniqueGap)}` : `-${maxUniqueGap}`}
-          </p>
-        </div>
-      </div>
-      <div className="mb-4 grid grid-cols-3 gap-3 text-[9px] text-[var(--text-muted)]">
-        <p className="text-center">Entries ahead whose unique golfers are outscoring yours</p>
-        <p className="text-center">Entries ahead you&apos;ll pass — your unique golfers are already winning</p>
-        <p className="text-center">Biggest unique-golfer gap you need to close</p>
-      </div>
-
       {/* Explanation */}
       <div className="mb-4 rounded-lg border border-amber-900/30 bg-amber-950/20 px-3 py-2">
         <p className="text-xs text-amber-400/90">
-          To finish #{yourEntry.calculatedRank > 1 ? "1" : yourEntry.calculatedRank}, your unique golfers need to outperform <strong>every</strong> entry&apos;s unique golfers — not just one.
-          {maxUniqueGap > 0 && hardestToPass && (
-            <> The toughest gap is <strong>{maxUniqueGap} pts</strong> vs. {hardestToPass.entry.team}.</>
-          )}
+          <strong>{entriesAhead.length}</strong> {entriesAhead.length === 1 ? "entry is" : "entries are"} ahead of you.
           {notThreats.length > 0 && (
-            <> You&apos;re already winning the unique golfer battle against <strong>{notThreats.length}</strong> of {entriesAhead.length} entries ahead.</>
+            <> You&apos;re on track to pass <strong className="text-[var(--green-accent)]">{notThreats.length}</strong> of them.</>
+          )}
+          {maxUniqueGap > 0 && hardestToPass && (
+            <> Toughest gap to close: <strong>{maxUniqueGap} pts</strong> vs. {hardestToPass.entry.team}.</>
           )}
         </p>
       </div>
@@ -834,8 +803,8 @@ function ScenarioTool({
 
         {sorted.map(({ entry, scenario }) => {
           const isExpanded = expandedTeam === entry.team;
-          const uniqueGapColor = scenario.uniqueGap <= 0 ? "text-[var(--green-accent)]" : "text-red-400";
-          const uniqueGapDisplay = scenario.uniqueGap <= 0 ? `+${Math.abs(scenario.uniqueGap)}` : `-${scenario.uniqueGap}`;
+          const uniqueGapColor = scenario.uniqueGap < 0 ? "text-[var(--green-accent)]" : scenario.uniqueGap === 0 ? "text-amber-400" : "text-red-400";
+          const uniqueGapDisplay = scenario.uniqueGap < 0 ? `+${Math.abs(scenario.uniqueGap)}` : scenario.uniqueGap === 0 ? "Even" : `-${scenario.uniqueGap}`;
 
           return (
             <div key={entry.team}>
@@ -903,19 +872,19 @@ function ScenarioTool({
 
                   {/* Bottom line */}
                   <div className={`mt-3 rounded px-3 py-2 text-xs ${
-                    scenario.uniqueGap <= 0
+                    scenario.uniqueGap < 0
                       ? "border border-[var(--green-accent)]/30 bg-[var(--green-dark)]/30 text-[var(--green-accent)]"
-                      : "border border-red-400/20 bg-red-950/20 text-[var(--text-muted)]"
+                      : scenario.uniqueGap === 0
+                        ? "border border-amber-400/30 bg-amber-950/20 text-amber-400"
+                        : "border border-red-400/20 bg-red-950/20 text-[var(--text-muted)]"
                   }`}>
-                    {scenario.uniqueGap <= 0 ? (
-                      <span className="font-semibold">Already winning by {Math.abs(scenario.uniqueGap)} pts on unique golfers!</span>
+                    {scenario.uniqueGap < 0 ? (
+                      <span className="font-semibold">You&apos;re ahead by {Math.abs(scenario.uniqueGap)} pts where it matters — the golfers you don&apos;t share.</span>
+                    ) : scenario.uniqueGap === 0 ? (
+                      <span className="font-semibold">Dead even on non-shared golfers. Any move from your guys or theirs decides this.</span>
                     ) : (
                       <span>
-                        Need <strong className="text-white">{scenario.uniqueGap} pts</strong> combined gain on unique golfers
-                        (~{Math.ceil(scenario.uniqueGap / Math.max(scenario.yourUniqueGolfers.length, 1))} per golfer avg).
-                        {scenario.theirUniqueGolfers.length > 0 && scenario.theirUniqueGolfers[scenario.theirUniqueGolfers.length - 1].currentPoints > 0 && (
-                          <> If {scenario.theirUniqueGolfers[scenario.theirUniqueGolfers.length - 1].name} misses cut, that saves {scenario.theirUniqueGolfers[scenario.theirUniqueGolfers.length - 1].currentPoints} pts.</>
-                        )}
+                        Your non-shared golfers need to gain <strong className="text-white">{scenario.uniqueGap} pts</strong> on theirs to pass them.
                       </span>
                     )}
                   </div>
