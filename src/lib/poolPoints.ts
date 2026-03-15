@@ -187,11 +187,9 @@ export function scoreEntries(
       return { name, ...result };
     });
 
-    const calculatedPoints = golferPoints.reduce((sum, g) => sum + g.points, 0);
-
     return {
       ...entry,
-      calculatedPoints,
+      calculatedPoints: entry.points,
       calculatedRank: 0,
       golferPoints,
     };
