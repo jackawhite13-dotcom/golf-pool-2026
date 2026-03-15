@@ -1,17 +1,62 @@
 [
   {
     "rank": 1,
-    "team": "RKJG",
-    "owner": "Ross K",
-    "points": 472,
+    "team": "Kalaka",
+    "owner": "Kyle K",
+    "points": 511,
+    "golfers": [
+      "Tommy Fleetwood",
+      "Akshay Bhatia",
+      "Sepp Straka",
+      "Justin Rose",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Brian Harman"
+    ]
+  },
+  {
+    "rank": 2,
+    "team": "Bogey Boys",
+    "owner": "N R",
+    "points": 479,
     "golfers": [
       "Ludvig Aberg",
-      "Hideki Matsuyama",
-      "Daniel Berger",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
       "Sahith Theegala",
       "Corey Conners",
       "Ryo Hisatsune",
+      "Brian Harman"
+    ]
+  },
+  {
+    "rank": 3,
+    "team": "Steven Zucker 3",
+    "owner": "Steven Z",
+    "points": 470,
+    "golfers": [
+      "Scottie Scheffler",
+      "Akshay Bhatia",
+      "Jacob Bridgeman",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ryo Hisatsune",
       "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 4,
+    "team": "BFitz1",
+    "owner": "Brendan F",
+    "points": 469,
+    "golfers": [
+      "Ludvig Aberg",
+      "Matt Fitzpatrick",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Brian Harman"
     ]
   },
   {
@@ -30,33 +75,18 @@
     ]
   },
   {
-    "rank": 3,
-    "team": "Albert Leshinsky - 3",
-    "owner": "Albert L",
-    "points": 457,
+    "rank": 5,
+    "team": "Frank S1",
+    "owner": "Frank S",
+    "points": 448,
     "golfers": [
-      "Ludvig Aberg",
-      "Akshay Bhatia",
-      "Jacob Bridgeman",
-      "Nicolai Hojgaard",
-      "Corey Conners",
-      "Jason Day",
-      "Taylor Moore"
-    ]
-  },
-  {
-    "rank": 4,
-    "team": "Martin Blackburn",
-    "owner": "Martin B",
-    "points": 456,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Hideki Matsuyama",
+      "Scottie Scheffler",
+      "Robert MacIntyre",
       "Sepp Straka",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Ryan Fox"
+      "J.J. Spaun",
+      "Keegan Bradley",
+      "Wyndham Clark",
+      "Brian Harman"
     ]
   },
   {
@@ -90,33 +120,18 @@
     ]
   },
   {
-    "rank": 7,
-    "team": "Kalaka",
-    "owner": "Kyle K",
-    "points": 440,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Akshay Bhatia",
-      "Sepp Straka",
-      "Justin Rose",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Brian Harman"
-    ]
-  },
-  {
-    "rank": 8,
-    "team": "Steven Zucker 3",
-    "owner": "Steven Z",
-    "points": 434,
+    "rank": 6,
+    "team": "Corey Conners fan club",
+    "owner": "Eric A",
+    "points": 435,
     "golfers": [
       "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Jacob Bridgeman",
-      "Ryan Gerard",
+      "Matt Fitzpatrick",
+      "Sepp Straka",
+      "J.J. Spaun",
       "Corey Conners",
       "Ryo Hisatsune",
-      "Patrick Rodgers"
+      "HaoTong Li"
     ]
   },
   {
@@ -165,18 +180,18 @@
     ]
   },
   {
-    "rank": 12,
-    "team": "Corey Conners fan club",
-    "owner": "Eric A",
-    "points": 425,
+    "rank": 13,
+    "team": "Chemi",
+    "owner": "Andrew a",
+    "points": 424,
     "golfers": [
-      "Scottie Scheffler",
-      "Matt Fitzpatrick",
-      "Sepp Straka",
+      "Si Woo Kim",
+      "Rickie Fowler",
+      "Jordan Spieth",
       "J.J. Spaun",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "HaoTong Li"
+      "Justin Thomas",
+      "Jason Day",
+      "Tony Finau"
     ]
   },
   {
@@ -196,21 +211,6 @@
   },
   {
     "rank": 13,
-    "team": "Chemi",
-    "owner": "Andrew a",
-    "points": 424,
-    "golfers": [
-      "Si Woo Kim",
-      "Rickie Fowler",
-      "Jordan Spieth",
-      "J.J. Spaun",
-      "Justin Thomas",
-      "Jason Day",
-      "Tony Finau"
-    ]
-  },
-  {
-    "rank": 13,
     "team": "Team Silverman",
     "owner": "Adam S",
     "points": 424,
@@ -222,6 +222,21 @@
       "Corey Conners",
       "Jason Day",
       "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 7,
+    "team": "RKJG",
+    "owner": "Ross K",
+    "points": 423,
+    "golfers": [
+      "Ludvig Aberg",
+      "Hideki Matsuyama",
+      "Daniel Berger",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Patrick Rodgers"
     ]
   },
   {
@@ -255,6 +270,21 @@
     ]
   },
   {
+    "rank": 8,
+    "team": "Juniorisimo",
+    "owner": "Benny N",
+    "points": 422,
+    "golfers": [
+      "Collin Morikawa",
+      "Robert MacIntyre",
+      "Jacob Bridgeman",
+      "Brooks Koepka",
+      "Corey Conners",
+      "Brian Harman",
+      "Bud Cauley"
+    ]
+  },
+  {
     "rank": 17,
     "team": "Kobi Fodor 1",
     "owner": "Kobi F",
@@ -267,6 +297,36 @@
       "Aaron Rai",
       "Ryo Hisatsune",
       "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 9,
+    "team": "Fols24",
+    "owner": "Christopher F",
+    "points": 421,
+    "golfers": [
+      "Scottie Scheffler",
+      "Matt Fitzpatrick",
+      "Jacob Bridgeman",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 9,
+    "team": "Mike Crispy Jr",
+    "owner": "Michael C",
+    "points": 421,
+    "golfers": [
+      "Ludvig Aberg",
+      "Brooks Koepka",
+      "Jordan Spieth",
+      "Sam Burns",
+      "Justin Thomas",
+      "Nico Echavarria",
+      "Max Homa"
     ]
   },
   {
@@ -285,18 +345,18 @@
     ]
   },
   {
-    "rank": 20,
-    "team": "Vnardo",
-    "owner": "Vinny N",
-    "points": 417,
+    "rank": 11,
+    "team": "Los Whaledos",
+    "owner": "Moises D",
+    "points": 418,
     "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Sepp Straka",
-      "Justin Rose",
-      "Corey Conners",
+      "Cameron Young",
+      "Brooks Koepka",
+      "Jordan Spieth",
+      "Sam Burns",
+      "Justin Thomas",
       "Jason Day",
-      "Tom Hoge"
+      "J.T. Poston"
     ]
   },
   {
@@ -315,17 +375,32 @@
     ]
   },
   {
-    "rank": 22,
-    "team": "Olllbuckellis",
-    "owner": "joey m",
-    "points": 415,
+    "rank": 12,
+    "team": "Laxkev22",
+    "owner": "Kevin S",
+    "points": 417,
     "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
+      "Tommy Fleetwood",
+      "Chris Gotterup",
       "Sepp Straka",
-      "Sahith Theegala",
+      "Justin Rose",
       "Corey Conners",
-      "Ryo Hisatsune",
+      "Nico Echavarria",
+      "Brian Harman"
+    ]
+  },
+  {
+    "rank": 20,
+    "team": "Vnardo",
+    "owner": "Vinny N",
+    "points": 417,
+    "golfers": [
+      "Scottie Scheffler",
+      "Akshay Bhatia",
+      "Sepp Straka",
+      "Justin Rose",
+      "Corey Conners",
+      "Jason Day",
       "Tom Hoge"
     ]
   },
@@ -345,6 +420,51 @@
     ]
   },
   {
+    "rank": 13,
+    "team": "AKM",
+    "owner": "Adam M",
+    "points": 414,
+    "golfers": [
+      "Scottie Scheffler",
+      "Robert MacIntyre",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 13,
+    "team": "Sam B",
+    "owner": "Sam B",
+    "points": 414,
+    "golfers": [
+      "Cameron Young",
+      "Min Woo Lee",
+      "Sepp Straka",
+      "Alex Noren",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Austin Smotherman"
+    ]
+  },
+  {
+    "rank": 15,
+    "team": "Olllbuckellis",
+    "owner": "joey m",
+    "points": 413,
+    "golfers": [
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Tom Hoge"
+    ]
+  },
+  {
     "rank": 24,
     "team": "Matt C",
     "owner": "Matthew C",
@@ -357,6 +477,21 @@
       "Justin Thomas",
       "Ryo Hisatsune",
       "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 16,
+    "team": "Albert Leshinsky - 3",
+    "owner": "Albert L",
+    "points": 410,
+    "golfers": [
+      "Ludvig Aberg",
+      "Akshay Bhatia",
+      "Jacob Bridgeman",
+      "Nicolai Hojgaard",
+      "Corey Conners",
+      "Jason Day",
+      "Taylor Moore"
     ]
   },
   {
@@ -375,6 +510,21 @@
     ]
   },
   {
+    "rank": 16,
+    "team": "Dante Pachukis",
+    "owner": "Sam M",
+    "points": 410,
+    "golfers": [
+      "Scottie Scheffler",
+      "Matt Fitzpatrick",
+      "Sepp Straka",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Max McGreevy"
+    ]
+  },
+  {
     "rank": 26,
     "team": "JPiken 2",
     "owner": "Jonathan P",
@@ -387,6 +537,21 @@
       "Corey Conners",
       "Ricky Castillo",
       "Bud Cauley"
+    ]
+  },
+  {
+    "rank": 18,
+    "team": "Martin Blackburn",
+    "owner": "Martin B",
+    "points": 408,
+    "golfers": [
+      "Tommy Fleetwood",
+      "Hideki Matsuyama",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Ryan Fox"
     ]
   },
   {
@@ -406,21 +571,6 @@
   },
   {
     "rank": 28,
-    "team": "Cournoyer2",
-    "owner": "Ryan C",
-    "points": 407,
-    "golfers": [
-      "Ludvig Aberg",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Nicolai Hojgaard",
-      "Justin Thomas",
-      "Jason Day",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 28,
     "team": "Bluestone",
     "owner": "Michael B",
     "points": 407,
@@ -432,6 +582,21 @@
       "Pierceson Coody",
       "Ryo Hisatsune",
       "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 28,
+    "team": "Cournoyer2",
+    "owner": "Ryan C",
+    "points": 407,
+    "golfers": [
+      "Ludvig Aberg",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Nicolai Hojgaard",
+      "Justin Thomas",
+      "Jason Day",
+      "Ryan Fox"
     ]
   },
   {
@@ -450,48 +615,33 @@
     ]
   },
   {
-    "rank": 31,
-    "team": "Laxkev22",
-    "owner": "Kevin S",
-    "points": 406,
+    "rank": 19,
+    "team": "Nick Power",
+    "owner": "Nichoas R",
+    "points": 407,
     "golfers": [
-      "Tommy Fleetwood",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Justin Rose",
-      "Corey Conners",
-      "Nico Echavarria",
+      "Scottie Scheffler",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
+      "Ryan Gerard",
+      "Nick Taylor",
+      "Wyndham Clark",
       "Brian Harman"
     ]
   },
   {
-    "rank": 32,
-    "team": "AKM",
-    "owner": "Adam M",
-    "points": 403,
+    "rank": 19,
+    "team": "team jaw",
+    "owner": "Jack W",
+    "points": 407,
     "golfers": [
       "Scottie Scheffler",
-      "Robert MacIntyre",
+      "Hideki Matsuyama",
       "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Corey Conners",
+      "Justin Rose",
+      "Pierceson Coody",
       "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 33,
-    "team": "Dante Pachukis",
-    "owner": "Sam M",
-    "points": 402,
-    "golfers": [
-      "Scottie Scheffler",
-      "Matt Fitzpatrick",
-      "Sepp Straka",
-      "Ryan Gerard",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Max McGreevy"
+      "Patrick Rodgers"
     ]
   },
   {
@@ -511,21 +661,6 @@
   },
   {
     "rank": 35,
-    "team": "Team HC",
-    "owner": "Hernando C",
-    "points": 400,
-    "golfers": [
-      "Xander Schauffele",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "Ryan Gerard",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Lucas Glover"
-    ]
-  },
-  {
-    "rank": 35,
     "team": "JPiken",
     "owner": "Jonathan P",
     "points": 400,
@@ -540,33 +675,18 @@
     ]
   },
   {
-    "rank": 37,
-    "team": "Bogey Boys",
-    "owner": "N R",
-    "points": 399,
+    "rank": 35,
+    "team": "Team HC",
+    "owner": "Hernando C",
+    "points": 400,
     "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Brian Harman"
-    ]
-  },
-  {
-    "rank": 38,
-    "team": "mkayen",
-    "owner": "Max K",
-    "points": 393,
-    "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
+      "Xander Schauffele",
+      "Hideki Matsuyama",
       "Sepp Straka",
-      "Keith Mitchell",
-      "Keegan Bradley",
-      "Nico Echavarria",
-      "Matti Schmid"
+      "Ryan Gerard",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Lucas Glover"
     ]
   },
   {
@@ -582,6 +702,21 @@
       "Corey Conners",
       "Jason Day",
       "Joel Dahmen"
+    ]
+  },
+  {
+    "rank": 38,
+    "team": "mkayen",
+    "owner": "Max K",
+    "points": 393,
+    "golfers": [
+      "Scottie Scheffler",
+      "Akshay Bhatia",
+      "Sepp Straka",
+      "Keith Mitchell",
+      "Keegan Bradley",
+      "Nico Echavarria",
+      "Matti Schmid"
     ]
   },
   {
@@ -615,21 +750,6 @@
     ]
   },
   {
-    "rank": 41,
-    "team": "Sam B",
-    "owner": "Sam B",
-    "points": 389,
-    "golfers": [
-      "Cameron Young",
-      "Min Woo Lee",
-      "Sepp Straka",
-      "Alex Noren",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Austin Smotherman"
-    ]
-  },
-  {
     "rank": 43,
     "team": "TeddIan",
     "owner": "Ian H",
@@ -646,21 +766,6 @@
   },
   {
     "rank": 44,
-    "team": "Potential Memories #3",
-    "owner": "Ryan M",
-    "points": 385,
-    "golfers": [
-      "Russell Henley",
-      "Chris Gotterup",
-      "Daniel Berger",
-      "Ryan Gerard",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 44,
     "team": "Cold Cheese and Boom Boom Sauce",
     "owner": "Sam L",
     "points": 385,
@@ -672,6 +777,21 @@
       "Corey Conners",
       "Ricky Castillo",
       "Max Homa"
+    ]
+  },
+  {
+    "rank": 44,
+    "team": "Potential Memories #3",
+    "owner": "Ryan M",
+    "points": 385,
+    "golfers": [
+      "Russell Henley",
+      "Chris Gotterup",
+      "Daniel Berger",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Max Greyserman"
     ]
   },
   {
@@ -691,21 +811,6 @@
   },
   {
     "rank": 46,
-    "team": "RUG 2",
-    "owner": "John G",
-    "points": 384,
-    "golfers": [
-      "Scottie Scheffler",
-      "Matt Fitzpatrick",
-      "Sepp Straka",
-      "Alex Noren",
-      "Corey Conners",
-      "Taylor Pendrith",
-      "Mac Meissner"
-    ]
-  },
-  {
-    "rank": 46,
     "team": "Korn",
     "owner": "Sal O",
     "points": 384,
@@ -720,18 +825,18 @@
     ]
   },
   {
-    "rank": 49,
-    "team": "team jaw",
-    "owner": "Jack W",
-    "points": 380,
+    "rank": 46,
+    "team": "RUG 2",
+    "owner": "John G",
+    "points": 384,
     "golfers": [
       "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Jacob Bridgeman",
-      "Justin Rose",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Patrick Rodgers"
+      "Matt Fitzpatrick",
+      "Sepp Straka",
+      "Alex Noren",
+      "Corey Conners",
+      "Taylor Pendrith",
+      "Mac Meissner"
     ]
   },
   {
@@ -751,21 +856,6 @@
   },
   {
     "rank": 50,
-    "team": "Fols24",
-    "owner": "Christopher F",
-    "points": 376,
-    "golfers": [
-      "Scottie Scheffler",
-      "Matt Fitzpatrick",
-      "Jacob Bridgeman",
-      "Ryan Gerard",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 50,
     "team": "Saticoystik",
     "owner": "Bill C",
     "points": 376,
@@ -777,6 +867,21 @@
       "Corey Conners",
       "Sam Stevens",
       "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 53,
+    "team": "ColeW 1",
+    "owner": "Cole W",
+    "points": 375,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Michael Thorbjornsen",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Marco Penge"
     ]
   },
   {
@@ -796,21 +901,6 @@
   },
   {
     "rank": 53,
-    "team": "Jlaub1",
-    "owner": "John L",
-    "points": 375,
-    "golfers": [
-      "Si Woo Kim",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "J.J. Spaun",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 53,
     "team": "JackBedick1",
     "owner": "Jack B",
     "points": 375,
@@ -822,6 +912,21 @@
       "Corey Conners",
       "Ricky Castillo",
       "Tony Finau"
+    ]
+  },
+  {
+    "rank": 53,
+    "team": "Jlaub1",
+    "owner": "John L",
+    "points": 375,
+    "golfers": [
+      "Si Woo Kim",
+      "Hideki Matsuyama",
+      "Sepp Straka",
+      "J.J. Spaun",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Joel Dahmen"
     ]
   },
   {
@@ -852,21 +957,6 @@
       "Corey Conners",
       "Wyndham Clark",
       "Tony Finau"
-    ]
-  },
-  {
-    "rank": 53,
-    "team": "ColeW 1",
-    "owner": "Cole W",
-    "points": 375,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Michael Thorbjornsen",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Marco Penge"
     ]
   },
   {
@@ -931,21 +1021,6 @@
   },
   {
     "rank": 63,
-    "team": "Ed Grimmett",
-    "owner": "Ed G",
-    "points": 369,
-    "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Nick Taylor",
-      "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 63,
     "team": "Dijon",
     "owner": "dillon g",
     "points": 369,
@@ -961,17 +1036,17 @@
   },
   {
     "rank": 63,
-    "team": "YBuff2",
-    "owner": "Yaakov B",
+    "team": "Ed Grimmett",
+    "owner": "Ed G",
     "points": 369,
     "golfers": [
       "Scottie Scheffler",
-      "Min Woo Lee",
-      "Daniel Berger",
+      "Akshay Bhatia",
+      "Sepp Straka",
       "Sahith Theegala",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Max Homa"
+      "Nick Taylor",
+      "Ryo Hisatsune",
+      "Ryan Fox"
     ]
   },
   {
@@ -987,6 +1062,21 @@
       "Nick Taylor",
       "Ryo Hisatsune",
       "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 63,
+    "team": "YBuff2",
+    "owner": "Yaakov B",
+    "points": 369,
+    "golfers": [
+      "Scottie Scheffler",
+      "Min Woo Lee",
+      "Daniel Berger",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Max Homa"
     ]
   },
   {
@@ -1021,21 +1111,6 @@
   },
   {
     "rank": 69,
-    "team": "Mike Beano",
-    "owner": "Mike B",
-    "points": 366,
-    "golfers": [
-      "Si Woo Kim",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Harry Hall",
-      "Corey Conners",
-      "Jason Day",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 69,
     "team": "Ace",
     "owner": "Tom F",
     "points": 366,
@@ -1050,33 +1125,18 @@
     ]
   },
   {
-    "rank": 71,
-    "team": "BFitz1",
-    "owner": "Brendan F",
-    "points": 365,
+    "rank": 69,
+    "team": "Mike Beano",
+    "owner": "Mike B",
+    "points": 366,
     "golfers": [
-      "Ludvig Aberg",
-      "Matt Fitzpatrick",
+      "Si Woo Kim",
+      "Chris Gotterup",
       "Sepp Straka",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Brian Harman"
-    ]
-  },
-  {
-    "rank": 72,
-    "team": "Los Whaledos",
-    "owner": "Moises D",
-    "points": 363,
-    "golfers": [
-      "Cameron Young",
-      "Brooks Koepka",
-      "Jordan Spieth",
-      "Sam Burns",
-      "Justin Thomas",
+      "Harry Hall",
+      "Corey Conners",
       "Jason Day",
-      "J.T. Poston"
+      "Tom Hoge"
     ]
   },
   {
@@ -1092,21 +1152,6 @@
       "Nick Taylor",
       "Sam Stevens",
       "Tony Finau"
-    ]
-  },
-  {
-    "rank": 74,
-    "team": "Watman",
-    "owner": "Abraham W",
-    "points": 361,
-    "golfers": [
-      "Si Woo Kim",
-      "Akshay Bhatia",
-      "Sepp Straka",
-      "Nicolai Hojgaard",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Tom Hoge"
     ]
   },
   {
@@ -1140,33 +1185,18 @@
     ]
   },
   {
-    "rank": 77,
-    "team": "Mulligans McGee 2",
-    "owner": "Mike M",
-    "points": 360,
+    "rank": 74,
+    "team": "Watman",
+    "owner": "Abraham W",
+    "points": 361,
     "golfers": [
-      "Collin Morikawa",
+      "Si Woo Kim",
       "Akshay Bhatia",
       "Sepp Straka",
-      "Sahith Theegala",
-      "Justin Thomas",
-      "Nico Echavarria",
-      "Eric Cole"
-    ]
-  },
-  {
-    "rank": 77,
-    "team": "DBS 2",
-    "owner": "Ben R",
-    "points": 360,
-    "golfers": [
-      "Xander Schauffele",
-      "Hideki Matsuyama",
-      "Shane Lowry",
-      "Keith Mitchell",
+      "Nicolai Hojgaard",
       "Corey Conners",
       "Ricky Castillo",
-      "Brian Harman"
+      "Tom Hoge"
     ]
   },
   {
@@ -1186,17 +1216,17 @@
   },
   {
     "rank": 77,
-    "team": "Jun10risimo",
-    "owner": "Benny N",
+    "team": "DBS 2",
+    "owner": "Ben R",
     "points": 360,
     "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Adam Scott",
+      "Xander Schauffele",
+      "Hideki Matsuyama",
+      "Shane Lowry",
       "Keith Mitchell",
       "Corey Conners",
       "Ricky Castillo",
-      "Tom Hoge"
+      "Brian Harman"
     ]
   },
   {
@@ -1212,6 +1242,36 @@
       "Corey Conners",
       "Wyndham Clark",
       "Max Homa"
+    ]
+  },
+  {
+    "rank": 77,
+    "team": "Jun10risimo",
+    "owner": "Benny N",
+    "points": 360,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Adam Scott",
+      "Keith Mitchell",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 77,
+    "team": "Mulligans McGee 2",
+    "owner": "Mike M",
+    "points": 360,
+    "golfers": [
+      "Collin Morikawa",
+      "Akshay Bhatia",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Justin Thomas",
+      "Nico Echavarria",
+      "Eric Cole"
     ]
   },
   {
@@ -1242,21 +1302,6 @@
       "Corey Conners",
       "Nico Echavarria",
       "Tony Finau"
-    ]
-  },
-  {
-    "rank": 84,
-    "team": "Mike Crispy Jr",
-    "owner": "Michael C",
-    "points": 358,
-    "golfers": [
-      "Ludvig Aberg",
-      "Brooks Koepka",
-      "Jordan Spieth",
-      "Sam Burns",
-      "Justin Thomas",
-      "Nico Echavarria",
-      "Max Homa"
     ]
   },
   {
@@ -1351,21 +1396,6 @@
   },
   {
     "rank": 91,
-    "team": "Graham Williamson",
-    "owner": "Graham W",
-    "points": 352,
-    "golfers": [
-      "Xander Schauffele",
-      "Rickie Fowler",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Ricky Castillo",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 91,
     "team": "Bradley Glassberg",
     "owner": "Bradley G",
     "points": 352,
@@ -1376,6 +1406,21 @@
       "Sahith Theegala",
       "Keegan Bradley",
       "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 91,
+    "team": "Graham Williamson",
+    "owner": "Graham W",
+    "points": 352,
+    "golfers": [
+      "Xander Schauffele",
+      "Rickie Fowler",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Ricky Castillo",
       "Ryan Fox"
     ]
   },
@@ -1411,21 +1456,6 @@
   },
   {
     "rank": 95,
-    "team": "The Zows 2",
-    "owner": "David B",
-    "points": 350,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Akshay Bhatia",
-      "Shane Lowry",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Nico Echavarria",
-      "Eric Cole"
-    ]
-  },
-  {
-    "rank": 95,
     "team": "Eli Rosenberg",
     "owner": "Eli R",
     "points": 350,
@@ -1452,6 +1482,21 @@
       "Keegan Bradley",
       "Ryo Hisatsune",
       "Tony Finau"
+    ]
+  },
+  {
+    "rank": 95,
+    "team": "The Zows 2",
+    "owner": "David B",
+    "points": 350,
+    "golfers": [
+      "Tommy Fleetwood",
+      "Akshay Bhatia",
+      "Shane Lowry",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Nico Echavarria",
+      "Eric Cole"
     ]
   },
   {
@@ -1486,21 +1531,6 @@
   },
   {
     "rank": 100,
-    "team": "Pressberg",
-    "owner": "David P",
-    "points": 345,
-    "golfers": [
-      "Rory McIlroy",
-      "Akshay Bhatia",
-      "Adam Scott",
-      "Sahith Theegala",
-      "Keegan Bradley",
-      "Ryo Hisatsune",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 100,
     "team": "Fart Mitzvah",
     "owner": "Max A",
     "points": 345,
@@ -1512,6 +1542,21 @@
       "Corey Conners",
       "Ricky Castillo",
       "Joel Dahmen"
+    ]
+  },
+  {
+    "rank": 100,
+    "team": "Pressberg",
+    "owner": "David P",
+    "points": 345,
+    "golfers": [
+      "Rory McIlroy",
+      "Akshay Bhatia",
+      "Adam Scott",
+      "Sahith Theegala",
+      "Keegan Bradley",
+      "Ryo Hisatsune",
+      "Max Greyserman"
     ]
   },
   {
@@ -1561,21 +1606,6 @@
   },
   {
     "rank": 104,
-    "team": "Tim O'Shaughnessy 2",
-    "owner": "Timothy O",
-    "points": 343,
-    "golfers": [
-      "Collin Morikawa",
-      "Patrick Cantlay",
-      "Sepp Straka",
-      "Alex Noren",
-      "Corey Conners",
-      "Jason Day",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 104,
     "team": "Gary McSomethings",
     "owner": "Tagg M",
     "points": 343,
@@ -1602,6 +1632,36 @@
       "Pierceson Coody",
       "Jason Day",
       "Brian Harman"
+    ]
+  },
+  {
+    "rank": 104,
+    "team": "Tim O'Shaughnessy 2",
+    "owner": "Timothy O",
+    "points": 343,
+    "golfers": [
+      "Collin Morikawa",
+      "Patrick Cantlay",
+      "Sepp Straka",
+      "Alex Noren",
+      "Corey Conners",
+      "Jason Day",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 108,
+    "team": "C.R.E.A.M.",
+    "owner": "George L",
+    "points": 342,
+    "golfers": [
+      "Scottie Scheffler",
+      "Hideki Matsuyama",
+      "Shane Lowry",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Jordan Smith"
     ]
   },
   {
@@ -1635,18 +1695,18 @@
     ]
   },
   {
-    "rank": 108,
-    "team": "C.R.E.A.M.",
-    "owner": "George L",
-    "points": 342,
+    "rank": 111,
+    "team": "Suite 2100",
+    "owner": "Andrew S",
+    "points": 341,
     "golfers": [
       "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Shane Lowry",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Jordan Smith"
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Sam Burns",
+      "Nick Taylor",
+      "Nico Echavarria",
+      "Patrick Rodgers"
     ]
   },
   {
@@ -1662,21 +1722,6 @@
       "Corey Conners",
       "Jason Day",
       "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 111,
-    "team": "Suite 2100",
-    "owner": "Andrew S",
-    "points": 341,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Sam Burns",
-      "Nick Taylor",
-      "Nico Echavarria",
-      "Patrick Rodgers"
     ]
   },
   {
@@ -1756,21 +1801,6 @@
   },
   {
     "rank": 118,
-    "team": "John Cangialosi 2",
-    "owner": "John C",
-    "points": 336,
-    "golfers": [
-      "Rory McIlroy",
-      "Brooks Koepka",
-      "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Keegan Bradley",
-      "Jason Day",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 118,
     "team": "Ari Leffell",
     "owner": "Ari L",
     "points": 336,
@@ -1796,6 +1826,21 @@
       "Nicolai Hojgaard",
       "Justin Thomas",
       "Ricky Castillo",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 118,
+    "team": "John Cangialosi 2",
+    "owner": "John C",
+    "points": 336,
+    "golfers": [
+      "Rory McIlroy",
+      "Brooks Koepka",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Keegan Bradley",
+      "Jason Day",
       "Ryan Fox"
     ]
   },
@@ -1891,36 +1936,6 @@
   },
   {
     "rank": 125,
-    "team": "Steven Zucker 1",
-    "owner": "Steven Z",
-    "points": 333,
-    "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Sepp Straka",
-      "Justin Rose",
-      "Corey Conners",
-      "Nico Echavarria",
-      "Michael Kim"
-    ]
-  },
-  {
-    "rank": 125,
-    "team": "The Bullpen",
-    "owner": "Alex O",
-    "points": 333,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Christiaan Bezuidenhout",
-      "Ryo Hisatsune",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 125,
     "team": "POPI",
     "owner": "Craig P",
     "points": 333,
@@ -1965,18 +1980,33 @@
     ]
   },
   {
-    "rank": 132,
-    "team": "Ryan U",
-    "owner": "Ryan U",
-    "points": 332,
+    "rank": 125,
+    "team": "Steven Zucker 1",
+    "owner": "Steven Z",
+    "points": 333,
     "golfers": [
       "Collin Morikawa",
-      "Chris Gotterup",
-      "Daniel Berger",
+      "Akshay Bhatia",
+      "Sepp Straka",
       "Justin Rose",
       "Corey Conners",
+      "Nico Echavarria",
+      "Michael Kim"
+    ]
+  },
+  {
+    "rank": 125,
+    "team": "The Bullpen",
+    "owner": "Alex O",
+    "points": 333,
+    "golfers": [
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Christiaan Bezuidenhout",
       "Ryo Hisatsune",
-      "Tom Hoge"
+      "Joel Dahmen"
     ]
   },
   {
@@ -1992,6 +2022,21 @@
       "Corey Conners",
       "Ryo Hisatsune",
       "Bud Cauley"
+    ]
+  },
+  {
+    "rank": 132,
+    "team": "Ryan U",
+    "owner": "Ryan U",
+    "points": 332,
+    "golfers": [
+      "Collin Morikawa",
+      "Chris Gotterup",
+      "Daniel Berger",
+      "Justin Rose",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Tom Hoge"
     ]
   },
   {
@@ -2011,6 +2056,21 @@
   },
   {
     "rank": 135,
+    "team": "Big Irvs",
+    "owner": "Josh C",
+    "points": 330,
+    "golfers": [
+      "Scottie Scheffler",
+      "Robert MacIntyre",
+      "Daniel Berger",
+      "Sam Burns",
+      "Corey Conners",
+      "Wyndham Clark",
+      "Max Homa"
+    ]
+  },
+  {
+    "rank": 135,
     "team": "Wildthangs2",
     "owner": "Zachary W",
     "points": 330,
@@ -2025,18 +2085,18 @@
     ]
   },
   {
-    "rank": 135,
-    "team": "Big Irvs",
-    "owner": "Josh C",
-    "points": 330,
+    "rank": 137,
+    "team": "Danels 1",
+    "owner": "Reid D",
+    "points": 329,
     "golfers": [
-      "Scottie Scheffler",
-      "Robert MacIntyre",
+      "Cameron Young",
+      "Rickie Fowler",
       "Daniel Berger",
-      "Sam Burns",
-      "Corey Conners",
-      "Wyndham Clark",
-      "Max Homa"
+      "Alex Noren",
+      "Pierceson Coody",
+      "Ricky Castillo",
+      "Bud Cauley"
     ]
   },
   {
@@ -2056,21 +2116,6 @@
   },
   {
     "rank": 137,
-    "team": "Roll Tide",
-    "owner": "John S",
-    "points": 329,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Matt Fitzpatrick",
-      "Sepp Straka",
-      "Justin Rose",
-      "Christiaan Bezuidenhout",
-      "Taylor Pendrith",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 137,
     "team": "Matty / Mike",
     "owner": "Matt S",
     "points": 329,
@@ -2082,21 +2127,6 @@
       "Aaron Rai",
       "Ryo Hisatsune",
       "Bud Cauley"
-    ]
-  },
-  {
-    "rank": 137,
-    "team": "Nicholas Ancona",
-    "owner": "Nicholas A",
-    "points": 329,
-    "golfers": [
-      "Scottie Scheffler",
-      "Robert MacIntyre",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Tom Hoge"
     ]
   },
   {
@@ -2116,32 +2146,32 @@
   },
   {
     "rank": 137,
-    "team": "Danels 1",
-    "owner": "Reid D",
+    "team": "Nicholas Ancona",
+    "owner": "Nicholas A",
     "points": 329,
     "golfers": [
-      "Cameron Young",
-      "Rickie Fowler",
-      "Daniel Berger",
-      "Alex Noren",
-      "Pierceson Coody",
-      "Ricky Castillo",
-      "Bud Cauley"
+      "Scottie Scheffler",
+      "Robert MacIntyre",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Tom Hoge"
     ]
   },
   {
-    "rank": 143,
-    "team": "Deez NutZ",
-    "owner": "David B",
-    "points": 328,
+    "rank": 137,
+    "team": "Roll Tide",
+    "owner": "John S",
+    "points": 329,
     "golfers": [
-      "Xander Schauffele",
-      "Min Woo Lee",
-      "Jake Knapp",
-      "Nicolai Hojgaard",
-      "Justin Thomas",
-      "Wyndham Clark",
-      "Tony Finau"
+      "Tommy Fleetwood",
+      "Matt Fitzpatrick",
+      "Sepp Straka",
+      "Justin Rose",
+      "Christiaan Bezuidenhout",
+      "Taylor Pendrith",
+      "Tom Hoge"
     ]
   },
   {
@@ -2160,18 +2190,18 @@
     ]
   },
   {
-    "rank": 145,
-    "team": "Ham n Egg",
-    "owner": "Jake F",
-    "points": 327,
+    "rank": 143,
+    "team": "Deez NutZ",
+    "owner": "David B",
+    "points": 328,
     "golfers": [
-      "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Pierceson Coody",
+      "Xander Schauffele",
+      "Min Woo Lee",
+      "Jake Knapp",
+      "Nicolai Hojgaard",
+      "Justin Thomas",
       "Wyndham Clark",
-      "Max Greyserman"
+      "Tony Finau"
     ]
   },
   {
@@ -2187,6 +2217,21 @@
       "Nick Taylor",
       "Wyndham Clark",
       "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 145,
+    "team": "Ham n Egg",
+    "owner": "Jake F",
+    "points": 327,
+    "golfers": [
+      "Scottie Scheffler",
+      "Hideki Matsuyama",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Wyndham Clark",
+      "Max Greyserman"
     ]
   },
   {
@@ -2206,21 +2251,6 @@
   },
   {
     "rank": 148,
-    "team": "Suck Du Soleil",
-    "owner": "Max A",
-    "points": 325,
-    "golfers": [
-      "Collin Morikawa",
-      "Matt Fitzpatrick",
-      "Sepp Straka",
-      "Ryan Gerard",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 148,
     "team": "Albert Leshinsky - 1",
     "owner": "Albert L",
     "points": 325,
@@ -2231,21 +2261,6 @@
       "Sahith Theegala",
       "Corey Conners",
       "Ricky Castillo",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 148,
-    "team": "JordanJr",
-    "owner": "Jordan M",
-    "points": 325,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Jordan Spieth",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Ryo Hisatsune",
       "Ryan Fox"
     ]
   },
@@ -2266,6 +2281,21 @@
   },
   {
     "rank": 148,
+    "team": "JordanJr",
+    "owner": "Jordan M",
+    "points": 325,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Jordan Spieth",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 148,
     "team": "None of Your Business",
     "owner": "Ari F",
     "points": 325,
@@ -2280,18 +2310,18 @@
     ]
   },
   {
-    "rank": 153,
-    "team": "RButler 3",
-    "owner": "rian b",
-    "points": 324,
+    "rank": 148,
+    "team": "Suck Du Soleil",
+    "owner": "Max A",
+    "points": 325,
     "golfers": [
-      "Si Woo Kim",
-      "Chris Gotterup",
+      "Collin Morikawa",
+      "Matt Fitzpatrick",
       "Sepp Straka",
-      "Justin Rose",
-      "Justin Thomas",
-      "Kristoffer Reitan",
-      "Andrew Novak"
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Joel Dahmen"
     ]
   },
   {
@@ -2307,6 +2337,21 @@
       "Aaron Rai",
       "Ryo Hisatsune",
       "Taylor Moore"
+    ]
+  },
+  {
+    "rank": 153,
+    "team": "RButler 3",
+    "owner": "rian b",
+    "points": 324,
+    "golfers": [
+      "Si Woo Kim",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Justin Rose",
+      "Justin Thomas",
+      "Kristoffer Reitan",
+      "Andrew Novak"
     ]
   },
   {
@@ -2326,21 +2371,6 @@
   },
   {
     "rank": 156,
-    "team": "Johnmille1",
-    "owner": "John M",
-    "points": 319,
-    "golfers": [
-      "Si Woo Kim",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
-      "Nicolai Hojgaard",
-      "Rasmus Hojgaard",
-      "Ryo Hisatsune",
-      "Alex Smalley"
-    ]
-  },
-  {
-    "rank": 156,
     "team": "Alex David",
     "owner": "Alex D",
     "points": 319,
@@ -2355,33 +2385,18 @@
     ]
   },
   {
-    "rank": 158,
-    "team": "Yak Attack",
-    "owner": "Sean Y",
-    "points": 318,
+    "rank": 156,
+    "team": "Johnmille1",
+    "owner": "John M",
+    "points": 319,
     "golfers": [
-      "Collin Morikawa",
-      "Rickie Fowler",
-      "Jordan Spieth",
-      "J.J. Spaun",
-      "Justin Thomas",
-      "Nico Echavarria",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 158,
-    "team": "Sir",
-    "owner": "Ken M",
-    "points": 318,
-    "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
+      "Si Woo Kim",
+      "Min Woo Lee",
       "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Jason Day",
-      "Tom Hoge"
+      "Nicolai Hojgaard",
+      "Rasmus Hojgaard",
+      "Ryo Hisatsune",
+      "Alex Smalley"
     ]
   },
   {
@@ -2415,33 +2430,48 @@
     ]
   },
   {
-    "rank": 162,
-    "team": "Lester Robinson 2",
-    "owner": "Lester R",
-    "points": 317,
+    "rank": 158,
+    "team": "Sir",
+    "owner": "Ken M",
+    "points": 318,
+    "golfers": [
+      "Scottie Scheffler",
+      "Akshay Bhatia",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Jason Day",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 158,
+    "team": "Yak Attack",
+    "owner": "Sean Y",
+    "points": 318,
     "golfers": [
       "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Sungjae Im",
-      "Denny McCarthy"
+      "Rickie Fowler",
+      "Jordan Spieth",
+      "J.J. Spaun",
+      "Justin Thomas",
+      "Nico Echavarria",
+      "Max Greyserman"
     ]
   },
   {
     "rank": 162,
-    "team": "Team smiley 2",
-    "owner": "Donnie s",
+    "team": "Chapman Degens",
+    "owner": "Will G",
     "points": 317,
     "golfers": [
       "Scottie Scheffler",
-      "Chris Gotterup",
-      "Daniel Berger",
-      "Ryan Gerard",
+      "Hideki Matsuyama",
+      "Sepp Straka",
+      "Sahith Theegala",
       "Aaron Rai",
-      "Jason Day",
-      "Patrick Rodgers"
+      "Ricky Castillo",
+      "Ryan Fox"
     ]
   },
   {
@@ -2476,47 +2506,32 @@
   },
   {
     "rank": 162,
-    "team": "Chapman Degens",
-    "owner": "Will G",
+    "team": "Lester Robinson 2",
+    "owner": "Lester R",
     "points": 317,
     "golfers": [
-      "Scottie Scheffler",
+      "Collin Morikawa",
       "Hideki Matsuyama",
       "Sepp Straka",
       "Sahith Theegala",
-      "Aaron Rai",
-      "Ricky Castillo",
-      "Ryan Fox"
+      "Corey Conners",
+      "Sungjae Im",
+      "Denny McCarthy"
     ]
   },
   {
-    "rank": 167,
-    "team": "Potential Memories #2",
-    "owner": "Ryan M",
-    "points": 316,
+    "rank": 162,
+    "team": "Team smiley 2",
+    "owner": "Donnie s",
+    "points": 317,
     "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Nico Echavarria",
-      "Max McGreevy"
-    ]
-  },
-  {
-    "rank": 167,
-    "team": "Rob Mick",
-    "owner": "Rob M",
-    "points": 316,
-    "golfers": [
-      "Russell Henley",
+      "Scottie Scheffler",
       "Chris Gotterup",
-      "Harris English",
-      "Sahith Theegala",
+      "Daniel Berger",
+      "Ryan Gerard",
       "Aaron Rai",
       "Jason Day",
-      "Ryan Fox"
+      "Patrick Rodgers"
     ]
   },
   {
@@ -2536,6 +2551,36 @@
   },
   {
     "rank": 167,
+    "team": "Jon Mael 1",
+    "owner": "Jonathan D",
+    "points": 316,
+    "golfers": [
+      "Scottie Scheffler",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 167,
+    "team": "Potential Memories #2",
+    "owner": "Ryan M",
+    "points": 316,
+    "golfers": [
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Nico Echavarria",
+      "Max McGreevy"
+    ]
+  },
+  {
+    "rank": 167,
     "team": "Rephael's picks",
     "owner": "ELLIOT S",
     "points": 316,
@@ -2551,17 +2596,17 @@
   },
   {
     "rank": 167,
-    "team": "Jon Mael 1",
-    "owner": "Jonathan D",
+    "team": "Rob Mick",
+    "owner": "Rob M",
     "points": 316,
     "golfers": [
-      "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Jake Knapp",
+      "Russell Henley",
+      "Chris Gotterup",
+      "Harris English",
       "Sahith Theegala",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Patrick Rodgers"
+      "Aaron Rai",
+      "Jason Day",
+      "Ryan Fox"
     ]
   },
   {
@@ -2611,6 +2656,21 @@
   },
   {
     "rank": 175,
+    "team": "Andro Quartet #1",
+    "owner": "Daniel K",
+    "points": 311,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Matt McCarty",
+      "Wyndham Clark",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 175,
     "team": "BrandonAndLuke",
     "owner": "Luke T",
     "points": 311,
@@ -2622,36 +2682,6 @@
       "Matt McCarty",
       "Wyndham Clark",
       "Mac Meissner"
-    ]
-  },
-  {
-    "rank": 175,
-    "team": "Juniorisimo",
-    "owner": "Benny N",
-    "points": 311,
-    "golfers": [
-      "Collin Morikawa",
-      "Robert MacIntyre",
-      "Jacob Bridgeman",
-      "Brooks Koepka",
-      "Corey Conners",
-      "Brian Harman",
-      "Bud Cauley"
-    ]
-  },
-  {
-    "rank": 175,
-    "team": "Gotty3",
-    "owner": "Ben G",
-    "points": 311,
-    "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Rasmus Hojgaard",
-      "Nico Echavarria",
-      "Aldrich Potgieter"
     ]
   },
   {
@@ -2686,17 +2716,17 @@
   },
   {
     "rank": 175,
-    "team": "Andro Quartet #1",
-    "owner": "Daniel K",
+    "team": "Gotty3",
+    "owner": "Ben G",
     "points": 311,
     "golfers": [
       "Scottie Scheffler",
-      "Chris Gotterup",
+      "Akshay Bhatia",
       "Sepp Straka",
       "Sahith Theegala",
-      "Matt McCarty",
-      "Wyndham Clark",
-      "Tom Hoge"
+      "Rasmus Hojgaard",
+      "Nico Echavarria",
+      "Aldrich Potgieter"
     ]
   },
   {
@@ -2776,17 +2806,17 @@
   },
   {
     "rank": 185,
-    "team": "The Ryans",
-    "owner": "Ryan P",
+    "team": "Jordan Altman2",
+    "owner": "Jordan A",
     "points": 309,
     "golfers": [
-      "Collin Morikawa",
+      "Scottie Scheffler",
       "Min Woo Lee",
       "Daniel Berger",
       "Justin Rose",
       "Corey Conners",
-      "Wyndham Clark",
-      "Danny Walker"
+      "Ricky Castillo",
+      "Tom Hoge"
     ]
   },
   {
@@ -2806,6 +2836,21 @@
   },
   {
     "rank": 185,
+    "team": "The Ryans",
+    "owner": "Ryan P",
+    "points": 309,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Daniel Berger",
+      "Justin Rose",
+      "Corey Conners",
+      "Wyndham Clark",
+      "Danny Walker"
+    ]
+  },
+  {
+    "rank": 185,
     "team": "Timonie",
     "owner": "Hayden M",
     "points": 309,
@@ -2817,36 +2862,6 @@
       "Christiaan Bezuidenhout",
       "Ryo Hisatsune",
       "Bud Cauley"
-    ]
-  },
-  {
-    "rank": 185,
-    "team": "Jordan Altman2",
-    "owner": "Jordan A",
-    "points": 309,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Daniel Berger",
-      "Justin Rose",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 190,
-    "team": "MP4",
-    "owner": "Mark P",
-    "points": 308,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Christiaan Bezuidenhout",
-      "Ricky Castillo",
-      "Tom Hoge"
     ]
   },
   {
@@ -2865,33 +2880,18 @@
     ]
   },
   {
-    "rank": 192,
-    "team": "Webber",
-    "owner": "John W",
-    "points": 306,
+    "rank": 190,
+    "team": "MP4",
+    "owner": "Mark P",
+    "points": 308,
     "golfers": [
-      "Ludvig Aberg",
-      "Akshay Bhatia",
+      "Collin Morikawa",
+      "Hideki Matsuyama",
       "Sepp Straka",
-      "Justin Rose",
-      "Aaron Rai",
-      "Nico Echavarria",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 192,
-    "team": "Tim O'Shaughnessy",
-    "owner": "Timothy O",
-    "points": 306,
-    "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
       "Sahith Theegala",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Ryan Fox"
+      "Christiaan Bezuidenhout",
+      "Ricky Castillo",
+      "Tom Hoge"
     ]
   },
   {
@@ -2926,17 +2926,32 @@
   },
   {
     "rank": 192,
-    "team": "Frank S1",
-    "owner": "Frank S",
+    "team": "Tim O'Shaughnessy",
+    "owner": "Timothy O",
     "points": 306,
     "golfers": [
-      "Scottie Scheffler",
-      "Robert MacIntyre",
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 192,
+    "team": "Webber",
+    "owner": "John W",
+    "points": 306,
+    "golfers": [
+      "Ludvig Aberg",
+      "Akshay Bhatia",
       "Sepp Straka",
-      "J.J. Spaun",
-      "Keegan Bradley",
-      "Wyndham Clark",
-      "Brian Harman"
+      "Justin Rose",
+      "Aaron Rai",
+      "Nico Echavarria",
+      "Joel Dahmen"
     ]
   },
   {
@@ -3001,17 +3016,17 @@
   },
   {
     "rank": 201,
-    "team": "Goats",
-    "owner": "Matt R",
+    "team": "Anthony Sellors",
+    "owner": "Anthony S",
     "points": 301,
     "golfers": [
       "Scottie Scheffler",
-      "Chris Gotterup",
+      "Hideki Matsuyama",
       "Sepp Straka",
-      "Ryan Gerard",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Tom Hoge"
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Nico Echavarria",
+      "Ryan Fox"
     ]
   },
   {
@@ -3026,6 +3041,21 @@
       "Sahith Theegala",
       "Corey Conners",
       "Jason Day",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 201,
+    "team": "Goats",
+    "owner": "Matt R",
+    "points": 301,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Ryan Gerard",
+      "Aaron Rai",
+      "Ryo Hisatsune",
       "Tom Hoge"
     ]
   },
@@ -3059,36 +3089,6 @@
     ]
   },
   {
-    "rank": 201,
-    "team": "Anthony Sellors",
-    "owner": "Anthony S",
-    "points": 301,
-    "golfers": [
-      "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Nico Echavarria",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 206,
-    "team": "The Aftershock",
-    "owner": "Matthew M",
-    "points": 300,
-    "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Nick Taylor",
-      "Ryo Hisatsune",
-      "Patrick Rodgers"
-    ]
-  },
-  {
     "rank": 206,
     "team": "Jaymo39",
     "owner": "jason e",
@@ -3119,18 +3119,18 @@
     ]
   },
   {
-    "rank": 209,
-    "team": "Soho Crooks",
-    "owner": "Jack H",
-    "points": 299,
+    "rank": 206,
+    "team": "The Aftershock",
+    "owner": "Matthew M",
+    "points": 300,
     "golfers": [
-      "Tommy Fleetwood",
-      "Hideki Matsuyama",
+      "Collin Morikawa",
+      "Akshay Bhatia",
       "Jake Knapp",
-      "Justin Rose",
-      "Christiaan Bezuidenhout",
-      "Wyndham Clark",
-      "Max Greyserman"
+      "Sahith Theegala",
+      "Nick Taylor",
+      "Ryo Hisatsune",
+      "Patrick Rodgers"
     ]
   },
   {
@@ -3164,18 +3164,18 @@
     ]
   },
   {
-    "rank": 212,
-    "team": "Lester Robinson 3",
-    "owner": "Lester R",
-    "points": 298,
+    "rank": 209,
+    "team": "Soho Crooks",
+    "owner": "Jack H",
+    "points": 299,
     "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Adam Scott",
-      "Harry Hall",
-      "Corey Conners",
-      "Taylor Pendrith",
-      "Max Homa"
+      "Tommy Fleetwood",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Justin Rose",
+      "Christiaan Bezuidenhout",
+      "Wyndham Clark",
+      "Max Greyserman"
     ]
   },
   {
@@ -3191,6 +3191,21 @@
       "Aaron Rai",
       "Ryo Hisatsune",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 212,
+    "team": "Lester Robinson 3",
+    "owner": "Lester R",
+    "points": 298,
+    "golfers": [
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Adam Scott",
+      "Harry Hall",
+      "Corey Conners",
+      "Taylor Pendrith",
+      "Max Homa"
     ]
   },
   {
@@ -3240,16 +3255,16 @@
   },
   {
     "rank": 217,
-    "team": "Team Bibs",
-    "owner": "Stephen B",
+    "team": "3 Schads",
+    "owner": "Tyler D",
     "points": 295,
     "golfers": [
-      "Si Woo Kim",
-      "Rickie Fowler",
-      "Jake Knapp",
+      "Scottie Scheffler",
+      "Hideki Matsuyama",
+      "Daniel Berger",
       "Nicolai Hojgaard",
-      "Corey Conners",
-      "Ryo Hisatsune",
+      "Keegan Bradley",
+      "Jason Day",
       "Ryan Fox"
     ]
   },
@@ -3285,62 +3300,17 @@
   },
   {
     "rank": 217,
-    "team": "3 Schads",
-    "owner": "Tyler D",
+    "team": "Team Bibs",
+    "owner": "Stephen B",
     "points": 295,
     "golfers": [
-      "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Daniel Berger",
-      "Nicolai Hojgaard",
-      "Keegan Bradley",
-      "Jason Day",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 221,
-    "team": "Steve Scicchitano 2",
-    "owner": "Steve S",
-    "points": 294,
-    "golfers": [
       "Si Woo Kim",
-      "Min Woo Lee",
-      "Adam Scott",
-      "Ryan Gerard",
+      "Rickie Fowler",
+      "Jake Knapp",
+      "Nicolai Hojgaard",
       "Corey Conners",
       "Ryo Hisatsune",
       "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 221,
-    "team": "Riegelman",
-    "owner": "Mike R",
-    "points": 294,
-    "golfers": [
-      "Maverick McNealy",
-      "Viktor Hovland",
-      "Jason Day",
-      "Ryan Fox",
-      "Austin Smotherman",
-      "Tom Hoge",
-      "Davis Riley"
-    ]
-  },
-  {
-    "rank": 221,
-    "team": "Tsquared 4",
-    "owner": "Steven T",
-    "points": 294,
-    "golfers": [
-      "Collin Morikawa",
-      "Robert MacIntyre",
-      "Sepp Straka",
-      "Alex Noren",
-      "Aaron Rai",
-      "Jason Day",
-      "Max McGreevy"
     ]
   },
   {
@@ -3371,6 +3341,51 @@
       "Rasmus Hojgaard",
       "Nico Echavarria",
       "Mackenzie Hughes"
+    ]
+  },
+  {
+    "rank": 221,
+    "team": "Riegelman",
+    "owner": "Mike R",
+    "points": 294,
+    "golfers": [
+      "Maverick McNealy",
+      "Viktor Hovland",
+      "Jason Day",
+      "Ryan Fox",
+      "Austin Smotherman",
+      "Tom Hoge",
+      "Davis Riley"
+    ]
+  },
+  {
+    "rank": 221,
+    "team": "Steve Scicchitano 2",
+    "owner": "Steve S",
+    "points": 294,
+    "golfers": [
+      "Si Woo Kim",
+      "Min Woo Lee",
+      "Adam Scott",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 221,
+    "team": "Tsquared 4",
+    "owner": "Steven T",
+    "points": 294,
+    "golfers": [
+      "Collin Morikawa",
+      "Robert MacIntyre",
+      "Sepp Straka",
+      "Alex Noren",
+      "Aaron Rai",
+      "Jason Day",
+      "Max McGreevy"
     ]
   },
   {
@@ -3405,21 +3420,6 @@
   },
   {
     "rank": 228,
-    "team": "Landman",
-    "owner": "Moises D",
-    "points": 292,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Hideki Matsuyama",
-      "Daniel Berger",
-      "J.J. Spaun",
-      "Rasmus Hojgaard",
-      "Ryo Hisatsune",
-      "Jhonattan Vegas"
-    ]
-  },
-  {
-    "rank": 228,
     "team": "DSilvD2",
     "owner": "Daniel S",
     "points": 292,
@@ -3450,21 +3450,6 @@
   },
   {
     "rank": 228,
-    "team": "Rickety Cricket",
-    "owner": "Jason K",
-    "points": 292,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Shane Lowry",
-      "J.J. Spaun",
-      "Corey Conners",
-      "Wyndham Clark",
-      "Max Homa"
-    ]
-  },
-  {
-    "rank": 228,
     "team": "JC1",
     "owner": "Justin C",
     "points": 292,
@@ -3479,18 +3464,33 @@
     ]
   },
   {
-    "rank": 233,
-    "team": "CJ Van Ostenbridge",
-    "owner": "CJ V",
-    "points": 291,
+    "rank": 228,
+    "team": "Landman",
+    "owner": "Moises D",
+    "points": 292,
     "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Shane Lowry",
-      "Nicolai Hojgaard",
-      "Corey Conners",
+      "Tommy Fleetwood",
+      "Hideki Matsuyama",
+      "Daniel Berger",
+      "J.J. Spaun",
+      "Rasmus Hojgaard",
       "Ryo Hisatsune",
-      "Ryan Fox"
+      "Jhonattan Vegas"
+    ]
+  },
+  {
+    "rank": 228,
+    "team": "Rickety Cricket",
+    "owner": "Jason K",
+    "points": 292,
+    "golfers": [
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Shane Lowry",
+      "J.J. Spaun",
+      "Corey Conners",
+      "Wyndham Clark",
+      "Max Homa"
     ]
   },
   {
@@ -3506,6 +3506,21 @@
       "Justin Thomas",
       "Sungjae Im",
       "Max Greyserman"
+    ]
+  },
+  {
+    "rank": 233,
+    "team": "CJ Van Ostenbridge",
+    "owner": "CJ V",
+    "points": 291,
+    "golfers": [
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Shane Lowry",
+      "Nicolai Hojgaard",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Ryan Fox"
     ]
   },
   {
@@ -3555,21 +3570,6 @@
   },
   {
     "rank": 238,
-    "team": "Birdie Boys",
-    "owner": "N R",
-    "points": 289,
-    "golfers": [
-      "Collin Morikawa",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Justin Rose",
-      "Aaron Rai",
-      "Jason Day",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 238,
     "team": "Benalev 2",
     "owner": "Ben L",
     "points": 289,
@@ -3581,6 +3581,21 @@
       "Corey Conners",
       "Jason Day",
       "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 238,
+    "team": "Birdie Boys",
+    "owner": "N R",
+    "points": 289,
+    "golfers": [
+      "Collin Morikawa",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Justin Rose",
+      "Aaron Rai",
+      "Jason Day",
+      "Tom Hoge"
     ]
   },
   {
@@ -3600,17 +3615,17 @@
   },
   {
     "rank": 241,
-    "team": "ZIGSWORLD 4",
-    "owner": "Kyle O",
+    "team": "LevBros",
+    "owner": "Jeffrey L",
     "points": 287,
     "golfers": [
-      "Collin Morikawa",
-      "Robert MacIntyre",
-      "Sepp Straka",
-      "Ryan Gerard",
-      "Christiaan Bezuidenhout",
-      "Ricky Castillo",
-      "Max McGreevy"
+      "Cameron Young",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Jason Day",
+      "Andrew Novak"
     ]
   },
   {
@@ -3645,47 +3660,17 @@
   },
   {
     "rank": 241,
-    "team": "LevBros",
-    "owner": "Jeffrey L",
+    "team": "ZIGSWORLD 4",
+    "owner": "Kyle O",
     "points": 287,
     "golfers": [
-      "Cameron Young",
-      "Hideki Matsuyama",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Jason Day",
-      "Andrew Novak"
-    ]
-  },
-  {
-    "rank": 245,
-    "team": "Noah Pollack 2",
-    "owner": "Noah P",
-    "points": 286,
-    "golfers": [
-      "Rory McIlroy",
-      "Matt Fitzpatrick",
-      "Daniel Berger",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Wyndham Clark",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 245,
-    "team": "johnmille",
-    "owner": "John M",
-    "points": 286,
-    "golfers": [
       "Collin Morikawa",
-      "Akshay Bhatia",
-      "Daniel Berger",
-      "Nicolai Hojgaard",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Alex Smalley"
+      "Robert MacIntyre",
+      "Sepp Straka",
+      "Ryan Gerard",
+      "Christiaan Bezuidenhout",
+      "Ricky Castillo",
+      "Max McGreevy"
     ]
   },
   {
@@ -3734,18 +3719,33 @@
     ]
   },
   {
-    "rank": 250,
-    "team": "Timonie2",
-    "owner": "Hayden M",
-    "points": 285,
+    "rank": 245,
+    "team": "Noah Pollack 2",
+    "owner": "Noah P",
+    "points": 286,
     "golfers": [
-      "Russell Henley",
-      "Rickie Fowler",
-      "Jake Knapp",
+      "Rory McIlroy",
+      "Matt Fitzpatrick",
+      "Daniel Berger",
       "Sahith Theegala",
-      "Nick Taylor",
-      "Ricky Castillo",
-      "Emiliano Grillo"
+      "Pierceson Coody",
+      "Wyndham Clark",
+      "Max Greyserman"
+    ]
+  },
+  {
+    "rank": 245,
+    "team": "johnmille",
+    "owner": "John M",
+    "points": 286,
+    "golfers": [
+      "Collin Morikawa",
+      "Akshay Bhatia",
+      "Daniel Berger",
+      "Nicolai Hojgaard",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Alex Smalley"
     ]
   },
   {
@@ -3764,48 +3764,18 @@
     ]
   },
   {
-    "rank": 252,
-    "team": "SharpShooter",
-    "owner": "Scott S",
-    "points": 284,
+    "rank": 250,
+    "team": "Timonie2",
+    "owner": "Hayden M",
+    "points": 285,
     "golfers": [
       "Russell Henley",
-      "Chris Gotterup",
-      "Daniel Berger",
-      "Ryan Gerard",
-      "Pierceson Coody",
-      "Jason Day",
-      "Sami Valimaki"
-    ]
-  },
-  {
-    "rank": 252,
-    "team": "Irish Coffee Corner",
-    "owner": "Brendan K",
-    "points": 284,
-    "golfers": [
-      "Si Woo Kim",
-      "Hideki Matsuyama",
-      "Jacob Bridgeman",
+      "Rickie Fowler",
+      "Jake Knapp",
       "Sahith Theegala",
-      "Pierceson Coody",
-      "Wyndham Clark",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 252,
-    "team": "McDonald",
-    "owner": "Michael P",
-    "points": 284,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Jacob Bridgeman",
-      "Ryan Gerard",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Ryan Fox"
+      "Nick Taylor",
+      "Ricky Castillo",
+      "Emiliano Grillo"
     ]
   },
   {
@@ -3825,6 +3795,21 @@
   },
   {
     "rank": 252,
+    "team": "Irish Coffee Corner",
+    "owner": "Brendan K",
+    "points": 284,
+    "golfers": [
+      "Si Woo Kim",
+      "Hideki Matsuyama",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Wyndham Clark",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 252,
     "team": "Konturry 3",
     "owner": "Ryan K",
     "points": 284,
@@ -3836,6 +3821,36 @@
       "Pierceson Coody",
       "Jason Day",
       "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 252,
+    "team": "McDonald",
+    "owner": "Michael P",
+    "points": 284,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Jacob Bridgeman",
+      "Ryan Gerard",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 252,
+    "team": "SharpShooter",
+    "owner": "Scott S",
+    "points": 284,
+    "golfers": [
+      "Russell Henley",
+      "Chris Gotterup",
+      "Daniel Berger",
+      "Ryan Gerard",
+      "Pierceson Coody",
+      "Jason Day",
+      "Sami Valimaki"
     ]
   },
   {
@@ -3915,21 +3930,6 @@
   },
   {
     "rank": 262,
-    "team": "Sam B 2",
-    "owner": "Sam B",
-    "points": 278,
-    "golfers": [
-      "Scottie Scheffler",
-      "Rickie Fowler",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Sudarshan Yellamaraju"
-    ]
-  },
-  {
-    "rank": 262,
     "team": "3 Goats",
     "owner": "Matt R",
     "points": 278,
@@ -3944,18 +3944,18 @@
     ]
   },
   {
-    "rank": 264,
-    "team": "David Simms",
-    "owner": "Joe G",
-    "points": 277,
+    "rank": 262,
+    "team": "Sam B 2",
+    "owner": "Sam B",
+    "points": 278,
     "golfers": [
-      "Ludvig Aberg",
-      "Nicolai Hojgaard",
-      "Corey Conners",
-      "Max McGreevy",
-      "Denny McCarthy",
-      "Tom Hoge",
-      "Joe Highsmith"
+      "Scottie Scheffler",
+      "Rickie Fowler",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Sudarshan Yellamaraju"
     ]
   },
   {
@@ -3975,6 +3975,21 @@
   },
   {
     "rank": 264,
+    "team": "David Simms",
+    "owner": "Joe G",
+    "points": 277,
+    "golfers": [
+      "Ludvig Aberg",
+      "Nicolai Hojgaard",
+      "Corey Conners",
+      "Max McGreevy",
+      "Denny McCarthy",
+      "Tom Hoge",
+      "Joe Highsmith"
+    ]
+  },
+  {
+    "rank": 264,
     "team": "Fatatouille",
     "owner": "Max A",
     "points": 277,
@@ -3986,21 +4001,6 @@
       "Corey Conners",
       "Ricky Castillo",
       "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 264,
-    "team": "sCeNIK2",
-    "owner": "Christian N",
-    "points": 277,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Jordan Spieth",
-      "Sam Burns",
-      "Nick Taylor",
-      "Wyndham Clark",
-      "Max Homa"
     ]
   },
   {
@@ -4019,18 +4019,18 @@
     ]
   },
   {
-    "rank": 269,
-    "team": "McDonald5",
-    "owner": "Michael P",
-    "points": 276,
+    "rank": 264,
+    "team": "sCeNIK2",
+    "owner": "Christian N",
+    "points": 277,
     "golfers": [
-      "Russell Henley",
-      "Matt Fitzpatrick",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Christiaan Bezuidenhout",
-      "Nico Echavarria",
-      "John Keefer"
+      "Scottie Scheffler",
+      "Min Woo Lee",
+      "Jordan Spieth",
+      "Sam Burns",
+      "Nick Taylor",
+      "Wyndham Clark",
+      "Max Homa"
     ]
   },
   {
@@ -4050,6 +4050,21 @@
   },
   {
     "rank": 269,
+    "team": "McDonald5",
+    "owner": "Michael P",
+    "points": 276,
+    "golfers": [
+      "Russell Henley",
+      "Matt Fitzpatrick",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Christiaan Bezuidenhout",
+      "Nico Echavarria",
+      "John Keefer"
+    ]
+  },
+  {
+    "rank": 269,
     "team": "Peck's Picks",
     "owner": "Matt P",
     "points": 276,
@@ -4059,21 +4074,6 @@
       "Daniel Berger",
       "Sahith Theegala",
       "Corey Conners",
-      "Ricky Castillo",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 269,
-    "team": "Shap 1",
-    "owner": "Isaac S",
-    "points": 276,
-    "golfers": [
-      "Xander Schauffele",
-      "Rickie Fowler",
-      "Jordan Spieth",
-      "Sam Burns",
-      "Davis Thompson",
       "Ricky Castillo",
       "Ryan Fox"
     ]
@@ -4094,33 +4094,33 @@
     ]
   },
   {
-    "rank": 274,
-    "team": "Wawa",
-    "owner": "Waran V",
-    "points": 275,
+    "rank": 269,
+    "team": "Shap 1",
+    "owner": "Isaac S",
+    "points": 276,
     "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Jason Day",
-      "Max Greyserman"
+      "Xander Schauffele",
+      "Rickie Fowler",
+      "Jordan Spieth",
+      "Sam Burns",
+      "Davis Thompson",
+      "Ricky Castillo",
+      "Ryan Fox"
     ]
   },
   {
     "rank": 274,
-    "team": "Potential Memories #1",
-    "owner": "Ryan M",
+    "team": "Aspollack7 2",
+    "owner": "Andy P",
     "points": 275,
     "golfers": [
       "Scottie Scheffler",
-      "Matt Fitzpatrick",
+      "Hideki Matsuyama",
       "Jake Knapp",
       "Justin Rose",
-      "Christiaan Bezuidenhout",
+      "Pierceson Coody",
       "Jason Day",
-      "Joel Dahmen"
+      "Max Greyserman"
     ]
   },
   {
@@ -4140,15 +4140,30 @@
   },
   {
     "rank": 274,
-    "team": "Aspollack7 2",
-    "owner": "Andy P",
+    "team": "Potential Memories #1",
+    "owner": "Ryan M",
     "points": 275,
     "golfers": [
       "Scottie Scheffler",
-      "Hideki Matsuyama",
+      "Matt Fitzpatrick",
       "Jake Knapp",
       "Justin Rose",
-      "Pierceson Coody",
+      "Christiaan Bezuidenhout",
+      "Jason Day",
+      "Joel Dahmen"
+    ]
+  },
+  {
+    "rank": 274,
+    "team": "Wawa",
+    "owner": "Waran V",
+    "points": 275,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Aaron Rai",
       "Jason Day",
       "Max Greyserman"
     ]
@@ -4166,6 +4181,21 @@
       "Corey Conners",
       "Nico Echavarria",
       "Aldrich Potgieter"
+    ]
+  },
+  {
+    "rank": 279,
+    "team": "2J's",
+    "owner": "Joanthan H",
+    "points": 273,
+    "golfers": [
+      "Cameron Young",
+      "Akshay Bhatia",
+      "Shane Lowry",
+      "Sahith Theegala",
+      "Christiaan Bezuidenhout",
+      "Sungjae Im",
+      "Max McGreevy"
     ]
   },
   {
@@ -4199,18 +4229,18 @@
     ]
   },
   {
-    "rank": 279,
-    "team": "2J's",
-    "owner": "Joanthan H",
-    "points": 273,
+    "rank": 282,
+    "team": "ChudsTein2",
+    "owner": "Charles W",
+    "points": 271,
     "golfers": [
-      "Cameron Young",
+      "Scottie Scheffler",
       "Akshay Bhatia",
       "Shane Lowry",
-      "Sahith Theegala",
-      "Christiaan Bezuidenhout",
-      "Sungjae Im",
-      "Max McGreevy"
+      "Nicolai Hojgaard",
+      "Corey Conners",
+      "Wyndham Clark",
+      "Ryan Fox"
     ]
   },
   {
@@ -4226,21 +4256,6 @@
       "Christiaan Bezuidenhout",
       "Thorbjorn Olesen",
       "Tony Finau"
-    ]
-  },
-  {
-    "rank": 282,
-    "team": "ChudsTein2",
-    "owner": "Charles W",
-    "points": 271,
-    "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Shane Lowry",
-      "Nicolai Hojgaard",
-      "Corey Conners",
-      "Wyndham Clark",
-      "Ryan Fox"
     ]
   },
   {
@@ -4260,21 +4275,6 @@
   },
   {
     "rank": 285,
-    "team": "Sticky rickys",
-    "owner": "Neil S",
-    "points": 269,
-    "golfers": [
-      "Xander Schauffele",
-      "Matt Fitzpatrick",
-      "Shane Lowry",
-      "Harry Hall",
-      "Christiaan Bezuidenhout",
-      "Wyndham Clark",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 285,
     "team": "Ari Kamo",
     "owner": "Ari K",
     "points": 269,
@@ -4290,32 +4290,17 @@
   },
   {
     "rank": 285,
-    "team": "MagicMan Uly",
-    "owner": "Will L",
+    "team": "Ben Katz 2",
+    "owner": "Benjamin K",
     "points": 269,
     "golfers": [
       "Scottie Scheffler",
-      "Chris Gotterup",
+      "Hideki Matsuyama",
       "Adam Scott",
-      "Keith Mitchell",
-      "Rasmus Hojgaard",
-      "Nico Echavarria",
-      "Aldrich Potgieter"
-    ]
-  },
-  {
-    "rank": 285,
-    "team": "Curtis Brodzina",
-    "owner": "Curtis B",
-    "points": 269,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Kurt Kitayama",
-      "Ryan Gerard",
-      "Corey Conners",
-      "Ricky Castillo",
-      "Max McGreevy"
+      "Alex Noren",
+      "Pierceson Coody",
+      "Jason Day",
+      "Brian Harman"
     ]
   },
   {
@@ -4335,31 +4320,61 @@
   },
   {
     "rank": 285,
-    "team": "Ben Katz 2",
-    "owner": "Benjamin K",
+    "team": "Curtis Brodzina",
+    "owner": "Curtis B",
     "points": 269,
     "golfers": [
       "Scottie Scheffler",
-      "Hideki Matsuyama",
+      "Min Woo Lee",
+      "Kurt Kitayama",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ricky Castillo",
+      "Max McGreevy"
+    ]
+  },
+  {
+    "rank": 285,
+    "team": "MagicMan Uly",
+    "owner": "Will L",
+    "points": 269,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
       "Adam Scott",
-      "Alex Noren",
-      "Pierceson Coody",
-      "Jason Day",
-      "Brian Harman"
+      "Keith Mitchell",
+      "Rasmus Hojgaard",
+      "Nico Echavarria",
+      "Aldrich Potgieter"
+    ]
+  },
+  {
+    "rank": 285,
+    "team": "Sticky rickys",
+    "owner": "Neil S",
+    "points": 269,
+    "golfers": [
+      "Xander Schauffele",
+      "Matt Fitzpatrick",
+      "Shane Lowry",
+      "Harry Hall",
+      "Christiaan Bezuidenhout",
+      "Wyndham Clark",
+      "Max Greyserman"
     ]
   },
   {
     "rank": 291,
-    "team": "Sweissberg",
-    "owner": "Shlomo W",
+    "team": "AK's Cocaine",
+    "owner": "Vince P",
     "points": 268,
     "golfers": [
-      "Si Woo Kim",
-      "Hideki Matsuyama",
-      "Jake Knapp",
+      "Collin Morikawa",
+      "Chris Gotterup",
+      "Daniel Berger",
       "Sahith Theegala",
-      "Matt McCarty",
-      "Ricky Castillo",
+      "Aaron Rai",
+      "Wyndham Clark",
       "Max Homa"
     ]
   },
@@ -4380,21 +4395,6 @@
   },
   {
     "rank": 291,
-    "team": "AK's Cocaine",
-    "owner": "Vince P",
-    "points": 268,
-    "golfers": [
-      "Collin Morikawa",
-      "Chris Gotterup",
-      "Daniel Berger",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Wyndham Clark",
-      "Max Homa"
-    ]
-  },
-  {
-    "rank": 291,
     "team": "Jacob Dinetz",
     "owner": "Jacob R",
     "points": 268,
@@ -4409,33 +4409,18 @@
     ]
   },
   {
-    "rank": 295,
-    "team": "ZIGSWORLD 1",
-    "owner": "Kyle O",
-    "points": 267,
+    "rank": 291,
+    "team": "Sweissberg",
+    "owner": "Shlomo W",
+    "points": 268,
     "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
-      "Alex Noren",
-      "Corey Conners",
-      "Nico Echavarria",
-      "Rico Hoey"
-    ]
-  },
-  {
-    "rank": 295,
-    "team": "PosVibersOnly",
-    "owner": "Neil S",
-    "points": 267,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Akshay Bhatia",
-      "Jacob Bridgeman",
-      "Nicolai Hojgaard",
-      "Aaron Rai",
-      "Nico Echavarria",
-      "Tom Hoge"
+      "Si Woo Kim",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Matt McCarty",
+      "Ricky Castillo",
+      "Max Homa"
     ]
   },
   {
@@ -4470,6 +4455,21 @@
   },
   {
     "rank": 295,
+    "team": "Jason Sorensen 1",
+    "owner": "Jason S",
+    "points": 267,
+    "golfers": [
+      "Scottie Scheffler",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Jason Day",
+      "HaoTong Li"
+    ]
+  },
+  {
+    "rank": 295,
     "team": "Joseph Conor Lyons",
     "owner": "Conor L",
     "points": 267,
@@ -4500,6 +4500,36 @@
   },
   {
     "rank": 295,
+    "team": "PosVibersOnly",
+    "owner": "Neil S",
+    "points": 267,
+    "golfers": [
+      "Tommy Fleetwood",
+      "Akshay Bhatia",
+      "Jacob Bridgeman",
+      "Nicolai Hojgaard",
+      "Aaron Rai",
+      "Nico Echavarria",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 295,
+    "team": "ZIGSWORLD 1",
+    "owner": "Kyle O",
+    "points": 267,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
+      "Alex Noren",
+      "Corey Conners",
+      "Nico Echavarria",
+      "Rico Hoey"
+    ]
+  },
+  {
+    "rank": 295,
     "team": "Zaltman",
     "owner": "Zachary A",
     "points": 267,
@@ -4511,36 +4541,6 @@
       "Aaron Rai",
       "Ryo Hisatsune",
       "HaoTong Li"
-    ]
-  },
-  {
-    "rank": 295,
-    "team": "Jason Sorensen 1",
-    "owner": "Jason S",
-    "points": 267,
-    "golfers": [
-      "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Jason Day",
-      "HaoTong Li"
-    ]
-  },
-  {
-    "rank": 303,
-    "team": "RayK",
-    "owner": "Raymond K",
-    "points": 266,
-    "golfers": [
-      "Ludvig Aberg",
-      "Hideki Matsuyama",
-      "Jake Knapp",
-      "Ryan Gerard",
-      "Nick Taylor",
-      "Ryo Hisatsune",
-      "Ryan Fox"
     ]
   },
   {
@@ -4559,18 +4559,18 @@
     ]
   },
   {
-    "rank": 305,
-    "team": "Kevin Garry",
-    "owner": "Kevin G",
-    "points": 265,
+    "rank": 303,
+    "team": "RayK",
+    "owner": "Raymond K",
+    "points": 266,
     "golfers": [
       "Ludvig Aberg",
-      "Min Woo Lee",
-      "Shane Lowry",
-      "Sahith Theegala",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Ryan Gerard",
       "Nick Taylor",
       "Ryo Hisatsune",
-      "Joel Dahmen"
+      "Ryan Fox"
     ]
   },
   {
@@ -4586,6 +4586,21 @@
       "Pierceson Coody",
       "Jason Day",
       "Emiliano Grillo"
+    ]
+  },
+  {
+    "rank": 305,
+    "team": "Kevin Garry",
+    "owner": "Kevin G",
+    "points": 265,
+    "golfers": [
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Shane Lowry",
+      "Sahith Theegala",
+      "Nick Taylor",
+      "Ryo Hisatsune",
+      "Joel Dahmen"
     ]
   },
   {
@@ -4635,21 +4650,6 @@
   },
   {
     "rank": 310,
-    "team": "The Bullpen 2",
-    "owner": "Alex O",
-    "points": 261,
-    "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Jacob Bridgeman",
-      "Nicolai Hojgaard",
-      "Pierceson Coody",
-      "Ricky Castillo",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 310,
     "team": "Mitch Bono 2",
     "owner": "Mitchell B",
     "points": 261,
@@ -4661,6 +4661,21 @@
       "Rasmus Hojgaard",
       "Ryo Hisatsune",
       "Max Homa"
+    ]
+  },
+  {
+    "rank": 310,
+    "team": "The Bullpen 2",
+    "owner": "Alex O",
+    "points": 261,
+    "golfers": [
+      "Scottie Scheffler",
+      "Akshay Bhatia",
+      "Jacob Bridgeman",
+      "Nicolai Hojgaard",
+      "Pierceson Coody",
+      "Ricky Castillo",
+      "Tom Hoge"
     ]
   },
   {
@@ -4695,21 +4710,6 @@
   },
   {
     "rank": 314,
-    "team": "SB4LIP1",
-    "owner": "Steven B",
-    "points": 260,
-    "golfers": [
-      "Viktor Hovland",
-      "Robert MacIntyre",
-      "Harris English",
-      "Alex Noren",
-      "Keegan Bradley",
-      "Sam Stevens",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 314,
     "team": "1.2.3.4",
     "owner": "Steven T",
     "points": 260,
@@ -4724,47 +4724,18 @@
     ]
   },
   {
-    "rank": 316,
-    "team": "Jspitz1",
-    "owner": "Jonah S",
-    "points": 259,
+    "rank": 314,
+    "team": "SB4LIP1",
+    "owner": "Steven B",
+    "points": 260,
     "golfers": [
-      "Si Woo Kim",
-      "Min Woo Lee",
-      "Shane Lowry",
+      "Viktor Hovland",
+      "Robert MacIntyre",
+      "Harris English",
       "Alex Noren",
-      "Christiaan Bezuidenhout",
-      "Ryo Hisatsune",
-      "Max Homa"
-    ]
-  },
-  {
-    "rank": 316,
-    "team": "Olde Point Sandbaggers",
-    "owner": "Tim F",
-    "points": 259,
-    "golfers": [
-      "Collin Morikawa",
-      "Chris Gotterup",
-      "Adam Scott",
-      "Alex Noren",
-      "Nick Taylor",
-      "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 316,
-    "team": "Wineguy22",
-    "owner": "Alexander N",
-    "points": 259,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Jacob Bridgeman",
-      "J.J. Spaun",
-      "Nick Taylor",
-      "Ryan Fox"
+      "Keegan Bradley",
+      "Sam Stevens",
+      "Joel Dahmen"
     ]
   },
   {
@@ -4784,6 +4755,21 @@
   },
   {
     "rank": 316,
+    "team": "Jspitz1",
+    "owner": "Jonah S",
+    "points": 259,
+    "golfers": [
+      "Si Woo Kim",
+      "Min Woo Lee",
+      "Shane Lowry",
+      "Alex Noren",
+      "Christiaan Bezuidenhout",
+      "Ryo Hisatsune",
+      "Max Homa"
+    ]
+  },
+  {
+    "rank": 316,
     "team": "KISTNER",
     "owner": "Steven P",
     "points": 259,
@@ -4794,6 +4780,21 @@
       "Sahith Theegala",
       "Nick Taylor",
       "Taylor Pendrith",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 316,
+    "team": "Olde Point Sandbaggers",
+    "owner": "Tim F",
+    "points": 259,
+    "golfers": [
+      "Collin Morikawa",
+      "Chris Gotterup",
+      "Adam Scott",
+      "Alex Noren",
+      "Nick Taylor",
+      "Ryo Hisatsune",
       "Ryan Fox"
     ]
   },
@@ -4813,18 +4814,17 @@
     ]
   },
   {
-    "rank": 322,
-    "team": "Stat Rats 2",
-    "owner": "Matt G",
-    "points": 258,
+    "rank": 316,
+    "team": "Wineguy22",
+    "owner": "Alexander N",
+    "points": 259,
     "golfers": [
       "Scottie Scheffler",
       "Chris Gotterup",
-      "Shane Lowry",
-      "Justin Rose",
-      "Corey Conners",
-      "Sungjae Im",
-      "Joel Dahmen"
+      "Jacob Bridgeman",
+      "J.J. Spaun",
+      "Nick Taylor",
+      "Ryan Fox"
     ]
   },
   {
@@ -4840,6 +4840,21 @@
       "Tony Finau",
       "Chris Kirk",
       "Erik van Rooyen"
+    ]
+  },
+  {
+    "rank": 322,
+    "team": "Stat Rats 2",
+    "owner": "Matt G",
+    "points": 258,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Shane Lowry",
+      "Justin Rose",
+      "Corey Conners",
+      "Sungjae Im",
+      "Joel Dahmen"
     ]
   },
   {
@@ -4859,21 +4874,6 @@
   },
   {
     "rank": 325,
-    "team": "Munda 2",
-    "owner": "Aaron M",
-    "points": 255,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Akshay Bhatia",
-      "Shane Lowry",
-      "Justin Rose",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Denny McCarthy"
-    ]
-  },
-  {
-    "rank": 325,
     "team": "Jewish Visor Chin",
     "owner": "Jack S",
     "points": 255,
@@ -4885,6 +4885,21 @@
       "Matt McCarty",
       "Taylor Pendrith",
       "Max Homa"
+    ]
+  },
+  {
+    "rank": 325,
+    "team": "Munda 2",
+    "owner": "Aaron M",
+    "points": 255,
+    "golfers": [
+      "Tommy Fleetwood",
+      "Akshay Bhatia",
+      "Shane Lowry",
+      "Justin Rose",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Denny McCarthy"
     ]
   },
   {
@@ -4964,21 +4979,6 @@
   },
   {
     "rank": 332,
-    "team": "Danels 2",
-    "owner": "Reid D",
-    "points": 252,
-    "golfers": [
-      "Xander Schauffele",
-      "Matt Fitzpatrick",
-      "Jake Knapp",
-      "Harry Hall",
-      "Christiaan Bezuidenhout",
-      "Wyndham Clark",
-      "Mackenzie Hughes"
-    ]
-  },
-  {
-    "rank": 332,
     "team": "Bluestone 2",
     "owner": "Michael B",
     "points": 252,
@@ -4994,16 +4994,31 @@
   },
   {
     "rank": 332,
-    "team": "Sonic Boom",
-    "owner": "Matthew M",
+    "team": "Danels 2",
+    "owner": "Reid D",
+    "points": 252,
+    "golfers": [
+      "Xander Schauffele",
+      "Matt Fitzpatrick",
+      "Jake Knapp",
+      "Harry Hall",
+      "Christiaan Bezuidenhout",
+      "Wyndham Clark",
+      "Mackenzie Hughes"
+    ]
+  },
+  {
+    "rank": 332,
+    "team": "Double Rat Farts",
+    "owner": "Jason Z",
     "points": 252,
     "golfers": [
       "Scottie Scheffler",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
+      "Hideki Matsuyama",
+      "Jake Knapp",
       "Nicolai Hojgaard",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
+      "Corey Conners",
+      "Taylor Pendrith",
       "Ryan Fox"
     ]
   },
@@ -5024,16 +5039,31 @@
   },
   {
     "rank": 332,
-    "team": "Double Rat Farts",
-    "owner": "Jason Z",
+    "team": "Sonic Boom",
+    "owner": "Matthew M",
     "points": 252,
     "golfers": [
       "Scottie Scheffler",
-      "Hideki Matsuyama",
-      "Jake Knapp",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
       "Nicolai Hojgaard",
-      "Corey Conners",
-      "Taylor Pendrith",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 337,
+    "team": "Ben Katz 1",
+    "owner": "Benjamin K",
+    "points": 251,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Sepp Straka",
+      "Sam Burns",
+      "Aaron Rai",
+      "Wyndham Clark",
       "Ryan Fox"
     ]
   },
@@ -5054,21 +5084,6 @@
   },
   {
     "rank": 337,
-    "team": "Ty Webb",
-    "owner": "Daniel M",
-    "points": 251,
-    "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Shane Lowry",
-      "Ryan Gerard",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 337,
     "team": "Steven Blackburn 2",
     "owner": "Steven B",
     "points": 251,
@@ -5084,16 +5099,61 @@
   },
   {
     "rank": 337,
-    "team": "Ben Katz 1",
-    "owner": "Benjamin K",
+    "team": "Ty Webb",
+    "owner": "Daniel M",
     "points": 251,
     "golfers": [
+      "Collin Morikawa",
+      "Akshay Bhatia",
+      "Shane Lowry",
+      "Ryan Gerard",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Joel Dahmen"
+    ]
+  },
+  {
+    "rank": 341,
+    "team": "Colew 3",
+    "owner": "Cole W",
+    "points": 250,
+    "golfers": [
       "Scottie Scheffler",
-      "Chris Gotterup",
-      "Sepp Straka",
-      "Sam Burns",
+      "Rickie Fowler",
+      "Jacob Bridgeman",
+      "Alex Noren",
+      "Pierceson Coody",
+      "Taylor Pendrith",
+      "Karl Vilips"
+    ]
+  },
+  {
+    "rank": 341,
+    "team": "J Sherman3",
+    "owner": "Jason S",
+    "points": 250,
+    "golfers": [
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Adam Scott",
+      "Sahith Theegala",
       "Aaron Rai",
-      "Wyndham Clark",
+      "Jason Day",
+      "Joel Dahmen"
+    ]
+  },
+  {
+    "rank": 341,
+    "team": "Jlaub2",
+    "owner": "John L",
+    "points": 250,
+    "golfers": [
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Daniel Berger",
+      "Keith Mitchell",
+      "Aaron Rai",
+      "Ryo Hisatsune",
       "Ryan Fox"
     ]
   },
@@ -5114,51 +5174,6 @@
   },
   {
     "rank": 341,
-    "team": "Michael Lederman",
-    "owner": "michael l",
-    "points": 250,
-    "golfers": [
-      "Collin Morikawa",
-      "Rickie Fowler",
-      "Adam Scott",
-      "Keith Mitchell",
-      "Matt McCarty",
-      "Taylor Pendrith",
-      "Patrick Rodgers"
-    ]
-  },
-  {
-    "rank": 341,
-    "team": "Jlaub2",
-    "owner": "John L",
-    "points": 250,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Daniel Berger",
-      "Keith Mitchell",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 341,
-    "team": "J Sherman3",
-    "owner": "Jason S",
-    "points": 250,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Adam Scott",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Jason Day",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 341,
     "team": "Jordan Altman",
     "owner": "Jordan A",
     "points": 250,
@@ -5174,32 +5189,17 @@
   },
   {
     "rank": 341,
-    "team": "Colew 3",
-    "owner": "Cole W",
+    "team": "Michael Lederman",
+    "owner": "michael l",
     "points": 250,
     "golfers": [
-      "Scottie Scheffler",
+      "Collin Morikawa",
       "Rickie Fowler",
-      "Jacob Bridgeman",
-      "Alex Noren",
-      "Pierceson Coody",
+      "Adam Scott",
+      "Keith Mitchell",
+      "Matt McCarty",
       "Taylor Pendrith",
-      "Karl Vilips"
-    ]
-  },
-  {
-    "rank": 347,
-    "team": "Steven Blackburn 3",
-    "owner": "Steven B",
-    "points": 249,
-    "golfers": [
-      "Viktor Hovland",
-      "Rickie Fowler",
-      "Daniel Berger",
-      "Harry Hall",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Andrew Novak"
+      "Patrick Rodgers"
     ]
   },
   {
@@ -5218,6 +5218,21 @@
     ]
   },
   {
+    "rank": 347,
+    "team": "Steven Blackburn 3",
+    "owner": "Steven B",
+    "points": 249,
+    "golfers": [
+      "Viktor Hovland",
+      "Rickie Fowler",
+      "Daniel Berger",
+      "Harry Hall",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Andrew Novak"
+    ]
+  },
+  {
     "rank": 349,
     "team": "Tsquared 2",
     "owner": "Steven T",
@@ -5230,51 +5245,6 @@
       "Christiaan Bezuidenhout",
       "Ricky Castillo",
       "Lucas Glover"
-    ]
-  },
-  {
-    "rank": 350,
-    "team": "Nick Power",
-    "owner": "Nichoas R",
-    "points": 246,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
-      "Ryan Gerard",
-      "Nick Taylor",
-      "Wyndham Clark",
-      "Brian Harman"
-    ]
-  },
-  {
-    "rank": 351,
-    "team": "Honeycuttingdeals 3",
-    "owner": "Jason K",
-    "points": 245,
-    "golfers": [
-      "Si Woo Kim",
-      "Min Woo Lee",
-      "Adam Scott",
-      "Sam Burns",
-      "Corey Conners",
-      "Wyndham Clark",
-      "Brian Harman"
-    ]
-  },
-  {
-    "rank": 351,
-    "team": "Michael Cianci",
-    "owner": "Michael C",
-    "points": 245,
-    "golfers": [
-      "Collin Morikawa",
-      "Patrick Cantlay",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Wyndham Clark",
-      "Matthieu Pavon"
     ]
   },
   {
@@ -5308,78 +5278,33 @@
     ]
   },
   {
-    "rank": 355,
-    "team": "Ollbuckets",
-    "owner": "joey m",
-    "points": 244,
-    "golfers": [
-      "Russell Henley",
-      "Rickie Fowler",
-      "Adam Scott",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Sungjae Im",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 355,
-    "team": "Bergs Birdies (2)",
-    "owner": "Zack B",
-    "points": 244,
+    "rank": 351,
+    "team": "Honeycuttingdeals 3",
+    "owner": "Jason K",
+    "points": 245,
     "golfers": [
       "Si Woo Kim",
-      "Akshay Bhatia",
-      "Jake Knapp",
-      "J.J. Spaun",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 355,
-    "team": "Squeaks",
-    "owner": "Danielle O",
-    "points": 244,
-    "golfers": [
-      "Collin Morikawa",
       "Min Woo Lee",
-      "Daniel Berger",
-      "Sahith Theegala",
-      "Keegan Bradley",
-      "Ryo Hisatsune",
+      "Adam Scott",
+      "Sam Burns",
+      "Corey Conners",
+      "Wyndham Clark",
       "Brian Harman"
     ]
   },
   {
-    "rank": 355,
-    "team": "Elliot1",
-    "owner": "ELLIOT S",
-    "points": 244,
+    "rank": 351,
+    "team": "Michael Cianci",
+    "owner": "Michael C",
+    "points": 245,
     "golfers": [
-      "Scottie Scheffler",
-      "Akshay Bhatia",
+      "Collin Morikawa",
+      "Patrick Cantlay",
       "Jake Knapp",
       "Sahith Theegala",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 355,
-    "team": "Trents",
-    "owner": "Tyler R",
-    "points": 244,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Christiaan Bezuidenhout",
-      "Ryo Hisatsune",
-      "Ryan Fox"
+      "Corey Conners",
+      "Wyndham Clark",
+      "Matthieu Pavon"
     ]
   },
   {
@@ -5413,18 +5338,78 @@
     ]
   },
   {
-    "rank": 362,
-    "team": "ZIGSWORLD 3",
-    "owner": "Kyle O",
-    "points": 243,
+    "rank": 355,
+    "team": "Bergs Birdies (2)",
+    "owner": "Zack B",
+    "points": 244,
+    "golfers": [
+      "Si Woo Kim",
+      "Akshay Bhatia",
+      "Jake Knapp",
+      "J.J. Spaun",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Max Greyserman"
+    ]
+  },
+  {
+    "rank": 355,
+    "team": "Elliot1",
+    "owner": "ELLIOT S",
+    "points": 244,
     "golfers": [
       "Scottie Scheffler",
-      "Rickie Fowler",
-      "Kurt Kitayama",
+      "Akshay Bhatia",
+      "Jake Knapp",
       "Sahith Theegala",
       "Aaron Rai",
       "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 355,
+    "team": "Ollbuckets",
+    "owner": "joey m",
+    "points": 244,
+    "golfers": [
+      "Russell Henley",
+      "Rickie Fowler",
+      "Adam Scott",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Sungjae Im",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 355,
+    "team": "Squeaks",
+    "owner": "Danielle O",
+    "points": 244,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Daniel Berger",
+      "Sahith Theegala",
+      "Keegan Bradley",
+      "Ryo Hisatsune",
+      "Brian Harman"
+    ]
+  },
+  {
+    "rank": 355,
+    "team": "Trents",
+    "owner": "Tyler R",
+    "points": 244,
+    "golfers": [
+      "Scottie Scheffler",
+      "Min Woo Lee",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Christiaan Bezuidenhout",
+      "Ryo Hisatsune",
+      "Ryan Fox"
     ]
   },
   {
@@ -5444,21 +5429,6 @@
   },
   {
     "rank": 362,
-    "team": "Joe Marcus",
-    "owner": "Joseph M",
-    "points": 243,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Nick Taylor",
-      "Ryo Hisatsune",
-      "Brian Harman"
-    ]
-  },
-  {
-    "rank": 362,
     "team": "Jack Ford2",
     "owner": "Jack F",
     "points": 243,
@@ -5470,6 +5440,21 @@
       "Pierceson Coody",
       "Nico Echavarria",
       "Max Homa"
+    ]
+  },
+  {
+    "rank": 362,
+    "team": "Joe Marcus",
+    "owner": "Joseph M",
+    "points": 243,
+    "golfers": [
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Nick Taylor",
+      "Ryo Hisatsune",
+      "Brian Harman"
     ]
   },
   {
@@ -5489,6 +5474,21 @@
   },
   {
     "rank": 362,
+    "team": "ZIGSWORLD 3",
+    "owner": "Kyle O",
+    "points": 243,
+    "golfers": [
+      "Scottie Scheffler",
+      "Rickie Fowler",
+      "Kurt Kitayama",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 362,
     "team": "jabbers",
     "owner": "jonathan b",
     "points": 243,
@@ -5500,6 +5500,21 @@
       "Corey Conners",
       "Kristoffer Reitan",
       "J.T. Poston"
+    ]
+  },
+  {
+    "rank": 368,
+    "team": "JG17",
+    "owner": "Josh G",
+    "points": 242,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Jake Knapp",
+      "Justin Rose",
+      "Rasmus Hojgaard",
+      "Jason Day",
+      "Ryan Fox"
     ]
   },
   {
@@ -5533,21 +5548,6 @@
     ]
   },
   {
-    "rank": 368,
-    "team": "JG17",
-    "owner": "Josh G",
-    "points": 242,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Jake Knapp",
-      "Justin Rose",
-      "Rasmus Hojgaard",
-      "Jason Day",
-      "Ryan Fox"
-    ]
-  },
-  {
     "rank": 371,
     "team": "Dav's Dingers",
     "owner": "David G",
@@ -5559,21 +5559,6 @@
       "Ryan Gerard",
       "Corey Conners",
       "Nico Echavarria",
-      "Tom Hoge"
-    ]
-  },
-  {
-    "rank": 371,
-    "team": "NTTT2",
-    "owner": "Noah T",
-    "points": 241,
-    "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Jacob Bridgeman",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Ryo Hisatsune",
       "Tom Hoge"
     ]
   },
@@ -5594,6 +5579,21 @@
   },
   {
     "rank": 371,
+    "team": "NTTT2",
+    "owner": "Noah T",
+    "points": 241,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Jacob Bridgeman",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 371,
     "team": "Rob Quinn",
     "owner": "Rob M",
     "points": 241,
@@ -5609,21 +5609,6 @@
   },
   {
     "rank": 375,
-    "team": "Matty / Mike 2",
-    "owner": "Matt S",
-    "points": 240,
-    "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Harris English",
-      "Sahith Theegala",
-      "Nick Taylor",
-      "Taylor Pendrith",
-      "Patrick Rodgers"
-    ]
-  },
-  {
-    "rank": 375,
     "team": "Bradley Glassberg 3",
     "owner": "Bradley G",
     "points": 240,
@@ -5634,6 +5619,21 @@
       "Justin Rose",
       "Aaron Rai",
       "Ricky Castillo",
+      "Patrick Rodgers"
+    ]
+  },
+  {
+    "rank": 375,
+    "team": "Matty / Mike 2",
+    "owner": "Matt S",
+    "points": 240,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Harris English",
+      "Sahith Theegala",
+      "Nick Taylor",
+      "Taylor Pendrith",
       "Patrick Rodgers"
     ]
   },
@@ -5744,32 +5744,17 @@
   },
   {
     "rank": 384,
-    "team": "The Bullpen 3",
-    "owner": "Alex O",
+    "team": "$4",
+    "owner": "Ari F",
     "points": 234,
     "golfers": [
-      "Ludvig Aberg",
-      "Chris Gotterup",
+      "Xander Schauffele",
+      "Matt Fitzpatrick",
       "Daniel Berger",
-      "Ryan Gerard",
+      "Sam Burns",
       "Rasmus Hojgaard",
-      "Sam Stevens",
-      "Michael Kim"
-    ]
-  },
-  {
-    "rank": 384,
-    "team": "PopPop",
-    "owner": "Stuart K",
-    "points": 234,
-    "golfers": [
-      "Tommy Fleetwood",
-      "Rickie Fowler",
-      "Jake Knapp",
-      "Nicolai Hojgaard",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Ryan Fox"
+      "Taylor Pendrith",
+      "HaoTong Li"
     ]
   },
   {
@@ -5789,6 +5774,36 @@
   },
   {
     "rank": 384,
+    "team": "PopPop",
+    "owner": "Stuart K",
+    "points": 234,
+    "golfers": [
+      "Tommy Fleetwood",
+      "Rickie Fowler",
+      "Jake Knapp",
+      "Nicolai Hojgaard",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 384,
+    "team": "The Bullpen 3",
+    "owner": "Alex O",
+    "points": 234,
+    "golfers": [
+      "Ludvig Aberg",
+      "Chris Gotterup",
+      "Daniel Berger",
+      "Ryan Gerard",
+      "Rasmus Hojgaard",
+      "Sam Stevens",
+      "Michael Kim"
+    ]
+  },
+  {
+    "rank": 384,
     "team": "Tom Bombadil",
     "owner": "Tom F",
     "points": 234,
@@ -5800,21 +5815,6 @@
       "Corey Conners",
       "Ryo Hisatsune",
       "Denny McCarthy"
-    ]
-  },
-  {
-    "rank": 384,
-    "team": "$4",
-    "owner": "Ari F",
-    "points": 234,
-    "golfers": [
-      "Xander Schauffele",
-      "Matt Fitzpatrick",
-      "Daniel Berger",
-      "Sam Burns",
-      "Rasmus Hojgaard",
-      "Taylor Pendrith",
-      "HaoTong Li"
     ]
   },
   {
@@ -5834,21 +5834,6 @@
   },
   {
     "rank": 389,
-    "team": "jag710",
-    "owner": "Adam R",
-    "points": 233,
-    "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Sepp Straka",
-      "Ryan Gerard",
-      "Aaron Rai",
-      "Taylor Pendrith",
-      "Mac Meissner"
-    ]
-  },
-  {
-    "rank": 389,
     "team": "Sunday Sermon",
     "owner": "Moises D",
     "points": 233,
@@ -5860,6 +5845,21 @@
       "Pierceson Coody",
       "Nico Echavarria",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 389,
+    "team": "jag710",
+    "owner": "Adam R",
+    "points": 233,
+    "golfers": [
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Sepp Straka",
+      "Ryan Gerard",
+      "Aaron Rai",
+      "Taylor Pendrith",
+      "Mac Meissner"
     ]
   },
   {
@@ -5894,21 +5894,6 @@
   },
   {
     "rank": 394,
-    "team": "Rav60",
-    "owner": "Mark R",
-    "points": 229,
-    "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Sepp Straka",
-      "Nicolai Hojgaard",
-      "Matt McCarty",
-      "Wyndham Clark",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 394,
     "team": "JC2",
     "owner": "Quinn C",
     "points": 229,
@@ -5920,6 +5905,21 @@
       "Matt McCarty",
       "Nico Echavarria",
       "Austin Smotherman"
+    ]
+  },
+  {
+    "rank": 394,
+    "team": "Rav60",
+    "owner": "Mark R",
+    "points": 229,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Sepp Straka",
+      "Nicolai Hojgaard",
+      "Matt McCarty",
+      "Wyndham Clark",
+      "Max Greyserman"
     ]
   },
   {
@@ -5954,17 +5954,17 @@
   },
   {
     "rank": 398,
-    "team": "Tyler Barbariantz",
-    "owner": "Tyler B",
+    "team": "AlexSable1",
+    "owner": "Alex S",
     "points": 227,
     "golfers": [
-      "Collin Morikawa",
+      "Scottie Scheffler",
       "Min Woo Lee",
-      "Jake Knapp",
-      "Nicolai Hojgaard",
-      "Corey Conners",
-      "Ryo Hisatsune",
-      "Ryan Fox"
+      "Sepp Straka",
+      "Sahith Theegala",
+      "Aaron Rai",
+      "Thorbjorn Olesen",
+      "Brian Harman"
     ]
   },
   {
@@ -5984,32 +5984,32 @@
   },
   {
     "rank": 398,
-    "team": "AlexSable1",
-    "owner": "Alex S",
+    "team": "Tyler Barbariantz",
+    "owner": "Tyler B",
     "points": 227,
     "golfers": [
-      "Scottie Scheffler",
+      "Collin Morikawa",
       "Min Woo Lee",
-      "Sepp Straka",
-      "Sahith Theegala",
-      "Aaron Rai",
-      "Thorbjorn Olesen",
-      "Brian Harman"
+      "Jake Knapp",
+      "Nicolai Hojgaard",
+      "Corey Conners",
+      "Ryo Hisatsune",
+      "Ryan Fox"
     ]
   },
   {
     "rank": 401,
-    "team": "RG Majors",
-    "owner": "Randy G",
+    "team": "Korndorn",
+    "owner": "Sal O",
     "points": 226,
     "golfers": [
-      "Collin Morikawa",
-      "Hideki Matsuyama",
-      "Shane Lowry",
-      "Sahith Theegala",
-      "Corey Conners",
-      "Sungjae Im",
-      "Michael Kim"
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Jacob Bridgeman",
+      "Michael Thorbjornsen",
+      "Rasmus Hojgaard",
+      "Sam Stevens",
+      "Ryan Fox"
     ]
   },
   {
@@ -6029,17 +6029,17 @@
   },
   {
     "rank": 401,
-    "team": "Korndorn",
-    "owner": "Sal O",
+    "team": "RG Majors",
+    "owner": "Randy G",
     "points": 226,
     "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Jacob Bridgeman",
-      "Michael Thorbjornsen",
-      "Rasmus Hojgaard",
-      "Sam Stevens",
-      "Ryan Fox"
+      "Collin Morikawa",
+      "Hideki Matsuyama",
+      "Shane Lowry",
+      "Sahith Theegala",
+      "Corey Conners",
+      "Sungjae Im",
+      "Michael Kim"
     ]
   },
   {
@@ -6089,6 +6089,21 @@
   },
   {
     "rank": 407,
+    "team": "LIVLaughLove",
+    "owner": "Joey T",
+    "points": 220,
+    "golfers": [
+      "Scottie Scheffler",
+      "Akshay Bhatia",
+      "Adam Scott",
+      "Sam Burns",
+      "Aaron Rai",
+      "Nico Echavarria",
+      "Max Greyserman"
+    ]
+  },
+  {
+    "rank": 407,
     "team": "tonymaio1",
     "owner": "Anthony M",
     "points": 220,
@@ -6103,18 +6118,18 @@
     ]
   },
   {
-    "rank": 407,
-    "team": "LIVLaughLove",
-    "owner": "Joey T",
-    "points": 220,
+    "rank": 409,
+    "team": "Colew 2",
+    "owner": "Cole W",
+    "points": 219,
     "golfers": [
       "Scottie Scheffler",
-      "Akshay Bhatia",
-      "Adam Scott",
-      "Sam Burns",
+      "Min Woo Lee",
+      "Sepp Straka",
+      "Ryan Gerard",
       "Aaron Rai",
       "Nico Echavarria",
-      "Max Greyserman"
+      "Joel Dahmen"
     ]
   },
   {
@@ -6149,36 +6164,6 @@
   },
   {
     "rank": 409,
-    "team": "jSchaffer320",
-    "owner": "Jonathan S",
-    "points": 219,
-    "golfers": [
-      "Scottie Scheffler",
-      "Rickie Fowler",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Ricky Castillo",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 409,
-    "team": "Colew 2",
-    "owner": "Cole W",
-    "points": 219,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Sepp Straka",
-      "Ryan Gerard",
-      "Aaron Rai",
-      "Nico Echavarria",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 409,
     "team": "The Sandman",
     "owner": "Brian J",
     "points": 219,
@@ -6190,6 +6175,21 @@
       "Aaron Rai",
       "Wyndham Clark",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 409,
+    "team": "jSchaffer320",
+    "owner": "Jonathan S",
+    "points": 219,
+    "golfers": [
+      "Scottie Scheffler",
+      "Rickie Fowler",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Ricky Castillo",
+      "Ryan Fox"
     ]
   },
   {
@@ -6209,21 +6209,6 @@
   },
   {
     "rank": 415,
-    "team": "Michael Gross 2",
-    "owner": "Michael G",
-    "points": 217,
-    "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Jordan Spieth",
-      "Sam Burns",
-      "Justin Thomas",
-      "Sungjae Im",
-      "Michael Kim"
-    ]
-  },
-  {
-    "rank": 415,
     "team": "Bender-Diamond 1",
     "owner": "Eitan B",
     "points": 217,
@@ -6235,6 +6220,21 @@
       "Pierceson Coody",
       "Nico Echavarria",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 415,
+    "team": "Michael Gross 2",
+    "owner": "Michael G",
+    "points": 217,
+    "golfers": [
+      "Collin Morikawa",
+      "Akshay Bhatia",
+      "Jordan Spieth",
+      "Sam Burns",
+      "Justin Thomas",
+      "Sungjae Im",
+      "Michael Kim"
     ]
   },
   {
@@ -6314,6 +6314,21 @@
   },
   {
     "rank": 422,
+    "team": "Joseph Conor Lyons 3",
+    "owner": "Conor L",
+    "points": 211,
+    "golfers": [
+      "Scottie Scheffler",
+      "Min Woo Lee",
+      "Harris English",
+      "Alex Noren",
+      "Christiaan Bezuidenhout",
+      "Nico Echavarria",
+      "Marco Penge"
+    ]
+  },
+  {
+    "rank": 422,
     "team": "Steve Scicchitano 1",
     "owner": "Steve S",
     "points": 211,
@@ -6340,21 +6355,6 @@
       "Davis Thompson",
       "Wyndham Clark",
       "Mac Meissner"
-    ]
-  },
-  {
-    "rank": 422,
-    "team": "Joseph Conor Lyons 3",
-    "owner": "Conor L",
-    "points": 211,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Harris English",
-      "Alex Noren",
-      "Christiaan Bezuidenhout",
-      "Nico Echavarria",
-      "Marco Penge"
     ]
   },
   {
@@ -6389,6 +6389,21 @@
   },
   {
     "rank": 427,
+    "team": "Joshua Schwartz 1",
+    "owner": "Joshua S",
+    "points": 208,
+    "golfers": [
+      "Collin Morikawa",
+      "Chris Gotterup",
+      "Jake Knapp",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 427,
     "team": "Martin Blackburn 2",
     "owner": "Martin B",
     "points": 208,
@@ -6418,21 +6433,6 @@
     ]
   },
   {
-    "rank": 427,
-    "team": "Joshua Schwartz 1",
-    "owner": "Joshua S",
-    "points": 208,
-    "golfers": [
-      "Collin Morikawa",
-      "Chris Gotterup",
-      "Jake Knapp",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
     "rank": 430,
     "team": "Mike Mayer 1",
     "owner": "Michael M",
@@ -6445,21 +6445,6 @@
       "Matt McCarty",
       "Kristoffer Reitan",
       "Brian Harman"
-    ]
-  },
-  {
-    "rank": 431,
-    "team": "Camello",
-    "owner": "Joanthan H",
-    "points": 206,
-    "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Kurt Kitayama",
-      "Alex Noren",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Ryan Fox"
     ]
   },
   {
@@ -6478,18 +6463,18 @@
     ]
   },
   {
-    "rank": 433,
-    "team": "Josh W",
-    "owner": "Josh W",
-    "points": 203,
+    "rank": 431,
+    "team": "Camello",
+    "owner": "Joanthan H",
+    "points": 206,
     "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Jake Knapp",
-      "Ryan Gerard",
-      "Christiaan Bezuidenhout",
-      "Ricky Castillo",
-      "Max Greyserman"
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Kurt Kitayama",
+      "Alex Noren",
+      "Aaron Rai",
+      "Ryo Hisatsune",
+      "Ryan Fox"
     ]
   },
   {
@@ -6523,18 +6508,18 @@
     ]
   },
   {
-    "rank": 436,
-    "team": "Team Taff",
-    "owner": "Matt T",
-    "points": 202,
+    "rank": 433,
+    "team": "Josh W",
+    "owner": "Josh W",
+    "points": 203,
     "golfers": [
       "Collin Morikawa",
-      "Rickie Fowler",
+      "Akshay Bhatia",
       "Jake Knapp",
-      "Sahith Theegala",
-      "Matt McCarty",
-      "Ryo Hisatsune",
-      "Joel Dahmen"
+      "Ryan Gerard",
+      "Christiaan Bezuidenhout",
+      "Ricky Castillo",
+      "Max Greyserman"
     ]
   },
   {
@@ -6553,33 +6538,18 @@
     ]
   },
   {
-    "rank": 438,
-    "team": "ZIGSWORLD 2",
-    "owner": "Kyle O",
-    "points": 201,
+    "rank": 436,
+    "team": "Team Taff",
+    "owner": "Matt T",
+    "points": 202,
     "golfers": [
-      "Si Woo Kim",
-      "Matt Fitzpatrick",
-      "Daniel Berger",
-      "Alex Noren",
-      "Matt McCarty",
-      "Taylor Pendrith",
-      "Jordan Smith"
-    ]
-  },
-  {
-    "rank": 438,
-    "team": "Anywhere Lending Mortgage Broker",
-    "owner": "Rick B",
-    "points": 201,
-    "golfers": [
-      "Si Woo Kim",
-      "Chris Gotterup",
+      "Collin Morikawa",
+      "Rickie Fowler",
       "Jake Knapp",
-      "Ryan Gerard",
-      "Pierceson Coody",
+      "Sahith Theegala",
+      "Matt McCarty",
       "Ryo Hisatsune",
-      "Ryan Fox"
+      "Joel Dahmen"
     ]
   },
   {
@@ -6599,6 +6569,21 @@
   },
   {
     "rank": 438,
+    "team": "Anywhere Lending Mortgage Broker",
+    "owner": "Rick B",
+    "points": 201,
+    "golfers": [
+      "Si Woo Kim",
+      "Chris Gotterup",
+      "Jake Knapp",
+      "Ryan Gerard",
+      "Pierceson Coody",
+      "Ryo Hisatsune",
+      "Ryan Fox"
+    ]
+  },
+  {
+    "rank": 438,
     "team": "JBauer1",
     "owner": "Jake B",
     "points": 201,
@@ -6613,18 +6598,18 @@
     ]
   },
   {
-    "rank": 442,
-    "team": "Putt Pirate",
-    "owner": "Spencer L",
-    "points": 200,
+    "rank": 438,
+    "team": "ZIGSWORLD 2",
+    "owner": "Kyle O",
+    "points": 201,
     "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Harris English",
-      "Keith Mitchell",
-      "Davis Thompson",
-      "Ryo Hisatsune",
-      "Tom Hoge"
+      "Si Woo Kim",
+      "Matt Fitzpatrick",
+      "Daniel Berger",
+      "Alex Noren",
+      "Matt McCarty",
+      "Taylor Pendrith",
+      "Jordan Smith"
     ]
   },
   {
@@ -6643,18 +6628,18 @@
     ]
   },
   {
-    "rank": 444,
-    "team": "fDBA",
-    "owner": "Harris T",
-    "points": 199,
+    "rank": 442,
+    "team": "Putt Pirate",
+    "owner": "Spencer L",
+    "points": 200,
     "golfers": [
       "Collin Morikawa",
-      "Matt Fitzpatrick",
-      "Daniel Berger",
-      "Justin Rose",
-      "Aaron Rai",
-      "Nico Echavarria",
-      "Ryan Fox"
+      "Min Woo Lee",
+      "Harris English",
+      "Keith Mitchell",
+      "Davis Thompson",
+      "Ryo Hisatsune",
+      "Tom Hoge"
     ]
   },
   {
@@ -6670,6 +6655,21 @@
       "Keegan Bradley",
       "Thorbjorn Olesen",
       "Stephan Jaeger"
+    ]
+  },
+  {
+    "rank": 444,
+    "team": "fDBA",
+    "owner": "Harris T",
+    "points": 199,
+    "golfers": [
+      "Collin Morikawa",
+      "Matt Fitzpatrick",
+      "Daniel Berger",
+      "Justin Rose",
+      "Aaron Rai",
+      "Nico Echavarria",
+      "Ryan Fox"
     ]
   },
   {
@@ -6704,21 +6704,6 @@
   },
   {
     "rank": 448,
-    "team": "Mau/Don 3",
-    "owner": "Mauricio C",
-    "points": 195,
-    "golfers": [
-      "Collin Morikawa",
-      "Patrick Cantlay",
-      "Daniel Berger",
-      "Ryan Gerard",
-      "Christiaan Bezuidenhout",
-      "Ricky Castillo",
-      "Vince Whaley"
-    ]
-  },
-  {
-    "rank": 448,
     "team": "Crawlings",
     "owner": "Carter R",
     "points": 195,
@@ -6730,6 +6715,21 @@
       "Rasmus Hojgaard",
       "Ricky Castillo",
       "HaoTong Li"
+    ]
+  },
+  {
+    "rank": 448,
+    "team": "Mau/Don 3",
+    "owner": "Mauricio C",
+    "points": 195,
+    "golfers": [
+      "Collin Morikawa",
+      "Patrick Cantlay",
+      "Daniel Berger",
+      "Ryan Gerard",
+      "Christiaan Bezuidenhout",
+      "Ricky Castillo",
+      "Vince Whaley"
     ]
   },
   {
@@ -6749,21 +6749,6 @@
   },
   {
     "rank": 451,
-    "team": "TIGER UPPERCUT!!!",
-    "owner": "Timothy L",
-    "points": 193,
-    "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Jacob Bridgeman",
-      "Ryan Gerard",
-      "Pierceson Coody",
-      "Nico Echavarria",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 451,
     "team": "ScottShapiro1",
     "owner": "Scott S",
     "points": 193,
@@ -6778,18 +6763,33 @@
     ]
   },
   {
+    "rank": 451,
+    "team": "TIGER UPPERCUT!!!",
+    "owner": "Timothy L",
+    "points": 193,
+    "golfers": [
+      "Collin Morikawa",
+      "Akshay Bhatia",
+      "Jacob Bridgeman",
+      "Ryan Gerard",
+      "Pierceson Coody",
+      "Nico Echavarria",
+      "Ryan Fox"
+    ]
+  },
+  {
     "rank": 453,
-    "team": "Godzilla (-1)",
-    "owner": "Bob L",
+    "team": "Albert Leshinsky - 2",
+    "owner": "Albert L",
     "points": 192,
     "golfers": [
-      "Ludvig Aberg",
+      "Scottie Scheffler",
       "Hideki Matsuyama",
       "Jake Knapp",
-      "Ryan Gerard",
-      "Christiaan Bezuidenhout",
-      "Kristoffer Reitan",
-      "Tom Hoge"
+      "Sam Burns",
+      "Aaron Rai",
+      "Jason Day",
+      "Ryan Fox"
     ]
   },
   {
@@ -6809,17 +6809,17 @@
   },
   {
     "rank": 453,
-    "team": "Albert Leshinsky - 2",
-    "owner": "Albert L",
+    "team": "Godzilla (-1)",
+    "owner": "Bob L",
     "points": 192,
     "golfers": [
-      "Scottie Scheffler",
+      "Ludvig Aberg",
       "Hideki Matsuyama",
       "Jake Knapp",
-      "Sam Burns",
-      "Aaron Rai",
-      "Jason Day",
-      "Ryan Fox"
+      "Ryan Gerard",
+      "Christiaan Bezuidenhout",
+      "Kristoffer Reitan",
+      "Tom Hoge"
     ]
   },
   {
@@ -6959,21 +6959,6 @@
   },
   {
     "rank": 465,
-    "team": "Maxx050528",
-    "owner": "Maxx W",
-    "points": 178,
-    "golfers": [
-      "Scottie Scheffler",
-      "Chris Gotterup",
-      "Jake Knapp",
-      "Nicolai Hojgaard",
-      "Aaron Rai",
-      "Nico Echavarria",
-      "Emiliano Grillo"
-    ]
-  },
-  {
-    "rank": 465,
     "team": "Albatross",
     "owner": "Michael G",
     "points": 178,
@@ -6985,6 +6970,21 @@
       "Aaron Rai",
       "Ryo Hisatsune",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 465,
+    "team": "Maxx050528",
+    "owner": "Maxx W",
+    "points": 178,
+    "golfers": [
+      "Scottie Scheffler",
+      "Chris Gotterup",
+      "Jake Knapp",
+      "Nicolai Hojgaard",
+      "Aaron Rai",
+      "Nico Echavarria",
+      "Emiliano Grillo"
     ]
   },
   {
@@ -7034,16 +7034,46 @@
   },
   {
     "rank": 470,
-    "team": "Wildthangs",
-    "owner": "Zachary W",
+    "team": "CSWidman",
+    "owner": "Connor W",
     "points": 169,
     "golfers": [
-      "Rory McIlroy",
+      "Collin Morikawa",
       "Robert MacIntyre",
-      "Ben Griffin",
-      "Sahith Theegala",
-      "Pierceson Coody",
-      "Kristoffer Reitan",
+      "Jacob Bridgeman",
+      "Ryan Gerard",
+      "Matt McCarty",
+      "Taylor Pendrith",
+      "Denny McCarthy"
+    ]
+  },
+  {
+    "rank": 470,
+    "team": "Konturry",
+    "owner": "Ryan K",
+    "points": 169,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Jake Knapp",
+      "Nicolai Hojgaard",
+      "Christiaan Bezuidenhout",
+      "Ryo Hisatsune",
+      "Joel Dahmen"
+    ]
+  },
+  {
+    "rank": 470,
+    "team": "Neff",
+    "owner": "Zack N",
+    "points": 169,
+    "golfers": [
+      "Scottie Scheffler",
+      "Min Woo Lee",
+      "Jake Knapp",
+      "Ryan Gerard",
+      "Aaron Rai",
+      "Ryo Hisatsune",
       "Ryan Fox"
     ]
   },
@@ -7064,61 +7094,16 @@
   },
   {
     "rank": 470,
-    "team": "Konturry",
-    "owner": "Ryan K",
+    "team": "Wildthangs",
+    "owner": "Zachary W",
     "points": 169,
     "golfers": [
-      "Collin Morikawa",
-      "Min Woo Lee",
-      "Jake Knapp",
-      "Nicolai Hojgaard",
-      "Christiaan Bezuidenhout",
-      "Ryo Hisatsune",
-      "Joel Dahmen"
-    ]
-  },
-  {
-    "rank": 470,
-    "team": "CSWidman",
-    "owner": "Connor W",
-    "points": 169,
-    "golfers": [
-      "Collin Morikawa",
+      "Rory McIlroy",
       "Robert MacIntyre",
-      "Jacob Bridgeman",
-      "Ryan Gerard",
-      "Matt McCarty",
-      "Taylor Pendrith",
-      "Denny McCarthy"
-    ]
-  },
-  {
-    "rank": 470,
-    "team": "Neff",
-    "owner": "Zack N",
-    "points": 169,
-    "golfers": [
-      "Scottie Scheffler",
-      "Min Woo Lee",
-      "Jake Knapp",
-      "Ryan Gerard",
-      "Aaron Rai",
-      "Ryo Hisatsune",
-      "Ryan Fox"
-    ]
-  },
-  {
-    "rank": 475,
-    "team": "Lord",
-    "owner": "Ken M",
-    "points": 168,
-    "golfers": [
-      "Collin Morikawa",
-      "Matt Fitzpatrick",
-      "Jake Knapp",
-      "Ryan Gerard",
-      "Justin Thomas",
-      "Sungjae Im",
+      "Ben Griffin",
+      "Sahith Theegala",
+      "Pierceson Coody",
+      "Kristoffer Reitan",
       "Ryan Fox"
     ]
   },
@@ -7135,6 +7120,21 @@
       "Rasmus Hojgaard",
       "Nico Echavarria",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 475,
+    "team": "Lord",
+    "owner": "Ken M",
+    "points": 168,
+    "golfers": [
+      "Collin Morikawa",
+      "Matt Fitzpatrick",
+      "Jake Knapp",
+      "Ryan Gerard",
+      "Justin Thomas",
+      "Sungjae Im",
+      "Ryan Fox"
     ]
   },
   {
@@ -7184,21 +7184,6 @@
   },
   {
     "rank": 480,
-    "team": "Matthew Luckoff",
-    "owner": "Matthew L",
-    "points": 160,
-    "golfers": [
-      "Collin Morikawa",
-      "Akshay Bhatia",
-      "Jake Knapp",
-      "Sam Burns",
-      "Corey Conners",
-      "Sungjae Im",
-      "Marco Penge"
-    ]
-  },
-  {
-    "rank": 480,
     "team": "Jonnietruelove",
     "owner": "jonathan w",
     "points": 160,
@@ -7213,18 +7198,18 @@
     ]
   },
   {
-    "rank": 482,
-    "team": "Zenyatta",
-    "owner": "Jason O",
-    "points": 159,
+    "rank": 480,
+    "team": "Matthew Luckoff",
+    "owner": "Matthew L",
+    "points": 160,
     "golfers": [
       "Collin Morikawa",
-      "Min Woo Lee",
-      "Daniel Berger",
-      "J.J. Spaun",
-      "Keegan Bradley",
-      "Taylor Pendrith",
-      "J.T. Poston"
+      "Akshay Bhatia",
+      "Jake Knapp",
+      "Sam Burns",
+      "Corey Conners",
+      "Sungjae Im",
+      "Marco Penge"
     ]
   },
   {
@@ -7240,6 +7225,21 @@
       "Pierceson Coody",
       "Wyndham Clark",
       "Denny McCarthy"
+    ]
+  },
+  {
+    "rank": 482,
+    "team": "Zenyatta",
+    "owner": "Jason O",
+    "points": 159,
+    "golfers": [
+      "Collin Morikawa",
+      "Min Woo Lee",
+      "Daniel Berger",
+      "J.J. Spaun",
+      "Keegan Bradley",
+      "Taylor Pendrith",
+      "J.T. Poston"
     ]
   },
   {
@@ -7334,21 +7334,6 @@
   },
   {
     "rank": 490,
-    "team": "SauceZalatoris",
-    "owner": "JUSTIN W",
-    "points": 143,
-    "golfers": [
-      "Collin Morikawa",
-      "Matt Fitzpatrick",
-      "Harris English",
-      "Michael Thorbjornsen",
-      "Rasmus Hojgaard",
-      "Kristoffer Reitan",
-      "Max Greyserman"
-    ]
-  },
-  {
-    "rank": 490,
     "team": "DBS 3",
     "owner": "Ben R",
     "points": 143,
@@ -7363,18 +7348,18 @@
     ]
   },
   {
-    "rank": 492,
-    "team": "Russ W",
-    "owner": "Russell W",
-    "points": 141,
+    "rank": 490,
+    "team": "SauceZalatoris",
+    "owner": "JUSTIN W",
+    "points": 143,
     "golfers": [
-      "Ludvig Aberg",
-      "Min Woo Lee",
-      "Jake Knapp",
-      "Nicolai Hojgaard",
-      "Aaron Rai",
-      "Taylor Pendrith",
-      "Ryan Fox"
+      "Collin Morikawa",
+      "Matt Fitzpatrick",
+      "Harris English",
+      "Michael Thorbjornsen",
+      "Rasmus Hojgaard",
+      "Kristoffer Reitan",
+      "Max Greyserman"
     ]
   },
   {
@@ -7405,6 +7390,21 @@
       "Pierceson Coody",
       "Ryo Hisatsune",
       "Tom Hoge"
+    ]
+  },
+  {
+    "rank": 492,
+    "team": "Russ W",
+    "owner": "Russell W",
+    "points": 141,
+    "golfers": [
+      "Ludvig Aberg",
+      "Min Woo Lee",
+      "Jake Knapp",
+      "Nicolai Hojgaard",
+      "Aaron Rai",
+      "Taylor Pendrith",
+      "Ryan Fox"
     ]
   },
   {
