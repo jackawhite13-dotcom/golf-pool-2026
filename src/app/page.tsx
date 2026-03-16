@@ -156,58 +156,120 @@ export default function Home() {
         </details>
       </section>
 
-      {/* How This Pool Works — painfully simple */}
-      <section className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 sm:p-8">
-        <h2 className="mb-6 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
-          How This Pool Works
-        </h2>
-        <div className="space-y-5 text-sm">
-          {/* The Basics */}
-          <div>
-            <h3 className="mb-2 font-semibold text-white">The Basics</h3>
-            <ul className="space-y-1.5 text-[var(--text-muted)]">
-              <li>There are <strong className="text-white">5 tournaments</strong> this season (Players, Masters, PGA, US Open, The Open).</li>
-              <li>Before each tournament, you pick <strong className="text-white">7 golfers</strong> — one from each tier (A through G). Tiers are based on odds to win.</li>
-              <li>Your golfers play. <strong className="text-white">Higher finish = more points.</strong> Miss the cut = 0 points.</li>
-            </ul>
+      {/* How This Pool Works — collapsible */}
+      <section className="mb-8">
+        <details className="group rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)]">
+          <summary className="cursor-pointer px-6 py-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)] select-none">
+            How This Pool Works
+            <span className="ml-2 text-[var(--text-muted)] group-open:hidden">+</span>
+            <span className="ml-2 text-[var(--text-muted)] hidden group-open:inline">−</span>
+          </summary>
+          <div className="space-y-5 px-6 pb-6 text-sm">
+            <div>
+              <h3 className="mb-2 font-semibold text-white">The Basics</h3>
+              <ul className="space-y-1.5 text-[var(--text-muted)]">
+                <li>There are <strong className="text-white">5 tournaments</strong> this season (Players, Masters, PGA, US Open, The Open).</li>
+                <li>Before each tournament, you pick <strong className="text-white">7 golfers</strong> — one from each tier (A through G). Tiers are based on odds to win.</li>
+                <li>Your golfers play. <strong className="text-white">Higher finish = more points.</strong> Miss the cut = 0 points.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="mb-2 font-semibold text-white">How Points Work</h3>
+              <ul className="space-y-1.5 text-[var(--text-muted)]">
+                <li>1st place gets the most points. Each place down loses 1 point. Last cut-maker gets 11 pts. Miss cut = 0.</li>
+                <li>The starting number = <strong className="text-white">(golfers who made the cut) + 10</strong>. At The Players, 73 made the cut, so 1st place = 83 pts.</li>
+                <li><strong className="text-white">Bonus points:</strong> Win the tournament = +10 extra. 2nd = +7. 3rd = +5.</li>
+                <li>Whoever&apos;s 7 golfers score the most combined points wins that tournament.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="mb-2 font-semibold text-white">Our Deal</h3>
+              <ul className="space-y-1.5 text-[var(--text-muted)]">
+                <li>We have <strong className="text-white">2 entries</strong> (Jack + Abe). Cost: $575 total, split 50/50 ($287.50 each).</li>
+                <li>All winnings from either entry split <strong className="text-white">50/50</strong>, no exceptions.</li>
+              </ul>
+            </div>
           </div>
+        </details>
+      </section>
 
-          {/* Points */}
-          <div>
-            <h3 className="mb-2 font-semibold text-white">How Points Work</h3>
-            <ul className="space-y-1.5 text-[var(--text-muted)]">
-              <li>1st place gets the most points. Each place down loses 1 point. Last cut-maker gets 11 pts. Miss cut = 0.</li>
-              <li>The starting number = <strong className="text-white">(golfers who made the cut) + 10</strong>. At The Players, 73 made the cut, so 1st place = 83 pts.</li>
-              <li><strong className="text-white">Bonus points:</strong> Win the tournament = +10 extra. 2nd = +7. 3rd = +5.</li>
-              <li>Whoever&apos;s 7 golfers score the most combined points wins that tournament.</li>
-            </ul>
-          </div>
+      {/* Payouts & Prize Money — collapsible */}
+      <section className="mb-8">
+        <details className="group rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)]">
+          <summary className="cursor-pointer px-6 py-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)] select-none">
+            Payouts &amp; Prize Money
+            <span className="ml-2 text-[var(--text-muted)] group-open:hidden">+</span>
+            <span className="ml-2 text-[var(--text-muted)] hidden group-open:inline">−</span>
+          </summary>
+          <div className="space-y-5 px-6 pb-6 text-sm">
+            {/* After The Players */}
+            <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-4">
+              <p className="mb-1 text-xs font-bold text-[var(--green-accent)]">AFTER THE PLAYERS (1 of 5)</p>
+              <p className="text-xs text-[var(--text-muted)]">
+                Neither entry cashed (need top 5). Jack finished 15th, Abe 112th. <strong className="text-white">4 tournaments remain.</strong>
+              </p>
+            </div>
 
-          {/* Payouts */}
-          <div>
-            <h3 className="mb-2 font-semibold text-white">Who Gets Paid</h3>
-            <ul className="space-y-1.5 text-[var(--text-muted)]">
-              <li><strong className="text-white">Each tournament:</strong> Top 5 finishers get paid ($7K / $4.1K / $2.9K / $1.7K / $1K). Plus $450 for leading after rounds 1, 2, and 3.</li>
-              <li><strong className="text-white">Overall cumulative:</strong> Top 5 across all 5 tournaments get paid ($11.7K / $7K / $4.9K / $2.8K / $1.5K). Scores are normalized to a 75-point scale so every tournament counts equally.</li>
-              <li><strong className="text-white">Bonus payouts:</strong> Most tournament winners selected + most cuts made (TBD amounts).</li>
-            </ul>
-          </div>
+            {/* Per-tournament */}
+            <div>
+              <h3 className="mb-2 font-semibold text-white">Each Tournament (top 5 get paid)</h3>
+              <div className="grid grid-cols-5 gap-2 text-center text-xs">
+                {[
+                  { place: "1st", amount: "$7,000" },
+                  { place: "2nd", amount: "$4,125" },
+                  { place: "3rd", amount: "$2,885" },
+                  { place: "4th", amount: "$1,650" },
+                  { place: "5th", amount: "$1,000" },
+                ].map((p) => (
+                  <div key={p.place} className="rounded-lg bg-[var(--background)] p-2">
+                    <p className="font-bold text-white">{p.amount}</p>
+                    <p className="text-[var(--text-muted)]">{p.place}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-2 text-xs text-[var(--text-muted)]">
+                Plus <strong className="text-white">$450</strong> for leading after rounds 1, 2, and 3.
+              </p>
+            </div>
 
-          {/* Our Deal */}
-          <div>
-            <h3 className="mb-2 font-semibold text-white">Our Deal</h3>
-            <ul className="space-y-1.5 text-[var(--text-muted)]">
-              <li>We have <strong className="text-white">2 entries</strong> (Jack + Abe). Cost: $575 total, split 50/50 ($287.50 each).</li>
-              <li>All winnings from either entry split <strong className="text-white">50/50</strong>, no exceptions.</li>
-            </ul>
-          </div>
+            {/* Cumulative */}
+            <div>
+              <h3 className="mb-2 font-semibold text-white">Overall Cumulative (top 5 across all 5 tournaments)</h3>
+              <div className="grid grid-cols-5 gap-2 text-center text-xs">
+                {[
+                  { place: "1st", amount: "$11,725" },
+                  { place: "2nd", amount: "$7,050" },
+                  { place: "3rd", amount: "$4,925" },
+                  { place: "4th", amount: "$2,825" },
+                  { place: "5th", amount: "$1,450" },
+                ].map((p) => (
+                  <div key={p.place} className="rounded-lg bg-[var(--background)] p-2">
+                    <p className="font-bold text-white">{p.amount}</p>
+                    <p className="text-[var(--text-muted)]">{p.place}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-2 text-xs text-[var(--text-muted)]">
+                Scores normalized to 75-point scale so every tournament counts equally.
+              </p>
+            </div>
 
-          <div className="pt-2 text-center">
-            <Link href="/payouts" className="text-xs font-semibold text-[var(--green-accent)] hover:underline">
-              See full payout simulator &rarr;
-            </Link>
+            {/* Bonus */}
+            <div>
+              <h3 className="mb-2 font-semibold text-white">Bonus Payouts</h3>
+              <ul className="space-y-1 text-xs text-[var(--text-muted)]">
+                <li>Most tournament winners selected — TBD</li>
+                <li>Most cuts made — TBD</li>
+              </ul>
+            </div>
+
+            <div className="pt-1 text-center">
+              <Link href="/payouts" className="text-xs font-semibold text-[var(--green-accent)] hover:underline">
+                Run payout scenarios &rarr;
+              </Link>
+            </div>
           </div>
-        </div>
+        </details>
       </section>
     </div>
   );

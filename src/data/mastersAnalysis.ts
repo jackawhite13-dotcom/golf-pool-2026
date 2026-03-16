@@ -59,7 +59,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Scheffler, Scottie",
       jackConfidence: 95,
-      abeConfidence: 55,
+      abeConfidence: 15,
       rationale: "Two-time Masters champion (2022, 2024) with the best all-around game in golf. Elite SG: Approach and course knowledge make him the safest pick in the pool.",
       chalk: "The definition of chalk — everyone will roster him. But his floor is so high at Augusta that you almost can't afford not to.",
       contrarian: "Ownership will be astronomical in a 559-entry field. Fading Scheffler is the single biggest leverage play in the pool — if he finishes T15+, you gain on the entire field.",
@@ -67,7 +67,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Morikawa, Collin",
       jackConfidence: 88,
-      abeConfidence: 78,
+      abeConfidence: 25,
       rationale: "Best iron player in the world with a win already in 2026. His approach game is tailor-made for Augusta's demanding second shots. Two major wins suggest he thrives under pressure.",
       chalk: "High ownership but justified — his ball-striking profile screams Masters contender. Safe floor with elite ceiling.",
       contrarian: "Not quite as chalky as Scheffler. If Morikawa is your Tier 1 instead of Scottie, you get correlation with a different winner outcome.",
@@ -75,7 +75,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "McIlroy, Rory",
       jackConfidence: 72,
-      abeConfidence: 68,
+      abeConfidence: 30,
       rationale: "The Grand Slam narrative drives ownership, but he has genuinely improved around Augusta in recent years. Elite distance and par-5 scoring give him a real edge.",
       chalk: "Perpetual Masters favorite means high ownership. The narrative is priced in — you are paying a premium for Rory every April.",
       contrarian: "If he ever wins it, rostering him is huge. But the field knows this too, so he is not truly contrarian. Mid-range play.",
@@ -83,7 +83,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Schauffele, Xander",
       jackConfidence: 75,
-      abeConfidence: 70,
+      abeConfidence: 35,
       rationale: "2024 PGA and Open champion has proven he can close majors. Strong putter and excellent course management. Multiple top-10s at Augusta.",
       chalk: "Solid chalk play with major pedigree and Augusta experience. Reliable floor.",
       contrarian: "Ownership will be moderate — not the flashiest pick but rarely a bad one. Decent contrarian value if the field over-indexes on Scheffler/Rory.",
@@ -91,7 +91,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Fleetwood, Tommy",
       jackConfidence: 82,
-      abeConfidence: 72,
+      abeConfidence: 45,
       rationale: "Quietly having an elite 2026 season (OWGR #3). Superb ball-striker with the finesse game Augusta rewards. Strong recent form with two top-10s in three starts.",
       chalk: "Underrated chalk — his form is screaming but casual fans may not notice. Great value at likely moderate ownership.",
       contrarian: "Not a typical contrarian play but could be under-owned relative to his form. Strong in both builds.",
@@ -99,7 +99,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Kim, Si Woo",
       jackConfidence: 65,
-      abeConfidence: 75,
+      abeConfidence: 90,
       rationale: "7/7 cuts made in 2026 with three top-10s and $2.2M earned. Has the creativity and short game that Augusta rewards, plus Players Championship winner pedigree.",
       chalk: "Decent floor with 7/7 cuts, but ceiling may cap below the top names. Solid but not elite chalk.",
       contrarian: "Could be nicely under-owned in Tier 1 where everyone is looking at the big names. His consistency is sneaky elite.",
@@ -107,7 +107,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Young, Cameron",
       jackConfidence: 68,
-      abeConfidence: 72,
+      abeConfidence: 60,
       rationale: "Enormous power gives him a par-5 edge. 5/5 cuts made in 2026 with steady results. His length off the tee sets up shorter approaches into Augusta's greens.",
       chalk: "Moderate chalk — steady but hasn't broken through with a win yet. Floor is solid.",
       contrarian: "His T3 finish and consistent form may fly under the radar in a tier dominated by Scheffler and Morikawa narratives.",
@@ -123,7 +123,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Hovland, Viktor",
       jackConfidence: 60,
-      abeConfidence: 65,
+      abeConfidence: 70,
       rationale: "Has improved his short game but Augusta's greens have historically been unkind. 4/4 cuts in 2026 shows reliability, though results have been modest.",
       chalk: "Name recognition drives ownership higher than his Augusta results warrant. Risky chalk.",
       contrarian: "If his short game has truly turned a corner, the upside is massive — but we have heard that before at Augusta.",
@@ -131,7 +131,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Aberg, Ludvig",
       jackConfidence: 58,
-      abeConfidence: 70,
+      abeConfidence: 75,
       rationale: "Finished T2 at the 2024 Masters as a rookie — incredible. Elite ball-striker with rare talent. Only 3/5 cuts in 2026 creates some floor concern.",
       chalk: "His 2024 runner-up means high ownership, but 3/5 cuts in 2026 gives pause. Risky chalk.",
       contrarian: "If the field overreacts to his inconsistent 2026 and his ownership dips, he has legit win equity at a course he loves.",
@@ -145,7 +145,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Matsuyama, Hideki",
       jackConfidence: 90,
-      abeConfidence: 72,
+      abeConfidence: 20,
       rationale: "2021 Masters champion with 6/6 cuts and a 2nd-place finish in 2026. His approach-first game is the Augusta archetype. Elite course knowledge.",
       chalk: "Best chalk in Tier 2 by a wide margin. Past champion + great current form + perfect game style = lock.",
       contrarian: "Ownership will be high, but his floor is so reliable at Augusta that fading him is dangerous.",
@@ -153,7 +153,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Bhatia, Akshay",
       jackConfidence: 72,
-      abeConfidence: 80,
+      abeConfidence: 88,
       rationale: "A win and $5.4M in 2026 — the form is electric. Fearless shotmaking and creativity fit Augusta. Young enough that this could be a breakout major.",
       chalk: "Form says chalk, but limited Augusta experience creates floor risk. 4/6 cuts is a concern.",
       contrarian: "Under-owned relative to his ceiling because casual fans still see him as a young upstart. Great Abe play.",
@@ -161,7 +161,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Gotterup, Chris",
       jackConfidence: 65,
-      abeConfidence: 75,
+      abeConfidence: 78,
       rationale: "OWGR #7 with enormous power and $3.8M earned. His length gives him par-5 equity, but first Masters appearance creates uncertainty.",
       chalk: "Risky chalk for a Masters debutant despite elite form. Augusta course knowledge matters.",
       contrarian: "If he is under-owned due to the debutant discount, that is a huge edge — his talent is top-5 in this tier.",
@@ -169,7 +169,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Fitzpatrick, Matt",
       jackConfidence: 68,
-      abeConfidence: 62,
+      abeConfidence: 40,
       rationale: "2022 US Open champion with 5/5 cuts in 2026. Precision iron player who knows Augusta well. Short off the tee, but accuracy compensates.",
       chalk: "Reliable floor with major pedigree. Solid chalk play if you want safety in Tier 2.",
       contrarian: "Not exciting enough for a contrarian build. Moderate ownership, moderate upside.",
@@ -177,7 +177,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Lee, Min Woo",
       jackConfidence: 60,
-      abeConfidence: 72,
+      abeConfidence: 75,
       rationale: "5/5 cuts with a 2nd-place finish and $2.9M earned. Aggressive player with the length to attack Augusta's par 5s. Limited Masters experience.",
       chalk: "Decent form but first or second Masters trip limits floor confidence.",
       contrarian: "Could be very under-owned with elite recent form. Strong Abe play if ownership is low.",
@@ -201,7 +201,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Koepka, Brooks",
       jackConfidence: 42,
-      abeConfidence: 65,
+      abeConfidence: 72,
       rationale: "Five-time major champion but OWGR #221 and only 2/3 cuts in 2026. The talent is undeniable but current form is a major question mark.",
       chalk: "Too risky for a floor-based approach. 2/3 cuts and limited starts are red flags.",
       contrarian: "Classic boom-or-bust contrarian play. If he turns it on at a major, low ownership makes it a league-winner.",
@@ -231,7 +231,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Lowry, Shane",
       jackConfidence: 82,
-      abeConfidence: 70,
+      abeConfidence: 40,
       rationale: "Open Championship winner (2019) with multiple strong Augusta finishes. Elite short game and course management. 2nd-place finish in 2026 shows sharp form.",
       chalk: "Great chalk play — major pedigree, Augusta experience, and current form align perfectly.",
       contrarian: "Ownership will be moderate. Not a pure contrarian play but a strong both-column pick.",
@@ -239,7 +239,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Scott, Adam",
       jackConfidence: 78,
-      abeConfidence: 62,
+      abeConfidence: 45,
       rationale: "2013 Masters champion who plays Augusta beautifully every year. 5/5 cuts in 2026 and a top-10. His putting can be shaky but his ball-striking is Augusta-perfect.",
       chalk: "Past champion with elite course knowledge. Reliable floor in a tier where that matters.",
       contrarian: "May be under-owned because of age perception. But he consistently performs at Augusta better than his OWGR suggests.",
@@ -247,7 +247,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Spieth, Jordan",
       jackConfidence: 58,
-      abeConfidence: 75,
+      abeConfidence: 85,
       rationale: "2015 Masters champion with some of the best Augusta history of his generation. 4/5 cuts but zero top-10s in 2026. The talent and course knowledge are elite; current form is not.",
       chalk: "Risky chalk with 0 top-10s in 2026. Past champion status helps floor but form is poor.",
       contrarian: "If the field fades him due to poor 2026 form, his Augusta course knowledge creates enormous leverage. Classic boom-or-bust contrarian.",
@@ -403,7 +403,7 @@ export const mastersTierAnalysis: Record<number, PlayerAnalysis[]> = {
     {
       name: "Thomas, Justin",
       jackConfidence: 48,
-      abeConfidence: 78,
+      abeConfidence: 88,
       rationale: "Only one start in 2026 (missed cut) but two-time major champion with elite Augusta history including a near-miss in 2020. When healthy and engaged, he is a top-5 talent.",
       chalk: "Way too risky for chalk — one start and a missed cut. Cannot trust the floor.",
       contrarian: "The ultimate boom-or-bust contrarian. If he is healthy and ownership is near zero, win equity is enormous at a course he loves.",

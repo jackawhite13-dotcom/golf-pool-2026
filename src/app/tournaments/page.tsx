@@ -235,6 +235,12 @@ function MastersTab() {
         </div>
       </SectionCard>
 
+      {/* Confidence Legend */}
+      <div className="rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3 text-xs text-[var(--text-muted)]">
+        <span className="text-blue-400">Jack&apos;s %</span> = should Jack pick this golfer? (chalk — safe, high floor, proven).{" "}
+        <span className="text-amber-400">Abe&apos;s %</span> = should Abe pick this golfer? (contrarian — low ownership, high leverage, differentiated from the field).
+      </div>
+
       {/* Tier-by-Tier Analysis */}
       {tierAnalysis ? (
         Object.entries(tierAnalysis).map(([tierNum, players]) => {
@@ -253,11 +259,11 @@ function MastersTab() {
                     </div>
                     <div className="mb-2 grid grid-cols-2 gap-2">
                       <div>
-                        <p className="mb-0.5 text-[10px] text-blue-400">Jack (Chalk)</p>
+                        <p className="mb-0.5 text-[10px] text-blue-400">Jack&apos;s Pick Confidence</p>
                         <ConfidenceBar value={player.jackConfidence} color="blue" />
                       </div>
                       <div>
-                        <p className="mb-0.5 text-[10px] text-amber-400">Abe (Contrarian)</p>
+                        <p className="mb-0.5 text-[10px] text-amber-400">Abe&apos;s Pick Confidence</p>
                         <ConfidenceBar value={player.abeConfidence} color="amber" />
                       </div>
                     </div>
