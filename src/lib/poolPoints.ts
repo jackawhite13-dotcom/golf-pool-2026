@@ -124,8 +124,12 @@ export function calculatePoolPoints(
       continue;
     }
 
-    // Points = madeCutCount - position + 1 (floor at 0)
-    const pts = Math.max(0, madeCutCount - pos + 1);
+    // Points = (madeCutCount + 10) - position + 1
+    // Last cut-maker is 10 pts above missed cut (0). Bonus: 1st +10, 2nd +7, 3rd +5
+    let pts = Math.max(0, madeCutCount + 10 - pos + 1);
+    if (pos === 1) pts += 10;
+    else if (pos === 2) pts += 7;
+    else if (pos === 3) pts += 5;
     pointsMap.set(key, pts);
   }
 

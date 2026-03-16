@@ -64,7 +64,7 @@ export default function StrategyPage() {
           </p>
           <p>
             <strong className="text-white">4. Optimize per-tournament first.</strong>{" "}
-            80% of the pot is in individual events. Cumulative takes care of itself
+            ~75% of the pot is in individual events. Cumulative takes care of itself
             if we pick well week-to-week.
           </p>
         </div>
@@ -144,19 +144,19 @@ export default function StrategyPage() {
 
         <div className="mb-4 grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg bg-[var(--background)] p-4 text-center">
-            <p className="text-2xl font-bold text-[var(--green-accent)]">80%</p>
+            <p className="text-2xl font-bold text-[var(--green-accent)]">~75%</p>
             <p className="text-xs font-semibold text-white">Individual Tournaments</p>
             <p className="mt-1 text-xs text-[var(--text-muted)]">
-              ~$140K across 5 events. Top 4-5 paid per event.
+              ~$131K across 5 events. Top 5 paid per event + R1/R2/R3 round leader bonuses.
               Differentiate and hunt for wins.
             </p>
           </div>
           <div className="rounded-lg bg-[var(--background)] p-4 text-center">
-            <p className="text-2xl font-bold">20%</p>
+            <p className="text-2xl font-bold">~25%</p>
             <p className="text-xs font-semibold text-white">Cumulative Season</p>
             <p className="mt-1 text-xs text-[var(--text-muted)]">
-              ~$35K for top 10 season-long. Missed cut = 0 pts.
-              Consistency matters here.
+              ~$44K for top 5 season-long. Normalized to 75-pt scale.
+              Missed cut = 0 pts. Consistency matters here.
             </p>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function StrategyPage() {
         <p className="text-xs text-[var(--text-muted)]">
           <strong className="text-white">Key insight:</strong> Jack&apos;s chalk entry naturally
           covers cumulative (safe cut-makers). Abe&apos;s contrarian entry hunts tournament wins
-          where 80% of the money is. Don&apos;t chase cumulative early — let it accumulate naturally
+          where ~75% of the money is. Don&apos;t chase cumulative early — let it accumulate naturally
           and adjust mid-season if we&apos;re leading.
         </p>
       </SectionCard>

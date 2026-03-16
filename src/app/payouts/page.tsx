@@ -9,30 +9,35 @@ import Link from "next/link";
 
 const ENTRY_PRICES = { 1: 350, 2: 575, 3: 725 };
 const AVG_REVENUE_PER_ENTRY = 300; // blended average across 1/2/3 entry pricing
-const INDIVIDUAL_SPLIT = 0.8;
-const CUMULATIVE_SPLIT = 0.2;
+const INDIVIDUAL_SPLIT = 0.75;
+const CUMULATIVE_SPLIT = 0.25;
 const NUM_TOURNAMENTS = 5;
 const COST_PER_PERSON = 287.5;
 
 const INDIVIDUAL_PAYOUTS: Record<number, number> = {
-  1: 0.45,
+  1: 0.425,
   2: 0.25,
-  3: 0.17,
-  4: 0.08,
+  3: 0.175,
+  4: 0.10,
   5: 0.05,
 };
 
+const ROUND_LEADER_BONUS = 450; // $450 for leader after R1, R2, R3
+
 const CUMULATIVE_PAYOUTS: Record<number, number> = {
-  1: 0.35,
-  2: 0.22,
-  3: 0.15,
-  4: 0.1,
-  5: 0.07,
-  6: 0.05,
-  7: 0.03,
-  8: 0.02,
-  9: 0.005,
-  10: 0.005,
+  1: 0.425,
+  2: 0.25,
+  3: 0.175,
+  4: 0.10,
+  5: 0.05,
+};
+
+// Official tentative payouts from Pollack
+const TENTATIVE_INDIVIDUAL: Record<number, number> = {
+  1: 7000, 2: 4125, 3: 2885, 4: 1650, 5: 1000,
+};
+const TENTATIVE_CUMULATIVE: Record<number, number> = {
+  1: 11725, 2: 7050, 3: 4925, 4: 2825, 5: 1450,
 };
 
 /* ------------------------------------------------------------------ */
@@ -105,24 +110,20 @@ export default function PayoutsPage() {
   const cumulativePool = totalPot * CUMULATIVE_SPLIT;
   const perTournamentPool = individualPool / NUM_TOURNAMENTS;
 
-  // per-tournament placement payouts
+  // per-tournament placement payouts (use tentative amounts)
   const tournamentPayoutFor = useCallback(
     (place: number) => {
-      const pct = INDIVIDUAL_PAYOUTS[place];
-      if (!pct) return 0;
-      return perTournamentPool * pct;
+      return TENTATIVE_INDIVIDUAL[place] || 0;
     },
-    [perTournamentPool]
+    []
   );
 
-  // cumulative placement payouts
+  // cumulative placement payouts (use tentative amounts)
   const cumulativePayoutFor = useCallback(
     (place: number) => {
-      const pct = CUMULATIVE_PAYOUTS[place];
-      if (!pct) return 0;
-      return cumulativePool * pct;
+      return TENTATIVE_CUMULATIVE[place] || 0;
     },
-    [cumulativePool]
+    []
   );
 
   // build scenario from toggles
@@ -268,13 +269,13 @@ export default function PayoutsPage() {
           </div>
           <div>
             <p className="text-xs text-[var(--text-muted)]">
-              Individual Pool (80%)
+              Individual Pool (~75%)
             </p>
             <p className="text-xl font-bold">{fmt(individualPool)}</p>
           </div>
           <div>
             <p className="text-xs text-[var(--text-muted)]">
-              Cumulative Pool (20%)
+              Cumulative Pool (~25%)
             </p>
             <p className="text-xl font-bold">{fmt(cumulativePool)}</p>
           </div>
@@ -286,7 +287,7 @@ export default function PayoutsPage() {
       {/* ============================================================ */}
       <Card className="mb-6">
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
-          Per-Tournament Payouts ({fmt(perTournamentPool)} / event)
+          Per-Tournament Payouts (Tentative)
         </h2>
         <div className="grid grid-cols-5 gap-3">
           {[1, 2, 3, 4, 5].map((place) => (
@@ -304,13 +305,18 @@ export default function PayoutsPage() {
                   : `${place}th`}
               </p>
               <p className="text-sm font-bold">
-                {fmt(tournamentPayoutFor(place))}
+                {fmt(TENTATIVE_INDIVIDUAL[place])}
               </p>
               <p className="text-[10px] text-[var(--text-muted)]">
-                {(INDIVIDUAL_PAYOUTS[place] * 100).toFixed(1)}%
+                ~{(INDIVIDUAL_PAYOUTS[place] * 100).toFixed(1)}%
               </p>
             </div>
           ))}
+        </div>
+        <div className="mt-3 rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
+          <p className="text-xs text-[var(--text-muted)]">Round Leader Bonus (R1 / R2 / R3)</p>
+          <p className="text-sm font-bold">{fmt(ROUND_LEADER_BONUS)} each</p>
+          <p className="text-[10px] text-[var(--text-muted)]">Paid to the entry leading after each of the first 3 rounds</p>
         </div>
       </Card>
 
@@ -319,10 +325,10 @@ export default function PayoutsPage() {
       {/* ============================================================ */}
       <Card className="mb-6">
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
-          Cumulative Season Payouts ({fmt(cumulativePool)} pool)
+          Cumulative Season Payouts (Tentative)
         </h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 lg:grid-cols-10">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((place) => (
+        <div className="grid grid-cols-5 gap-3">
+          {[1, 2, 3, 4, 5].map((place) => (
             <div
               key={place}
               className={`rounded-lg border p-3 text-center ${
@@ -341,14 +347,27 @@ export default function PayoutsPage() {
                   : `${place}th`}
               </p>
               <p className="text-xs font-bold">
-                {fmt(cumulativePayoutFor(place))}
+                {fmt(TENTATIVE_CUMULATIVE[place])}
               </p>
               <p className="text-[10px] text-[var(--text-muted)]">
-                {(CUMULATIVE_PAYOUTS[place] * 100).toFixed(1)}%
+                ~{(CUMULATIVE_PAYOUTS[place] * 100).toFixed(1)}%
               </p>
             </div>
           ))}
         </div>
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
+            <p className="text-xs text-[var(--text-muted)]">Most Winners Selected</p>
+            <p className="text-sm font-bold">TBD</p>
+          </div>
+          <div className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3 text-center">
+            <p className="text-xs text-[var(--text-muted)]">Most Cuts Made</p>
+            <p className="text-sm font-bold">TBD</p>
+          </div>
+        </div>
+        <p className="mt-3 text-[10px] text-[var(--text-muted)]">
+          Cumulative uses a uniform 75-point scale so all tournaments are weighted equally (e.g. Players scores multiplied by 75/83 = 0.9036).
+        </p>
       </Card>
 
       {/* ============================================================ */}
@@ -368,7 +387,7 @@ export default function PayoutsPage() {
             {
               key: "target",
               label: "Target",
-              desc: "Cash twice, top 10 cumulative",
+              desc: "Cash twice, top 5 cumulative",
             },
             {
               key: "dream",
@@ -464,8 +483,8 @@ export default function PayoutsPage() {
             Cumulative Standing
           </h2>
           <p className="mb-3 text-xs text-[var(--text-muted)]">
-            Select your end-of-season cumulative standing. This is the 20% pool
-            paid to the top 10 finishers based on normalized points across all 5
+            Select your end-of-season cumulative standing. This is the ~25% pool
+            paid to the top 5 finishers based on normalized points (75-point scale) across all 5
             tournaments.
           </p>
           <div className="space-y-2">
@@ -474,9 +493,8 @@ export default function PayoutsPage() {
               { place: 1, label: "1st place cumulative" },
               { place: 2, label: "2nd place cumulative" },
               { place: 3, label: "3rd place cumulative" },
+              { place: 4, label: "4th place cumulative" },
               { place: 5, label: "5th place cumulative" },
-              { place: 8, label: "8th place cumulative" },
-              { place: 10, label: "10th place cumulative" },
             ].map((item) => (
               <label
                 key={item.label}

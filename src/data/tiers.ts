@@ -191,8 +191,8 @@ export const tiers: Tier[] = [
 ];
 
 export const tournaments = [
-  { name: "The Players Championship", location: "TPC Sawgrass", dates: "Mar 12–15", status: "upcoming" as const },
-  { name: "The Masters", location: "Augusta National", dates: "Apr 9–12", status: "locked" as const },
+  { name: "The Players Championship", location: "TPC Sawgrass", dates: "Mar 12–15", status: "completed" as const },
+  { name: "The Masters", location: "Augusta National", dates: "Apr 9–12", status: "upcoming" as const },
   { name: "PGA Championship", location: "Quail Hollow", dates: "May 14–17", status: "locked" as const },
   { name: "U.S. Open", location: "Oakmont", dates: "Jun 18–21", status: "locked" as const },
   { name: "The Open Championship", location: "Royal Portrush", dates: "Jul 16–19", status: "locked" as const },
