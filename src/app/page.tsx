@@ -1,136 +1,109 @@
 import Link from "next/link";
-import Countdown from "@/components/Countdown";
 import { tournaments, getCurrentTournament } from "@/data/tiers";
+import { STANDINGS_AFTER_PLAYERS } from "@/data/standings";
 
 export default function Home() {
   const current = getCurrentTournament();
+  const s = STANDINGS_AFTER_PLAYERS;
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Hero */}
-      <section className="mb-12 text-center sm:mb-16">
+      <section className="mb-10 text-center">
         <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-[var(--green-accent)]">
           Pollack&apos;s Golf
         </p>
-        <h1 className="mb-3 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="mb-3 text-4xl font-extrabold tracking-tight sm:text-5xl">
           Majors + Players Pool
           <span className="text-[var(--green-accent)]"> 2026</span>
         </h1>
-        <p className="mx-auto mb-8 max-w-xl text-sm text-[var(--text-muted)] sm:text-base">
+        <p className="mx-auto max-w-xl text-sm text-[var(--text-muted)]">
           559 entries &middot; ~$175K+ pot &middot; 5 tournaments &middot; 7 tiers per event
         </p>
+      </section>
 
-        {/* Countdown */}
-        <div className="mb-8 flex justify-center">
-          <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] px-6 py-4">
-            <p className="mb-2 text-xs uppercase tracking-widest text-[var(--text-muted)]">
-              {current.isCurrent
-                ? `${current.name} — ${current.roundInfo}`
-                : `${current.name} — ${current.roundInfo}`}
+      {/* Current Standings */}
+      <section className="mb-8">
+        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+          Our Standings — After {s.tournamentsCompleted} of 5 Tournaments
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {/* Jack */}
+          <div className="rounded-xl border border-blue-900/40 bg-blue-950/20 p-5">
+            <div className="mb-1 flex items-center justify-between">
+              <span className="text-xs font-bold text-blue-400">JACK — team jaw</span>
+              <span className="text-xs text-[var(--text-muted)]">Chalk / Floor</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="text-3xl font-extrabold">{s.jack.rank}th</span>
+              <span className="text-sm text-[var(--text-muted)]">of {s.totalEntries}</span>
+            </div>
+            <p className="mt-1 text-sm">
+              <span className="font-semibold">{s.jack.points} pts</span>
+              <span className="text-[var(--text-muted)]"> &middot; {s.leader.points - s.jack.points} pts behind 1st</span>
             </p>
-            <Countdown />
           </div>
+
+          {/* Abe */}
+          <div className="rounded-xl border border-amber-900/40 bg-amber-950/20 p-5">
+            <div className="mb-1 flex items-center justify-between">
+              <span className="text-xs font-bold text-amber-400">ABE — Watman</span>
+              <span className="text-xs text-[var(--text-muted)]">Contrarian / Ceiling</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="text-3xl font-extrabold">{s.abe.rank}th</span>
+              <span className="text-sm text-[var(--text-muted)]">of {s.totalEntries}</span>
+            </div>
+            <p className="mt-1 text-sm">
+              <span className="font-semibold">{s.abe.points} pts</span>
+              <span className="text-[var(--text-muted)]"> &middot; {s.leader.points - s.abe.points} pts behind 1st</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Leader context */}
+        <div className="mt-3 rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3 text-center text-xs text-[var(--text-muted)]">
+          Leader: <span className="font-semibold text-white">{s.leader.team}</span> ({s.leader.owner}) — {s.leader.points} pts
+          &middot; Jack is top {((s.jack.rank / s.totalEntries) * 100).toFixed(1)}%
         </div>
       </section>
 
-      {/* Navigation Cards */}
-      <section className="mb-16 grid gap-4 sm:grid-cols-2 sm:gap-6">
-        <Link
-          href="/live"
-          className="group relative overflow-hidden rounded-xl border border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30 p-6 transition-all hover:border-[var(--green-accent)]/60 hover:shadow-lg hover:shadow-[var(--green-accent)]/10 sm:p-8"
-        >
-          <div className="absolute right-4 top-4 text-3xl opacity-30 transition-opacity group-hover:opacity-50">
-            📡
-          </div>
-          <div className="mb-2 flex items-center gap-2">
-            <h2 className="text-xl font-bold sm:text-2xl">Live Scoring</h2>
-            <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black animate-pulse">
-              LIVE
-            </span>
-          </div>
-          <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Track Jack &amp; Abe&apos;s picks in real time at {current.name}.
-            Live leaderboard positions, scores, and team totals.
-          </p>
-          <span className="text-sm font-semibold text-[var(--green-accent)]">
-            Watch Live →
-          </span>
-        </Link>
-
-        <Link
-          href="/players-championship"
-          className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 transition-all hover:border-[var(--green-accent)]/40 hover:shadow-lg hover:shadow-[var(--green-accent)]/5 sm:p-8"
-        >
-          <div className="absolute right-4 top-4 text-3xl opacity-20 transition-opacity group-hover:opacity-40">
-            ⛳
-          </div>
-          <h2 className="mb-2 text-xl font-bold sm:text-2xl">The Players Championship</h2>
-          <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Tournament 1 of 5 — TPC Sawgrass, Mar 12–15. Course intel, tier-by-tier analysis,
-            and confidence ratings for every player.
-          </p>
-          <span className="text-sm font-semibold text-[var(--green-accent)]">
-            View Analysis →
-          </span>
-        </Link>
-
-        <Link
-          href="/strategy"
-          className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 transition-all hover:border-[var(--green-accent)]/40 hover:shadow-lg hover:shadow-[var(--green-accent)]/5 sm:p-8"
-        >
-          <div className="absolute right-4 top-4 text-3xl opacity-20 transition-opacity group-hover:opacity-40">
-            🧠
-          </div>
-          <h2 className="mb-2 text-xl font-bold sm:text-2xl">Strategy Center</h2>
-          <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Jack &amp; Abe coordination hub — chalk vs. contrarian method locked in,
-            50/50 split confirmed, season-long planning.
-          </p>
-          <span className="text-sm font-semibold text-[var(--green-accent)]">
-            View Strategy →
-          </span>
-        </Link>
-
-        <Link
-          href="/payouts"
-          className="group relative overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 transition-all hover:border-[var(--green-accent)]/40 hover:shadow-lg hover:shadow-[var(--green-accent)]/5 sm:p-8"
-        >
-          <div className="absolute right-4 top-4 text-3xl opacity-20 transition-opacity group-hover:opacity-40">
-            💰
-          </div>
-          <h2 className="mb-2 text-xl font-bold sm:text-2xl">Payout Simulator</h2>
-          <p className="mb-4 text-sm text-[var(--text-muted)]">
-            Interactive what-if scenarios — toggle entry counts, finishes,
-            and see exactly what you&apos;d take home.
-          </p>
-          <span className="text-sm font-semibold text-[var(--green-accent)]">
-            Run Scenarios →
-          </span>
-        </Link>
-      </section>
-
       {/* Season Schedule */}
-      <section className="mb-12">
-        <h2 className="mb-4 text-lg font-bold">2026 Season Schedule</h2>
+      <section className="mb-8">
+        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+          2026 Season
+        </h2>
         <div className="grid gap-3 sm:grid-cols-5">
           {tournaments.map((t, i) => {
-            const isActive = i === current.index;
+            const isCompleted = t.status === "completed";
+            const isNext = i === current.index && !current.isCurrent;
+            const isLive = i === current.index && current.isCurrent;
             return (
               <div
                 key={t.name}
-                className={`rounded-lg border p-4 ${
-                  isActive
+                className={`rounded-lg border p-3 ${
+                  isLive
                     ? "border-[var(--green-accent)]/40 bg-[var(--green-dark)]/30"
+                    : isNext
+                    ? "border-[var(--green-accent)]/30 bg-[var(--green-dark)]/15"
+                    : isCompleted
+                    ? "border-[var(--card-border)] bg-[var(--card-bg)] opacity-70"
                     : "border-[var(--card-border)] bg-[var(--card-bg)]"
                 }`}
               >
                 <div className="mb-1 flex items-center gap-2">
                   <span className="text-xs font-bold text-[var(--green-accent)]">T{i + 1}</span>
-                  {isActive && current.isCurrent && (
+                  {isCompleted && (
+                    <span className="rounded-full bg-[var(--text-muted)] px-2 py-0.5 text-[10px] font-bold text-black">
+                      DONE
+                    </span>
+                  )}
+                  {isLive && (
                     <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black animate-pulse">
                       LIVE
                     </span>
                   )}
-                  {isActive && !current.isCurrent && (
+                  {isNext && (
                     <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black">
                       NEXT
                     </span>
@@ -145,80 +118,94 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pool Rules */}
+      {/* Our Strategy — collapsible */}
+      <section className="mb-8">
+        <details className="group rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)]">
+          <summary className="cursor-pointer px-6 py-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)] select-none">
+            Our Strategy (Locked In)
+            <span className="ml-2 text-[var(--text-muted)] group-open:hidden">+</span>
+            <span className="ml-2 text-[var(--text-muted)] hidden group-open:inline">−</span>
+          </summary>
+          <div className="space-y-4 px-6 pb-6 text-sm leading-relaxed">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-lg border border-blue-900/40 bg-blue-950/20 p-3">
+                <p className="mb-1 text-xs font-bold text-blue-400">JACK: The Floor (Chalk)</p>
+                <ul className="space-y-1 text-xs text-[var(--text-muted)]">
+                  <li>Favorites and proven cut-makers in top tiers</li>
+                  <li>Consistent players with top-25 upside in mid/low tiers</li>
+                  <li>Goal: accumulate points, compete for cumulative</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-amber-900/40 bg-amber-950/20 p-3">
+                <p className="mb-1 text-xs font-bold text-amber-400">ABE: The Ceiling (Contrarian)</p>
+                <ul className="space-y-1 text-xs text-[var(--text-muted)]">
+                  <li>Fade chalk, target low-owned players with win equity</li>
+                  <li>Hot form, recent winners, sleepers in mid/low tiers</li>
+                  <li>Goal: hunt tournament wins, accept more variance</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="space-y-2 text-[var(--text-muted)]">
+              <p><strong className="text-white">1. Different golfers across both entries.</strong> Two differentiated entries nearly double our probability of cashing vs. identical lineups.</p>
+              <p><strong className="text-white">2. 50/50 split on all winnings. No exceptions.</strong> $575 total cost, $287.50 each.</p>
+              <p><strong className="text-white">3. Optimize per-tournament first.</strong> ~75% of the pot is in individual events. Cumulative takes care of itself if we pick well week-to-week.</p>
+              <p><strong className="text-white">4. Any single cash = profit.</strong> Even 5th place in one tournament ($1,000) covers our $575 investment.</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      {/* How This Pool Works — painfully simple */}
       <section className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 sm:p-8">
-        <h2 className="mb-6 text-lg font-bold">Official Pool Rules</h2>
-        <div className="space-y-6">
-          {/* Scoring */}
+        <h2 className="mb-6 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+          How This Pool Works
+        </h2>
+        <div className="space-y-5 text-sm">
+          {/* The Basics */}
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
-              Scoring
-            </h3>
-            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
-              <li>Points are based on finishing position. 1st place earns the most points; each successive place is one point less.</li>
-              <li>Bonus points: 1st place +10, 2nd place +7, 3rd place +5.</li>
-              <li>
-                Points scale starts at 10 more than the number of players who make the cut. For The Players: 73 made the cut,
-                so 1st = 83 pts (+10 bonus = 93 total), 2nd = 82 pts (+7 bonus = 89 total),
-                3rd = 81 pts (+5 bonus = 86 total), down to 11 pts for last cut-maker.
-              </li>
-              <li>Missed cut = 0 points.</li>
+            <h3 className="mb-2 font-semibold text-white">The Basics</h3>
+            <ul className="space-y-1.5 text-[var(--text-muted)]">
+              <li>There are <strong className="text-white">5 tournaments</strong> this season (Players, Masters, PGA, US Open, The Open).</li>
+              <li>Before each tournament, you pick <strong className="text-white">7 golfers</strong> — one from each tier (A through G). Tiers are based on odds to win.</li>
+              <li>Your golfers play. <strong className="text-white">Higher finish = more points.</strong> Miss the cut = 0 points.</li>
             </ul>
           </div>
 
-          <div className="border-t border-[var(--card-border)]" />
-
-          {/* Withdrawals */}
+          {/* Points */}
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
-              Withdrawals
-            </h3>
-            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
-              <li>If a player withdraws, you earn 0 points. No replacements.</li>
-              <li>Monitor withdrawal news before each tournament.</li>
+            <h3 className="mb-2 font-semibold text-white">How Points Work</h3>
+            <ul className="space-y-1.5 text-[var(--text-muted)]">
+              <li>1st place gets the most points. Each place down loses 1 point. Last cut-maker gets 11 pts. Miss cut = 0.</li>
+              <li>The starting number = <strong className="text-white">(golfers who made the cut) + 10</strong>. At The Players, 73 made the cut, so 1st place = 83 pts.</li>
+              <li><strong className="text-white">Bonus points:</strong> Win the tournament = +10 extra. 2nd = +7. 3rd = +5.</li>
+              <li>Whoever&apos;s 7 golfers score the most combined points wins that tournament.</li>
             </ul>
           </div>
 
-          <div className="border-t border-[var(--card-border)]" />
-
-          {/* Cumulative / Season-Long */}
+          {/* Payouts */}
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
-              Cumulative / Season-Long
-            </h3>
-            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
-              <li>Same position-based scoring for season standings, but adjusted to a uniform 75-point scale so every tournament is weighted equally.</li>
-              <li>For The Players: all scores multiplied by 75/83 (0.9036) since 1st place was 83 pts.</li>
-              <li>Top 5 cumulative finishers get paid (~25% of total pot).</li>
-              <li>Bonus payouts for most winners selected and most cuts made (TBD).</li>
+            <h3 className="mb-2 font-semibold text-white">Who Gets Paid</h3>
+            <ul className="space-y-1.5 text-[var(--text-muted)]">
+              <li><strong className="text-white">Each tournament:</strong> Top 5 finishers get paid ($7K / $4.1K / $2.9K / $1.7K / $1K). Plus $450 for leading after rounds 1, 2, and 3.</li>
+              <li><strong className="text-white">Overall cumulative:</strong> Top 5 across all 5 tournaments get paid ($11.7K / $7K / $4.9K / $2.8K / $1.5K). Scores are normalized to a 75-point scale so every tournament counts equally.</li>
+              <li><strong className="text-white">Bonus payouts:</strong> Most tournament winners selected + most cuts made (TBD amounts).</li>
             </ul>
           </div>
 
-          <div className="border-t border-[var(--card-border)]" />
-
-          {/* Entry & Payment */}
+          {/* Our Deal */}
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
-              Entry &amp; Payment
-            </h3>
-            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
-              <li>$350 / 1 entry, $575 / 2 entries, $725 / 3 entries.</li>
-              <li>Must be paid before tournament starts or locked out — no exceptions.</li>
-              <li>Payment via Zelle or Venmo.</li>
+            <h3 className="mb-2 font-semibold text-white">Our Deal</h3>
+            <ul className="space-y-1.5 text-[var(--text-muted)]">
+              <li>We have <strong className="text-white">2 entries</strong> (Jack + Abe). Cost: $575 total, split 50/50 ($287.50 each).</li>
+              <li>All winnings from either entry split <strong className="text-white">50/50</strong>, no exceptions.</li>
             </ul>
           </div>
 
-          <div className="border-t border-[var(--card-border)]" />
-
-          {/* General */}
-          <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--green-accent)]">
-              General
-            </h3>
-            <ul className="space-y-1.5 text-sm text-[var(--text-muted)]">
-              <li>Commissioner&apos;s doc is the source of truth for updates and tentative payouts.</li>
-              <li>Selections for The Players Championship must be submitted before 7:40 AM EST on tournament morning.</li>
-            </ul>
+          <div className="pt-2 text-center">
+            <Link href="/payouts" className="text-xs font-semibold text-[var(--green-accent)] hover:underline">
+              See full payout simulator &rarr;
+            </Link>
           </div>
         </div>
       </section>

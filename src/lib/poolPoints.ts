@@ -38,9 +38,15 @@ function positionNumber(pos: string): number | null {
 }
 
 // ── Calculate projected cut line ────────────────────────────────────────
-// The Players Championship: top 65 and ties make the cut after 36 holes.
+// Cut line varies by tournament (e.g., 65 for Players, 50 for Masters)
 
-const CUT_LINE_TOP = 65; // top 65 and ties
+import { tournaments, getCurrentTournament } from "@/data/tiers";
+
+function getCutLineTop(): number {
+  const current = getCurrentTournament();
+  const tournament = tournaments[current.index];
+  return tournament?.cutLine ?? 65;
+}
 
 function calculateProjectedCutLine(
   players: LeaderboardPlayer[]
@@ -54,8 +60,9 @@ function calculateProjectedCutLine(
     return { projectedCutScore: null, projectedMadeCut: new Set() };
   }
 
-  // The 65th player's score is the cut line (ties included)
-  const cutIndex = Math.min(CUT_LINE_TOP - 1, withScores.length - 1);
+  // The Nth player's score is the cut line (ties included)
+  const cutLineTop = getCutLineTop();
+  const cutIndex = Math.min(cutLineTop - 1, withScores.length - 1);
   const cutScore = withScores[cutIndex].scoreToPar!;
 
   // Everyone at or below (better than) the cut score makes it

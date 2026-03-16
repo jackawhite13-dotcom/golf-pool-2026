@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState, useCallback, useMemo } from "react";
-import { tiers as tierData } from "@/data/tiers";
+import { tiers as tierData, getCurrentTournament } from "@/data/tiers";
 import entriesData from "@/data/entries.json";
+import { STANDINGS_AFTER_PLAYERS } from "@/data/standings";
+import Countdown from "@/components/Countdown";
 import type { LeaderboardPlayer } from "@/app/api/leaderboard/route";
 import {
   calculatePoolPoints,
@@ -1078,16 +1080,17 @@ export default function LiveScoringPage() {
   }, [players]);
 
   // Build subtitle with round info
-  const tournamentName = data?.tournamentName || "The Players Championship";
+  const currentTournament = getCurrentTournament();
+  const tournamentName = data?.tournamentName || currentTournament.name;
   const currentRound = data?.currentRound || 0;
-  let subtitleText = `${tournamentName} — TPC Sawgrass`;
+  let subtitleText = `${tournamentName} — ${currentTournament.location}`;
   if (currentRound > 0) {
     if (data?.status === "in") {
-      subtitleText = `${tournamentName} — Round ${currentRound} — In Progress — TPC Sawgrass`;
+      subtitleText = `${tournamentName} — Round ${currentRound} — In Progress — ${currentTournament.location}`;
     } else if (data?.status === "pre") {
-      subtitleText = `${tournamentName} — Round ${currentRound} starts soon — TPC Sawgrass`;
+      subtitleText = `${tournamentName} — Round ${currentRound} starts soon — ${currentTournament.location}`;
     } else {
-      subtitleText = `${tournamentName} — Round ${currentRound} — TPC Sawgrass`;
+      subtitleText = `${tournamentName} — Round ${currentRound} — ${currentTournament.location}`;
     }
   }
 
@@ -1180,12 +1183,56 @@ export default function LiveScoringPage() {
         </div>
       )}
 
-      {/* Tournament not started */}
+      {/* Tournament not started — show last results + countdown */}
       {tournamentNotStarted && !error && (
-        <div className="mb-8 rounded-xl border border-[var(--green-accent)]/20 bg-[var(--green-dark)]/20 p-8 text-center">
-          <p className="mb-2 text-lg font-semibold">The Players Championship</p>
-          <p className="mb-1 text-sm text-[var(--text-muted)]">Tournament begins March 12</p>
-          <p className="text-sm text-[var(--text-muted)]">Tee times begin Thursday morning</p>
+        <div className="mb-8 space-y-4">
+          {/* Countdown to next tournament */}
+          <div className="rounded-xl border border-[var(--green-accent)]/20 bg-[var(--green-dark)]/20 p-8 text-center">
+            <p className="mb-2 text-lg font-semibold">{currentTournament.name}</p>
+            <p className="mb-4 text-sm text-[var(--text-muted)]">
+              {currentTournament.location} &middot; {currentTournament.dates}
+            </p>
+            <Countdown tournamentName={currentTournament.name} />
+          </div>
+
+          {/* Last tournament results */}
+          <div className="rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+              Last Results — The Players Championship
+            </h3>
+            <div className="mb-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-lg border border-blue-900/40 bg-blue-950/20 p-3 text-center">
+                <p className="text-xs font-bold text-blue-400">JACK — team jaw</p>
+                <p className="text-xl font-bold">{STANDINGS_AFTER_PLAYERS.jack.rank}th</p>
+                <p className="text-sm text-[var(--text-muted)]">{STANDINGS_AFTER_PLAYERS.jack.points} pts</p>
+              </div>
+              <div className="rounded-lg border border-amber-900/40 bg-amber-950/20 p-3 text-center">
+                <p className="text-xs font-bold text-amber-400">ABE — Watman</p>
+                <p className="text-xl font-bold">{STANDINGS_AFTER_PLAYERS.abe.rank}th</p>
+                <p className="text-sm text-[var(--text-muted)]">{STANDINGS_AFTER_PLAYERS.abe.points} pts</p>
+              </div>
+            </div>
+            <div className="space-y-1">
+              {STANDINGS_AFTER_PLAYERS.top20.slice(0, 10).map((entry) => (
+                <div
+                  key={`${entry.rank}-${entry.team}`}
+                  className={`flex items-center justify-between rounded px-3 py-1.5 text-xs ${
+                    entry.team === "team jaw"
+                      ? "border border-blue-900/40 bg-blue-950/20"
+                      : entry.team === "Watman"
+                      ? "border border-amber-900/40 bg-amber-950/20"
+                      : "bg-[var(--background)]"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 text-right font-bold text-[var(--text-muted)]">{entry.rank}</span>
+                    <span className="font-medium">{entry.team}</span>
+                  </div>
+                  <span className="font-semibold">{entry.points} pts</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
 

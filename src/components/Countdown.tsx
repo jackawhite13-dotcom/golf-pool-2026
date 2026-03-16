@@ -2,11 +2,22 @@
 
 import { useEffect, useState } from "react";
 
-const TARGET = new Date("2026-03-12T07:00:00-05:00"); // Thursday round 1 tee times
+// Tournament start times (R1 tee times, Eastern)
+const TOURNAMENT_STARTS: Record<string, string> = {
+  "The Players Championship": "2026-03-12T07:00:00-05:00",
+  "The Masters": "2026-04-09T08:00:00-04:00",
+  "PGA Championship": "2026-05-14T07:00:00-04:00",
+  "U.S. Open": "2026-06-18T06:45:00-04:00",
+  "The Open Championship": "2026-07-16T06:30:00+01:00",
+};
 
-function getTimeLeft() {
+function getTarget(tournamentName: string): Date {
+  return new Date(TOURNAMENT_STARTS[tournamentName] || TOURNAMENT_STARTS["The Masters"]);
+}
+
+function getTimeLeft(target: Date) {
   const now = new Date();
-  const diff = TARGET.getTime() - now.getTime();
+  const diff = target.getTime() - now.getTime();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
   return {
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -17,16 +28,17 @@ function getTimeLeft() {
   };
 }
 
-export default function Countdown() {
-  const [time, setTime] = useState(getTimeLeft);
+export default function Countdown({ tournamentName = "The Masters" }: { tournamentName?: string }) {
+  const target = getTarget(tournamentName);
+  const [time, setTime] = useState(() => getTimeLeft(target));
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(getTimeLeft()), 1000);
+    const interval = setInterval(() => setTime(getTimeLeft(target)), 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [target]);
 
   if (time.expired) {
-    return <p className="text-[var(--green-accent)] font-semibold text-sm">The Players Championship is underway!</p>;
+    return <p className="text-[var(--green-accent)] font-semibold text-sm">{tournamentName} is underway!</p>;
   }
 
   const blocks = [

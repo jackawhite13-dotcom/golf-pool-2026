@@ -254,6 +254,38 @@ export default function PayoutsPage() {
       </div>
 
       {/* ============================================================ */}
+      {/*  AFTER THE PLAYERS — REALITY CHECK                           */}
+      {/* ============================================================ */}
+      <Card className="mb-6 border-[var(--green-accent)]/20 bg-[var(--green-dark)]/10">
+        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+          After The Players Championship (1 of 5)
+        </h2>
+        <div className="mb-4 grid gap-3 sm:grid-cols-2">
+          <div className="rounded-lg border border-blue-900/40 bg-blue-950/20 p-3 text-center">
+            <p className="text-xs font-bold text-blue-400">JACK — team jaw</p>
+            <p className="text-xl font-bold">15th / 413 pts</p>
+            <p className="text-xs text-[var(--text-muted)]">No tournament payout (need top 5)</p>
+          </div>
+          <div className="rounded-lg border border-amber-900/40 bg-amber-950/20 p-3 text-center">
+            <p className="text-xs font-bold text-amber-400">ABE — Watman</p>
+            <p className="text-xl font-bold">112th / 323 pts</p>
+            <p className="text-xs text-[var(--text-muted)]">No tournament payout (need top 5)</p>
+          </div>
+        </div>
+        <div className="space-y-2 text-xs text-[var(--text-muted)]">
+          <p>Neither entry cashed at The Players. <strong className="text-white">4 tournaments remain.</strong> Any single cash more than covers the $575 investment.</p>
+          <p>
+            <strong className="text-white">Scoring example:</strong> 73 made the cut at The Players.
+            1st place = 83 base pts + 10 bonus = <strong className="text-white">93 total</strong>.
+            Jack&apos;s Bridgeman finished T5 = 79 pts. Coody missed the cut = 0 pts.
+          </p>
+          <p>
+            <strong className="text-white">Cumulative normalization:</strong> Players scores &times; 75/83 = 0.9036 for overall standings.
+          </p>
+        </div>
+      </Card>
+
+      {/* ============================================================ */}
       {/*  POOL OVERVIEW                                                */}
       {/* ============================================================ */}
       <Card className="mb-6">
