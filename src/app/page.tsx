@@ -39,8 +39,11 @@ export default function Home() {
               <span className="text-sm text-[var(--text-muted)]">of {s.totalEntries}</span>
             </div>
             <p className="mt-1 text-sm">
-              <span className="font-semibold">{s.jack.points} pts</span>
-              <span className="text-[var(--text-muted)]"> &middot; {s.leader.points - s.jack.points} pts behind 1st</span>
+              <span className="font-semibold">{s.jack.normalizedPoints} pts</span>
+              <span className="text-[var(--text-muted)]"> &middot; {s.leader.normalizedPoints - s.jack.normalizedPoints} pts behind 1st</span>
+            </p>
+            <p className="mt-0.5 text-[10px] text-[var(--text-muted)]">
+              Raw: {s.jack.rawPoints} &times; 75/83
             </p>
           </div>
 
@@ -55,16 +58,21 @@ export default function Home() {
               <span className="text-sm text-[var(--text-muted)]">of {s.totalEntries}</span>
             </div>
             <p className="mt-1 text-sm">
-              <span className="font-semibold">{s.abe.points} pts</span>
-              <span className="text-[var(--text-muted)]"> &middot; {s.leader.points - s.abe.points} pts behind 1st</span>
+              <span className="font-semibold">{s.abe.normalizedPoints} pts</span>
+              <span className="text-[var(--text-muted)]"> &middot; {s.leader.normalizedPoints - s.abe.normalizedPoints} pts behind 1st</span>
+            </p>
+            <p className="mt-0.5 text-[10px] text-[var(--text-muted)]">
+              Raw: {s.abe.rawPoints} &times; 75/83
             </p>
           </div>
         </div>
 
         {/* Leader context */}
         <div className="mt-3 rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3 text-center text-xs text-[var(--text-muted)]">
-          Leader: <span className="font-semibold text-white">{s.leader.team}</span> ({s.leader.owner}) — {s.leader.points} pts
+          Leader: <span className="font-semibold text-white">{s.leader.team}</span> ({s.leader.owner}) — {s.leader.normalizedPoints} pts
           &middot; Jack is top {((s.jack.rank / s.totalEntries) * 100).toFixed(1)}%
+          <br />
+          <span className="text-[10px]">Cumulative points normalized to 75-pt scale (Players: &times;0.9036)</span>
         </div>
       </section>
 
@@ -180,6 +188,7 @@ export default function Home() {
                 <li>The starting number = <strong className="text-white">(golfers who made the cut) + 10</strong>. At The Players, 73 made the cut, so 1st place = 83 pts.</li>
                 <li><strong className="text-white">Bonus points:</strong> Win the tournament = +10 extra. 2nd = +7. 3rd = +5.</li>
                 <li>Whoever&apos;s 7 golfers score the most combined points wins that tournament.</li>
+                <li><strong className="text-white">Cumulative normalization:</strong> For the overall standings, all scores are scaled to a uniform <strong className="text-white">75-point</strong> base so every tournament counts equally. Each tournament&apos;s scores are multiplied by 75 / (1st-place base pts). E.g. Players: &times;75/83 = 0.9036.</li>
               </ul>
             </div>
             <div>

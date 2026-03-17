@@ -190,6 +190,17 @@ export const tiers: Tier[] = [
   },
 ];
 
+// Normalization: cumulative standings use a uniform 75-point scale.
+// Each tournament's scores are multiplied by 75 / rawFirstPlace,
+// where rawFirstPlace = madeCut + 10 (the base 1st-place points before bonus).
+export const NORMALIZATION_TARGET = 75;
+
+export function getNormalizationFactor(tournament: typeof tournaments[number]): number | null {
+  if (tournament.madeCut === null) return null;
+  const rawFirstPlace = tournament.madeCut + 10;
+  return NORMALIZATION_TARGET / rawFirstPlace;
+}
+
 export const tournaments = [
   { name: "The Players Championship", location: "TPC Sawgrass", dates: "Mar 12–15", status: "completed" as const, cutLine: 65, madeCut: 73 },
   { name: "The Masters", location: "Augusta National", dates: "Apr 9–12", status: "upcoming" as const, cutLine: 50, madeCut: null },

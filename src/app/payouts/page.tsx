@@ -263,12 +263,14 @@ export default function PayoutsPage() {
         <div className="mb-4 grid gap-3 sm:grid-cols-2">
           <div className="rounded-lg border border-blue-900/40 bg-blue-950/20 p-3 text-center">
             <p className="text-xs font-bold text-blue-400">JACK — team jaw</p>
-            <p className="text-xl font-bold">15th / 413 pts</p>
+            <p className="text-xl font-bold">15th / 373 pts</p>
+            <p className="text-[10px] text-[var(--text-muted)]">Raw: 413 &times; 75/83</p>
             <p className="text-xs text-[var(--text-muted)]">No tournament payout (need top 5)</p>
           </div>
           <div className="rounded-lg border border-amber-900/40 bg-amber-950/20 p-3 text-center">
             <p className="text-xs font-bold text-amber-400">ABE — Watman</p>
-            <p className="text-xl font-bold">112th / 323 pts</p>
+            <p className="text-xl font-bold">112th / 292 pts</p>
+            <p className="text-[10px] text-[var(--text-muted)]">Raw: 323 &times; 75/83</p>
             <p className="text-xs text-[var(--text-muted)]">No tournament payout (need top 5)</p>
           </div>
         </div>

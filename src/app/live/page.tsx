@@ -1204,12 +1204,12 @@ export default function LiveScoringPage() {
               <div className="rounded-lg border border-blue-900/40 bg-blue-950/20 p-3 text-center">
                 <p className="text-xs font-bold text-blue-400">JACK — team jaw</p>
                 <p className="text-xl font-bold">{STANDINGS_AFTER_PLAYERS.jack.rank}th</p>
-                <p className="text-sm text-[var(--text-muted)]">{STANDINGS_AFTER_PLAYERS.jack.points} pts</p>
+                <p className="text-sm text-[var(--text-muted)]">{STANDINGS_AFTER_PLAYERS.jack.normalizedPoints} pts (normalized)</p>
               </div>
               <div className="rounded-lg border border-amber-900/40 bg-amber-950/20 p-3 text-center">
                 <p className="text-xs font-bold text-amber-400">ABE — Watman</p>
                 <p className="text-xl font-bold">{STANDINGS_AFTER_PLAYERS.abe.rank}th</p>
-                <p className="text-sm text-[var(--text-muted)]">{STANDINGS_AFTER_PLAYERS.abe.points} pts</p>
+                <p className="text-sm text-[var(--text-muted)]">{STANDINGS_AFTER_PLAYERS.abe.normalizedPoints} pts (normalized)</p>
               </div>
             </div>
             <div className="space-y-1">
@@ -1228,7 +1228,7 @@ export default function LiveScoringPage() {
                     <span className="w-6 text-right font-bold text-[var(--text-muted)]">{entry.rank}</span>
                     <span className="font-medium">{entry.team}</span>
                   </div>
-                  <span className="font-semibold">{entry.points} pts</span>
+                  <span className="font-semibold">{entry.normalizedPoints} pts</span>
                 </div>
               ))}
             </div>
