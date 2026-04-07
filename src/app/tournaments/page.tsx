@@ -4,6 +4,11 @@ import { useState } from "react";
 import { tournaments } from "@/data/tiers";
 import { PLAYERS_RESULTS } from "@/data/playersResults";
 import type { GolferResult } from "@/data/playersResults";
+import {
+  augustaThemes,
+  trendContenders,
+  trendTakeaways,
+} from "@/data/mastersTrends";
 
 /* ── Helpers ────────────────────────────────────────────────────────── */
 
@@ -192,6 +197,79 @@ function MastersTab() {
         <p className="text-xs text-[var(--text-muted)]">
           Augusta National Golf Club &middot; Apr 9–12, 2026 &middot; Top 50 + ties make the cut
         </p>
+      </SectionCard>
+
+      {/* Trend Board — Contenders by 19-trend fit */}
+      <SectionCard className="border-[var(--green-accent)]/30 bg-[var(--green-dark)]/5">
+        <div className="mb-3 flex items-baseline justify-between">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+            Trend Board — Augusta&apos;s Winning Profile
+          </h3>
+          <span className="text-[10px] text-[var(--text-muted)]">19-trend fit</span>
+        </div>
+        <p className="mb-4 text-xs leading-relaxed text-[var(--text-muted)]">
+          Industry-standard framework grading the field against the historical Masters winner profile.{" "}
+          <strong className="text-white">Last year, Rory McIlroy hit all 19 trends — and won.</strong>
+        </p>
+
+        <div className="mb-4 space-y-1.5">
+          {trendTakeaways.map((t, i) => (
+            <div key={i} className="flex gap-2 text-xs text-[var(--text-muted)]">
+              <span className="text-[var(--green-accent)]">&#9656;</span>
+              <span>{t}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-1.5">
+          {trendContenders.map((p) => {
+            const pct = (p.trendsHit / 19) * 100;
+            const tone =
+              p.trendsHit >= 17
+                ? "bg-emerald-500"
+                : p.trendsHit >= 16
+                ? "bg-[var(--green-accent)]"
+                : p.trendsHit >= 15
+                ? "bg-yellow-500"
+                : "bg-orange-500";
+            return (
+              <div
+                key={p.name}
+                className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3"
+              >
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-white">{p.name}</span>
+                    <span className="rounded bg-[var(--card-bg)] px-1.5 py-0.5 text-[9px] font-bold text-[var(--green-accent)]">
+                      TIER {p.poolTier}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold tabular-nums text-white">
+                    {p.trendsHit}<span className="text-[var(--text-muted)]">/19</span>
+                  </span>
+                </div>
+                <div className="mb-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div className={`h-full ${tone}`} style={{ width: `${pct}%` }} />
+                </div>
+                <p className="text-[11px] leading-snug text-[var(--text-muted)]">{p.hook}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <details className="mt-4 group">
+          <summary className="cursor-pointer text-xs font-semibold text-[var(--green-accent)] select-none">
+            What the trends are looking for &rarr;
+          </summary>
+          <div className="mt-3 space-y-2">
+            {augustaThemes.map((t, i) => (
+              <div key={i} className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3">
+                <p className="text-xs font-semibold text-white">{i + 1}. {t.title}</p>
+                <p className="mt-0.5 text-[11px] leading-snug text-[var(--text-muted)]">{t.detail}</p>
+              </div>
+            ))}
+          </div>
+        </details>
       </SectionCard>
 
       {/* Course Intel */}
