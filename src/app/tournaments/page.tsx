@@ -9,6 +9,16 @@ import {
   trendContenders,
   trendTakeaways,
 } from "@/data/mastersTrends";
+import {
+  aronimkThemes,
+  pgaTrendContenders,
+  pgaTrendTakeaways,
+} from "@/data/pgaTrends";
+import {
+  pgaCourseIntel,
+  pgaTierAnalysis,
+  pgaRecommendedPicks,
+} from "@/data/pgaAnalysis";
 
 /* ── Helpers ────────────────────────────────────────────────────────── */
 
@@ -190,12 +200,12 @@ function MastersTab() {
       <SectionCard className="border-[var(--green-accent)]/20 bg-[var(--green-dark)]/10">
         <div className="mb-2 flex items-center gap-2">
           <h2 className="text-lg font-bold">The Masters</h2>
-          <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black">
-            NEXT UP
+          <span className="rounded-full bg-[var(--text-muted)] px-2 py-0.5 text-[10px] font-bold text-black">
+            COMPLETED
           </span>
         </div>
         <p className="text-xs text-[var(--text-muted)]">
-          Augusta National Golf Club &middot; Apr 9–12, 2026 &middot; Top 50 + ties make the cut
+          Augusta National Golf Club &middot; Apr 9–12, 2026 &middot; Pre-tournament analysis archived below
         </p>
       </SectionCard>
 
@@ -411,6 +421,235 @@ function MastersTab() {
   );
 }
 
+/* ── PGA Championship Tab (Pre-Tournament Analysis) ────────────────── */
+
+function PgaTab() {
+  const course = pgaCourseIntel;
+  const tierAnalysis = pgaTierAnalysis;
+  const picks = pgaRecommendedPicks;
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <SectionCard className="border-[var(--green-accent)]/20 bg-[var(--green-dark)]/10">
+        <div className="mb-2 flex items-center gap-2">
+          <h2 className="text-lg font-bold">PGA Championship</h2>
+          <span className="rounded-full bg-[var(--green-accent)] px-2 py-0.5 text-[10px] font-bold text-black animate-pulse">
+            NEXT UP — TEES OFF TOMORROW
+          </span>
+        </div>
+        <p className="text-xs text-[var(--text-muted)]">
+          Aronimink Golf Club, Newtown Square, PA &middot; May 14–17, 2026 &middot; Top 70 + ties make the cut
+        </p>
+      </SectionCard>
+
+      {/* Trend Board */}
+      <SectionCard className="border-[var(--green-accent)]/30 bg-[var(--green-dark)]/5">
+        <div className="mb-3 flex items-baseline justify-between">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+            Trend Board — Aronimink&apos;s Winning Profile
+          </h3>
+          <span className="text-[10px] text-[var(--text-muted)]">6-trend fit (CBS Sports model)</span>
+        </div>
+        <p className="mb-4 text-xs leading-relaxed text-[var(--text-muted)]">
+          Six historical winning trends for the PGA Championship.{" "}
+          <strong className="text-white">Five players pass all 6 — they are the model&apos;s final contenders.</strong>
+        </p>
+
+        <div className="mb-4 space-y-1.5">
+          {pgaTrendTakeaways.map((t, i) => (
+            <div key={i} className="flex gap-2 text-xs text-[var(--text-muted)]">
+              <span className="text-[var(--green-accent)]">&#9656;</span>
+              <span>{t}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-1.5">
+          {pgaTrendContenders.map((p) => {
+            const pct = (p.trendsHit / 6) * 100;
+            const tone =
+              p.trendsHit === 6
+                ? "bg-emerald-500"
+                : p.trendsHit === 5
+                ? "bg-[var(--green-accent)]"
+                : p.trendsHit === 4
+                ? "bg-yellow-500"
+                : "bg-orange-500";
+            return (
+              <div
+                key={p.name}
+                className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3"
+              >
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-white">{p.name}</span>
+                    <span className="rounded bg-[var(--card-bg)] px-1.5 py-0.5 text-[9px] font-bold text-[var(--green-accent)]">
+                      TIER {p.poolTier}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold tabular-nums text-white">
+                    {p.trendsHit}<span className="text-[var(--text-muted)]">/6</span>
+                  </span>
+                </div>
+                <div className="mb-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div className={`h-full ${tone}`} style={{ width: `${pct}%` }} />
+                </div>
+                <p className="text-[11px] leading-snug text-[var(--text-muted)]">{p.hook}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <details className="mt-4 group">
+          <summary className="cursor-pointer text-xs font-semibold text-[var(--green-accent)] select-none">
+            What the trends are looking for &rarr;
+          </summary>
+          <div className="mt-3 space-y-2">
+            {aronimkThemes.map((t, i) => (
+              <div key={i} className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3">
+                <p className="text-xs font-semibold text-white">{t.title}</p>
+                <p className="mt-0.5 text-[11px] leading-snug text-[var(--text-muted)]">{t.detail}</p>
+              </div>
+            ))}
+          </div>
+        </details>
+      </SectionCard>
+
+      {/* Course Intel */}
+      <SectionCard>
+        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+          Course Intel — {course.course.split(",")[0]}
+        </h3>
+        <div className="space-y-3 text-sm text-[var(--text-muted)]">
+          <div className="grid grid-cols-3 gap-3 text-center">
+            <div className="rounded-lg bg-[var(--background)] p-3">
+              <p className="text-lg font-bold text-white">{course.par}</p>
+              <p className="text-[10px]">Par</p>
+            </div>
+            <div className="rounded-lg bg-[var(--background)] p-3">
+              <p className="text-lg font-bold text-white">{course.yardage.toLocaleString()}</p>
+              <p className="text-[10px]">Yards</p>
+            </div>
+            <div className="rounded-lg bg-[var(--background)] p-3">
+              <p className="text-lg font-bold text-white">Top 70+T</p>
+              <p className="text-[10px]">Cut</p>
+            </div>
+          </div>
+          <div>
+            <p className="mb-1 font-semibold text-white">Key Stats That Win:</p>
+            <ul className="space-y-1">
+              {course.keyStats.map((stat, i) => (
+                <li key={i}>- {stat}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="mb-1 font-semibold text-white">Historical Context:</p>
+            <ul className="space-y-1">
+              {course.historicalContext.map((ctx, i) => (
+                <li key={i}>- {ctx}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="mb-1 font-semibold text-white">Strategy Notes:</p>
+            <ul className="space-y-1">
+              {course.strategyNotes.map((note, i) => (
+                <li key={i}>- {note}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </SectionCard>
+
+      {/* Recommended Picks — pinned high so it's easy to reach during the call */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <SectionCard className="border-blue-900/40">
+          <h3 className="mb-3 text-sm font-semibold text-blue-400">Jack&apos;s Picks (Chalk / Floor)</h3>
+          <div className="space-y-2">
+            {picks.jack.picks.map((pick) => (
+              <div key={pick.tier} className="flex gap-2 text-sm">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--background)] text-[10px] font-bold text-[var(--green-accent)]">
+                  {String.fromCharCode(64 + pick.tier)}
+                </span>
+                <div>
+                  <span className="font-semibold">{pick.name}</span>
+                  <p className="text-[10px] text-[var(--text-muted)]">{pick.reasoning}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionCard>
+        <SectionCard className="border-amber-900/40">
+          <h3 className="mb-3 text-sm font-semibold text-amber-400">Abe&apos;s Picks (Contrarian / Ceiling)</h3>
+          <div className="space-y-2">
+            {picks.abe.picks.map((pick) => (
+              <div key={pick.tier} className="flex gap-2 text-sm">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--background)] text-[10px] font-bold text-[var(--green-accent)]">
+                  {String.fromCharCode(64 + pick.tier)}
+                </span>
+                <div>
+                  <span className="font-semibold">{pick.name}</span>
+                  <p className="text-[10px] text-[var(--text-muted)]">{pick.reasoning}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionCard>
+      </div>
+
+      {/* Confidence Legend */}
+      <div className="rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3 text-xs text-[var(--text-muted)]">
+        <span className="text-blue-400">Jack&apos;s %</span> = should Jack pick this golfer? (chalk — safe, high floor, proven).{" "}
+        <span className="text-amber-400">Abe&apos;s %</span> = should Abe pick this golfer? (contrarian — low ownership, high leverage, differentiated from the field).
+      </div>
+
+      {/* Tier-by-Tier Analysis */}
+      {Object.entries(tierAnalysis).map(([tierNum, players]) => {
+        const tierLetter = String.fromCharCode(64 + Number(tierNum));
+        return (
+          <SectionCard key={tierNum}>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--green-accent)]">
+              Tier {tierLetter} — Rank {Number(tierNum) < 7 ? `${(Number(tierNum) - 1) * 10 + 1}–${Number(tierNum) * 10}` : "61+"}
+            </h3>
+            <div className="space-y-3">
+              {players.map((player) => (
+                <div key={player.name} className="rounded-lg border border-[var(--card-border)] bg-[var(--background)] p-3">
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="text-sm font-semibold">{player.name}</span>
+                  </div>
+                  <div className="mb-2 grid grid-cols-2 gap-2">
+                    <div>
+                      <p className="mb-0.5 text-[10px] text-blue-400">Jack&apos;s Pick Confidence</p>
+                      <ConfidenceBar value={player.jackConfidence} color="blue" />
+                    </div>
+                    <div>
+                      <p className="mb-0.5 text-[10px] text-amber-400">Abe&apos;s Pick Confidence</p>
+                      <ConfidenceBar value={player.abeConfidence} color="amber" />
+                    </div>
+                  </div>
+                  <p className="mb-1 text-xs text-[var(--text-muted)]">{player.rationale}</p>
+                  <div className="grid grid-cols-2 gap-2 text-[10px]">
+                    <div>
+                      <span className="font-semibold text-blue-400">Chalk: </span>
+                      <span className="text-[var(--text-muted)]">{player.chalk}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-amber-400">Contrarian: </span>
+                      <span className="text-[var(--text-muted)]">{player.contrarian}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SectionCard>
+        );
+      })}
+    </div>
+  );
+}
+
 /* ── Placeholder Tab ────────────────────────────────────────────────── */
 
 function PlaceholderTab({ tournament }: { tournament: typeof tournaments[number] }) {
@@ -432,7 +671,7 @@ function PlaceholderTab({ tournament }: { tournament: typeof tournaments[number]
 const TAB_NAMES = ["The Players", "The Masters", "PGA Champ.", "US Open", "The Open"];
 
 export default function TournamentsPage() {
-  const [activeTab, setActiveTab] = useState(1); // Default to Masters
+  const [activeTab, setActiveTab] = useState(2); // Default to PGA Championship
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
@@ -471,7 +710,7 @@ export default function TournamentsPage() {
       {/* Tab Content */}
       {activeTab === 0 && <PlayersTab />}
       {activeTab === 1 && <MastersTab />}
-      {activeTab === 2 && <PlaceholderTab tournament={tournaments[2]} />}
+      {activeTab === 2 && <PgaTab />}
       {activeTab === 3 && <PlaceholderTab tournament={tournaments[3]} />}
       {activeTab === 4 && <PlaceholderTab tournament={tournaments[4]} />}
     </div>
