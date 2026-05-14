@@ -30,27 +30,27 @@ interface SavedPicks {
 }
 
 const TIER_LABELS = tierData.map((t) => t.label.replace("Tier ", ""));
-const STORAGE_KEY = "majorspool-picks";
+const STORAGE_KEY = "majorspool-picks-pga";
 
-// ── Default picks (Players Championship) ──────────────────────────────
+// ── Default picks (PGA Championship) ──────────────────────────────────
 const DEFAULT_PICKS: SavedPicks = {
   jack: {
     A: "Scheffler, Scottie",
-    B: "Matsuyama, Hideki",
-    C: "Bridgeman, Jacob",
-    D: "Rose, Justin",
-    E: "Coody, Pierceson",
-    F: "Hisatsune, Ryo",
-    G: "Rodgers, Patrick",
+    B: "Rose, Justin",
+    C: "Matsuyama, Hideki",
+    D: "Day, Jason",
+    E: "Bridgeman, Jacob",
+    F: "Stevens, Sam",
+    G: "Castillo, Ricky",
   },
   abe: {
-    A: "Kim, Si Woo",
-    B: "Bhatia, Akshay",
-    C: "Straka, Sepp",
-    D: "Hojgaard, Nicolai",
-    E: "Conners, Corey",
-    F: "Castillo, Ricky",
-    G: "Hoge, Tom",
+    A: "Schauffele, Xander",
+    B: "Koepka, Brooks",
+    C: "Fowler, Rickie",
+    D: "English, Harris",
+    E: "Fitzpatrick, Alex",
+    F: "Reitan, Kristoffer",
+    G: "Hisatsune, Ryo",
   },
 };
 
